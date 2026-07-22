@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 734fe7b1ef3254642b8c71b75c27b4ac, type: 3}
+  m_Name: DanceCatalog
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Dance.DanceCatalog
+  dances:
+  - id: 1
+    danceName: Dance 1
+    displayColor: {r: 1, g: 0, b: 0, a: 1}
+  - id: 2
+    danceName: Dance 2
+    displayColor: {r: 0, g: 0, b: 1, a: 1}
+  - id: 3
+    danceName: Dance 3
+    displayColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  - id: 4
+    danceName: Dance 4
+    displayColor: {r: 0, g: 1, b: 0, a: 1}
+  - id: 5
+    danceName: Dance 5
+    displayColor: {r: 1, g: 0, b: 1, a: 1}
+  - id: 6
+    danceName: Dance 6
+    displayColor: {r: 0, g: 1, b: 1, a: 1}
