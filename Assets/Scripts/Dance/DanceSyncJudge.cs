@@ -15,6 +15,7 @@ namespace NHNHackathon.Dance
         private float timingTolerance = 0.5f;
 
         private PlayerDanceInput activePlayer;
+        private PlayerDisguiseState activeDisguiseState;
         private int currentDanceId;
         private float currentBeatTime = float.NegativeInfinity;
         private bool hasCurrentBeat;
@@ -59,6 +60,9 @@ namespace NHNHackathon.Dance
             }
 
             activePlayer = player;
+            activeDisguiseState = activePlayer != null
+                ? activePlayer.GetComponent<PlayerDisguiseState>()
+                : null;
             hasPendingEarlyInput = false;
             SetBlendState(false);
 
@@ -134,6 +138,10 @@ namespace NHNHackathon.Dance
             }
 
             isBlendingIn = value;
+            if (activeDisguiseState != null)
+            {
+                activeDisguiseState.SetDisguised(value);
+            }
             BlendStateChanged?.Invoke(isBlendingIn);
         }
 
