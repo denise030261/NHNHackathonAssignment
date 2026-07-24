@@ -162,6 +162,7 @@ namespace NHNHackathon.EditorTools
             settings.FindProperty("patrolRoute").objectReferenceValue = route;
             settings.FindProperty("gameOverController").objectReferenceValue = gameOver;
             settings.FindProperty("enemyRenderer").objectReferenceValue = renderer;
+            settings.FindProperty("lostSightGraceDuration").floatValue = 2f;
             settings.ApplyModifiedPropertiesWithoutUndo();
             return root;
         }

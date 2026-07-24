@@ -216,6 +216,7 @@ MonoBehaviour:
   chaseSpeed: 4.5
   loseDistance: 14
   minimumDisguiseDistance: 3
+  lostSightGraceDuration: 2
   suspicionDuration: 3
   attackDistance: 1.5
   maximumAttackHeightDifference: 1

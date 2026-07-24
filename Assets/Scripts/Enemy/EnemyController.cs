@@ -34,6 +34,8 @@ namespace NHNHackathon.Enemy
         [SerializeField, Min(0f)] private float chaseSpeed = 4.5f;
         [SerializeField, Min(0f)] private float loseDistance = 14f;
         [SerializeField, Min(0f)] private float minimumDisguiseDistance = 3f;
+        [SerializeField, Min(0f), Tooltip("Seconds the enemy follows the last seen position after losing sight.")]
+        private float lostSightGraceDuration = 2f;
 
         [Header("Suspicion")]
         [SerializeField, Min(0f)] private float suspicionDuration = 3f;
@@ -57,7 +59,10 @@ namespace NHNHackathon.Enemy
         private bool hasPatrolDestination;
         private LightStimulusSource investigatedLight;
         private Vector3 lastKnownLightPosition;
+        private Vector3 lastKnownPlayerPosition;
         private MaterialPropertyBlock propertyBlock;
+        private bool hasLostSight;
+        private float lostSightStartedAt;
 
         public EnemyState CurrentState { get; private set; }
 
@@ -160,7 +165,26 @@ namespace NHNHackathon.Enemy
                 return;
             }
 
-            if (!perception.CanSeeTarget(player) || distance >= loseDistance)
+            if (distance >= loseDistance)
+            {
+                ChangeState(EnemyState.Suspicious);
+                return;
+            }
+
+            if (perception.CanSeeTarget(player))
+            {
+                lastKnownPlayerPosition = player.position;
+                hasLostSight = false;
+                return;
+            }
+
+            if (!hasLostSight)
+            {
+                hasLostSight = true;
+                lostSightStartedAt = Time.time;
+            }
+
+            if (Time.time - lostSightStartedAt >= lostSightGraceDuration)
             {
                 ChangeState(EnemyState.Suspicious);
             }
@@ -277,7 +301,7 @@ namespace NHNHackathon.Enemy
         {
             if (player != null && agent.isOnNavMesh)
             {
-                agent.SetDestination(player.position);
+                agent.SetDestination(hasLostSight ? lastKnownPlayerPosition : player.position);
             }
         }
 
@@ -320,9 +344,12 @@ namespace NHNHackathon.Enemy
                     agent.speed = chaseSpeed;
                     investigatedLight = null;
                     hasPatrolDestination = false;
+                    lastKnownPlayerPosition = player != null ? player.position : transform.position;
+                    hasLostSight = false;
                     break;
                 case EnemyState.Suspicious:
                     suspicionEndsAt = Time.time + suspicionDuration;
+                    hasLostSight = false;
                     break;
             }
         }
