@@ -1,11 +1,12 @@
 using System.Collections;
+using NHNHackathon.Interaction;
 using NHNHackathon.Items;
 using UnityEngine;
 
 namespace NHNHackathon.ExitSystem
 {
     [DisallowMultipleComponent]
-    public sealed class ExitDoor : MonoBehaviour
+    public sealed class ExitDoor : MonoBehaviour, IInteractable
     {
         [Header("Requirements")]
         [SerializeField, Min(1)] private int requiredKeys = 3;
@@ -20,37 +21,55 @@ namespace NHNHackathon.ExitSystem
         [Header("Feedback")]
         [SerializeField, Min(0f)] private float lockedMessageDuration = 1.5f;
 
-        private bool isOpening;
+        private bool isAnimating;
+        private Quaternion closedRotation;
+        private Quaternion openRotation;
 
         public bool IsOpen { get; private set; }
+        public string InteractionPrompt => IsOpen
+            ? "\uBB38 \uB2EB\uAE30"
+            : "\uBB38 \uC5F4\uAE30";
 
-        private void OnTriggerEnter(Collider other)
+        private void Awake()
         {
-            if (IsOpen || isOpening)
-            {
-                return;
-            }
-
-            PlayerKeyInventory inventory = other.GetComponentInParent<PlayerKeyInventory>();
-            if (inventory == null || inventory != playerInventory)
-            {
-                return;
-            }
-
-            if (!inventory.HasRequiredKeys(requiredKeys))
-            {
-                inventory.ShowDoorLockedMessage(requiredKeys, lockedMessageDuration);
-                return;
-            }
-
-            StartCoroutine(OpenDoor());
+            closedRotation = doorPanel.localRotation;
+            openRotation = closedRotation * Quaternion.Euler(0f, openAngle, 0f);
         }
 
-        private IEnumerator OpenDoor()
+        public bool CanInteract(PlayerInteractor interactor)
         {
-            isOpening = true;
+            return !isAnimating && interactor != null;
+        }
+
+        public void Interact(PlayerInteractor interactor)
+        {
+            if (!CanInteract(interactor))
+            {
+                return;
+            }
+
+            if (!IsOpen && !playerInventory.HasRequiredKeys(requiredKeys))
+            {
+                interactor.ShowTemporaryMessage(
+                    $"\uC5F4\uC1E0\uAC00 \uBD80\uC871\uD569\uB2C8\uB2E4.  "
+                    + $"{playerInventory.KeyCount} / {requiredKeys}",
+                    lockedMessageDuration);
+                return;
+            }
+
+            StartCoroutine(AnimateDoor(!IsOpen));
+        }
+
+        private IEnumerator AnimateDoor(bool opening)
+        {
+            isAnimating = true;
+            if (!opening)
+            {
+                IsOpen = false;
+            }
+
             Quaternion startRotation = doorPanel.localRotation;
-            Quaternion targetRotation = startRotation * Quaternion.Euler(0f, openAngle, 0f);
+            Quaternion targetRotation = opening ? openRotation : closedRotation;
             float elapsed = 0f;
 
             while (elapsed < openDuration)
@@ -62,13 +81,8 @@ namespace NHNHackathon.ExitSystem
             }
 
             doorPanel.localRotation = targetRotation;
-            if (blockingCollider != null)
-            {
-                blockingCollider.enabled = false;
-            }
-
-            IsOpen = true;
-            isOpening = false;
+            IsOpen = opening;
+            isAnimating = false;
         }
     }
 }

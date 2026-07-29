@@ -1,6 +1,7 @@
 using System;
 using NHNHackathon.Enemy;
 using NHNHackathon.Game;
+using NHNHackathon.Interaction;
 using UnityEngine;
 using UnityEngine.AI;
 

@@ -4,6 +4,7 @@ using NHNHackathon.Dance;
 using NHNHackathon.ExitSystem;
 using NHNHackathon.Game;
 using NHNHackathon.Input;
+using NHNHackathon.Interaction;
 using NHNHackathon.Items;
 using NHNHackathon.LightSystem;
 using UnityEditor;
@@ -38,10 +39,23 @@ namespace NHNHackathon.EditorTools
             SerializedObject inventorySettings = new SerializedObject(inventory);
             inventorySettings.FindProperty("requiredKeyCount").intValue = 3;
             inventorySettings.ApplyModifiedPropertiesWithoutUndo();
+            PlayerInteractor interactor =
+                player.GetComponent<PlayerInteractor>() ?? player.AddComponent<PlayerInteractor>();
+            SerializedObject interactorSettings = new SerializedObject(interactor);
+            interactorSettings.FindProperty("interactionKey").intValue = (int)KeyCode.E;
+            interactorSettings.FindProperty("interactionDistance").floatValue = 2.5f;
+            interactorSettings.FindProperty("detectionRadius").floatValue = 0.3f;
+            interactorSettings.FindProperty("cameraController").objectReferenceValue =
+                player.GetComponent<PlayerCameraController>();
+            interactorSettings.FindProperty("playerCamera").objectReferenceValue =
+                player.GetComponentInChildren<Camera>(true);
+            interactorSettings.FindProperty("keyInventory").objectReferenceValue = inventory;
+            interactorSettings.ApplyModifiedPropertiesWithoutUndo();
+            AddInteractorToGameOverControls(interactor);
 
             GameObject mechanicRoot = new GameObject("ExitMechanic");
             GameSuccessController successController =
-                CreateSuccessController(mechanicRoot.transform, player);
+                CreateSuccessController(mechanicRoot.transform, player, interactor);
 
             Material keyMaterial = CreateMaterial(
                 "Assets/Art/Materials/KeyPrototype.mat",
@@ -73,7 +87,7 @@ namespace NHNHackathon.EditorTools
         }
 
         private static GameSuccessController CreateSuccessController(
-            Transform parent, GameObject player)
+            Transform parent, GameObject player, PlayerInteractor interactor)
         {
             GameObject systemObject = new GameObject("GameSuccessSystem");
             systemObject.transform.SetParent(parent);
@@ -84,7 +98,8 @@ namespace NHNHackathon.EditorTools
                 player.GetComponent<PlayerCameraController>(),
                 player.GetComponent<PlayerDanceInput>(),
                 player.GetComponent<PlayerCursorController>(),
-                player.GetComponentInChildren<PlayerFlashlightController>(true)
+                player.GetComponentInChildren<PlayerFlashlightController>(true),
+                interactor
             };
 
             SerializedObject settings = new SerializedObject(controller);
@@ -98,6 +113,30 @@ namespace NHNHackathon.EditorTools
             }
             settings.ApplyModifiedPropertiesWithoutUndo();
             return controller;
+        }
+
+        private static void AddInteractorToGameOverControls(PlayerInteractor interactor)
+        {
+            GameOverController gameOver = Object.FindAnyObjectByType<GameOverController>();
+            if (gameOver == null)
+            {
+                return;
+            }
+
+            SerializedObject settings = new SerializedObject(gameOver);
+            SerializedProperty controls = settings.FindProperty("playerControls");
+            for (int index = 0; index < controls.arraySize; index++)
+            {
+                if (controls.GetArrayElementAtIndex(index).objectReferenceValue == interactor)
+                {
+                    return;
+                }
+            }
+
+            int newIndex = controls.arraySize;
+            controls.arraySize++;
+            controls.GetArrayElementAtIndex(newIndex).objectReferenceValue = interactor;
+            settings.ApplyModifiedPropertiesWithoutUndo();
         }
 
         private static void CreateKey(
