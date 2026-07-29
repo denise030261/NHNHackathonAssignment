@@ -1,4 +1,5 @@
 using NHNHackathon.Interaction;
+using NHNHackathon.Inspection;
 using UnityEngine;
 
 namespace NHNHackathon.Items
@@ -8,6 +9,8 @@ namespace NHNHackathon.Items
     public sealed class KeyCollectible : MonoBehaviour, IInteractable
     {
         [SerializeField] private string keyId = "Key_01";
+        [SerializeField, Tooltip("Shared item data used by the inspection screen.")]
+        private ItemDefinition itemDefinition;
 
         private bool isCollected;
 
@@ -33,6 +36,11 @@ namespace NHNHackathon.Items
 
             isCollected = true;
             gameObject.SetActive(false);
+
+            if (itemDefinition != null && itemDefinition.InspectOnPickup)
+            {
+                ItemInspectionController.Instance?.Open(itemDefinition);
+            }
         }
     }
 }
