@@ -19,6 +19,7 @@ MonoBehaviour:
     \uB5A8\uC5B4\uC838 \uB098\uC628 \uD0DC\uC5FD \uBD80\uD488\uC774\uB2E4.\n\uD45C\uBA74\uC5D0
     \uC54C\uC544\uBCF4\uAE30 \uD798\uB4E0 \uC77C\uB828\uBC88\uD638\uAC00 \uC0C8\uACA8\uC838
     \uC788\uB2E4."
+  inventoryIcon: {fileID: 2687207300398337, guid: 76ff507da05c01244924d298aa7398dc, type: 2}
   previewPrefab: {fileID: 7691864991054510852, guid: 0f417bc5955d30c4189f52f677999b44, type: 3}
   previewEulerAngles: {x: 0, y: 0, z: 0}
   previewScale: 1.15

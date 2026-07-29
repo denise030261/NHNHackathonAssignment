@@ -1,3 +1,4 @@
+using System;
 using NHNHackathon.Items;
 using UnityEngine;
 using UnityEngine.UI;
@@ -35,6 +36,7 @@ namespace NHNHackathon.Inspection
         private ItemDefinition currentItem;
         private InspectionViewState state;
         private int currentPageIndex;
+        private Action inventoryReaderClosed;
 
         public static ItemInspectionController Instance { get; private set; }
         public InspectionViewState State => state;
@@ -102,10 +104,37 @@ namespace NHNHackathon.Inspection
             SetScreenState(true, false, true);
         }
 
+        public void OpenPaperReaderFromInventory(
+            ItemDefinition item, Action onReaderClosed)
+        {
+            if (item == null || !item.CanRead || state != InspectionViewState.Closed)
+            {
+                return;
+            }
+
+            currentItem = item;
+            currentPageIndex = 0;
+            inventoryReaderClosed = onReaderClosed;
+            state = InspectionViewState.PaperReader;
+            RefreshPaperPage();
+            SetScreenState(true, false, true);
+        }
+
         public void ClosePaperReader()
         {
             if (currentItem == null)
             {
+                return;
+            }
+
+            if (inventoryReaderClosed != null)
+            {
+                Action callback = inventoryReaderClosed;
+                inventoryReaderClosed = null;
+                currentItem = null;
+                state = InspectionViewState.Closed;
+                SetScreenState(false, false, false);
+                callback.Invoke();
                 return;
             }
 
@@ -133,6 +162,7 @@ namespace NHNHackathon.Inspection
             previewRenderer.Clear();
             previewImage.texture = null;
             currentItem = null;
+            inventoryReaderClosed = null;
             state = InspectionViewState.Closed;
             SetScreenState(false, false, false);
             controlLock.Unlock();

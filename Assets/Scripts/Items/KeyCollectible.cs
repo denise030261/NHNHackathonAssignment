@@ -34,6 +34,13 @@ namespace NHNHackathon.Items
                 return;
             }
 
+            PlayerItemInventory itemInventory =
+                interactor.GetComponent<PlayerItemInventory>();
+            if (itemDefinition != null && itemInventory != null)
+            {
+                itemInventory.TryCollect(itemDefinition);
+            }
+
             isCollected = true;
             gameObject.SetActive(false);
 

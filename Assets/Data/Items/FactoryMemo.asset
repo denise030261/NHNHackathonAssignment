@@ -17,6 +17,7 @@ MonoBehaviour:
   itemType: 2
   description: "\uAC00\uC7A5\uC790\uB9AC\uAC00 \uB0A1\uC740 \uACF5\uC7A5 \uAD00\uB9AC\uC790\uC758
     \uAE30\uB85D\uC9C0\uB2E4."
+  inventoryIcon: {fileID: -4839725608942642958, guid: 077c93c05d99fc24fbd99c5f54c582f5, type: 2}
   previewPrefab: {fileID: 6274370231951324203, guid: 26628686116e61a45b72ca5cc4242f8c, type: 3}
   previewEulerAngles: {x: 0, y: 0, z: 0}
   previewScale: 1.1

@@ -13,6 +13,8 @@ namespace NHNHackathon.Items
 
         [Header("Inspection")]
         [SerializeField, TextArea(2, 6)] private string description;
+        [SerializeField, Tooltip("Sprite displayed in inventory grid slots.")]
+        private Sprite inventoryIcon;
         [SerializeField, Tooltip("Prefab instantiated by the isolated preview camera.")]
         private GameObject previewPrefab;
         [SerializeField] private Vector3 previewEulerAngles;
@@ -27,6 +29,7 @@ namespace NHNHackathon.Items
         public string DisplayName => displayName;
         public ItemType Type => itemType;
         public string Description => description;
+        public Sprite InventoryIcon => inventoryIcon;
         public GameObject PreviewPrefab => previewPrefab;
         public Vector3 PreviewEulerAngles => previewEulerAngles;
         public float PreviewScale => previewScale;
