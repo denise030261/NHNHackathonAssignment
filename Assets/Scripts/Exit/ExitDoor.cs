@@ -1,6 +1,7 @@
 using System.Collections;
 using NHNHackathon.Interaction;
 using NHNHackathon.Items;
+using NHNHackathon.Progression;
 using UnityEngine;
 
 namespace NHNHackathon.ExitSystem
@@ -11,6 +12,8 @@ namespace NHNHackathon.ExitSystem
         [Header("Requirements")]
         [SerializeField, Min(1)] private int requiredKeys = 3;
         [SerializeField] private PlayerKeyInventory playerInventory;
+        [SerializeField, Tooltip("Optional condition completed the first time this door is unlocked.")]
+        private ProgressionCondition unlockedCondition;
 
         [Header("Door")]
         [SerializeField] private Transform doorPanel;
@@ -24,6 +27,7 @@ namespace NHNHackathon.ExitSystem
         private bool isAnimating;
         private Quaternion closedRotation;
         private Quaternion openRotation;
+        private bool hasBeenUnlocked;
 
         public bool IsOpen { get; private set; }
         public string InteractionPrompt => IsOpen
@@ -55,6 +59,12 @@ namespace NHNHackathon.ExitSystem
                     + $"{playerInventory.KeyCount} / {requiredKeys}",
                     lockedMessageDuration);
                 return;
+            }
+
+            if (!IsOpen && !hasBeenUnlocked)
+            {
+                hasBeenUnlocked = true;
+                GameProgressionController.Instance?.TryComplete(unlockedCondition);
             }
 
             StartCoroutine(AnimateDoor(!IsOpen));

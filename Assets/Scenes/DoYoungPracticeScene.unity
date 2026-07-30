@@ -1142,103 +1142,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &357078269
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 357078271}
-  - component: {fileID: 357078270}
-  m_Layer: 0
-  m_Name: Directional Light
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!108 &357078270
-Light:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 357078269}
-  m_Enabled: 1
-  serializedVersion: 13
-  m_Type: 1
-  m_Color: {r: 0.35, g: 0.4, b: 0.5, a: 1}
-  m_Intensity: 0.015
-  m_Range: 10
-  m_SpotAngle: 30
-  m_InnerSpotAngle: 21.80208
-  m_CookieSize2D: {x: 0.5, y: 0.5}
-  m_Shadows:
-    m_Type: 0
-    m_Resolution: -1
-    m_CustomResolution: -1
-    m_Strength: 1
-    m_Bias: 0.05
-    m_NormalBias: 0.4
-    m_NearPlane: 0.2
-    m_CullingMatrixOverride:
-      e00: 1
-      e01: 0
-      e02: 0
-      e03: 0
-      e10: 0
-      e11: 1
-      e12: 0
-      e13: 0
-      e20: 0
-      e21: 0
-      e22: 1
-      e23: 0
-      e30: 0
-      e31: 0
-      e32: 0
-      e33: 1
-    m_UseCullingMatrixOverride: 0
-  m_Cookie: {fileID: 0}
-  m_DrawHalo: 0
-  m_Flare: {fileID: 0}
-  m_RenderMode: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingLayerMask: 1
-  m_Lightmapping: 4
-  m_LightShadowCasterMode: 0
-  m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
-  m_ColorTemperature: 6570
-  m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
-  m_UseBoundingSphereOverride: 0
-  m_UseViewFrustumForShadowCasterCull: 1
-  m_ForceVisible: 0
-  m_ShapeRadius: 0.025
-  m_ShadowAngle: 0
-  m_LightUnit: 1
-  m_LuxAtDistance: 1
-  m_EnableSpotReflector: 1
---- !u!4 &357078271
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 357078269}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0.3649717, y: -0.2778159, z: 0.115075134, w: 0.88111955}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &372422196
 GameObject:
   m_ObjectHideFlags: 0
@@ -1766,6 +1669,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.ExitSystem.ExitDoor
   requiredKeys: 3
   playerInventory: {fileID: 104296804939812587}
+  unlockedCondition: {fileID: 11400000, guid: 3179997b3de15364aae79454f0208a3d, type: 2}
   doorPanel: {fileID: 588805410}
   blockingCollider: {fileID: 1759093177}
   openAngle: 90
@@ -2209,6 +2113,53 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 665953104}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &685143164
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 685143165}
+  - component: {fileID: 685143166}
+  m_Layer: 0
+  m_Name: KeyLights
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &685143165
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 685143164}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1379232908}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &685143166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 685143164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c770858b1f0fcc4b8386ea605a5f374, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Lighting.LightingGroup
+  lights:
+  - {fileID: 1357334135}
+  linkedObjects: []
 --- !u!1 &707326156
 GameObject:
   m_ObjectHideFlags: 0
@@ -4795,12 +4746,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1357334133}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.65, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.32, y: -2.99, z: -6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 104296804939812584}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &1357334135
 Light:
@@ -4811,7 +4762,7 @@ Light:
   m_GameObject: {fileID: 1357334133}
   m_Enabled: 1
   serializedVersion: 13
-  m_Type: 2
+  m_Type: 1
   m_Color: {r: 0.45, g: 0.52, b: 0.65, a: 1}
   m_Intensity: 0.18
   m_Range: 2.2
@@ -4946,6 +4897,98 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1367224706}
   m_CullTransparentMesh: 1
+--- !u!1 &1379232905
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1379232908}
+  - component: {fileID: 1379232907}
+  - component: {fileID: 1379232906}
+  m_Layer: 0
+  m_Name: ProgressionLightingSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1379232906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1379232905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df32f39796adce24595fba9f813d0f31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Lighting.ProgressionLightingController
+  progressionController: {fileID: 1379232907}
+  rules:
+  - enabled: 1
+    ruleName: "\uC608\uC2DC - \uAD00\uB9AC \uAE30\uB85D \uD68D\uB4DD \uD6C4 \uD658\uACBD
+      \uC870\uBA85 \uB044\uAE30 (\uBE44\uD65C\uC131)"
+    conditionMode: 0
+    conditions:
+    - condition: {fileID: 11400000, guid: 828cf8432a9a7e44c89202170bfed3ea, type: 2}
+      mustBeCompleted: 1
+    actions:
+    - lightingGroup: {fileID: 1956968954}
+      turnOn: 0
+      transition:
+        delay: 0
+        useFlicker: 0
+        flickerCount: 0
+        flickerInterval: 0
+  - enabled: 1
+    ruleName: "\uC608\uC2DC - \uAD00\uB9AC \uAE30\uB85D \uD68D\uB4DD \uD6C4 \uD658\uACBD
+      \uC870\uBA85 \uB044\uAE30 (\uBE44\uD65C\uC131)"
+    conditionMode: 0
+    conditions:
+    - condition: {fileID: 11400000, guid: 2481fe693cd863644b5a44aff69502a3, type: 2}
+      mustBeCompleted: 1
+    actions:
+    - lightingGroup: {fileID: 685143166}
+      turnOn: 0
+      transition:
+        delay: 0
+        useFlicker: 0
+        flickerCount: 0
+        flickerInterval: 0
+--- !u!114 &1379232907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1379232905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c94aa73f982f5c845be407ea94fde6f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Progression.GameProgressionController
+  initiallyCompletedConditions: []
+--- !u!4 &1379232908
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1379232905}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1956968955}
+  - {fileID: 685143165}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1396930083
 GameObject:
   m_ObjectHideFlags: 0
@@ -6796,6 +6839,53 @@ Transform:
   - {fileID: 601057326}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1956968953
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1956968955}
+  - component: {fileID: 1956968954}
+  m_Layer: 0
+  m_Name: EnvironmentLights
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1956968954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1956968953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c770858b1f0fcc4b8386ea605a5f374, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Lighting.LightingGroup
+  lights:
+  - {fileID: 1357334135}
+  linkedObjects: []
+--- !u!4 &1956968955
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1956968953}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1379232908}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2002717909
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7348,10 +7438,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 6675140767211803144, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1357334134}
+    m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5270906866158683349, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
       insertIndex: -1
@@ -7593,6 +7680,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Watcher
       objectReference: {fileID: 0}
+    - target: {fileID: 2090663550077517559, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6281254265163419076, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
       propertyPath: player
       value: 
@@ -7686,7 +7777,6 @@ MonoBehaviour:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 357078271}
   - {fileID: 104296804939812579}
   - {fileID: 1515527177}
   - {fileID: 6347930942750250502}
@@ -7699,3 +7789,5 @@ SceneRoots:
   - {fileID: 1452186367}
   - {fileID: 561902512}
   - {fileID: 879455632}
+  - {fileID: 1357334134}
+  - {fileID: 1379232908}

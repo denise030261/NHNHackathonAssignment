@@ -15,6 +15,7 @@ MonoBehaviour:
   itemId: Clockwork_Keepsake
   displayName: "\uB9DD\uAC00\uC9C4 \uD0DC\uC5FD \uBD80\uD488"
   itemType: 0
+  progressionCondition: {fileID: 11400000, guid: 1b6cc7d90a072e844a1338169a3cb9c2, type: 2}
   description: "\uC624\uB798\uB41C \uC790\uB3D9\uC778\uD615\uC758 \uAC00\uC2B4\uC5D0\uC11C
     \uB5A8\uC5B4\uC838 \uB098\uC628 \uD0DC\uC5FD \uBD80\uD488\uC774\uB2E4.\n\uD45C\uBA74\uC5D0
     \uC54C\uC544\uBCF4\uAE30 \uD798\uB4E0 \uC77C\uB828\uBC88\uD638\uAC00 \uC0C8\uACA8\uC838

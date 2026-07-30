@@ -15,6 +15,7 @@ MonoBehaviour:
   itemId: Key_01
   displayName: "\uCD9C\uAD6C \uC5F4\uC1E0 1"
   itemType: 1
+  progressionCondition: {fileID: 11400000, guid: 2481fe693cd863644b5a44aff69502a3, type: 2}
   description: "\uACF5\uC7A5 \uCD9C\uAD6C\uC758 \uC7A0\uAE08\uC7A5\uCE58\uB97C \uD574\uC81C\uD558\uB294
     \uC5F4\uC1E0\uB2E4. \uCD9C\uAD6C\uB97C \uC5F4\uB824\uBA74 \uCD1D \uC138 \uAC1C\uAC00
     \uD544\uC694\uD558\uB2E4."

@@ -1,5 +1,6 @@
 using NHNHackathon.Inspection;
 using NHNHackathon.Interaction;
+using NHNHackathon.Progression;
 using UnityEngine;
 
 namespace NHNHackathon.Items
@@ -40,6 +41,7 @@ namespace NHNHackathon.Items
 
             isCollected = true;
             gameObject.SetActive(false);
+            GameProgressionController.Instance?.TryComplete(item.ProgressionCondition);
 
             if (item.InspectOnPickup)
             {

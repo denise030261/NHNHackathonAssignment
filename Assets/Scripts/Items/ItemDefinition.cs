@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using NHNHackathon.Progression;
 using UnityEngine;
 
 namespace NHNHackathon.Items
@@ -10,6 +11,8 @@ namespace NHNHackathon.Items
         [SerializeField] private string itemId = "Item_01";
         [SerializeField] private string displayName = "Item";
         [SerializeField] private ItemType itemType;
+        [SerializeField, Tooltip("Optional progression condition completed when this item is collected.")]
+        private ProgressionCondition progressionCondition;
 
         [Header("Inspection")]
         [SerializeField, TextArea(2, 6)] private string description;
@@ -28,6 +31,7 @@ namespace NHNHackathon.Items
         public string ItemId => itemId;
         public string DisplayName => displayName;
         public ItemType Type => itemType;
+        public ProgressionCondition ProgressionCondition => progressionCondition;
         public string Description => description;
         public Sprite InventoryIcon => inventoryIcon;
         public GameObject PreviewPrefab => previewPrefab;
