@@ -1,6 +1,7 @@
 using NHNHackathon.Characters;
 using NHNHackathon.Items;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace NHNHackathon.Interaction
 {
@@ -21,6 +22,12 @@ namespace NHNHackathon.Interaction
         [SerializeField] private Camera playerCamera;
         [SerializeField] private PlayerKeyInventory keyInventory;
 
+        [Header("Interaction UI")]
+        [SerializeField] private GameObject promptRoot;
+        [SerializeField] private Text promptText;
+        [SerializeField] private Color promptColor = Color.white;
+        [SerializeField] private Color messageColor = new Color(1f, 0.72f, 0.2f);
+
         private IInteractable currentInteractable;
         private string temporaryMessage;
         private float messageExpiresAt;
@@ -30,6 +37,7 @@ namespace NHNHackathon.Interaction
         private void Update()
         {
             currentInteractable = FindInteractable();
+            RefreshPrompt();
             if (currentInteractable != null
                 && currentInteractable.CanInteract(this)
                 && UnityEngine.Input.GetKeyDown(interactionKey))
@@ -41,7 +49,8 @@ namespace NHNHackathon.Interaction
         public void ShowTemporaryMessage(string message, float duration)
         {
             temporaryMessage = message;
-            messageExpiresAt = Time.time + duration;
+            messageExpiresAt = Time.unscaledTime + duration;
+            RefreshPrompt();
         }
 
         private IInteractable FindInteractable()
@@ -82,33 +91,32 @@ namespace NHNHackathon.Interaction
             return null;
         }
 
-        private void OnGUI()
+        private void RefreshPrompt()
         {
-            bool hasTemporaryMessage = Time.time < messageExpiresAt;
+            bool hasTemporaryMessage = Time.unscaledTime < messageExpiresAt;
             string text = hasTemporaryMessage
                 ? temporaryMessage
                 : currentInteractable != null && currentInteractable.CanInteract(this)
                     ? $"[{interactionKey}] {currentInteractable.InteractionPrompt}"
                     : string.Empty;
 
-            if (string.IsNullOrEmpty(text))
+            if (promptRoot != null)
             {
-                return;
+                promptRoot.SetActive(!string.IsNullOrEmpty(text));
             }
-
-            GUIStyle style = new GUIStyle(GUI.skin.label)
+            if (promptText != null)
             {
-                alignment = TextAnchor.MiddleCenter,
-                fontSize = hasTemporaryMessage ? 30 : 26,
-                fontStyle = FontStyle.Bold
-            };
-            style.normal.textColor = hasTemporaryMessage
-                ? new Color(1f, 0.72f, 0.2f)
-                : Color.white;
-            GUI.Label(
-                new Rect(0f, Screen.height * 0.72f, Screen.width, 55f),
-                text,
-                style);
+                promptText.text = text;
+                promptText.color = hasTemporaryMessage ? messageColor : promptColor;
+            }
+        }
+
+        private void OnDisable()
+        {
+            if (promptRoot != null)
+            {
+                promptRoot.SetActive(false);
+            }
         }
 
         private void OnValidate()

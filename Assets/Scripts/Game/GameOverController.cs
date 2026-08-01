@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace NHNHackathon.Game
 {
@@ -7,12 +8,21 @@ namespace NHNHackathon.Game
     public sealed class GameOverController : MonoBehaviour
     {
         [SerializeField] private Behaviour[] playerControls;
-        [SerializeField] private string gameOverText = "GAME OVER";
-        [SerializeField, Min(12)] private int fontSize = 72;
+
+        [Header("Game Over UI")]
+        [Tooltip("Root GameObject of the Game Over UI placed in the Hierarchy.")]
+        [SerializeField] private GameObject gameOverUI;
+        [Tooltip("Optional Text component used to display the Game Over message.")]
+        [SerializeField] private Text gameOverText;
 
         public event Action GameOverTriggered;
 
         public bool IsGameOver { get; private set; }
+
+        private void Awake()
+        {
+            SetGameOverUIVisible(false);
+        }
 
         public void TriggerGameOver()
         {
@@ -32,28 +42,25 @@ namespace NHNHackathon.Game
 
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+            Time.timeScale = 0f;
+            SetGameOverUIVisible(true);
             GameOverTriggered?.Invoke();
         }
 
-        private void OnGUI()
+        public void SetGameOverMessage(string message)
         {
-            if (!IsGameOver)
+            if (gameOverText != null)
             {
-                return;
+                gameOverText.text = message;
             }
+        }
 
-            Color previousColor = GUI.color;
-            GUI.color = new Color(0f, 0f, 0f, 0.85f);
-            GUI.DrawTexture(new Rect(0f, 0f, Screen.width, Screen.height), Texture2D.whiteTexture);
-            GUI.color = Color.red;
-            GUIStyle style = new GUIStyle(GUI.skin.label)
+        private void SetGameOverUIVisible(bool isVisible)
+        {
+            if (gameOverUI != null)
             {
-                alignment = TextAnchor.MiddleCenter,
-                fontSize = fontSize,
-                fontStyle = FontStyle.Bold
-            };
-            GUI.Label(new Rect(0f, 0f, Screen.width, Screen.height), gameOverText, style);
-            GUI.color = previousColor;
+                gameOverUI.SetActive(isVisible);
+            }
         }
     }
 }

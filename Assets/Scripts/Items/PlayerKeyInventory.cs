@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace NHNHackathon.Items
 {
@@ -9,6 +10,12 @@ namespace NHNHackathon.Items
     {
         [SerializeField, Min(1)] private int requiredKeyCount = 3;
         [SerializeField] private bool showKeyCounter = true;
+
+        [Header("Key UI")]
+        [SerializeField] private GameObject keyCounterRoot;
+        [SerializeField] private Text keyCounterText;
+        [SerializeField] private GameObject messageRoot;
+        [SerializeField] private Text messageText;
 
         private readonly HashSet<string> collectedKeyIds = new HashSet<string>();
         private string temporaryMessage;
@@ -27,6 +34,7 @@ namespace NHNHackathon.Items
             }
 
             KeyCountChanged?.Invoke(KeyCount);
+            RefreshUI();
             return true;
         }
 
@@ -38,42 +46,40 @@ namespace NHNHackathon.Items
         public void ShowDoorLockedMessage(int requiredCount, float duration)
         {
             temporaryMessage = $"NEED MORE KEYS  {KeyCount} / {requiredCount}";
-            messageExpiresAt = Time.time + duration;
+            messageExpiresAt = Time.unscaledTime + duration;
+            RefreshUI();
         }
 
-        private void OnGUI()
+        private void Awake()
         {
-            GUIStyle counterStyle = new GUIStyle(GUI.skin.label)
-            {
-                fontSize = 28,
-                fontStyle = FontStyle.Bold,
-                alignment = TextAnchor.UpperLeft
-            };
-            counterStyle.normal.textColor = Color.white;
+            RefreshUI();
+        }
 
-            if (showKeyCounter)
+        private void Update()
+        {
+            RefreshUI();
+        }
+
+        private void RefreshUI()
+        {
+            if (keyCounterRoot != null)
             {
-                GUI.Label(
-                    new Rect(30f, 25f, 320f, 50f),
-                    $"KEYS  {KeyCount} / {requiredKeyCount}",
-                    counterStyle);
+                keyCounterRoot.SetActive(showKeyCounter);
+            }
+            if (keyCounterText != null)
+            {
+                keyCounterText.text = $"KEYS  {KeyCount} / {requiredKeyCount}";
             }
 
-            if (Time.time >= messageExpiresAt)
+            bool showMessage = Time.unscaledTime < messageExpiresAt;
+            if (messageRoot != null)
             {
-                return;
+                messageRoot.SetActive(showMessage);
             }
-
-            GUIStyle messageStyle = new GUIStyle(counterStyle)
+            if (messageText != null)
             {
-                fontSize = 32,
-                alignment = TextAnchor.MiddleCenter
-            };
-            messageStyle.normal.textColor = new Color(1f, 0.75f, 0.2f);
-            GUI.Label(
-                new Rect(0f, Screen.height * 0.68f, Screen.width, 60f),
-                temporaryMessage,
-                messageStyle);
+                messageText.text = temporaryMessage;
+            }
         }
     }
 }

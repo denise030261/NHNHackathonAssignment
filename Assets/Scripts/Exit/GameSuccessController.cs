@@ -4,6 +4,7 @@ using NHNHackathon.Game;
 using NHNHackathon.Interaction;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 namespace NHNHackathon.ExitSystem
 {
@@ -12,12 +13,19 @@ namespace NHNHackathon.ExitSystem
     {
         [SerializeField] private GameOverController gameOverController;
         [SerializeField] private Behaviour[] playerControls;
-        [SerializeField] private string successText = "ESCAPED";
-        [SerializeField, Min(12)] private int fontSize = 72;
+
+        [Header("Success UI")]
+        [SerializeField] private GameObject gameSuccessUI;
+        [SerializeField] private Text successText;
 
         public event Action GameSucceeded;
 
         public bool IsSuccessful { get; private set; }
+
+        private void Awake()
+        {
+            SetSuccessUIVisible(false);
+        }
 
         public void TriggerSuccess()
         {
@@ -46,28 +54,25 @@ namespace NHNHackathon.ExitSystem
 
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+            Time.timeScale = 0f;
+            SetSuccessUIVisible(true);
             GameSucceeded?.Invoke();
         }
 
-        private void OnGUI()
+        public void SetSuccessMessage(string message)
         {
-            if (!IsSuccessful)
+            if (successText != null)
             {
-                return;
+                successText.text = message;
             }
+        }
 
-            Color previousColor = GUI.color;
-            GUI.color = new Color(0f, 0f, 0f, 0.85f);
-            GUI.DrawTexture(new Rect(0f, 0f, Screen.width, Screen.height), Texture2D.whiteTexture);
-            GUI.color = new Color(0.7f, 1f, 0.75f);
-            GUIStyle style = new GUIStyle(GUI.skin.label)
+        private void SetSuccessUIVisible(bool isVisible)
+        {
+            if (gameSuccessUI != null)
             {
-                alignment = TextAnchor.MiddleCenter,
-                fontSize = fontSize,
-                fontStyle = FontStyle.Bold
-            };
-            GUI.Label(new Rect(0f, 0f, Screen.width, Screen.height), successText, style);
-            GUI.color = previousColor;
+                gameSuccessUI.SetActive(isVisible);
+            }
         }
     }
 }

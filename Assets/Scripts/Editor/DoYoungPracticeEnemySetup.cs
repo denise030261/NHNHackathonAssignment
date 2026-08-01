@@ -11,6 +11,7 @@ using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace NHNHackathon.EditorTools
 {
@@ -102,8 +103,54 @@ namespace NHNHackathon.EditorTools
             {
                 controlsProperty.GetArrayElementAtIndex(index).objectReferenceValue = controls[index];
             }
+            CreateGameOverUI(root.transform, settings);
             settings.ApplyModifiedPropertiesWithoutUndo();
             return controller;
+        }
+
+        private static void CreateGameOverUI(Transform systemRoot, SerializedObject controllerSettings)
+        {
+            GameObject uiRoot = new GameObject("GameOverUI", typeof(RectTransform), typeof(Canvas),
+                typeof(CanvasScaler), typeof(GraphicRaycaster));
+            uiRoot.transform.SetParent(systemRoot, false);
+
+            Canvas canvas = uiRoot.GetComponent<Canvas>();
+            canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+            canvas.sortingOrder = 100;
+
+            CanvasScaler scaler = uiRoot.GetComponent<CanvasScaler>();
+            scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+            scaler.referenceResolution = new Vector2(1920f, 1080f);
+            scaler.matchWidthOrHeight = 0.5f;
+
+            GameObject overlay = new GameObject("Overlay", typeof(RectTransform), typeof(Image));
+            overlay.transform.SetParent(uiRoot.transform, false);
+            RectTransform overlayRect = overlay.GetComponent<RectTransform>();
+            overlayRect.anchorMin = Vector2.zero;
+            overlayRect.anchorMax = Vector2.one;
+            overlayRect.offsetMin = Vector2.zero;
+            overlayRect.offsetMax = Vector2.zero;
+            overlay.GetComponent<Image>().color = new Color(0f, 0f, 0f, 0.85f);
+
+            GameObject textObject = new GameObject("GameOverText", typeof(RectTransform), typeof(Text));
+            textObject.transform.SetParent(overlay.transform, false);
+            RectTransform textRect = textObject.GetComponent<RectTransform>();
+            textRect.anchorMin = Vector2.zero;
+            textRect.anchorMax = Vector2.one;
+            textRect.offsetMin = Vector2.zero;
+            textRect.offsetMax = Vector2.zero;
+
+            Text label = textObject.GetComponent<Text>();
+            label.text = "GAME OVER";
+            label.alignment = TextAnchor.MiddleCenter;
+            label.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+            label.fontSize = 72;
+            label.fontStyle = FontStyle.Bold;
+            label.color = Color.red;
+
+            controllerSettings.FindProperty("gameOverUI").objectReferenceValue = uiRoot;
+            controllerSettings.FindProperty("gameOverText").objectReferenceValue = label;
+            uiRoot.SetActive(false);
         }
 
         private static EnemyPatrolRoute CreatePatrolRoute()
