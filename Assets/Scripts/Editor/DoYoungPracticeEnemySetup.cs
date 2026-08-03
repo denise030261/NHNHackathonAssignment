@@ -41,6 +41,7 @@ namespace NHNHackathon.EditorTools
 
             EnsureDirectory("Assets/Prefabs/Characters");
             PrefabUtility.SaveAsPrefabAssetAndConnect(watcher, EnemyPrefabPath, InteractionMode.AutomatedAction);
+            WatcherModelSetup.Build();
             BakeNavMesh();
             EditorSceneManager.MarkSceneDirty(scene);
             EditorSceneManager.SaveScene(scene, ScenePath);
