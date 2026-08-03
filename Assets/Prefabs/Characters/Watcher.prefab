@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 4047751725195089847}
   - component: {fileID: 8615255281974001621}
   - component: {fileID: 6281254265163419076}
-  - component: {fileID: 4779655427567386845}
   m_Layer: 2
   m_Name: Watcher
   m_TagString: Untagged
@@ -31,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7, y: 1, z: -7}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 9047888981025722934}
@@ -59,7 +58,7 @@ CapsuleCollider:
   m_Radius: 0.4
   m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!195 &4047751725195089847
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -129,25 +128,9 @@ MonoBehaviour:
   minimumDisguiseDistance: 3
   lostSightGraceDuration: 2
   suspicionDuration: 3
-  attackDistance: 1.5
+  attackDistance: 2
   maximumAttackHeightDifference: 1
   perceptionInterval: 0.1
---- !u!114 &4779655427567386845
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2090663550077517559}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5bdcfd09862b7a45814bb8e78883188, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Enemy.WatcherAnimationController
-  agent: {fileID: 4047751725195089847}
-  animator: {fileID: 3312594794854437121}
-  movementThreshold: 0.05
-  playbackSpeed: 1
 --- !u!1001 &8798404652384712157
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -190,7 +173,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 12f6453aa0fb8724782e3eec44d6eaf7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.5805687
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 12f6453aa0fb8724782e3eec44d6eaf7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -456,6 +439,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5654885296999839313, guid: 12f6453aa0fb8724782e3eec44d6eaf7, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3eb7549675fe90a4c9daf47574da3dce, type: 2}
     - target: {fileID: 5885246074301652011, guid: 12f6453aa0fb8724782e3eec44d6eaf7, type: 3}
       propertyPath: m_Layer
       value: 2
