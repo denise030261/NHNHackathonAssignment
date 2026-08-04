@@ -8,6 +8,8 @@ namespace NHNHackathon.Input
         [Header("Cursor")]
         [SerializeField, Tooltip("Lock and hide the cursor when gameplay begins.")]
         private bool lockCursorOnStart = true;
+        [SerializeField, Tooltip("Disable when another system, such as Pause Menu, owns Escape input.")]
+        private bool handleEscapeInput = true;
 
         private void Start()
         {
@@ -19,7 +21,7 @@ namespace NHNHackathon.Input
 
         private void Update()
         {
-            if (UnityEngine.Input.GetKeyDown(KeyCode.Escape))
+            if (handleEscapeInput && UnityEngine.Input.GetKeyDown(KeyCode.Escape))
             {
                 UnlockCursor();
             }
