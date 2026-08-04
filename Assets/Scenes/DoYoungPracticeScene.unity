@@ -340,7 +340,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4badfd6cefec82f419263887010efcc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Items.KeyCollectible
-  keyId: Key_03
   itemDefinition: {fileID: 11400000, guid: bdf864cc759a81145b92a50c43c90f5f, type: 2}
 --- !u!23 &127751595
 MeshRenderer:
@@ -420,11 +419,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 127751591}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!20 &129360068 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 2266752986517209616, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
-  m_PrefabInstance: {fileID: 104296804939812579}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &145424580
 GameObject:
   m_ObjectHideFlags: 0
@@ -1674,8 +1668,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4418ee6d19b285a42bcb8b4cf90bbbb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.ExitSystem.ExitDoor
-  requiredKeys: 3
-  playerInventory: {fileID: 104296804939812587}
+  requiredKeys:
+  - {fileID: 11400000, guid: 13814cff13a52e442a93488730d18962, type: 2}
+  - {fileID: 11400000, guid: e0f9942230df0c14ab9591c40f4a2336, type: 2}
+  - {fileID: 11400000, guid: bdf864cc759a81145b92a50c43c90f5f, type: 2}
+  consumeKeysOnUnlock: 0
+  playerInventory: {fileID: 104296804939812589}
   unlockedCondition: {fileID: 11400000, guid: 3179997b3de15364aae79454f0208a3d, type: 2}
   doorPanel: {fileID: 588805410}
   blockingCollider: {fileID: 1759093177}
@@ -2727,7 +2725,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4badfd6cefec82f419263887010efcc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Items.KeyCollectible
-  keyId: Key_01
   itemDefinition: {fileID: 11400000, guid: 13814cff13a52e442a93488730d18962, type: 2}
 --- !u!23 &790757284
 MeshRenderer:
@@ -3052,35 +3049,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6274370231951324203, guid: 26628686116e61a45b72ca5cc4242f8c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 883086585}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 26628686116e61a45b72ca5cc4242f8c, type: 3}
 --- !u!4 &883086583 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 495296073371713988, guid: 26628686116e61a45b72ca5cc4242f8c, type: 3}
   m_PrefabInstance: {fileID: 883086582}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &883086584 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6274370231951324203, guid: 26628686116e61a45b72ca5cc4242f8c, type: 3}
-  m_PrefabInstance: {fileID: 883086582}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &883086585
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 883086584}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ccba3796c9af6443820ae9912aea546, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Items.InspectableItem
-  item: {fileID: 11400000, guid: c7cc742b731e7754db70274d958e3246, type: 2}
-  interactionPrompt: "\uC544\uC774\uD15C \uD68D\uB4DD"
 --- !u!1 &892409356
 GameObject:
   m_ObjectHideFlags: 0
@@ -5333,7 +5308,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4badfd6cefec82f419263887010efcc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Items.KeyCollectible
-  keyId: Key_02
   itemDefinition: {fileID: 11400000, guid: e0f9942230df0c14ab9591c40f4a2336, type: 2}
 --- !u!23 &1401468082
 MeshRenderer:
@@ -8025,26 +7999,22 @@ PrefabInstance:
       propertyPath: m_Shadows.m_Strength
       value: 0.8
       objectReference: {fileID: 0}
-    - target: {fileID: 2266752986517209616, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
-      propertyPath: m_ClearFlags
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2266752986517209616, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
-      propertyPath: m_BackGroundColor.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2266752986517209616, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
-      propertyPath: m_BackGroundColor.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2266752986517209616, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
-      propertyPath: m_BackGroundColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2266752986517209616, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
-      propertyPath: m_BackGroundColor.r
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 2970717178813953740, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
+      propertyPath: messageRoot
+      value: 
+      objectReference: {fileID: 1826693531}
+    - target: {fileID: 2970717178813953740, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
+      propertyPath: messageText
+      value: 
+      objectReference: {fileID: 1826693533}
+    - target: {fileID: 2970717178813953740, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
+      propertyPath: keyCounterRoot
+      value: 
+      objectReference: {fileID: 1826416900}
+    - target: {fileID: 2970717178813953740, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
+      propertyPath: keyCounterText
+      value: 
+      objectReference: {fileID: 1826416902}
     - target: {fileID: 5152183085720589010, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
       propertyPath: perspective
       value: 0
@@ -8057,6 +8027,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6159149051192978673, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
+      propertyPath: promptRoot
+      value: 
+      objectReference: {fileID: 1281370788}
+    - target: {fileID: 6159149051192978673, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
+      propertyPath: promptText
+      value: 
+      objectReference: {fileID: 1281370790}
     - target: {fileID: 6675140767211803144, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.01
@@ -8100,26 +8078,14 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5270906866158683349, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 104296804939812586}
-    - targetCorrespondingSourceObject: {fileID: 5270906866158683349, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 104296804939812587}
-    - targetCorrespondingSourceObject: {fileID: 5270906866158683349, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 104296804939812588}
-    - targetCorrespondingSourceObject: {fileID: 5270906866158683349, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 104296804939812589}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
 --- !u!114 &104296804939812580 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8438738964873510995, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
   m_PrefabInstance: {fileID: 104296804939812579}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 104296804939812585}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1c339bbc910187f45807c7eb6055bf15, type: 3}
@@ -8130,7 +8096,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1022894658548325590, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
   m_PrefabInstance: {fileID: 104296804939812579}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 104296804939812585}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 28fbe7a3d8f02ef4f8306fd1b561a2de, type: 3}
@@ -8141,7 +8107,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5152183085720589010, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
   m_PrefabInstance: {fileID: 104296804939812579}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 104296804939812585}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f5966ed6e03a8ab4cb8940d4f7d35f74, type: 3}
@@ -8152,7 +8118,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3576186341421209795, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
   m_PrefabInstance: {fileID: 104296804939812579}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 104296804939812585}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 596933d8205436b45ba23ae0f1811c4b, type: 3}
@@ -8163,74 +8129,34 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6675140767211803144, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
   m_PrefabInstance: {fileID: 104296804939812579}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &104296804939812585 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5270906866158683349, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
+--- !u!114 &104296804939812586 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5885044705464568561, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
   m_PrefabInstance: {fileID: 104296804939812579}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &104296804939812586
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 104296804939812585}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2be04b4474aadd84faea0c5c024e203c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Dance.PlayerDisguiseState
---- !u!114 &104296804939812587
+--- !u!114 &104296804939812588 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 6159149051192978673, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
+  m_PrefabInstance: {fileID: 104296804939812579}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 104296804939812585}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfe4c0f0a634c7f439e1fdbb92510043, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Items.PlayerKeyInventory
-  requiredKeyCount: 3
-  showKeyCounter: 1
-  keyCounterRoot: {fileID: 1826416900}
-  keyCounterText: {fileID: 1826416902}
-  messageRoot: {fileID: 1826693531}
-  messageText: {fileID: 1826693533}
---- !u!114 &104296804939812588
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 104296804939812585}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 615a81baa311bd84bb135478d92fa60f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Interaction.PlayerInteractor
-  interactionKey: 101
-  interactionDistance: 2.5
-  detectionRadius: 0.3
-  thirdPersonOriginHeight: 1.2
-  interactionMask:
-    serializedVersion: 2
-    m_Bits: 51
-  cameraController: {fileID: 104296804939812582}
-  playerCamera: {fileID: 129360068}
-  keyInventory: {fileID: 104296804939812587}
-  promptRoot: {fileID: 1281370788}
-  promptText: {fileID: 1281370790}
-  promptColor: {r: 1, g: 1, b: 1, a: 1}
-  messageColor: {r: 1, g: 0.72, b: 0.2, a: 1}
---- !u!114 &104296804939812589
+--- !u!114 &104296804939812589 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 726503695478076827, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
+  m_PrefabInstance: {fileID: 104296804939812579}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 104296804939812585}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b8faa49c9cbf7444dbe5773581aecba6, type: 3}
@@ -8306,12 +8232,24 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2083856244382292340, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2083856244382292340, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2083856244382292340, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2083856244382292340, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7
       objectReference: {fileID: 0}
     - target: {fileID: 2083856244382292340, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 0.27
       objectReference: {fileID: 0}
     - target: {fileID: 2083856244382292340, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
       propertyPath: m_LocalPosition.z

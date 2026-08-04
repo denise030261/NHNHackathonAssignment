@@ -147,6 +147,10 @@ GameObject:
   - component: {fileID: 8438738964873510995}
   - component: {fileID: 475188053344298970}
   - component: {fileID: 1022894658548325590}
+  - component: {fileID: 5885044705464568561}
+  - component: {fileID: 2970717178813953740}
+  - component: {fileID: 6159149051192978673}
+  - component: {fileID: 726503695478076827}
   m_Layer: 2
   m_Name: Player
   m_TagString: Untagged
@@ -222,7 +226,7 @@ MonoBehaviour:
   distanceSmoothTime: 0.08
   collisionMask:
     serializedVersion: 2
-    m_Bits: 4294967291
+    m_Bits: 51
 --- !u!114 &3576186341421209795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -282,6 +286,74 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Dance.PlayerDanceInput
   inputMapping: {fileID: 11400000, guid: 86555d5d0eec2a34a9a488ec3faea823, type: 2}
   displayDuration: 0.5
+--- !u!114 &5885044705464568561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5270906866158683349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2be04b4474aadd84faea0c5c024e203c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Dance.PlayerDisguiseState
+--- !u!114 &2970717178813953740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5270906866158683349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfe4c0f0a634c7f439e1fdbb92510043, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Items.PlayerKeyInventory
+  requiredKeyCount: 3
+  showKeyCounter: 1
+  keyCounterRoot: {fileID: 0}
+  keyCounterText: {fileID: 0}
+  messageRoot: {fileID: 0}
+  messageText: {fileID: 0}
+--- !u!114 &6159149051192978673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5270906866158683349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 615a81baa311bd84bb135478d92fa60f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Interaction.PlayerInteractor
+  interactionKey: 101
+  interactionDistance: 2.5
+  detectionRadius: 0.3
+  thirdPersonOriginHeight: 1.2
+  interactionMask:
+    serializedVersion: 2
+    m_Bits: 51
+  cameraController: {fileID: 5152183085720589010}
+  playerCamera: {fileID: 2266752986517209616}
+  keyInventory: {fileID: 2970717178813953740}
+  promptRoot: {fileID: 0}
+  promptText: {fileID: 0}
+  promptColor: {r: 1, g: 1, b: 1, a: 1}
+  messageColor: {r: 1, g: 0.72, b: 0.2, a: 1}
+--- !u!114 &726503695478076827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5270906866158683349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8faa49c9cbf7444dbe5773581aecba6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Items.PlayerItemInventory
 --- !u!1 &6812565627781854318
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,8 +397,8 @@ Camera:
   m_GameObject: {fileID: 6812565627781854318}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0

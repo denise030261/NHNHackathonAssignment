@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 2036218896669276427}
   - component: {fileID: 4619391531934537312}
   - component: {fileID: 2844912919576620159}
-  - component: {fileID: 3443047481414860350}
   m_Layer: 0
   m_Name: Key
   m_TagString: Untagged
@@ -29,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3985004875164646717}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -8, y: 0.7, z: 7.5}
   m_LocalScale: {x: 0.35, y: 0.15, z: 0.65}
   m_ConstrainProportionsScale: 0
@@ -126,19 +125,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4badfd6cefec82f419263887010efcc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Items.KeyCollectible
-  keyId: Key_01
---- !u!114 &3443047481414860350
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3985004875164646717}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7ea1f23b3f3f4041abeba2b5b42717f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Items.KeyCollectibleVisual
-  rotationSpeed: 90
-  bobHeight: 0.12
-  bobSpeed: 2
+  itemDefinition: {fileID: 11400000, guid: 13814cff13a52e442a93488730d18962, type: 2}

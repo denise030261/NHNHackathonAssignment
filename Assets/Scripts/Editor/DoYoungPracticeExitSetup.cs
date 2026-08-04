@@ -34,9 +34,11 @@ namespace NHNHackathon.EditorTools
                     "DoYoungPracticeScene requires a Player object.");
             }
 
-            PlayerKeyInventory inventory =
+            PlayerKeyInventory keyCounter =
                 player.GetComponent<PlayerKeyInventory>() ?? player.AddComponent<PlayerKeyInventory>();
-            SerializedObject inventorySettings = new SerializedObject(inventory);
+            PlayerItemInventory itemInventory =
+                player.GetComponent<PlayerItemInventory>() ?? player.AddComponent<PlayerItemInventory>();
+            SerializedObject inventorySettings = new SerializedObject(keyCounter);
             inventorySettings.FindProperty("requiredKeyCount").intValue = 3;
             inventorySettings.ApplyModifiedPropertiesWithoutUndo();
             PlayerInteractor interactor =
@@ -49,7 +51,7 @@ namespace NHNHackathon.EditorTools
                 player.GetComponent<PlayerCameraController>();
             interactorSettings.FindProperty("playerCamera").objectReferenceValue =
                 player.GetComponentInChildren<Camera>(true);
-            interactorSettings.FindProperty("keyInventory").objectReferenceValue = inventory;
+            interactorSettings.FindProperty("keyInventory").objectReferenceValue = keyCounter;
             interactorSettings.ApplyModifiedPropertiesWithoutUndo();
             AddInteractorToGameOverControls(interactor);
 
@@ -60,11 +62,17 @@ namespace NHNHackathon.EditorTools
             Material keyMaterial = CreateMaterial(
                 "Assets/Art/Materials/KeyPrototype.mat",
                 new Color(1f, 0.65f, 0.08f));
-            CreateKey("Key_01", new Vector3(-8f, 0.7f, 7.5f), keyMaterial, mechanicRoot.transform);
-            CreateKey("Key_02", new Vector3(8f, 0.7f, 3f), keyMaterial, mechanicRoot.transform);
-            CreateKey("Key_03", new Vector3(-8f, 0.7f, -1f), keyMaterial, mechanicRoot.transform);
+            ItemDefinition[] exitKeys =
+            {
+                LoadKeyDefinition("Key_01"),
+                LoadKeyDefinition("Key_02"),
+                LoadKeyDefinition("Key_03")
+            };
+            CreateKey("Key_01", exitKeys[0], new Vector3(-8f, 0.7f, 7.5f), keyMaterial, mechanicRoot.transform);
+            CreateKey("Key_02", exitKeys[1], new Vector3(8f, 0.7f, 3f), keyMaterial, mechanicRoot.transform);
+            CreateKey("Key_03", exitKeys[2], new Vector3(-8f, 0.7f, -1f), keyMaterial, mechanicRoot.transform);
 
-            ExitDoor door = CreateDoor(inventory, mechanicRoot.transform);
+            ExitDoor door = CreateDoor(itemInventory, exitKeys, mechanicRoot.transform);
             CreateSuccessZone(door, successController, mechanicRoot.transform);
 
             EnsureDirectory("Assets/Prefabs/Interactables");
@@ -140,7 +148,8 @@ namespace NHNHackathon.EditorTools
         }
 
         private static void CreateKey(
-            string keyId, Vector3 position, Material material, Transform parent)
+            string keyId, ItemDefinition definition, Vector3 position,
+            Material material, Transform parent)
         {
             GameObject key = GameObject.CreatePrimitive(PrimitiveType.Cube);
             key.name = keyId;
@@ -153,11 +162,12 @@ namespace NHNHackathon.EditorTools
             key.AddComponent<KeyCollectibleVisual>();
 
             SerializedObject settings = new SerializedObject(collectible);
-            settings.FindProperty("keyId").stringValue = keyId;
+            settings.FindProperty("itemDefinition").objectReferenceValue = definition;
             settings.ApplyModifiedPropertiesWithoutUndo();
         }
 
-        private static ExitDoor CreateDoor(PlayerKeyInventory inventory, Transform parent)
+        private static ExitDoor CreateDoor(
+            PlayerItemInventory inventory, ItemDefinition[] requiredKeyItems, Transform parent)
         {
             Material doorMaterial = CreateMaterial(
                 "Assets/Art/Materials/ExitDoorPrototype.mat",
@@ -194,12 +204,30 @@ namespace NHNHackathon.EditorTools
                 new Vector3(4.8f, 0.4f, 0.5f), doorMaterial, root.transform);
 
             SerializedObject settings = new SerializedObject(door);
-            settings.FindProperty("requiredKeys").intValue = 3;
+            SerializedProperty requiredKeys = settings.FindProperty("requiredKeys");
+            requiredKeys.arraySize = requiredKeyItems.Length;
+            for (int index = 0; index < requiredKeyItems.Length; index++)
+            {
+                requiredKeys.GetArrayElementAtIndex(index).objectReferenceValue = requiredKeyItems[index];
+            }
+            settings.FindProperty("consumeKeysOnUnlock").boolValue = false;
             settings.FindProperty("playerInventory").objectReferenceValue = inventory;
             settings.FindProperty("doorPanel").objectReferenceValue = pivot.transform;
             settings.FindProperty("blockingCollider").objectReferenceValue = blockingCollider;
             settings.ApplyModifiedPropertiesWithoutUndo();
             return door;
+        }
+
+        private static ItemDefinition LoadKeyDefinition(string keyId)
+        {
+            ItemDefinition definition = AssetDatabase.LoadAssetAtPath<ItemDefinition>(
+                $"Assets/Data/Items/{keyId}.asset");
+            if (definition == null)
+            {
+                throw new System.InvalidOperationException(
+                    $"Missing key ItemDefinition: Assets/Data/Items/{keyId}.asset");
+            }
+            return definition;
         }
 
         private static void CreateFramePart(

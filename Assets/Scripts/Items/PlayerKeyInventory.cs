@@ -43,6 +43,18 @@ namespace NHNHackathon.Items
             return KeyCount >= requiredCount;
         }
 
+        public bool TryRemove(string keyId)
+        {
+            if (string.IsNullOrWhiteSpace(keyId) || !collectedKeyIds.Remove(keyId))
+            {
+                return false;
+            }
+
+            KeyCountChanged?.Invoke(KeyCount);
+            RefreshUI();
+            return true;
+        }
+
         public void ShowDoorLockedMessage(int requiredCount, float duration)
         {
             temporaryMessage = $"NEED MORE KEYS  {KeyCount} / {requiredCount}";

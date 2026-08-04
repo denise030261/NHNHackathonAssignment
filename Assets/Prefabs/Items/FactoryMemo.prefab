@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4681494645513136523}
   - component: {fileID: 7510122123180053797}
   - component: {fileID: 6566099079235234507}
+  - component: {fileID: 1193628930672411895}
   m_Layer: 0
   m_Name: FactoryMemo
   m_TagString: Untagged
@@ -112,3 +113,17 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1193628930672411895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6274370231951324203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ccba3796c9af6443820ae9912aea546, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Items.InspectableItem
+  item: {fileID: 11400000, guid: c7cc742b731e7754db70274d958e3246, type: 2}
+  interactionPrompt: "\uC544\uC774\uD15C \uD68D\uB4DD"

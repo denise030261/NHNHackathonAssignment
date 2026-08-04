@@ -9,8 +9,7 @@ namespace NHNHackathon.Items
     [RequireComponent(typeof(Collider))]
     public sealed class KeyCollectible : MonoBehaviour, IInteractable
     {
-        [SerializeField] private string keyId = "Key_01";
-        [SerializeField, Tooltip("Shared item data used by the inspection screen.")]
+        [SerializeField, Tooltip("Single source of truth for the key ID, name, icon, and inspection data.")]
         private ItemDefinition itemDefinition;
 
         private bool isCollected;
@@ -24,23 +23,28 @@ namespace NHNHackathon.Items
 
         public bool CanInteract(PlayerInteractor interactor)
         {
-            return !isCollected && interactor != null && interactor.KeyInventory != null;
+            return !isCollected
+                && itemDefinition != null
+                && itemDefinition.Type == ItemType.Key
+                && interactor != null
+                && interactor.GetComponent<PlayerItemInventory>() != null;
         }
 
         public void Interact(PlayerInteractor interactor)
         {
-            if (!CanInteract(interactor)
-                || !interactor.KeyInventory.TryCollect(keyId))
+            if (!CanInteract(interactor))
             {
                 return;
             }
 
             PlayerItemInventory itemInventory =
                 interactor.GetComponent<PlayerItemInventory>();
-            if (itemDefinition != null && itemInventory != null)
+            if (!itemInventory.TryCollect(itemDefinition))
             {
-                itemInventory.TryCollect(itemDefinition);
+                return;
             }
+
+            interactor.KeyInventory?.TryCollect(itemDefinition.ItemId);
 
             isCollected = true;
             gameObject.SetActive(false);
@@ -50,6 +54,15 @@ namespace NHNHackathon.Items
             if (itemDefinition != null && itemDefinition.InspectOnPickup)
             {
                 ItemInspectionController.Instance?.Open(itemDefinition);
+            }
+        }
+
+        private void OnValidate()
+        {
+            if (itemDefinition != null && itemDefinition.Type != ItemType.Key)
+            {
+                Debug.LogWarning(
+                    $"{name}: KeyCollectible requires an ItemDefinition whose type is Key.", this);
             }
         }
     }

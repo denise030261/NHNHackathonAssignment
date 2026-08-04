@@ -31,5 +31,39 @@ namespace NHNHackathon.Items
         {
             return !string.IsNullOrWhiteSpace(itemId) && collectedItemIds.Contains(itemId);
         }
+
+        public bool Contains(ItemDefinition item)
+        {
+            return item != null && Contains(item.ItemId);
+        }
+
+        public bool TryConsume(IReadOnlyList<ItemDefinition> items)
+        {
+            if (items == null)
+            {
+                return false;
+            }
+
+            for (int index = 0; index < items.Count; index++)
+            {
+                ItemDefinition item = items[index];
+                if (item == null || !Contains(item))
+                {
+                    return false;
+                }
+            }
+
+            for (int index = 0; index < items.Count; index++)
+            {
+                ItemDefinition item = items[index];
+                if (collectedItemIds.Remove(item.ItemId))
+                {
+                    collectedItems.RemoveAll(value => value != null && value.ItemId == item.ItemId);
+                }
+            }
+
+            InventoryChanged?.Invoke();
+            return true;
+        }
     }
 }

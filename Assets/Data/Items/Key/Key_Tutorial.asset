@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b85ea34c0f1fc4347805e3446fa986d5, type: 3}
+  m_Name: Key_Tutorial
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Items.ItemDefinition
+  itemId: Key_Tutorial
+  displayName: "\uCC98\uB9AC\uC2E4 \uC5F4\uC1E0"
+  itemType: 1
+  progressionCondition: {fileID: 11400000, guid: cdfe324230b9d6443b49fcaf59ba3e53, type: 2}
+  description: "\uCC98\uB9AC\uC2E4\uC5D0\uC11C \uBE60\uC838\uB098\uC624\uB294 \uC5F4\uC1E0\uC774\uB2E4."
+  inventoryIcon: {fileID: -5001193533137312707, guid: b30658f290732f44f93b0558baadacd4, type: 2}
+  previewPrefab: {fileID: 3985004875164646717, guid: 652551a41156f7d49bb381e9d9d73b77, type: 3}
+  previewEulerAngles: {x: 16.12711, y: 28.10158, z: 340.2375}
+  previewScale: 1.25
+  inspectOnPickup: 1
+  pages: []

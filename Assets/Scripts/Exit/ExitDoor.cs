@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using NHNHackathon.Interaction;
 using NHNHackathon.Items;
 using NHNHackathon.Progression;
@@ -10,8 +11,11 @@ namespace NHNHackathon.ExitSystem
     public sealed class ExitDoor : MonoBehaviour, IInteractable
     {
         [Header("Requirements")]
-        [SerializeField, Min(1)] private int requiredKeys = 3;
-        [SerializeField] private PlayerKeyInventory playerInventory;
+        [SerializeField, Tooltip("Exact key items required to unlock this door.")]
+        private List<ItemDefinition> requiredKeys = new List<ItemDefinition>();
+        [SerializeField, Tooltip("Remove the required keys from inventory on the first unlock.")]
+        private bool consumeKeysOnUnlock;
+        [SerializeField] private PlayerItemInventory playerInventory;
         [SerializeField, Tooltip("Optional condition completed the first time this door is unlocked.")]
         private ProgressionCondition unlockedCondition;
 
@@ -52,22 +56,83 @@ namespace NHNHackathon.ExitSystem
                 return;
             }
 
-            if (!IsOpen && !playerInventory.HasRequiredKeys(requiredKeys))
-            {
-                interactor.ShowTemporaryMessage(
-                    $"\uC5F4\uC1E0\uAC00 \uBD80\uC871\uD569\uB2C8\uB2E4.  "
-                    + $"{playerInventory.KeyCount} / {requiredKeys}",
-                    lockedMessageDuration);
-                return;
-            }
-
             if (!IsOpen && !hasBeenUnlocked)
             {
+                playerInventory ??= interactor.GetComponent<PlayerItemInventory>();
+                if (!HasRequiredKeys())
+                {
+                    interactor.ShowTemporaryMessage(
+                        BuildLockedMessage(), lockedMessageDuration);
+                    return;
+                }
+
+                if (consumeKeysOnUnlock && requiredKeys.Count > 0)
+                {
+                    playerInventory.TryConsume(requiredKeys);
+                    foreach (ItemDefinition key in requiredKeys)
+                    {
+                        if (key != null)
+                        {
+                            interactor.KeyInventory?.TryRemove(key.ItemId);
+                        }
+                    }
+                }
                 hasBeenUnlocked = true;
                 GameProgressionController.Instance?.TryComplete(unlockedCondition);
             }
 
             StartCoroutine(AnimateDoor(!IsOpen));
+        }
+
+        private bool HasRequiredKeys()
+        {
+            if (requiredKeys.Count == 0)
+            {
+                return true;
+            }
+            if (playerInventory == null)
+            {
+                return false;
+            }
+
+            foreach (ItemDefinition key in requiredKeys)
+            {
+                if (key == null || !playerInventory.Contains(key))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        private string BuildLockedMessage()
+        {
+            if (requiredKeys.Count == 1 && requiredKeys[0] != null)
+            {
+                return $"{requiredKeys[0].DisplayName}\uAC00 \uD544\uC694\uD569\uB2C8\uB2E4.";
+            }
+
+            int ownedCount = 0;
+            foreach (ItemDefinition key in requiredKeys)
+            {
+                if (key != null && playerInventory != null && playerInventory.Contains(key))
+                {
+                    ownedCount++;
+                }
+            }
+            return $"\uD544\uC694\uD55C \uC5F4\uC1E0\uAC00 \uBD80\uC871\uD569\uB2C8\uB2E4.  {ownedCount} / {requiredKeys.Count}";
+        }
+
+        private void OnValidate()
+        {
+            foreach (ItemDefinition key in requiredKeys)
+            {
+                if (key != null && key.Type != ItemType.Key)
+                {
+                    Debug.LogWarning(
+                        $"{name}: Required Keys accepts only Key ItemDefinitions.", this);
+                }
+            }
         }
 
         private IEnumerator AnimateDoor(bool opening)

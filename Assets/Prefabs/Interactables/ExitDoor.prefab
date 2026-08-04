@@ -182,8 +182,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4418ee6d19b285a42bcb8b4cf90bbbb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.ExitSystem.ExitDoor
-  requiredKeys: 3
+  requiredKeys:
+  - {fileID: 11400000, guid: 13814cff13a52e442a93488730d18962, type: 2}
+  - {fileID: 11400000, guid: e0f9942230df0c14ab9591c40f4a2336, type: 2}
+  - {fileID: 11400000, guid: bdf864cc759a81145b92a50c43c90f5f, type: 2}
+  consumeKeysOnUnlock: 0
   playerInventory: {fileID: 0}
+  unlockedCondition: {fileID: 0}
   doorPanel: {fileID: 5421877543538459434}
   blockingCollider: {fileID: 2099100325988904061}
   openAngle: 90
