@@ -22,10 +22,7 @@ namespace NHNHackathon.ExitSystem
                 return;
             }
 
-            if (other.GetComponentInParent<PlayerKeyInventory>() != null)
-            {
-                successController?.TriggerSuccess();
-            }
+            //successController?.TriggerSuccess();
         }
     }
 }

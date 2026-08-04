@@ -33,7 +33,6 @@ namespace NHNHackathon.EditorTools
             }
 
             PlayerItemInventory itemInventory = GetOrAdd<PlayerItemInventory>(player);
-            PlayerKeyInventory keyInventory = GetOrAdd<PlayerKeyInventory>(player);
             PlayerInteractor interactor = GetOrAdd<PlayerInteractor>(player);
             RemovePlayerHostedUISystems(player);
             DeleteSceneObject("InventorySystem");
@@ -53,7 +52,7 @@ namespace NHNHackathon.EditorTools
             ConfigurePreviewCamera(
                 inventorySystem.transform, "InventoryPreviewCamera", inventoryPreview);
 
-            ConfigureHud(uiRoot.transform, interactor, keyInventory);
+            ConfigureHud(uiRoot.transform, interactor);
             ConfigureInspection(uiRoot.transform, inspection, inspectionPreview);
             ConfigureInventory(
                 uiRoot.transform, inventory, inspection, itemInventory, inventoryPreview);
@@ -65,8 +64,7 @@ namespace NHNHackathon.EditorTools
             Debug.Log("Level1 UI connected to the Player inspector.");
         }
 
-        private static void ConfigureHud(
-            Transform uiRoot, PlayerInteractor interactor, PlayerKeyInventory keyInventory)
+        private static void ConfigureHud(Transform uiRoot, PlayerInteractor interactor)
         {
             GameObject prompt = RequireDescendant(uiRoot, "InteractionPrompt").gameObject;
             GameObject counter = RequireDescendant(uiRoot, "KeyCounter").gameObject;
@@ -77,14 +75,8 @@ namespace NHNHackathon.EditorTools
             interactorSettings.FindProperty("promptText").objectReferenceValue = prompt.GetComponent<Text>();
             interactorSettings.ApplyModifiedPropertiesWithoutUndo();
 
-            SerializedObject keySettings = new SerializedObject(keyInventory);
-            keySettings.FindProperty("keyCounterRoot").objectReferenceValue = counter;
-            keySettings.FindProperty("keyCounterText").objectReferenceValue = counter.GetComponent<Text>();
-            keySettings.FindProperty("messageRoot").objectReferenceValue = notification;
-            keySettings.FindProperty("messageText").objectReferenceValue = notification.GetComponent<Text>();
-            keySettings.ApplyModifiedPropertiesWithoutUndo();
-
             prompt.SetActive(false);
+            counter.SetActive(false);
             notification.SetActive(false);
         }
 

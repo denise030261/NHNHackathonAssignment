@@ -34,13 +34,8 @@ namespace NHNHackathon.EditorTools
                     "DoYoungPracticeScene requires a Player object.");
             }
 
-            PlayerKeyInventory keyCounter =
-                player.GetComponent<PlayerKeyInventory>() ?? player.AddComponent<PlayerKeyInventory>();
             PlayerItemInventory itemInventory =
                 player.GetComponent<PlayerItemInventory>() ?? player.AddComponent<PlayerItemInventory>();
-            SerializedObject inventorySettings = new SerializedObject(keyCounter);
-            inventorySettings.FindProperty("requiredKeyCount").intValue = 3;
-            inventorySettings.ApplyModifiedPropertiesWithoutUndo();
             PlayerInteractor interactor =
                 player.GetComponent<PlayerInteractor>() ?? player.AddComponent<PlayerInteractor>();
             SerializedObject interactorSettings = new SerializedObject(interactor);
@@ -51,7 +46,6 @@ namespace NHNHackathon.EditorTools
                 player.GetComponent<PlayerCameraController>();
             interactorSettings.FindProperty("playerCamera").objectReferenceValue =
                 player.GetComponentInChildren<Camera>(true);
-            interactorSettings.FindProperty("keyInventory").objectReferenceValue = keyCounter;
             interactorSettings.ApplyModifiedPropertiesWithoutUndo();
             AddInteractorToGameOverControls(interactor);
 
@@ -159,8 +153,6 @@ namespace NHNHackathon.EditorTools
             key.GetComponent<Renderer>().sharedMaterial = material;
             key.GetComponent<BoxCollider>().isTrigger = true;
             KeyCollectible collectible = key.AddComponent<KeyCollectible>();
-            key.AddComponent<KeyCollectibleVisual>();
-
             SerializedObject settings = new SerializedObject(collectible);
             settings.FindProperty("itemDefinition").objectReferenceValue = definition;
             settings.ApplyModifiedPropertiesWithoutUndo();

@@ -20,7 +20,6 @@ namespace NHNHackathon.Interaction
         [Header("References")]
         [SerializeField] private PlayerCameraController cameraController;
         [SerializeField] private Camera playerCamera;
-        [SerializeField] private PlayerKeyInventory keyInventory;
 
         [Header("Interaction UI")]
         [SerializeField] private GameObject promptRoot;
@@ -32,7 +31,7 @@ namespace NHNHackathon.Interaction
         private string temporaryMessage;
         private float messageExpiresAt;
 
-        public PlayerKeyInventory KeyInventory => keyInventory;
+        //public PlayerKeyInventory KeyInventory => keyInventory;
 
         private void Update()
         {
@@ -123,7 +122,6 @@ namespace NHNHackathon.Interaction
         {
             cameraController ??= GetComponent<PlayerCameraController>();
             playerCamera ??= GetComponentInChildren<Camera>(true);
-            keyInventory ??= GetComponent<PlayerKeyInventory>();
         }
     }
 }

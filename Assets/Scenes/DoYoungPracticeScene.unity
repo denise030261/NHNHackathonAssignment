@@ -290,7 +290,6 @@ GameObject:
   - component: {fileID: 127751596}
   - component: {fileID: 127751595}
   - component: {fileID: 127751594}
-  - component: {fileID: 127751593}
   m_Layer: 0
   m_Name: Key_03
   m_TagString: Untagged
@@ -313,21 +312,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1834277842}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &127751593
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 127751591}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7ea1f23b3f3f4041abeba2b5b42717f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Items.KeyCollectibleVisual
-  rotationSpeed: 90
-  bobHeight: 0.12
-  bobSpeed: 2
 --- !u!114 &127751594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1585,59 +1569,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 448602125}
   m_CullTransparentMesh: 1
---- !u!1 &477147036
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 477147038}
-  - component: {fileID: 477147037}
-  m_Layer: 0
-  m_Name: WatcherPatrolRoute
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &477147037
+--- !u!114 &477147037 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 4441084204871714944, guid: 53f6c61704bfd404e9def4418875b9af, type: 3}
+  m_PrefabInstance: {fileID: 8105140649391955939}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 477147036}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 79e121c0f54dc4d4391bd41659189a88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Enemy.EnemyPatrolRoute
-  points:
-  - {fileID: 1794095727}
-  - {fileID: 939153037}
-  - {fileID: 1710940326}
-  - {fileID: 1323766223}
---- !u!4 &477147038
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 477147036}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1794095727}
-  - {fileID: 939153037}
-  - {fileID: 1710940326}
-  - {fileID: 1323766223}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &486706852
 GameObject:
   m_ObjectHideFlags: 0
@@ -2675,7 +2617,6 @@ GameObject:
   - component: {fileID: 790757285}
   - component: {fileID: 790757284}
   - component: {fileID: 790757283}
-  - component: {fileID: 790757282}
   m_Layer: 0
   m_Name: Key_01
   m_TagString: Untagged
@@ -2698,21 +2639,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1834277842}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &790757282
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 790757280}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7ea1f23b3f3f4041abeba2b5b42717f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Items.KeyCollectibleVisual
-  rotationSpeed: 90
-  bobHeight: 0.12
-  bobSpeed: 2
 --- !u!114 &790757283
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3135,37 +3061,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 892409356}
   m_CullTransparentMesh: 1
---- !u!1 &939153036
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 939153037}
-  m_Layer: 0
-  m_Name: PatrolPoint_2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &939153037
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 939153036}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7, y: 0, z: 7}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 477147038}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &966493770
 GameObject:
   m_ObjectHideFlags: 0
@@ -4832,37 +4727,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1281370788}
   m_CullTransparentMesh: 1
---- !u!1 &1323766222
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1323766223}
-  m_Layer: 0
-  m_Name: PatrolPoint_4
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1323766223
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1323766222}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7, y: 0, z: -7}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 477147038}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1349232002
 GameObject:
   m_ObjectHideFlags: 0
@@ -5258,7 +5122,6 @@ GameObject:
   - component: {fileID: 1401468083}
   - component: {fileID: 1401468082}
   - component: {fileID: 1401468081}
-  - component: {fileID: 1401468080}
   m_Layer: 0
   m_Name: Key_02
   m_TagString: Untagged
@@ -5281,21 +5144,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1834277842}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1401468080
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1401468078}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7ea1f23b3f3f4041abeba2b5b42717f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Items.KeyCollectibleVisual
-  rotationSpeed: 90
-  bobHeight: 0.12
-  bobSpeed: 2
 --- !u!114 &1401468081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6256,37 +6104,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &1710940325
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1710940326}
-  m_Layer: 0
-  m_Name: PatrolPoint_3
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1710940326
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1710940325}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7, y: 0, z: 7}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 477147038}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1743743934
 GameObject:
   m_ObjectHideFlags: 0
@@ -6589,37 +6406,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 588805410}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1794095726
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1794095727}
-  m_Layer: 0
-  m_Name: PatrolPoint_1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1794095727
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1794095726}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7, y: 0, z: -7}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 477147038}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1800996593
 GameObject:
@@ -8380,6 +8166,63 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1df39b6bdf2dd64ca1e05cd35d2bf15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.AI.DanceSequenceController
+--- !u!1001 &8105140649391955939
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2794827371710861970, guid: 53f6c61704bfd404e9def4418875b9af, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2794827371710861970, guid: 53f6c61704bfd404e9def4418875b9af, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2794827371710861970, guid: 53f6c61704bfd404e9def4418875b9af, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2794827371710861970, guid: 53f6c61704bfd404e9def4418875b9af, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2794827371710861970, guid: 53f6c61704bfd404e9def4418875b9af, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2794827371710861970, guid: 53f6c61704bfd404e9def4418875b9af, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2794827371710861970, guid: 53f6c61704bfd404e9def4418875b9af, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2794827371710861970, guid: 53f6c61704bfd404e9def4418875b9af, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2794827371710861970, guid: 53f6c61704bfd404e9def4418875b9af, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2794827371710861970, guid: 53f6c61704bfd404e9def4418875b9af, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4896747333899276230, guid: 53f6c61704bfd404e9def4418875b9af, type: 3}
+      propertyPath: m_Name
+      value: WatcherPatrolRoute
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 53f6c61704bfd404e9def4418875b9af, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -8389,7 +8232,7 @@ SceneRoots:
   - {fileID: 6347930942750250502}
   - {fileID: 171639339593929333}
   - {fileID: 784178049}
-  - {fileID: 477147038}
+  - {fileID: 8105140649391955939}
   - {fileID: 4080625671690323294}
   - {fileID: 1834277842}
   - {fileID: 1948901827}

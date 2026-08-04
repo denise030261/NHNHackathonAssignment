@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2005824328028355622}
   - component: {fileID: 2250803823524509827}
-  - component: {fileID: 6038504410881541079}
   - component: {fileID: 5604904077887006538}
+  - component: {fileID: 6038504410881541079}
   m_Layer: 0
   m_Name: FlashlightStimulus
   m_TagString: Untagged
@@ -99,6 +99,21 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
+--- !u!114 &5604904077887006538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2516558031077606080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e01ff3b6b2c0a0748b5711a497cafaba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.LightSystem.PlayerFlashlightController
+  toggleKey: 102
+  flashlight: {fileID: 2250803823524509827}
+  startEnabled: 1
 --- !u!114 &6038504410881541079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,21 +132,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   surfaceOffset: 0.4
---- !u!114 &5604904077887006538
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2516558031077606080}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e01ff3b6b2c0a0748b5711a497cafaba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.LightSystem.PlayerFlashlightController
-  toggleKey: 102
-  flashlight: {fileID: 2250803823524509827}
-  startEnabled: 1
 --- !u!1 &5270906866158683349
 GameObject:
   m_ObjectHideFlags: 0
@@ -148,7 +148,6 @@ GameObject:
   - component: {fileID: 475188053344298970}
   - component: {fileID: 1022894658548325590}
   - component: {fileID: 5885044705464568561}
-  - component: {fileID: 2970717178813953740}
   - component: {fileID: 6159149051192978673}
   - component: {fileID: 726503695478076827}
   m_Layer: 2
@@ -298,24 +297,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2be04b4474aadd84faea0c5c024e203c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Dance.PlayerDisguiseState
---- !u!114 &2970717178813953740
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5270906866158683349}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfe4c0f0a634c7f439e1fdbb92510043, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Items.PlayerKeyInventory
-  requiredKeyCount: 3
-  showKeyCounter: 1
-  keyCounterRoot: {fileID: 0}
-  keyCounterText: {fileID: 0}
-  messageRoot: {fileID: 0}
-  messageText: {fileID: 0}
 --- !u!114 &6159149051192978673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -337,7 +318,6 @@ MonoBehaviour:
     m_Bits: 51
   cameraController: {fileID: 5152183085720589010}
   playerCamera: {fileID: 2266752986517209616}
-  keyInventory: {fileID: 2970717178813953740}
   promptRoot: {fileID: 0}
   promptText: {fileID: 0}
   promptColor: {r: 1, g: 1, b: 1, a: 1}

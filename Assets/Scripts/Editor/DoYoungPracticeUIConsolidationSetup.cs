@@ -101,18 +101,8 @@ namespace NHNHackathon.EditorTools
                 settings.ApplyModifiedPropertiesWithoutUndo();
             }
 
-            PlayerKeyInventory keys = Object.FindAnyObjectByType<PlayerKeyInventory>();
-            if (keys != null)
-            {
-                SerializedObject settings = new SerializedObject(keys);
-                settings.FindProperty("keyCounterRoot").objectReferenceValue = keyCounter;
-                settings.FindProperty("keyCounterText").objectReferenceValue = keyCounter.GetComponent<Text>();
-                settings.FindProperty("messageRoot").objectReferenceValue = notification;
-                settings.FindProperty("messageText").objectReferenceValue = notification.GetComponent<Text>();
-                settings.ApplyModifiedPropertiesWithoutUndo();
-            }
-
             prompt.SetActive(false);
+            keyCounter.SetActive(false);
             notification.SetActive(false);
         }
 

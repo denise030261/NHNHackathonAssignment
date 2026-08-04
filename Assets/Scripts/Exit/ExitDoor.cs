@@ -73,7 +73,7 @@ namespace NHNHackathon.ExitSystem
                     {
                         if (key != null)
                         {
-                            interactor.KeyInventory?.TryRemove(key.ItemId);
+                            //interactor.KeyInventory?.TryRemove(key.ItemId);
                         }
                     }
                 }

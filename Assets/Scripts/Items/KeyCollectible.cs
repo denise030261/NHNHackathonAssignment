@@ -44,8 +44,6 @@ namespace NHNHackathon.Items
                 return;
             }
 
-            interactor.KeyInventory?.TryCollect(itemDefinition.ItemId);
-
             isCollected = true;
             gameObject.SetActive(false);
             GameProgressionController.Instance?.TryComplete(
