@@ -612,6 +612,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5291112742394437179, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+      propertyPath: danceAI
+      value: 
+      objectReference: {fileID: 1380823389}
     - target: {fileID: 7974926430556042222, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
       propertyPath: m_Size.x
       value: 9
@@ -915,67 +919,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
   m_PrefabInstance: {fileID: 768705783}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &115195357
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 380131047}
-    m_Modifications:
-    - target: {fileID: 2844912919576620159, guid: 652551a41156f7d49bb381e9d9d73b77, type: 3}
-      propertyPath: itemDefinition
-      value: 
-      objectReference: {fileID: 11400000, guid: 2596fc204db891d4c9bf370624e0f42e, type: 2}
-    - target: {fileID: 3985004875164646717, guid: 652551a41156f7d49bb381e9d9d73b77, type: 3}
-      propertyPath: m_Name
-      value: Key
-      objectReference: {fileID: 0}
-    - target: {fileID: 8141794772142553693, guid: 652551a41156f7d49bb381e9d9d73b77, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -2.41
-      objectReference: {fileID: 0}
-    - target: {fileID: 8141794772142553693, guid: 652551a41156f7d49bb381e9d9d73b77, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.07499766
-      objectReference: {fileID: 0}
-    - target: {fileID: 8141794772142553693, guid: 652551a41156f7d49bb381e9d9d73b77, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -30.53
-      objectReference: {fileID: 0}
-    - target: {fileID: 8141794772142553693, guid: 652551a41156f7d49bb381e9d9d73b77, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8141794772142553693, guid: 652551a41156f7d49bb381e9d9d73b77, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8141794772142553693, guid: 652551a41156f7d49bb381e9d9d73b77, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8141794772142553693, guid: 652551a41156f7d49bb381e9d9d73b77, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8141794772142553693, guid: 652551a41156f7d49bb381e9d9d73b77, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8141794772142553693, guid: 652551a41156f7d49bb381e9d9d73b77, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8141794772142553693, guid: 652551a41156f7d49bb381e9d9d73b77, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 652551a41156f7d49bb381e9d9d73b77, type: 3}
 --- !u!4 &118963118 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
@@ -1861,6 +1804,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5291112742394437179, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+      propertyPath: danceAI
+      value: 
+      objectReference: {fileID: 811101565}
     - target: {fileID: 7974926430556042222, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
       propertyPath: m_Size.x
       value: 16
@@ -1875,11 +1822,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 956438839806768873, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2011475126}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8247642176173935730, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 269042032}
+    - targetCorrespondingSourceObject: {fileID: 8247642176173935730, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 269042035}
   m_SourcePrefab: {fileID: 100100000, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
 --- !u!4 &269042030 stripped
 Transform:
@@ -1906,6 +1859,54 @@ MonoBehaviour:
   enterPerspective: 1
   exitPerspective: 0
   transitionDuration: 0.6
+--- !u!114 &269042033 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9176999007620187711, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+  m_PrefabInstance: {fileID: 269042029}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 269042031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bad847c97624ea4fb1def3c2a694d7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Dance.DanceSyncZone
+--- !u!114 &269042034 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5291112742394437179, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+  m_PrefabInstance: {fileID: 269042029}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 269042031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de38b74f92ba68342bae49db9a1921ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Dance.DanceSyncJudge
+--- !u!114 &269042035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 269042031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5a274a7b1203c54b953c99b7a3eb0bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Dance.TutorialDanceReward
+  danceZone: {fileID: 269042033}
+  syncJudge: {fileID: 269042034}
+  rewardPrefab: {fileID: 3985004875164646717, guid: 0f345e677dc4ade43840ef3c819eb903, type: 3}
+  dropPoint: {fileID: 2011475126}
+  requiredSuccessDuration: 3
+  resetOnFailedBeat: 1
+  resetOnZoneExit: 1
+  oneShot: 1
+  dropHeight: 2.5
+  dropDuration: 0.9
+  dropEase: 30
+  rotation: {x: 0, y: 540, z: 0}
+  rotationDuration: 0.9
+  rotationEase: 9
 --- !u!1001 &282236274
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3309,8 +3310,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 40691635}
-  - {fileID: 1907653210}
   - {fileID: 1405276648}
+  - {fileID: 2141340249}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &387618202
@@ -4129,6 +4130,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79e121c0f54dc4d4391bd41659189a88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Enemy.EnemyPatrolRoute
+--- !u!114 &539792275 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+  m_PrefabInstance: {fileID: 514851751}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1df39b6bdf2dd64ca1e05cd35d2bf15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.AI.DanceSequenceController
 --- !u!1 &552566205
 GameObject:
   m_ObjectHideFlags: 0
@@ -4673,6 +4685,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5291112742394437179, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+      propertyPath: danceAI
+      value: 
+      objectReference: {fileID: 1899614811}
     - target: {fileID: 7974926430556042222, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
       propertyPath: m_Size.x
       value: 10
@@ -5419,6 +5435,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8141794772142553693, guid: 652551a41156f7d49bb381e9d9d73b77, type: 3}
   m_PrefabInstance: {fileID: 532014462}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &765476923 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+  m_PrefabInstance: {fileID: 2050645371}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1df39b6bdf2dd64ca1e05cd35d2bf15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.AI.DanceSequenceController
 --- !u!1001 &765704754
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5858,6 +5885,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5291112742394437179, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+      propertyPath: danceAI
+      value: 
+      objectReference: {fileID: 765476923}
     - target: {fileID: 7974926430556042222, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
       propertyPath: m_Size.x
       value: 5
@@ -6068,6 +6099,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
   m_PrefabInstance: {fileID: 240443025}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &811101565 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+  m_PrefabInstance: {fileID: 240443025}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1df39b6bdf2dd64ca1e05cd35d2bf15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.AI.DanceSequenceController
 --- !u!1 &811246712
 GameObject:
   m_ObjectHideFlags: 0
@@ -7477,6 +7519,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5291112742394437179, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+      propertyPath: danceAI
+      value: 
+      objectReference: {fileID: 2111265589}
     - target: {fileID: 7974926430556042222, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
       propertyPath: m_Size.x
       value: 9
@@ -7563,6 +7609,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
   m_PrefabInstance: {fileID: 1098129710}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1018548376 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+  m_PrefabInstance: {fileID: 1098129710}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1df39b6bdf2dd64ca1e05cd35d2bf15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.AI.DanceSequenceController
 --- !u!1 &1023711249
 GameObject:
   m_ObjectHideFlags: 0
@@ -10190,6 +10247,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5291112742394437179, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+      propertyPath: danceAI
+      value: 
+      objectReference: {fileID: 539792275}
     - target: {fileID: 7974926430556042222, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
       propertyPath: m_Size.x
       value: 8
@@ -10686,6 +10747,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1349812334}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1380823389 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+  m_PrefabInstance: {fileID: 1975090278}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1df39b6bdf2dd64ca1e05cd35d2bf15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.AI.DanceSequenceController
 --- !u!1 &1385313143
 GameObject:
   m_ObjectHideFlags: 0
@@ -14031,6 +14103,63 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1687521914}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &1688400753
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 380131047}
+    m_Modifications:
+    - target: {fileID: 2047703662071492795, guid: 22e2cedf05bb1644f8b6b4e30bb6d7bd, type: 3}
+      propertyPath: m_Name
+      value: FlashlightPickup
+      objectReference: {fileID: 0}
+    - target: {fileID: 7360259684053588980, guid: 22e2cedf05bb1644f8b6b4e30bb6d7bd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -10.961023
+      objectReference: {fileID: 0}
+    - target: {fileID: 7360259684053588980, guid: 22e2cedf05bb1644f8b6b4e30bb6d7bd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7360259684053588980, guid: 22e2cedf05bb1644f8b6b4e30bb6d7bd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -33.993893
+      objectReference: {fileID: 0}
+    - target: {fileID: 7360259684053588980, guid: 22e2cedf05bb1644f8b6b4e30bb6d7bd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7360259684053588980, guid: 22e2cedf05bb1644f8b6b4e30bb6d7bd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7360259684053588980, guid: 22e2cedf05bb1644f8b6b4e30bb6d7bd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7360259684053588980, guid: 22e2cedf05bb1644f8b6b4e30bb6d7bd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7360259684053588980, guid: 22e2cedf05bb1644f8b6b4e30bb6d7bd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7360259684053588980, guid: 22e2cedf05bb1644f8b6b4e30bb6d7bd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7360259684053588980, guid: 22e2cedf05bb1644f8b6b4e30bb6d7bd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 22e2cedf05bb1644f8b6b4e30bb6d7bd, type: 3}
 --- !u!1 &1690029954
 GameObject:
   m_ObjectHideFlags: 0
@@ -14296,6 +14425,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5291112742394437179, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+      propertyPath: danceAI
+      value: 
+      objectReference: {fileID: 2076480334}
     - target: {fileID: 7974926430556042222, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
       propertyPath: m_Size.x
       value: 5
@@ -15443,6 +15576,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5291112742394437179, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+      propertyPath: danceAI
+      value: 
+      objectReference: {fileID: 1018548376}
     - target: {fileID: 7974926430556042222, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
       propertyPath: m_Size.x
       value: 8
@@ -15667,15 +15804,21 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
   m_PrefabInstance: {fileID: 2074455798}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1899614811 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+  m_PrefabInstance: {fileID: 2074455798}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1df39b6bdf2dd64ca1e05cd35d2bf15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.AI.DanceSequenceController
 --- !u!4 &1906491092 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
   m_PrefabInstance: {fileID: 1155116693}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1907653210 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8141794772142553693, guid: 652551a41156f7d49bb381e9d9d73b77, type: 3}
-  m_PrefabInstance: {fileID: 115195357}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1920123100
 PrefabInstance:
@@ -16292,6 +16435,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2008421223}
   m_CullTransparentMesh: 1
+--- !u!1 &2011475125
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2011475126}
+  m_Layer: 0
+  m_Name: TutorialKeyDropPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2011475126
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2011475125}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.35, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 269042030}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2014994148
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16830,6 +17004,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
   m_PrefabInstance: {fileID: 782560503}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2076480334 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+  m_PrefabInstance: {fileID: 782560503}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1df39b6bdf2dd64ca1e05cd35d2bf15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.AI.DanceSequenceController
 --- !u!1001 &2080849135
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17125,6 +17310,17 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2111265589 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+  m_PrefabInstance: {fileID: 1129798364}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1df39b6bdf2dd64ca1e05cd35d2bf15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.AI.DanceSequenceController
 --- !u!1 &2118659829
 GameObject:
   m_ObjectHideFlags: 0
@@ -17546,6 +17742,11 @@ Transform:
   - {fileID: 2082576233}
   m_Father: {fileID: 321891781}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &2141340249 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7360259684053588980, guid: 22e2cedf05bb1644f8b6b4e30bb6d7bd, type: 3}
+  m_PrefabInstance: {fileID: 1688400753}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2144620619
 PrefabInstance:
   m_ObjectHideFlags: 0

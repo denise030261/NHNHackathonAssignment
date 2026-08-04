@@ -41,7 +41,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2516558031077606080}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 13
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -113,7 +113,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.LightSystem.PlayerFlashlightController
   toggleKey: 102
   flashlight: {fileID: 2250803823524509827}
-  startEnabled: 1
+  startEnabled: 0
+  playerInventory: {fileID: 726503695478076827}
+  requiredFlashlightItem: {fileID: 11400000, guid: dffd4269b8c599f4d84416c04348f702, type: 2}
+  playerInteractor: {fileID: 6159149051192978673}
+  missingItemMessage: "\uC190\uC804\uB4F1\uC774 \uD544\uC694\uD569\uB2C8\uB2E4."
+  missingItemMessageDuration: 1.5
 --- !u!114 &6038504410881541079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,6 +231,31 @@ MonoBehaviour:
   collisionMask:
     serializedVersion: 2
     m_Bits: 51
+  perspectiveTransitionDuration: 0.6
+  perspectiveTransitionCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &3576186341421209795
 MonoBehaviour:
   m_ObjectHideFlags: 0

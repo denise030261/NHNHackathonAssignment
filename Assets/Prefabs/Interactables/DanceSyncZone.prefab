@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7974926430556042222}
   - component: {fileID: 5291112742394437179}
   - component: {fileID: 9176999007620187711}
+  - component: {fileID: 1938320467704258482}
   m_Layer: 0
   m_Name: DanceSyncZone
   m_TagString: Untagged
@@ -83,3 +84,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Dance.DanceSyncZone
   inactiveColor: {r: 1, g: 0.2, b: 0.2, a: 0.2}
   successColor: {r: 0.2, g: 1, b: 0.3, a: 0.25}
+--- !u!114 &1938320467704258482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8247642176173935730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbe304a0dbf2a4841bf8214cddec8862, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Dance.DanceZoneCameraTrigger
+  enterPerspective: 1
+  exitPerspective: 0
+  transitionDuration: 0.6

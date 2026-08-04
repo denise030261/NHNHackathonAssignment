@@ -4,6 +4,26 @@ using UnityEngine;
 
 namespace NHNHackathon.Dance
 {
+    public readonly struct DanceStepJudgement
+    {
+        public DanceStepJudgement(
+            bool succeeded, int expectedDanceId, int playerDanceId,
+            float beatTime, float beatDuration)
+        {
+            Succeeded = succeeded;
+            ExpectedDanceId = expectedDanceId;
+            PlayerDanceId = playerDanceId;
+            BeatTime = beatTime;
+            BeatDuration = beatDuration;
+        }
+
+        public bool Succeeded { get; }
+        public int ExpectedDanceId { get; }
+        public int PlayerDanceId { get; }
+        public float BeatTime { get; }
+        public float BeatDuration { get; }
+    }
+
     [DisallowMultipleComponent]
     public sealed class DanceSyncJudge : MonoBehaviour
     {
@@ -23,8 +43,10 @@ namespace NHNHackathon.Dance
         private int pendingDanceId;
         private float pendingInputTime;
         private bool isBlendingIn;
+        private bool currentBeatJudged;
 
         public event Action<bool> BlendStateChanged;
+        public event Action<DanceStepJudgement> DanceStepJudged;
 
         public bool IsBlendingIn => isBlendingIn;
         public float TimingTolerance => timingTolerance;
@@ -74,9 +96,15 @@ namespace NHNHackathon.Dance
 
         private void HandleAIDanceStepChanged(DanceDefinition dance, int stepIndex, float beatTime)
         {
+            if (hasCurrentBeat && !currentBeatJudged)
+            {
+                PublishJudgement(false, -1);
+            }
+
             currentDanceId = dance.Id;
             currentBeatTime = beatTime;
             hasCurrentBeat = true;
+            currentBeatJudged = false;
             SetBlendState(false);
 
             if (!hasPendingEarlyInput)
@@ -85,7 +113,9 @@ namespace NHNHackathon.Dance
             }
 
             bool isWithinWindow = Mathf.Abs(pendingInputTime - beatTime) <= EffectiveTolerance;
-            SetBlendState(isWithinWindow && pendingDanceId == currentDanceId && activePlayer != null);
+            JudgeCurrentBeat(
+                isWithinWindow && pendingDanceId == currentDanceId && activePlayer != null,
+                pendingDanceId);
             hasPendingEarlyInput = false;
         }
 
@@ -112,7 +142,7 @@ namespace NHNHackathon.Dance
             if (currentDistance <= EffectiveTolerance)
             {
                 hasPendingEarlyInput = false;
-                SetBlendState(danceId == currentDanceId);
+                JudgeCurrentBeat(danceId == currentDanceId, danceId);
                 return;
             }
 
@@ -126,6 +156,32 @@ namespace NHNHackathon.Dance
 
             hasPendingEarlyInput = false;
             SetBlendState(false);
+            if (hasCurrentBeat && !currentBeatJudged)
+            {
+                JudgeCurrentBeat(false, danceId);
+            }
+        }
+
+        private void JudgeCurrentBeat(bool succeeded, int playerDanceId)
+        {
+            if (!hasCurrentBeat || currentBeatJudged)
+            {
+                return;
+            }
+
+            currentBeatJudged = true;
+            SetBlendState(succeeded);
+            PublishJudgement(succeeded, playerDanceId);
+        }
+
+        private void PublishJudgement(bool succeeded, int playerDanceId)
+        {
+            DanceStepJudged?.Invoke(new DanceStepJudgement(
+                succeeded,
+                currentDanceId,
+                playerDanceId,
+                currentBeatTime,
+                danceAI != null ? danceAI.BeatInterval : 0f));
         }
 
         private float EffectiveTolerance => Mathf.Min(timingTolerance, danceAI.BeatInterval * 0.5f);

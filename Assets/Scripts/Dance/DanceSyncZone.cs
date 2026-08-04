@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 namespace NHNHackathon.Dance
@@ -17,6 +18,9 @@ namespace NHNHackathon.Dance
         private DanceSyncJudge syncJudge;
         private Collider zoneCollider;
 
+        public event Action<PlayerDanceInput> PlayerEntered;
+        public event Action<PlayerDanceInput> PlayerExited;
+
         private void Awake()
         {
             syncJudge = GetComponent<DanceSyncJudge>();
@@ -34,7 +38,11 @@ namespace NHNHackathon.Dance
 
             playerColliderCounts.TryGetValue(player, out int count);
             playerColliderCounts[player] = count + 1;
-            syncJudge.SetActivePlayer(player);
+            if (count == 0)
+            {
+                syncJudge.SetActivePlayer(player);
+                PlayerEntered?.Invoke(player);
+            }
         }
 
         private void OnTriggerExit(Collider other)
@@ -53,6 +61,7 @@ namespace NHNHackathon.Dance
 
             playerColliderCounts.Remove(player);
             syncJudge.SetActivePlayer(null);
+            PlayerExited?.Invoke(player);
         }
 
         private void OnDrawGizmos()
