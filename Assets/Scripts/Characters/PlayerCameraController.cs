@@ -49,17 +49,33 @@ namespace NHNHackathon.Characters
         [SerializeField, Tooltip("Layers considered solid by the third-person camera.")]
         private LayerMask collisionMask = ~(1 << 2);
 
+        [Header("Perspective Transition")]
+        [SerializeField, Min(0f), Tooltip("Seconds used to blend between first and third person.")]
+        private float perspectiveTransitionDuration = 0.6f;
+
+        [SerializeField, Tooltip("Controls the camera blend progression from 0 to 1.")]
+        private AnimationCurve perspectiveTransitionCurve =
+            AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
+
         private float yaw;
         private float pitch;
         private float currentDistance;
         private float distanceVelocity;
         private CameraPerspective previousPerspective;
+        private CameraPerspective targetPerspective;
+        private bool isTransitioning;
+        private float transitionElapsed;
+        private float activeTransitionDuration;
+        private Vector3 transitionStartPosition;
+        private Quaternion transitionStartRotation;
 
-        public CameraPerspective Perspective => perspective;
+        public CameraPerspective Perspective => targetPerspective;
+        public bool IsTransitioning => isTransitioning;
 
         private void Awake()
         {
             previousPerspective = perspective;
+            targetPerspective = perspective;
             yaw = transform.eulerAngles.y;
             currentDistance = thirdPersonDistance;
         }
@@ -73,7 +89,7 @@ namespace NHNHackathon.Characters
 
             if (previousPerspective != perspective)
             {
-                SynchronizePerspective();
+                RequestPerspective(perspective);
             }
 
             yaw += UnityEngine.Input.GetAxis("Mouse X") * mouseSensitivity;
@@ -82,7 +98,7 @@ namespace NHNHackathon.Characters
                 minimumPitch,
                 maximumPitch);
 
-            if (perspective == CameraPerspective.FirstPerson)
+            if (targetPerspective == CameraPerspective.FirstPerson)
             {
                 transform.rotation = Quaternion.Euler(0f, yaw, 0f);
             }
@@ -95,28 +111,110 @@ namespace NHNHackathon.Characters
                 return;
             }
 
-            if (perspective == CameraPerspective.FirstPerson)
+            if (isTransitioning)
             {
-                UpdateFirstPersonCamera();
+                UpdatePerspectiveTransition();
+            }
+            else if (targetPerspective == CameraPerspective.FirstPerson)
+            {
+                ApplyFirstPersonCamera();
             }
             else
             {
-                UpdateThirdPersonCamera();
+                ApplyThirdPersonCamera();
             }
         }
 
-        private void UpdateFirstPersonCamera()
+        public void RequestPerspective(CameraPerspective requestedPerspective)
+        {
+            RequestPerspective(requestedPerspective, perspectiveTransitionDuration);
+        }
+
+        public void RequestPerspective(
+            CameraPerspective requestedPerspective, float transitionDuration)
+        {
+            if (playerCamera == null)
+            {
+                return;
+            }
+
+            if (!isTransitioning && targetPerspective == requestedPerspective)
+            {
+                perspective = requestedPerspective;
+                previousPerspective = requestedPerspective;
+                return;
+            }
+
+            transitionStartPosition = playerCamera.transform.position;
+            transitionStartRotation = playerCamera.transform.rotation;
+            targetPerspective = requestedPerspective;
+            perspective = requestedPerspective;
+            previousPerspective = requestedPerspective;
+            transitionElapsed = 0f;
+            activeTransitionDuration = Mathf.Max(0f, transitionDuration);
+            isTransitioning = activeTransitionDuration > 0f;
+
+            SynchronizeLookAngles();
+            if (!isTransitioning)
+            {
+                ApplyTargetPerspectiveCamera();
+            }
+        }
+
+        private void ApplyFirstPersonCamera()
         {
             playerCamera.transform.SetPositionAndRotation(
                 transform.TransformPoint(firstPersonOffset),
                 Quaternion.Euler(pitch, yaw, 0f));
         }
 
-        private void UpdateThirdPersonCamera()
+        private void ApplyThirdPersonCamera()
+        {
+            CalculateThirdPersonPose(out Vector3 position, out Quaternion rotation);
+            playerCamera.transform.SetPositionAndRotation(position, rotation);
+        }
+
+        private void UpdatePerspectiveTransition()
+        {
+            transitionElapsed += Time.deltaTime;
+            float normalizedTime = activeTransitionDuration <= 0f
+                ? 1f
+                : Mathf.Clamp01(transitionElapsed / activeTransitionDuration);
+            float blend = perspectiveTransitionCurve != null
+                ? perspectiveTransitionCurve.Evaluate(normalizedTime)
+                : normalizedTime;
+
+            CalculateTargetPose(out Vector3 targetPosition, out Quaternion targetRotation);
+            playerCamera.transform.SetPositionAndRotation(
+                Vector3.Lerp(transitionStartPosition, targetPosition, blend),
+                Quaternion.Slerp(transitionStartRotation, targetRotation, blend));
+
+            if (normalizedTime < 1f)
+            {
+                return;
+            }
+
+            isTransitioning = false;
+            ApplyTargetPerspectiveCamera();
+        }
+
+        private void CalculateTargetPose(out Vector3 position, out Quaternion rotation)
+        {
+            if (targetPerspective == CameraPerspective.FirstPerson)
+            {
+                position = transform.TransformPoint(firstPersonOffset);
+                rotation = Quaternion.Euler(pitch, yaw, 0f);
+                return;
+            }
+
+            CalculateThirdPersonPose(out position, out rotation);
+        }
+
+        private void CalculateThirdPersonPose(out Vector3 position, out Quaternion rotation)
         {
             Vector3 pivot = transform.position + thirdPersonPivotOffset;
-            Quaternion orbitRotation = Quaternion.Euler(pitch, yaw, 0f);
-            Vector3 direction = orbitRotation * Vector3.back;
+            rotation = Quaternion.Euler(pitch, yaw, 0f);
+            Vector3 direction = rotation * Vector3.back;
             float targetDistance = thirdPersonDistance;
 
             if (Physics.SphereCast(pivot, collisionRadius, direction, out RaycastHit hit,
@@ -127,20 +225,27 @@ namespace NHNHackathon.Characters
 
             currentDistance = Mathf.SmoothDamp(
                 currentDistance, targetDistance, ref distanceVelocity, distanceSmoothTime);
-            Vector3 cameraPosition = pivot + direction * currentDistance;
-            playerCamera.transform.SetPositionAndRotation(cameraPosition, orbitRotation);
+            position = pivot + direction * currentDistance;
         }
 
-        private void SynchronizePerspective()
+        private void ApplyTargetPerspectiveCamera()
         {
-            yaw = perspective == CameraPerspective.FirstPerson
-                ? transform.eulerAngles.y
-                : playerCamera.transform.eulerAngles.y;
+            if (targetPerspective == CameraPerspective.FirstPerson)
+            {
+                ApplyFirstPersonCamera();
+            }
+            else
+            {
+                ApplyThirdPersonCamera();
+            }
+        }
+
+        private void SynchronizeLookAngles()
+        {
+            yaw = playerCamera.transform.eulerAngles.y;
             pitch = NormalizeAngle(playerCamera.transform.eulerAngles.x);
             pitch = Mathf.Clamp(pitch, minimumPitch, maximumPitch);
-            currentDistance = thirdPersonDistance;
             distanceVelocity = 0f;
-            previousPerspective = perspective;
         }
 
         private static float NormalizeAngle(float angle)

@@ -495,29 +495,65 @@ PrefabInstance:
     - target: {fileID: 6281254265163419076, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2036341635}
     - target: {fileID: 6281254265163419076, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
       propertyPath: patrolRoute
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1422616454}
     - target: {fileID: 6281254265163419076, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
       propertyPath: playerDisguise
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1474019358}
     - target: {fileID: 6281254265163419076, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
       propertyPath: gameOverController
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5746303984599742013}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2090663550077517559, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 31690570}
   m_SourcePrefab: {fileID: 100100000, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
 --- !u!4 &31690567 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2083856244382292340, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
   m_PrefabInstance: {fileID: 31690566}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &31690568 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2090663550077517559, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
+  m_PrefabInstance: {fileID: 31690566}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &31690569 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6281254265163419076, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
+  m_PrefabInstance: {fileID: 31690566}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 31690568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cab6d3966326ac048829cb585c6f6a63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Enemy.EnemyController
+--- !u!114 &31690570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 31690568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7105bbd6c77b98a40b687f8462b124b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Enemy.ProgressionPatrolController
+  enemyController: {fileID: 31690569}
+  progressionController: {fileID: 0}
+  defaultPatrolRoute: {fileID: 0}
+  defaultStartMode: 0
+  rules: []
 --- !u!4 &40691635 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 495296073371713988, guid: 26628686116e61a45b72ca5cc4242f8c, type: 3}
@@ -591,13 +627,36 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8247642176173935730, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 55143047}
   m_SourcePrefab: {fileID: 100100000, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
 --- !u!4 &55143045 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 956438839806768873, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
   m_PrefabInstance: {fileID: 55143044}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &55143046 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8247642176173935730, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+  m_PrefabInstance: {fileID: 55143044}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &55143047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 55143046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbe304a0dbf2a4841bf8214cddec8862, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Dance.DanceZoneCameraTrigger
+  enterPerspective: 1
+  exitPerspective: 0
+  transitionDuration: 0.6
 --- !u!1 &59375250
 GameObject:
   m_ObjectHideFlags: 0
@@ -1107,7 +1166,7 @@ PrefabInstance:
     - target: {fileID: 6281254265163419076, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
       propertyPath: patrolRoute
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1779224814}
     - target: {fileID: 6281254265163419076, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
       propertyPath: playerDisguise
       value: 
@@ -1119,13 +1178,49 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2090663550077517559, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 179475247}
   m_SourcePrefab: {fileID: 100100000, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
 --- !u!4 &179475244 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2083856244382292340, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
   m_PrefabInstance: {fileID: 179475243}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &179475245 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2090663550077517559, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
+  m_PrefabInstance: {fileID: 179475243}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &179475246 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6281254265163419076, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
+  m_PrefabInstance: {fileID: 179475243}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 179475245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cab6d3966326ac048829cb585c6f6a63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Enemy.EnemyController
+--- !u!114 &179475247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 179475245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7105bbd6c77b98a40b687f8462b124b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Enemy.ProgressionPatrolController
+  enemyController: {fileID: 179475246}
+  progressionController: {fileID: 0}
+  defaultPatrolRoute: {fileID: 0}
+  defaultStartMode: 0
+  rules: []
 --- !u!4 &195796970 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
@@ -1439,8 +1534,27 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2090663550077517559, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 712840850}
   m_SourcePrefab: {fileID: 100100000, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
+--- !u!1 &246861601 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2090663550077517559, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
+  m_PrefabInstance: {fileID: 246861600}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &246861602 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6281254265163419076, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
+  m_PrefabInstance: {fileID: 246861600}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 246861601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cab6d3966326ac048829cb585c6f6a63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Enemy.EnemyController
 --- !u!1 &253783849
 GameObject:
   m_ObjectHideFlags: 0
@@ -1762,13 +1876,36 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8247642176173935730, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 269042032}
   m_SourcePrefab: {fileID: 100100000, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
 --- !u!4 &269042030 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 956438839806768873, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
   m_PrefabInstance: {fileID: 269042029}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &269042031 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8247642176173935730, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+  m_PrefabInstance: {fileID: 269042029}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &269042032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 269042031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbe304a0dbf2a4841bf8214cddec8862, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Dance.DanceZoneCameraTrigger
+  enterPerspective: 1
+  exitPerspective: 0
+  transitionDuration: 0.6
 --- !u!1001 &282236274
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1871,7 +2008,7 @@ PrefabInstance:
       objectReference: {fileID: 2128450805}
     - target: {fileID: 6675140767211803144, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.2
+      value: 4.3
       objectReference: {fileID: 0}
     - target: {fileID: 6675140767211803144, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1879,7 +2016,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6675140767211803144, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -38.5
+      value: -39
       objectReference: {fileID: 0}
     - target: {fileID: 6675140767211803144, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3981,6 +4118,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2794827371710861970, guid: 53f6c61704bfd404e9def4418875b9af, type: 3}
   m_PrefabInstance: {fileID: 538512988}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &538512990 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4441084204871714944, guid: 53f6c61704bfd404e9def4418875b9af, type: 3}
+  m_PrefabInstance: {fileID: 538512988}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79e121c0f54dc4d4391bd41659189a88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Enemy.EnemyPatrolRoute
 --- !u!1 &552566205
 GameObject:
   m_ObjectHideFlags: 0
@@ -4540,13 +4688,36 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8247642176173935730, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 616795209}
   m_SourcePrefab: {fileID: 100100000, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
 --- !u!4 &616795207 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 956438839806768873, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
   m_PrefabInstance: {fileID: 616795206}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &616795208 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8247642176173935730, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+  m_PrefabInstance: {fileID: 616795206}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &616795209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 616795208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbe304a0dbf2a4841bf8214cddec8862, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Dance.DanceZoneCameraTrigger
+  enterPerspective: 1
+  exitPerspective: 0
+  transitionDuration: 0.6
 --- !u!4 &630633252 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
@@ -4805,6 +4976,23 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2083856244382292340, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
   m_PrefabInstance: {fileID: 246861600}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &712840850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 246861601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7105bbd6c77b98a40b687f8462b124b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Enemy.ProgressionPatrolController
+  enemyController: {fileID: 246861602}
+  progressionController: {fileID: 0}
+  defaultPatrolRoute: {fileID: 1690696115}
+  defaultStartMode: 0
+  rules: []
 --- !u!1001 &715178680
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5315,6 +5503,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8960931904363783016, guid: 58909018d2fe550409805880f0e58e4a, type: 3}
+      propertyPath: successController
+      value: 
+      objectReference: {fileID: 2123371347}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5681,13 +5873,36 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8247642176173935730, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 787506984}
   m_SourcePrefab: {fileID: 100100000, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
 --- !u!4 &787506982 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 956438839806768873, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
   m_PrefabInstance: {fileID: 787506981}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &787506983 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8247642176173935730, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+  m_PrefabInstance: {fileID: 787506981}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &787506984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787506983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbe304a0dbf2a4841bf8214cddec8862, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Dance.DanceZoneCameraTrigger
+  enterPerspective: 1
+  exitPerspective: 0
+  transitionDuration: 0.6
 --- !u!1 &789340164
 GameObject:
   m_ObjectHideFlags: 0
@@ -6727,7 +6942,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8141794772142553693, guid: 652551a41156f7d49bb381e9d9d73b77, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.9
+      value: 9.4
       objectReference: {fileID: 0}
     - target: {fileID: 8141794772142553693, guid: 652551a41156f7d49bb381e9d9d73b77, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6735,7 +6950,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8141794772142553693, guid: 652551a41156f7d49bb381e9d9d73b77, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 13.6
+      value: 11.4
       objectReference: {fileID: 0}
     - target: {fileID: 8141794772142553693, guid: 652551a41156f7d49bb381e9d9d73b77, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7277,13 +7492,36 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8247642176173935730, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 995125018}
   m_SourcePrefab: {fileID: 100100000, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
 --- !u!4 &995125016 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 956438839806768873, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
   m_PrefabInstance: {fileID: 995125015}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &995125017 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8247642176173935730, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+  m_PrefabInstance: {fileID: 995125015}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &995125018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 995125017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbe304a0dbf2a4841bf8214cddec8862, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Dance.DanceZoneCameraTrigger
+  enterPerspective: 1
+  exitPerspective: 0
+  transitionDuration: 0.6
 --- !u!1 &1015089349
 GameObject:
   m_ObjectHideFlags: 0
@@ -8824,13 +9062,49 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2090663550077517559, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1156483145}
   m_SourcePrefab: {fileID: 100100000, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
 --- !u!4 &1156483142 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2083856244382292340, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
   m_PrefabInstance: {fileID: 1156483141}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1156483143 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2090663550077517559, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
+  m_PrefabInstance: {fileID: 1156483141}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1156483144 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6281254265163419076, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
+  m_PrefabInstance: {fileID: 1156483141}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1156483143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cab6d3966326ac048829cb585c6f6a63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Enemy.EnemyController
+--- !u!114 &1156483145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1156483143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7105bbd6c77b98a40b687f8462b124b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Enemy.ProgressionPatrolController
+  enemyController: {fileID: 1156483144}
+  progressionController: {fileID: 0}
+  defaultPatrolRoute: {fileID: 2144620625}
+  defaultStartMode: 0
+  rules: []
 --- !u!1 &1174058845
 GameObject:
   m_ObjectHideFlags: 0
@@ -9184,7 +9458,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8141794772142553693, guid: 652551a41156f7d49bb381e9d9d73b77, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -14.300001
+      value: -16.1
       objectReference: {fileID: 0}
     - target: {fileID: 8141794772142553693, guid: 652551a41156f7d49bb381e9d9d73b77, type: 3}
       propertyPath: m_LocalPosition.y
@@ -9192,7 +9466,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8141794772142553693, guid: 652551a41156f7d49bb381e9d9d73b77, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 48.899998
+      value: 48.8
       objectReference: {fileID: 0}
     - target: {fileID: 8141794772142553693, guid: 652551a41156f7d49bb381e9d9d73b77, type: 3}
       propertyPath: m_LocalRotation.w
@@ -9931,13 +10205,36 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8247642176173935730, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1303169990}
   m_SourcePrefab: {fileID: 100100000, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
 --- !u!4 &1303169988 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 956438839806768873, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
   m_PrefabInstance: {fileID: 1303169987}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1303169989 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8247642176173935730, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+  m_PrefabInstance: {fileID: 1303169987}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1303169990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1303169989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbe304a0dbf2a4841bf8214cddec8862, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Dance.DanceZoneCameraTrigger
+  enterPerspective: 1
+  exitPerspective: 0
+  transitionDuration: 0.6
 --- !u!1 &1306836143
 GameObject:
   m_ObjectHideFlags: 0
@@ -10794,6 +11091,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2073428364753430796, guid: 53f6c61704bfd404e9def4418875b9af, type: 3}
   m_PrefabInstance: {fileID: 1422616448}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1422616454 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4441084204871714944, guid: 53f6c61704bfd404e9def4418875b9af, type: 3}
+  m_PrefabInstance: {fileID: 1422616448}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79e121c0f54dc4d4391bd41659189a88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Enemy.EnemyPatrolRoute
 --- !u!1 &1455057576
 GameObject:
   m_ObjectHideFlags: 0
@@ -12667,7 +12975,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2090663550077517559, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6281254265163419076, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
       propertyPath: player
@@ -12676,7 +12984,7 @@ PrefabInstance:
     - target: {fileID: 6281254265163419076, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
       propertyPath: patrolRoute
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 538512990}
     - target: {fileID: 6281254265163419076, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
       propertyPath: playerDisguise
       value: 
@@ -12688,13 +12996,49 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2090663550077517559, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1605590884}
   m_SourcePrefab: {fileID: 100100000, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
 --- !u!4 &1605590881 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2083856244382292340, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
   m_PrefabInstance: {fileID: 1605590880}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1605590882 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2090663550077517559, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
+  m_PrefabInstance: {fileID: 1605590880}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1605590883 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6281254265163419076, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
+  m_PrefabInstance: {fileID: 1605590880}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1605590882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cab6d3966326ac048829cb585c6f6a63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Enemy.EnemyController
+--- !u!114 &1605590884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1605590882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7105bbd6c77b98a40b687f8462b124b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Enemy.ProgressionPatrolController
+  enemyController: {fileID: 1605590883}
+  progressionController: {fileID: 0}
+  defaultPatrolRoute: {fileID: 0}
+  defaultStartMode: 0
+  rules: []
 --- !u!1001 &1606922140
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13967,13 +14311,36 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8247642176173935730, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1713710392}
   m_SourcePrefab: {fileID: 100100000, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
 --- !u!4 &1713710390 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 956438839806768873, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
   m_PrefabInstance: {fileID: 1713710389}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1713710391 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8247642176173935730, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+  m_PrefabInstance: {fileID: 1713710389}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1713710392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1713710391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbe304a0dbf2a4841bf8214cddec8862, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Dance.DanceZoneCameraTrigger
+  enterPerspective: 1
+  exitPerspective: 0
+  transitionDuration: 0.6
 --- !u!1 &1722182297
 GameObject:
   m_ObjectHideFlags: 0
@@ -14263,7 +14630,7 @@ PrefabInstance:
     - target: {fileID: 6281254265163419076, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
       propertyPath: patrolRoute
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2049994051}
     - target: {fileID: 6281254265163419076, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
       propertyPath: playerDisguise
       value: 
@@ -14275,13 +14642,49 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2090663550077517559, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1738070043}
   m_SourcePrefab: {fileID: 100100000, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
 --- !u!4 &1738070040 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2083856244382292340, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
   m_PrefabInstance: {fileID: 1738070039}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1738070041 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2090663550077517559, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
+  m_PrefabInstance: {fileID: 1738070039}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1738070042 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6281254265163419076, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
+  m_PrefabInstance: {fileID: 1738070039}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1738070041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cab6d3966326ac048829cb585c6f6a63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Enemy.EnemyController
+--- !u!114 &1738070043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1738070041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7105bbd6c77b98a40b687f8462b124b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Enemy.ProgressionPatrolController
+  enemyController: {fileID: 1738070042}
+  progressionController: {fileID: 0}
+  defaultPatrolRoute: {fileID: 0}
+  defaultStartMode: 0
+  rules: []
 --- !u!4 &1752928444 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
@@ -14542,6 +14945,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2794827371710861970, guid: 53f6c61704bfd404e9def4418875b9af, type: 3}
   m_PrefabInstance: {fileID: 1779224812}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1779224814 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4441084204871714944, guid: 53f6c61704bfd404e9def4418875b9af, type: 3}
+  m_PrefabInstance: {fileID: 1779224812}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79e121c0f54dc4d4391bd41659189a88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Enemy.EnemyPatrolRoute
 --- !u!1 &1803342733
 GameObject:
   m_ObjectHideFlags: 0
@@ -15044,13 +15458,36 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8247642176173935730, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1876566973}
   m_SourcePrefab: {fileID: 100100000, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
 --- !u!4 &1876566971 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 956438839806768873, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
   m_PrefabInstance: {fileID: 1876566970}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1876566972 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8247642176173935730, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+  m_PrefabInstance: {fileID: 1876566970}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1876566973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1876566972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbe304a0dbf2a4841bf8214cddec8862, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Dance.DanceZoneCameraTrigger
+  enterPerspective: 1
+  exitPerspective: 0
+  transitionDuration: 0.6
 --- !u!1001 &1879286532
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16149,6 +16586,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2794827371710861970, guid: 53f6c61704bfd404e9def4418875b9af, type: 3}
   m_PrefabInstance: {fileID: 2049994049}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2049994051 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4441084204871714944, guid: 53f6c61704bfd404e9def4418875b9af, type: 3}
+  m_PrefabInstance: {fileID: 2049994049}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79e121c0f54dc4d4391bd41659189a88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Enemy.EnemyPatrolRoute
 --- !u!1001 &2050645371
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16889,6 +17337,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2118989835}
   m_CullTransparentMesh: 1
+--- !u!114 &2123371347 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3437292887509462183, guid: 994542da36054fa49a55c606836f20c8, type: 3}
+  m_PrefabInstance: {fileID: 9097693680386468365}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f75c3beb0fcf7ed4a9949f0330cff597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.ExitSystem.GameSuccessController
 --- !u!114 &2128450805 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5152183085720589010, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}

@@ -34,12 +34,17 @@ namespace NHNHackathon.ExitSystem
         private bool hasBeenUnlocked;
 
         public bool IsOpen { get; private set; }
+        public bool IsUnlocked => hasBeenUnlocked || requiredKeys.Count == 0;
         public string InteractionPrompt => IsOpen
             ? "\uBB38 \uB2EB\uAE30"
             : "\uBB38 \uC5F4\uAE30";
 
         private void Awake()
         {
+            if (doorPanel == null)
+            {
+                doorPanel = transform;
+            }
             closedRotation = doorPanel.localRotation;
             openRotation = closedRotation * Quaternion.Euler(0f, openAngle, 0f);
         }
@@ -68,13 +73,11 @@ namespace NHNHackathon.ExitSystem
 
                 if (consumeKeysOnUnlock && requiredKeys.Count > 0)
                 {
-                    playerInventory.TryConsume(requiredKeys);
-                    foreach (ItemDefinition key in requiredKeys)
+                    if (!playerInventory.TryConsume(requiredKeys))
                     {
-                        if (key != null)
-                        {
-                            //interactor.KeyInventory?.TryRemove(key.ItemId);
-                        }
+                        interactor.ShowTemporaryMessage(
+                            BuildLockedMessage(), lockedMessageDuration);
+                        return;
                     }
                 }
                 hasBeenUnlocked = true;
@@ -125,6 +128,11 @@ namespace NHNHackathon.ExitSystem
 
         private void OnValidate()
         {
+            if (doorPanel == null)
+            {
+                Debug.LogWarning($"{name}: Door Panel is not assigned.", this);
+            }
+
             foreach (ItemDefinition key in requiredKeys)
             {
                 if (key != null && key.Type != ItemType.Key)

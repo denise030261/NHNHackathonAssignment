@@ -22,7 +22,7 @@ namespace NHNHackathon.ExitSystem
                 return;
             }
 
-            //successController?.TriggerSuccess();
+            successController?.TriggerSuccess();
         }
     }
 }

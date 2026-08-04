@@ -63,8 +63,26 @@ namespace NHNHackathon.Enemy
         private MaterialPropertyBlock propertyBlock;
         private bool hasLostSight;
         private float lostSightStartedAt;
+        private EnemyPatrolRoute pendingPatrolRoute;
+        private PatrolRouteStartMode pendingPatrolStartMode;
+        private bool hasPendingPatrolRoute;
 
         public EnemyState CurrentState { get; private set; }
+        public EnemyPatrolRoute PatrolRoute => patrolRoute;
+
+        public void SetPatrolRoute(
+            EnemyPatrolRoute route, PatrolRouteStartMode startMode = PatrolRouteStartMode.NearestPoint)
+        {
+            if (CurrentState != EnemyState.Roaming)
+            {
+                pendingPatrolRoute = route;
+                pendingPatrolStartMode = startMode;
+                hasPendingPatrolRoute = true;
+                return;
+            }
+
+            ApplyPatrolRoute(route, startMode);
+        }
 
         private void Awake()
         {
@@ -328,6 +346,11 @@ namespace NHNHackathon.Enemy
             switch (newState)
             {
                 case EnemyState.Roaming:
+                    if (hasPendingPatrolRoute)
+                    {
+                        ApplyPatrolRoute(pendingPatrolRoute, pendingPatrolStartMode);
+                        hasPendingPatrolRoute = false;
+                    }
                     agent.speed = patrolSpeed;
                     investigatedLight = null;
                     hasPatrolDestination = false;
@@ -351,6 +374,31 @@ namespace NHNHackathon.Enemy
                     suspicionEndsAt = Time.time + suspicionDuration;
                     hasLostSight = false;
                     break;
+            }
+        }
+
+        private void ApplyPatrolRoute(EnemyPatrolRoute route, PatrolRouteStartMode startMode)
+        {
+            patrolRoute = route;
+            if (route == null || route.Count == 0)
+            {
+                patrolIndex = 0;
+            }
+            else
+            {
+                patrolIndex = startMode switch
+                {
+                    PatrolRouteStartMode.FirstPoint => 0,
+                    PatrolRouteStartMode.KeepCurrentIndex => patrolIndex % route.Count,
+                    _ => route.FindNearestPointIndex(transform.position)
+                };
+            }
+
+            hasPatrolDestination = false;
+            waitUntil = Time.time;
+            if (agent != null && agent.isOnNavMesh)
+            {
+                agent.ResetPath();
             }
         }
 
