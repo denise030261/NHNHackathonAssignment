@@ -1,5 +1,6 @@
 using NHNHackathon.Characters;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace NHNHackathon.ExitSystem
 {
@@ -18,9 +19,15 @@ namespace NHNHackathon.ExitSystem
         [SerializeField, Tooltip("When enabled, the automatic slam occurs only once.")]
         private bool oneShot = true;
 
+        [Header("Events")]
+        [SerializeField, Tooltip("Invoked when the player fully passes through and the door slams.")]
+        private UnityEvent onSlammed = new();
+
         private Transform trackedPlayer;
         private float entrySide;
         private bool hasSlammed;
+
+        public UnityEvent OnSlammed => onSlammed;
 
         private void Awake()
         {
@@ -65,6 +72,7 @@ namespace NHNHackathon.ExitSystem
             if (door.TrySlamAndSeal(slamDuration))
             {
                 hasSlammed = true;
+                onSlammed?.Invoke();
                 // TODO(Audio): SFX 소스가 준비되면 문 쾅 닫힘 효과음을 이 시점에 재생한다.
                 // slamAudioSource.PlayOneShot(slamAudioClip);
             }

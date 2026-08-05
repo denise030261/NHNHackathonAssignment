@@ -55,7 +55,9 @@ namespace NHNHackathon.Enemy
                 return;
             }
 
-            EnemyPatrolRoute resolvedRoute = defaultPatrolRoute;
+            EnemyPatrolRoute resolvedRoute = defaultPatrolRoute != null
+                ? defaultPatrolRoute
+                : enemyController.PatrolRoute;
             PatrolRouteStartMode resolvedStartMode = defaultStartMode;
             foreach (ProgressionPatrolRule rule in rules)
             {
@@ -66,7 +68,8 @@ namespace NHNHackathon.Enemy
                 }
             }
 
-            if (resolvedRoute == lastRoute && resolvedStartMode == lastStartMode)
+            if (resolvedRoute == null
+                || resolvedRoute == lastRoute && resolvedStartMode == lastStartMode)
             {
                 return;
             }
