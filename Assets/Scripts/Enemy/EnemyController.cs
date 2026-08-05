@@ -16,7 +16,6 @@ namespace NHNHackathon.Enemy
         [SerializeField] private PlayerDisguiseState playerDisguise;
         [SerializeField] private EnemyPatrolRoute patrolRoute;
         [SerializeField] private GameOverController gameOverController;
-        [SerializeField] private Renderer enemyRenderer;
 
         [Header("Patrol")]
         [SerializeField, Min(0f)] private float patrolSpeed = 2f;
@@ -40,10 +39,6 @@ namespace NHNHackathon.Enemy
         [Header("Suspicion")]
         [SerializeField, Min(0f)] private float suspicionDuration = 3f;
 
-        [Header("Attack")]
-        [SerializeField, Min(0f)] private float attackDistance = 1.5f;
-        [SerializeField, Min(0f)] private float maximumAttackHeightDifference = 1f;
-
         [Header("Performance")]
         [SerializeField, Min(0.02f)] private float perceptionInterval = 0.1f;
 
@@ -60,7 +55,6 @@ namespace NHNHackathon.Enemy
         private LightStimulusSource investigatedLight;
         private Vector3 lastKnownLightPosition;
         private Vector3 lastKnownPlayerPosition;
-        private MaterialPropertyBlock propertyBlock;
         private bool hasLostSight;
         private float lostSightStartedAt;
         private EnemyPatrolRoute pendingPatrolRoute;
@@ -88,7 +82,6 @@ namespace NHNHackathon.Enemy
         {
             agent = GetComponent<NavMeshAgent>();
             perception = GetComponent<EnemyPerception>();
-            propertyBlock = new MaterialPropertyBlock();
         }
 
         private void Start()
@@ -159,11 +152,6 @@ namespace NHNHackathon.Enemy
                 return;
             }
 
-            if (TryAttackPlayer())
-            {
-                return;
-            }
-
             if (perception.CanSeeTarget(player))
             {
                 ChangeState(EnemyState.Chasing);
@@ -172,11 +160,6 @@ namespace NHNHackathon.Enemy
 
         private void EvaluatePlayerWhileChasing(bool isDisguised, float distance)
         {
-            if (TryAttackPlayer())
-            {
-                return;
-            }
-
             if (isDisguised && distance >= minimumDisguiseDistance)
             {
                 ChangeState(EnemyState.Suspicious);
@@ -210,11 +193,6 @@ namespace NHNHackathon.Enemy
 
         private void EvaluatePlayerWhileSuspicious(bool isDisguised, float distance)
         {
-            if (TryAttackPlayer())
-            {
-                return;
-            }
-
             if (isDisguised && distance >= minimumDisguiseDistance)
             {
                 return;
@@ -226,15 +204,22 @@ namespace NHNHackathon.Enemy
             }
         }
 
-        private bool TryAttackPlayer()
+        public void TryCapturePlayer(Transform candidate)
         {
-            if (!perception.HasClearAttackPath(player, attackDistance, maximumAttackHeightDifference))
+            bool isPlayerTransform = candidate != null && player != null
+                && (candidate == player || candidate.IsChildOf(player) || player.IsChildOf(candidate));
+            if (!isPlayerTransform || CurrentState == EnemyState.Attacking)
             {
-                return false;
+                return;
             }
 
-            Attack();
-            return true;
+            bool isDisguised = playerDisguise != null && playerDisguise.IsDisguised;
+            bool disguiseIsTrusted = isDisguised
+                && CurrentState is EnemyState.Roaming or EnemyState.InvestigatingLight;
+            if (!disguiseIsTrusted)
+            {
+                Attack();
+            }
         }
 
         private void UpdateRoaming()
@@ -460,15 +445,7 @@ namespace NHNHackathon.Enemy
         private void Attack()
         {
             ChangeState(EnemyState.Attacking);
-            if (enemyRenderer != null)
-            {
-                enemyRenderer.GetPropertyBlock(propertyBlock);
-                propertyBlock.SetColor("_BaseColor", Color.red);
-                propertyBlock.SetColor("_Color", Color.red);
-                enemyRenderer.SetPropertyBlock(propertyBlock);
-            }
-
-            gameOverController?.TriggerGameOver();
+            gameOverController?.TriggerGameOver(this);
         }
     }
 }
