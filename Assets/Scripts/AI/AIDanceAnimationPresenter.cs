@@ -27,6 +27,8 @@ namespace NHNHackathon.AI
         [Header("Dance Animation Mapping")]
         [SerializeField, Tooltip("Maps each editable Dance ID to an Animator state.")]
         private List<DanceAnimationMapping> danceAnimations = new();
+        [SerializeField, Min(0f), Tooltip("Seconds used to blend from the current dance into the next dance.")]
+        private float transitionDuration = 0.2f;
         private DanceSequenceController sequenceController;
         private int currentDanceId = -1;
 
@@ -68,8 +70,8 @@ namespace NHNHackathon.AI
                 {
                     currentDanceId = dance.Id;
                     animator.speed = mapping.PlaybackSpeed;
-                    animator.Play(mapping.AnimationClip.name, 0, 0f);
-                    animator.Update(0f);
+                    animator.CrossFadeInFixedTime(
+                        mapping.AnimationClip.name, transitionDuration, 0, 0f);
                     return;
                 }
             }

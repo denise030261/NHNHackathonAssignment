@@ -13,21 +13,24 @@ namespace NHNHackathon.EditorTools
     {
         private const string PrefabPath = "Assets/Prefabs/Characters/DancingAI.prefab";
         private const string ModelPath = "Assets/Art/Character/Manny2_Anim.fbx";
-        private const string ControllerFolder = "Assets/Animations/DancingAI";
-        private const string ControllerPath = ControllerFolder + "/DancingAI.controller";
+        private const string ControllerPath = "Assets/Art/Character/DancingAI.controller";
+        private static readonly string[] AnimationPaths =
+        {
+            "Assets/Art/Character/Dance1.anim",
+            "Assets/Art/Character/Dance2.anim",
+            "Assets/Art/Character/Dance3.anim",
+            "Assets/Art/Character/Dance4.anim"
+        };
 
         [MenuItem("Tools/NHN Hackathon/Characters/Apply Dancing AI Model")]
         public static void Build()
         {
-            ConfigureAnimationClips();
             AnimationClip[] clips = LoadAnimationClips();
             if (clips.Length == 0)
             {
                 throw new System.InvalidOperationException("Manny2_Anim.fbx contains no animation clips.");
             }
 
-            EnsureFolder("Assets", "Animations");
-            EnsureFolder("Assets/Animations", "DancingAI");
             AnimatorController controller = BuildController(clips);
             GameObject root = PrefabUtility.LoadPrefabContents(PrefabPath);
             try
@@ -73,56 +76,30 @@ namespace NHNHackathon.EditorTools
                 + string.Join(", ", clips.Select(clip => clip.name)));
         }
 
-        private static void ConfigureAnimationClips()
-        {
-            ModelImporter importer = AssetImporter.GetAtPath(ModelPath) as ModelImporter;
-            ModelImporterClipAnimation[] clips =
-            {
-                CreateClip("Dance_01", 0f, 69f),
-                CreateClip("Dance_02", 70f, 139f),
-                CreateClip("Dance_03", 140f, 209f),
-                CreateClip("Dance_04", 210f, 279f)
-            };
-            importer.clipAnimations = clips;
-            importer.SaveAndReimport();
-        }
-
-        private static ModelImporterClipAnimation CreateClip(
-            string name, float firstFrame, float lastFrame)
-        {
-            return new ModelImporterClipAnimation
-            {
-                name = name,
-                firstFrame = firstFrame,
-                lastFrame = lastFrame,
-                loopTime = true,
-                loopPose = true,
-                lockRootRotation = true,
-                lockRootHeightY = true,
-                lockRootPositionXZ = true,
-                keepOriginalOrientation = true,
-                keepOriginalPositionY = true,
-                keepOriginalPositionXZ = true
-            };
-        }
-
-        private static AnimationClip[] LoadAnimationClips() => AssetDatabase.LoadAllAssetsAtPath(ModelPath)
-            .OfType<AnimationClip>()
-            .Where(clip => !clip.name.StartsWith("__preview__"))
-            .OrderBy(clip => clip.name)
+        private static AnimationClip[] LoadAnimationClips() => AnimationPaths
+            .Select(AssetDatabase.LoadAssetAtPath<AnimationClip>)
+            .Where(clip => clip != null)
             .ToArray();
 
         private static AnimatorController BuildController(AnimationClip[] clips)
         {
-            AssetDatabase.DeleteAsset(ControllerPath);
-            AnimatorController controller = AnimatorController.CreateAnimatorControllerAtPath(ControllerPath);
+            AnimatorController controller = AssetDatabase.LoadAssetAtPath<AnimatorController>(ControllerPath);
+            if (controller == null)
+            {
+                controller = AnimatorController.CreateAnimatorControllerAtPath(ControllerPath);
+            }
             AnimatorStateMachine machine = controller.layers[0].stateMachine;
+            foreach (ChildAnimatorState child in machine.states)
+            {
+                machine.RemoveState(child.state);
+            }
             foreach (AnimationClip clip in clips)
             {
                 AnimatorState state = machine.AddState(clip.name);
                 state.motion = clip;
                 if (machine.defaultState == null) machine.defaultState = state;
             }
+            EditorUtility.SetDirty(controller);
             return controller;
         }
 
@@ -140,6 +117,7 @@ namespace NHNHackathon.EditorTools
                 mapping.FindPropertyRelative("animationClip").objectReferenceValue = clips[index];
                 mapping.FindPropertyRelative("playbackSpeed").floatValue = 1f;
             }
+            values.FindProperty("transitionDuration").floatValue = 0.2f;
             values.ApplyModifiedPropertiesWithoutUndo();
         }
 
@@ -157,11 +135,6 @@ namespace NHNHackathon.EditorTools
             model.transform.position += Vector3.up * (model.transform.position.y - scaledBounds.min.y);
         }
 
-        private static void EnsureFolder(string parent, string name)
-        {
-            string path = parent + "/" + name;
-            if (!AssetDatabase.IsValidFolder(path)) AssetDatabase.CreateFolder(parent, name);
-        }
     }
 }
 #endif

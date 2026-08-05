@@ -146,7 +146,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7259779536591664207}
-  - {fileID: 2187689607298659291}
+  - {fileID: 5185976437727259295}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3334593458237057569
@@ -176,21 +176,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 310b98093438cf24fbed57d23efc054c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.AI.AIDanceAnimationPresenter
-  animator: {fileID: 7270585564856697386}
+  animator: {fileID: 7576929181476908231}
   danceAnimations:
   - danceId: 1
-    animationClip: {fileID: 3060610079319413300, guid: 92c302853c39bcf45bc59f25170675f9, type: 3}
+    animationClip: {fileID: 7400000, guid: 3f50f1ccfc11a8f45939717c044aee9e, type: 2}
     playbackSpeed: 1
   - danceId: 2
-    animationClip: {fileID: -6004787696405322892, guid: 92c302853c39bcf45bc59f25170675f9, type: 3}
+    animationClip: {fileID: 7400000, guid: 9436760ec3824c84d8f3de4d4bc6341b, type: 2}
     playbackSpeed: 1
   - danceId: 3
-    animationClip: {fileID: -5880667880897408871, guid: 92c302853c39bcf45bc59f25170675f9, type: 3}
+    animationClip: {fileID: 7400000, guid: 8e5ab71918e0d0342b7b8717901e0bf1, type: 2}
     playbackSpeed: 1
   - danceId: 4
-    animationClip: {fileID: -8025109807753351146, guid: 92c302853c39bcf45bc59f25170675f9, type: 3}
+    animationClip: {fileID: 7400000, guid: 981911c3633edff44825dc3f1cc24b8b, type: 2}
     playbackSpeed: 1
---- !u!1001 &1861822169624138800
+  transitionDuration: 0.2
+--- !u!1001 &4644041804629020020
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -260,24 +261,29 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 92c302853c39bcf45bc59f25170675f9, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7270585564856697386}
+      addedObject: {fileID: 7576929181476908231}
   m_SourcePrefab: {fileID: 100100000, guid: 92c302853c39bcf45bc59f25170675f9, type: 3}
---- !u!1 &1519943674202024289 stripped
+--- !u!4 &5185976437727259295 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 92c302853c39bcf45bc59f25170675f9, type: 3}
+  m_PrefabInstance: {fileID: 4644041804629020020}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5526931297323659301 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 92c302853c39bcf45bc59f25170675f9, type: 3}
-  m_PrefabInstance: {fileID: 1861822169624138800}
+  m_PrefabInstance: {fileID: 4644041804629020020}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &7270585564856697386
+--- !u!95 &7576929181476908231
 Animator:
   serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1519943674202024289}
+  m_GameObject: {fileID: 5526931297323659301}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: eb7654cbb6a3b5f4da364b0a4ddac5bf, type: 2}
+  m_Controller: {fileID: 9100000, guid: 53d5f06fe8c35a84a85f98fd82bf6e7d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -289,8 +295,3 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!4 &2187689607298659291 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 92c302853c39bcf45bc59f25170675f9, type: 3}
-  m_PrefabInstance: {fileID: 1861822169624138800}
-  m_PrefabAsset: {fileID: 0}
