@@ -32,8 +32,11 @@ namespace NHNHackathon.ExitSystem
         private Quaternion closedRotation;
         private Quaternion openRotation;
         private bool hasBeenUnlocked;
+        private bool isPermanentlySealed;
 
         public bool IsOpen { get; private set; }
+        public bool IsAnimating => isAnimating;
+        public bool IsPermanentlySealed => isPermanentlySealed;
         public bool IsUnlocked => hasBeenUnlocked || requiredKeys.Count == 0;
         public string InteractionPrompt => IsOpen
             ? "\uBB38 \uB2EB\uAE30"
@@ -51,7 +54,7 @@ namespace NHNHackathon.ExitSystem
 
         public bool CanInteract(PlayerInteractor interactor)
         {
-            return !isAnimating && interactor != null;
+            return !isPermanentlySealed && !isAnimating && interactor != null;
         }
 
         public void Interact(PlayerInteractor interactor)
@@ -84,7 +87,29 @@ namespace NHNHackathon.ExitSystem
                 GameProgressionController.Instance?.TryComplete(unlockedCondition);
             }
 
-            StartCoroutine(AnimateDoor(!IsOpen));
+            StartCoroutine(AnimateDoor(!IsOpen, openDuration));
+        }
+
+        public bool TryClose(float duration)
+        {
+            if (!IsOpen || isAnimating)
+            {
+                return false;
+            }
+
+            StartCoroutine(AnimateDoor(false, Mathf.Max(0.01f, duration)));
+            return true;
+        }
+
+        public bool TrySlamAndSeal(float duration)
+        {
+            if (!TryClose(duration))
+            {
+                return false;
+            }
+
+            isPermanentlySealed = true;
+            return true;
         }
 
         private bool HasRequiredKeys()
@@ -143,7 +168,7 @@ namespace NHNHackathon.ExitSystem
             }
         }
 
-        private IEnumerator AnimateDoor(bool opening)
+        private IEnumerator AnimateDoor(bool opening, float duration)
         {
             isAnimating = true;
             if (!opening)
@@ -155,10 +180,10 @@ namespace NHNHackathon.ExitSystem
             Quaternion targetRotation = opening ? openRotation : closedRotation;
             float elapsed = 0f;
 
-            while (elapsed < openDuration)
+            while (elapsed < duration)
             {
                 elapsed += Time.deltaTime;
-                float progress = Mathf.SmoothStep(0f, 1f, elapsed / openDuration);
+                float progress = Mathf.SmoothStep(0f, 1f, elapsed / duration);
                 doorPanel.localRotation = Quaternion.Slerp(startRotation, targetRotation, progress);
                 yield return null;
             }
@@ -166,6 +191,12 @@ namespace NHNHackathon.ExitSystem
             doorPanel.localRotation = targetRotation;
             IsOpen = opening;
             isAnimating = false;
+
+            if (!opening)
+            {
+                // TODO(Audio): 문 닫힘 SFX 소스가 준비되면 여기서 쾅 닫히는 효과음을 재생한다.
+                // slamAudioSource.PlayOneShot(slamAudioClip);
+            }
         }
     }
 }
