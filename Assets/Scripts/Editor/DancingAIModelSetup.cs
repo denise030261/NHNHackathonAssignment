@@ -19,7 +19,7 @@ namespace NHNHackathon.EditorTools
         [MenuItem("Tools/NHN Hackathon/Characters/Apply Dancing AI Model")]
         public static void Build()
         {
-            ConfigureAnimationLoops();
+            ConfigureAnimationClips();
             AnimationClip[] clips = LoadAnimationClips();
             if (clips.Length == 0)
             {
@@ -54,9 +54,9 @@ namespace NHNHackathon.EditorTools
 
                 SkinnedMeshRenderer renderer = model.GetComponentInChildren<SkinnedMeshRenderer>(true);
                 DanceColorVisualizer color = root.GetComponent<DanceColorVisualizer>();
-                SerializedObject colorValues = new(color);
-                colorValues.FindProperty("targetRenderer").objectReferenceValue = renderer;
-                colorValues.ApplyModifiedPropertiesWithoutUndo();
+                AIDanceColorPresenter colorPresenter = root.GetComponent<AIDanceColorPresenter>();
+                if (colorPresenter != null) Object.DestroyImmediate(colorPresenter);
+                if (color != null) Object.DestroyImmediate(color);
 
                 AIDanceAnimationPresenter presenter = root.GetComponent<AIDanceAnimationPresenter>();
                 if (presenter == null) presenter = root.AddComponent<AIDanceAnimationPresenter>();
@@ -73,18 +73,43 @@ namespace NHNHackathon.EditorTools
                 + string.Join(", ", clips.Select(clip => clip.name)));
         }
 
-        private static void ConfigureAnimationLoops()
+        private static void ConfigureAnimationClips()
         {
             ModelImporter importer = AssetImporter.GetAtPath(ModelPath) as ModelImporter;
-            ModelImporterClipAnimation[] clips = importer.defaultClipAnimations;
-            foreach (ModelImporterClipAnimation clip in clips) clip.loopTime = true;
+            ModelImporterClipAnimation[] clips =
+            {
+                CreateClip("Dance_01", 0f, 69f),
+                CreateClip("Dance_02", 70f, 139f),
+                CreateClip("Dance_03", 140f, 209f),
+                CreateClip("Dance_04", 210f, 279f)
+            };
             importer.clipAnimations = clips;
             importer.SaveAndReimport();
+        }
+
+        private static ModelImporterClipAnimation CreateClip(
+            string name, float firstFrame, float lastFrame)
+        {
+            return new ModelImporterClipAnimation
+            {
+                name = name,
+                firstFrame = firstFrame,
+                lastFrame = lastFrame,
+                loopTime = true,
+                loopPose = true,
+                lockRootRotation = true,
+                lockRootHeightY = true,
+                lockRootPositionXZ = true,
+                keepOriginalOrientation = true,
+                keepOriginalPositionY = true,
+                keepOriginalPositionXZ = true
+            };
         }
 
         private static AnimationClip[] LoadAnimationClips() => AssetDatabase.LoadAllAssetsAtPath(ModelPath)
             .OfType<AnimationClip>()
             .Where(clip => !clip.name.StartsWith("__preview__"))
+            .OrderBy(clip => clip.name)
             .ToArray();
 
         private static AnimatorController BuildController(AnimationClip[] clips)
@@ -107,13 +132,13 @@ namespace NHNHackathon.EditorTools
             SerializedObject values = new(presenter);
             values.FindProperty("animator").objectReferenceValue = animator;
             SerializedProperty mappings = values.FindProperty("danceAnimations");
-            mappings.arraySize = 6;
+            mappings.arraySize = 4;
             for (int index = 0; index < mappings.arraySize; index++)
             {
                 SerializedProperty mapping = mappings.GetArrayElementAtIndex(index);
                 mapping.FindPropertyRelative("danceId").intValue = index + 1;
-                mapping.FindPropertyRelative("animatorStateName").stringValue =
-                    clips[index % clips.Length].name;
+                mapping.FindPropertyRelative("animationClip").objectReferenceValue = clips[index];
+                mapping.FindPropertyRelative("playbackSpeed").floatValue = 1f;
             }
             values.ApplyModifiedPropertiesWithoutUndo();
         }

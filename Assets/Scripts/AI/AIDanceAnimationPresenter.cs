@@ -9,10 +9,12 @@ namespace NHNHackathon.AI
     public sealed class DanceAnimationMapping
     {
         [SerializeField] private int danceId = 1;
-        [SerializeField] private string animatorStateName;
+        [SerializeField] private AnimationClip animationClip;
+        [SerializeField, Min(0.01f)] private float playbackSpeed = 1f;
 
         public int DanceId => danceId;
-        public string AnimatorStateName => animatorStateName;
+        public AnimationClip AnimationClip => animationClip;
+        public float PlaybackSpeed => playbackSpeed;
     }
 
     [DisallowMultipleComponent]
@@ -25,9 +27,8 @@ namespace NHNHackathon.AI
         [Header("Dance Animation Mapping")]
         [SerializeField, Tooltip("Maps each editable Dance ID to an Animator state.")]
         private List<DanceAnimationMapping> danceAnimations = new();
-        [SerializeField, Min(0f)] private float transitionDuration = 0.08f;
-
         private DanceSequenceController sequenceController;
+        private int currentDanceId = -1;
 
         private void Awake()
         {
@@ -50,11 +51,12 @@ namespace NHNHackathon.AI
             {
                 sequenceController.DanceStepChanged -= HandleDanceStepChanged;
             }
+            currentDanceId = -1;
         }
 
         private void HandleDanceStepChanged(DanceDefinition dance, int stepIndex, float beatTime)
         {
-            if (animator == null || dance == null)
+            if (animator == null || dance == null || dance.Id == currentDanceId)
             {
                 return;
             }
@@ -62,10 +64,12 @@ namespace NHNHackathon.AI
             foreach (DanceAnimationMapping mapping in danceAnimations)
             {
                 if (mapping != null && mapping.DanceId == dance.Id
-                    && !string.IsNullOrWhiteSpace(mapping.AnimatorStateName))
+                    && mapping.AnimationClip != null)
                 {
-                    animator.CrossFadeInFixedTime(
-                        mapping.AnimatorStateName, transitionDuration, 0, 0f);
+                    currentDanceId = dance.Id;
+                    animator.speed = mapping.PlaybackSpeed;
+                    animator.Play(mapping.AnimationClip.name, 0, 0f);
+                    animator.Update(0f);
                     return;
                 }
             }
