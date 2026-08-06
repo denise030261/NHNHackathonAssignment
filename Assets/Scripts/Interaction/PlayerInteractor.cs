@@ -81,7 +81,7 @@ namespace NHNHackathon.Interaction
 
             foreach (MonoBehaviour behaviour in hit.collider.GetComponentsInParent<MonoBehaviour>())
             {
-                if (behaviour is IInteractable interactable)
+                if (behaviour is IInteractable interactable && interactable.CanInteract(this))
                 {
                     return interactable;
                 }

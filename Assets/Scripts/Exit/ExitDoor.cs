@@ -20,6 +20,8 @@ namespace NHNHackathon.ExitSystem
         private ProgressionCondition unlockedCondition;
 
         [Header("Door")]
+        [SerializeField, Tooltip("Disable direct E interaction when another controller manages this door.")]
+        private bool directInteractionEnabled = true;
         [SerializeField] private Transform doorPanel;
         [SerializeField] private Collider blockingCollider;
         [SerializeField] private float openAngle = 90f;
@@ -54,7 +56,8 @@ namespace NHNHackathon.ExitSystem
 
         public bool CanInteract(PlayerInteractor interactor)
         {
-            return !isPermanentlySealed && !isAnimating && interactor != null;
+            return directInteractionEnabled && !isPermanentlySealed
+                && !isAnimating && interactor != null;
         }
 
         public void Interact(PlayerInteractor interactor)
@@ -98,6 +101,19 @@ namespace NHNHackathon.ExitSystem
             }
 
             StartCoroutine(AnimateDoor(false, Mathf.Max(0.01f, duration)));
+            return true;
+        }
+
+        public bool TryOpen(float duration)
+        {
+            if (IsOpen || isAnimating || isPermanentlySealed)
+            {
+                return false;
+            }
+
+            hasBeenUnlocked = true;
+            GameProgressionController.Instance?.TryComplete(unlockedCondition);
+            StartCoroutine(AnimateDoor(true, Mathf.Max(0.01f, duration)));
             return true;
         }
 
