@@ -16,6 +16,11 @@ namespace NHNHackathon.AI
         private List<DanceAnimationMapping> danceAnimations = new();
         [SerializeField, Min(0f), Tooltip("Seconds used to blend from the current dance into the next dance.")]
         private float transitionDuration = 0.2f;
+
+        [Header("Dance SFX")]
+        [SerializeField] private AudioSource danceSfxSource;
+        [SerializeField] private AudioClip danceSfx;
+        [SerializeField, Range(0f, 1f)] private float danceSfxVolumeScale = 1f;
         private DanceSequenceController sequenceController;
         private int currentDanceId = -1;
 
@@ -45,6 +50,11 @@ namespace NHNHackathon.AI
 
         private void HandleDanceStepChanged(DanceDefinition dance, int stepIndex, float beatTime)
         {
+            if (danceSfxSource != null && danceSfx != null)
+            {
+                danceSfxSource.PlayOneShot(danceSfx, danceSfxVolumeScale);
+            }
+
             if (animator == null || dance == null || dance.Id == currentDanceId)
             {
                 return;

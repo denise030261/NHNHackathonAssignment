@@ -13,6 +13,10 @@ namespace NHNHackathon.Game
         [SerializeField] private Camera playerCamera;
         [SerializeField] private Image fadeOverlay;
 
+        [Header("SFX")]
+        [SerializeField] private AudioSource sfxSource;
+        [SerializeField] private AudioClip screamingSfx;
+
         [Header("Camera Look")]
         [SerializeField, Min(0f)] private float lookDuration = 0.35f;
         [SerializeField, Min(0f)] private float cameraShakeDuration = 0.8f;
@@ -29,6 +33,10 @@ namespace NHNHackathon.Game
         public void Play(EnemyController attacker, Action completed)
         {
             sequence?.Kill();
+            if (sfxSource != null && screamingSfx != null)
+            {
+                sfxSource.PlayOneShot(screamingSfx);
+            }
             if (playerCamera == null) playerCamera = Camera.main;
             if (fadeOverlay != null)
             {

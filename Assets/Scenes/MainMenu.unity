@@ -182,7 +182,7 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
-    m_MaxSize: 40
+    m_MaxSize: 50
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -392,6 +392,7 @@ GameObject:
   - component: {fileID: 221011162}
   - component: {fileID: 221011161}
   - component: {fileID: 221011160}
+  - component: {fileID: 221011163}
   m_Layer: 0
   m_Name: SettingsButton
   m_TagString: Untagged
@@ -513,6 +514,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 221011158}
   m_CullTransparentMesh: 1
+--- !u!114 &221011163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 221011158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04f3cd402f3cfec4286d17dd42209f1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.AudioSystem.UIButtonHoverSfx
+  selectable: {fileID: 221011160}
 --- !u!1 &344568922
 GameObject:
   m_ObjectHideFlags: 0
@@ -1163,6 +1177,7 @@ GameObject:
   - component: {fileID: 971517635}
   - component: {fileID: 971517634}
   - component: {fileID: 971517633}
+  - component: {fileID: 971517636}
   m_Layer: 0
   m_Name: StartButton
   m_TagString: Untagged
@@ -1284,6 +1299,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 971517631}
   m_CullTransparentMesh: 1
+--- !u!114 &971517636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 971517631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04f3cd402f3cfec4286d17dd42209f1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.AudioSystem.UIButtonHoverSfx
+  selectable: {fileID: 971517633}
 --- !u!1 &1015400455
 GameObject:
   m_ObjectHideFlags: 0
@@ -1640,7 +1668,7 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
-    m_MaxSize: 40
+    m_MaxSize: 44
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -1666,6 +1694,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1095872956}
   - component: {fileID: 1095872955}
+  - component: {fileID: 1095872958}
+  - component: {fileID: 1095872957}
   m_Layer: 0
   m_Name: Menu SFX AudioSource
   m_TagString: Untagged
@@ -1693,7 +1723,7 @@ AudioSource:
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
-  DopplerLevel: 1
+  DopplerLevel: 0
   MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
@@ -1785,6 +1815,32 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1821449256}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1095872957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1095872954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3431000f37547a47b5dd276d7cb0563, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.AudioSystem.SfxVolumeInitializer
+--- !u!114 &1095872958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1095872954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5fe22dd24847ce459222d72e76e73cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.AudioSystem.UISfxPlayer
+  hoverClip: {fileID: 8300000, guid: 1d8a7b44e32316c459f3da8bb5e057b5, type: 3}
+  hoverVolumeScale: 1
 --- !u!1 &1196449374
 GameObject:
   m_ObjectHideFlags: 0
@@ -1831,6 +1887,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1199738149}
   - component: {fileID: 1199738150}
+  - component: {fileID: 1199738151}
   m_Layer: 0
   m_Name: BGM AudioSource
   m_TagString: Untagged
@@ -1864,8 +1921,8 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_Resource: {fileID: 8300000, guid: c575916a2454e0046b8051c78eb6c7f6, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
@@ -1873,7 +1930,7 @@ AudioSource:
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
-  DopplerLevel: 1
+  DopplerLevel: 0
   MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
@@ -1950,6 +2007,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1199738151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1199738148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f337f25e4445d643ab71f6afcfb4417, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.AudioSystem.SceneBgmPlayer
+  clip: {fileID: 8300000, guid: c575916a2454e0046b8051c78eb6c7f6, type: 3}
+  playOnStart: 1
+  loop: 1
+  fadeInDuration: 0.75
 --- !u!1 &1254751450
 GameObject:
   m_ObjectHideFlags: 0
@@ -2229,6 +2302,7 @@ GameObject:
   - component: {fileID: 1405609282}
   - component: {fileID: 1405609281}
   - component: {fileID: 1405609280}
+  - component: {fileID: 1405609283}
   m_Layer: 0
   m_Name: QuitButton
   m_TagString: Untagged
@@ -2350,6 +2424,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1405609278}
   m_CullTransparentMesh: 1
+--- !u!114 &1405609283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1405609278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04f3cd402f3cfec4286d17dd42209f1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.AudioSystem.UIButtonHoverSfx
+  selectable: {fileID: 1405609280}
 --- !u!1 &1431851158
 GameObject:
   m_ObjectHideFlags: 0
@@ -2944,6 +3031,7 @@ GameObject:
   - component: {fileID: 1597369137}
   - component: {fileID: 1597369136}
   - component: {fileID: 1597369135}
+  - component: {fileID: 1597369138}
   m_Layer: 0
   m_Name: CloseButton
   m_TagString: Untagged
@@ -3065,6 +3153,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1597369133}
   m_CullTransparentMesh: 1
+--- !u!114 &1597369138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1597369133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04f3cd402f3cfec4286d17dd42209f1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.AudioSystem.UIButtonHoverSfx
+  selectable: {fileID: 1597369135}
 --- !u!1 &1691153876
 GameObject:
   m_ObjectHideFlags: 0

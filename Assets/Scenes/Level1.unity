@@ -400,6 +400,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+--- !u!82 &24908454 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+  m_PrefabInstance: {fileID: 24908453}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &25564759
 GameObject:
   m_ObjectHideFlags: 0
@@ -524,6 +529,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2870246261858827867, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2870246261858827867, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.75
+      objectReference: {fileID: 0}
     - target: {fileID: 6281254265163419076, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
       propertyPath: player
       value: 
@@ -607,8 +620,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Enemy.WatcherCapturePresenter
   animator: {fileID: 31690571}
-  upperBodyBone: {fileID: 0}
-  lookTarget: {fileID: 0}
+  upperBodyBone: {fileID: 579895888}
+  lookTarget: {fileID: 579895887}
   upperBodyApproachDistance: 0.3
   approachDuration: 0.45
   shakeDuration: 0.75
@@ -1027,6 +1040,16 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8141794772142553693, guid: 652551a41156f7d49bb381e9d9d73b77, type: 3}
   m_PrefabInstance: {fileID: 1237025142}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &79054934 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2870246261858827867, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
+  m_PrefabInstance: {fileID: 1738070039}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &79054935 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4290247436943067804, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
+  m_PrefabInstance: {fileID: 1738070039}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &89367314
 GameObject:
   m_ObjectHideFlags: 0
@@ -1161,7 +1184,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: -0.06099999
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1204,6 +1227,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+--- !u!82 &110958626 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+  m_PrefabInstance: {fileID: 110958625}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &113969299 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
@@ -1331,6 +1359,196 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
   m_PrefabInstance: {fileID: 1763881512}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &150319235
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 150319236}
+  - component: {fileID: 150319239}
+  - component: {fileID: 150319238}
+  - component: {fileID: 150319237}
+  m_Layer: 0
+  m_Name: SFX AudioSource
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &150319236
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 150319235}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 165947936}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &150319237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 150319235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3431000f37547a47b5dd276d7cb0563, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.AudioSystem.SfxVolumeInitializer
+--- !u!114 &150319238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 150319235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5fe22dd24847ce459222d72e76e73cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.AudioSystem.UISfxPlayer
+  hoverClip: {fileID: 8300000, guid: 1d8a7b44e32316c459f3da8bb5e057b5, type: 3}
+  hoverVolumeScale: 1
+--- !u!82 &150319239
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 150319235}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 0
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!1 &165947935
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 165947936}
+  m_Layer: 0
+  m_Name: Audio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &165947936
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 165947935}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1536182062}
+  - {fileID: 150319236}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &167611328
 GameObject:
   m_ObjectHideFlags: 0
@@ -1471,6 +1689,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2870246261858827867, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2870246261858827867, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.75
+      objectReference: {fileID: 0}
     - target: {fileID: 6281254265163419076, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
       propertyPath: player
       value: 
@@ -1554,8 +1780,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Enemy.WatcherCapturePresenter
   animator: {fileID: 179475248}
-  upperBodyBone: {fileID: 0}
-  lookTarget: {fileID: 0}
+  upperBodyBone: {fileID: 1121567969}
+  lookTarget: {fileID: 1121567968}
   upperBodyApproachDistance: 0.3
   approachDuration: 0.45
   shakeDuration: 0.75
@@ -1652,6 +1878,7 @@ GameObject:
   - component: {fileID: 190354170}
   - component: {fileID: 190354169}
   - component: {fileID: 190354168}
+  - component: {fileID: 190354171}
   m_Layer: 0
   m_Name: SettingsButton
   m_TagString: Untagged
@@ -1773,6 +2000,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 190354166}
   m_CullTransparentMesh: 1
+--- !u!114 &190354171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 190354166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04f3cd402f3cfec4286d17dd42209f1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.AudioSystem.UIButtonHoverSfx
+  selectable: {fileID: 190354168}
 --- !u!4 &195796970 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
@@ -2053,7 +2293,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: -0.061
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2096,6 +2336,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+--- !u!82 &240443026 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+  m_PrefabInstance: {fileID: 240443025}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &240729075
 GameObject:
   m_ObjectHideFlags: 0
@@ -2230,6 +2475,14 @@ PrefabInstance:
     - target: {fileID: 2090663550077517559, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2870246261858827867, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2870246261858827867, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 6281254265163419076, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
       propertyPath: player
@@ -3141,6 +3394,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7320495349940691597, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.305
+      objectReference: {fileID: 0}
     - target: {fileID: 8438738964873510995, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
       propertyPath: handleEscapeInput
       value: 0
@@ -3890,7 +4147,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: -0.06099999
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3933,6 +4190,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+--- !u!82 &313817159 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+  m_PrefabInstance: {fileID: 313817158}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &315183773
 GameObject:
   m_ObjectHideFlags: 0
@@ -5418,7 +5680,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: -0.11500001
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5461,6 +5723,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+--- !u!82 &467149248 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+  m_PrefabInstance: {fileID: 467149247}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &470875331 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
@@ -5806,7 +6073,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: -0.06
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5849,6 +6116,21 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+--- !u!82 &514851752 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+  m_PrefabInstance: {fileID: 514851751}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &526499233 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2870246261858827867, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
+  m_PrefabInstance: {fileID: 1156483141}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &526499234 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4290247436943067804, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
+  m_PrefabInstance: {fileID: 1156483141}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &529577740 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
@@ -6043,6 +6325,7 @@ GameObject:
   - component: {fileID: 552566209}
   - component: {fileID: 552566208}
   - component: {fileID: 552566207}
+  - component: {fileID: 552566210}
   m_Layer: 0
   m_Name: PreviousButton
   m_TagString: Untagged
@@ -6165,6 +6448,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 552566205}
   m_CullTransparentMesh: 1
+--- !u!114 &552566210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 552566205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04f3cd402f3cfec4286d17dd42209f1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.AudioSystem.UIButtonHoverSfx
+  selectable: {fileID: 552566207}
 --- !u!1 &554319442
 GameObject:
   m_ObjectHideFlags: 0
@@ -6352,6 +6648,16 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 575119240}
   m_CullTransparentMesh: 1
+--- !u!4 &579895887 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2870246261858827867, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
+  m_PrefabInstance: {fileID: 31690566}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &579895888 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4290247436943067804, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
+  m_PrefabInstance: {fileID: 31690566}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &598763008
 GameObject:
   m_ObjectHideFlags: 0
@@ -6481,6 +6787,7 @@ GameObject:
   - component: {fileID: 610669684}
   - component: {fileID: 610669683}
   - component: {fileID: 610669682}
+  - component: {fileID: 610669685}
   m_Layer: 0
   m_Name: ReadButton
   m_TagString: Untagged
@@ -6602,6 +6909,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 610669680}
   m_CullTransparentMesh: 1
+--- !u!114 &610669685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 610669680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04f3cd402f3cfec4286d17dd42209f1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.AudioSystem.UIButtonHoverSfx
+  selectable: {fileID: 610669682}
 --- !u!1001 &616795206
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6767,6 +7087,7 @@ GameObject:
   - component: {fileID: 645366909}
   - component: {fileID: 645366908}
   - component: {fileID: 645366907}
+  - component: {fileID: 645366910}
   m_Layer: 0
   m_Name: MainMenuButton
   m_TagString: Untagged
@@ -6888,6 +7209,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 645366905}
   m_CullTransparentMesh: 1
+--- !u!114 &645366910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 645366905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04f3cd402f3cfec4286d17dd42209f1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.AudioSystem.UIButtonHoverSfx
+  selectable: {fileID: 645366907}
 --- !u!1 &653646625
 GameObject:
   m_ObjectHideFlags: 0
@@ -7243,6 +7577,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Cinematics.ProgressionToppleSequence
   condition: {fileID: 11400000, guid: db6c12ce2e504f6a9d22471b40c924eb, type: 2}
   oneShot: 1
+  sfxSource: {fileID: 150319239}
+  toppleSfx: {fileID: 8300000, guid: 5192554507c67d546a433f20af143aee, type: 3}
   targets:
   - target: {fileID: 1607981244}
     fallEulerAngles: {x: 88, y: 0, z: 8}
@@ -7447,7 +7783,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: -0.06099999
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7490,6 +7826,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+--- !u!82 &719567171 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+  m_PrefabInstance: {fileID: 719567170}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &729490404
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7547,6 +7888,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+--- !u!82 &729490405 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+  m_PrefabInstance: {fileID: 729490404}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &734628351
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7761,6 +8107,7 @@ GameObject:
   - component: {fileID: 762594311}
   - component: {fileID: 762594310}
   - component: {fileID: 762594309}
+  - component: {fileID: 762594312}
   m_Layer: 0
   m_Name: CloseButton
   m_TagString: Untagged
@@ -7883,6 +8230,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 762594307}
   m_CullTransparentMesh: 1
+--- !u!114 &762594312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 762594307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04f3cd402f3cfec4286d17dd42209f1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.AudioSystem.UIButtonHoverSfx
+  selectable: {fileID: 762594309}
 --- !u!4 &762848919 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8141794772142553693, guid: 652551a41156f7d49bb381e9d9d73b77, type: 3}
@@ -8265,7 +8625,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: -0.100000024
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.z
@@ -8308,6 +8668,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+--- !u!82 &768705784 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+  m_PrefabInstance: {fileID: 768705783}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &773758223
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8322,7 +8687,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: -0.059999943
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.z
@@ -8365,6 +8730,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+--- !u!82 &773758224 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+  m_PrefabInstance: {fileID: 773758223}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &777593197 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
@@ -8427,6 +8797,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+--- !u!82 &782560504 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+  m_PrefabInstance: {fileID: 782560503}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &786565000
 GameObject:
   m_ObjectHideFlags: 0
@@ -9115,7 +9490,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: -0.06099999
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.z
@@ -9158,6 +9533,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+--- !u!82 &830707738 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+  m_PrefabInstance: {fileID: 830707737}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &832549910
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9172,7 +9552,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: -0.11500001
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.z
@@ -9215,6 +9595,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+--- !u!82 &832549911 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+  m_PrefabInstance: {fileID: 832549910}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &832807445
 GameObject:
   m_ObjectHideFlags: 0
@@ -9414,6 +9799,7 @@ GameObject:
   - component: {fileID: 849393858}
   - component: {fileID: 849393857}
   - component: {fileID: 849393856}
+  - component: {fileID: 849393859}
   m_Layer: 0
   m_Name: CloseButton
   m_TagString: Untagged
@@ -9535,6 +9921,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 849393854}
   m_CullTransparentMesh: 1
+--- !u!114 &849393859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 849393854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04f3cd402f3cfec4286d17dd42209f1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.AudioSystem.UIButtonHoverSfx
+  selectable: {fileID: 849393856}
 --- !u!1 &852959252
 GameObject:
   m_ObjectHideFlags: 0
@@ -10805,6 +11204,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+--- !u!82 &971382742 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+  m_PrefabInstance: {fileID: 971382741}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &976825052 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
@@ -12023,7 +12427,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: -0.115
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.z
@@ -12066,6 +12470,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+--- !u!82 &1098129711 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+  m_PrefabInstance: {fileID: 1098129710}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1099028324
 GameObject:
   m_ObjectHideFlags: 0
@@ -12404,6 +12813,16 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 495296073371713988, guid: 26628686116e61a45b72ca5cc4242f8c, type: 3}
   m_PrefabInstance: {fileID: 698786878}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1121567968 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2870246261858827867, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
+  m_PrefabInstance: {fileID: 179475243}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1121567969 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4290247436943067804, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
+  m_PrefabInstance: {fileID: 179475243}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1127059217
 GameObject:
   m_ObjectHideFlags: 0
@@ -12573,6 +12992,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+--- !u!82 &1129798365 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+  m_PrefabInstance: {fileID: 1129798364}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1135853453
 GameObject:
   m_ObjectHideFlags: 0
@@ -12764,6 +13188,16 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1137110098}
   m_CullTransparentMesh: 1
+--- !u!4 &1137158853 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2870246261858827867, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
+  m_PrefabInstance: {fileID: 1605590880}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1137158854 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4290247436943067804, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
+  m_PrefabInstance: {fileID: 1605590880}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1137713826 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
@@ -13112,6 +13546,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+--- !u!82 &1155116694 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+  m_PrefabInstance: {fileID: 1155116693}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1156483141
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13167,6 +13606,14 @@ PrefabInstance:
     - target: {fileID: 2090663550077517559, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2870246261858827867, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2870246261858827867, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 6281254265163419076, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
       propertyPath: player
@@ -13259,8 +13706,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Enemy.WatcherCapturePresenter
   animator: {fileID: 1156483146}
-  upperBodyBone: {fileID: 0}
-  lookTarget: {fileID: 0}
+  upperBodyBone: {fileID: 526499234}
+  lookTarget: {fileID: 526499233}
   upperBodyApproachDistance: 0.3
   approachDuration: 0.45
   shakeDuration: 0.75
@@ -14897,6 +15344,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+--- !u!82 &1257503014 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+  m_PrefabInstance: {fileID: 1257503013}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1268363316
 GameObject:
   m_ObjectHideFlags: 0
@@ -15038,6 +15490,7 @@ GameObject:
   - component: {fileID: 1280592997}
   - component: {fileID: 1280592996}
   - component: {fileID: 1280592995}
+  - component: {fileID: 1280592998}
   m_Layer: 0
   m_Name: ReturnToMainMenuButton
   m_TagString: Untagged
@@ -15159,6 +15612,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1280592993}
   m_CullTransparentMesh: 1
+--- !u!114 &1280592998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1280592993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04f3cd402f3cfec4286d17dd42209f1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.AudioSystem.UIButtonHoverSfx
+  selectable: {fileID: 1280592995}
 --- !u!1001 &1286982680
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16098,6 +16564,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1df39b6bdf2dd64ca1e05cd35d2bf15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.AI.DanceSequenceController
+--- !u!82 &1344197232 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+  m_PrefabInstance: {fileID: 1344197229}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1348805940
 GameObject:
   m_ObjectHideFlags: 0
@@ -16354,6 +16825,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+--- !u!82 &1387439356 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+  m_PrefabInstance: {fileID: 1387439355}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1393137345 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
@@ -17095,6 +17571,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+--- !u!82 &1465140441 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+  m_PrefabInstance: {fileID: 1465140440}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1470918452
 GameObject:
   m_ObjectHideFlags: 0
@@ -17107,6 +17588,7 @@ GameObject:
   - component: {fileID: 1470918456}
   - component: {fileID: 1470918455}
   - component: {fileID: 1470918454}
+  - component: {fileID: 1470918457}
   m_Layer: 0
   m_Name: RestartButton
   m_TagString: Untagged
@@ -17228,6 +17710,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1470918452}
   m_CullTransparentMesh: 1
+--- !u!114 &1470918457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470918452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04f3cd402f3cfec4286d17dd42209f1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.AudioSystem.UIButtonHoverSfx
+  selectable: {fileID: 1470918454}
 --- !u!1 &1472700929
 GameObject:
   m_ObjectHideFlags: 0
@@ -17595,7 +18090,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: -0.100000024
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.z
@@ -17638,6 +18133,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+--- !u!82 &1491323809 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+  m_PrefabInstance: {fileID: 1491323808}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1512876176
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17652,7 +18152,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: -0.06099999
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.z
@@ -17695,6 +18195,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+--- !u!82 &1512876177 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+  m_PrefabInstance: {fileID: 1512876176}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1512917583
 GameObject:
   m_ObjectHideFlags: 0
@@ -17901,6 +18406,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+--- !u!82 &1529020880 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+  m_PrefabInstance: {fileID: 1529020879}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1533219784 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
@@ -17942,6 +18452,152 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1536182061
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1536182062}
+  - component: {fileID: 1536182064}
+  - component: {fileID: 1536182063}
+  m_Layer: 0
+  m_Name: BGM AudioSource
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1536182062
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1536182061}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 165947936}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1536182063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1536182061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f337f25e4445d643ab71f6afcfb4417, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.AudioSystem.SceneBgmPlayer
+  clip: {fileID: 8300000, guid: 192d11792bdb0a744b47109bb85cca07, type: 3}
+  playOnStart: 1
+  loop: 1
+  fadeInDuration: 0.75
+--- !u!82 &1536182064
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1536182061}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 192d11792bdb0a744b47109bb85cca07, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 0
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1540678961
 GameObject:
   m_ObjectHideFlags: 0
@@ -18290,6 +18946,7 @@ GameObject:
   - component: {fileID: 1560286455}
   - component: {fileID: 1560286454}
   - component: {fileID: 1560286453}
+  - component: {fileID: 1560286456}
   m_Layer: 0
   m_Name: CloseButton
   m_TagString: Untagged
@@ -18412,6 +19069,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1560286451}
   m_CullTransparentMesh: 1
+--- !u!114 &1560286456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1560286451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04f3cd402f3cfec4286d17dd42209f1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.AudioSystem.UIButtonHoverSfx
+  selectable: {fileID: 1560286453}
 --- !u!1 &1577845416
 GameObject:
   m_ObjectHideFlags: 0
@@ -18881,6 +19551,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2870246261858827867, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2870246261858827867, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.75
+      objectReference: {fileID: 0}
     - target: {fileID: 6281254265163419076, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
       propertyPath: player
       value: 
@@ -18967,8 +19645,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Enemy.WatcherCapturePresenter
   animator: {fileID: 1605590885}
-  upperBodyBone: {fileID: 0}
-  lookTarget: {fileID: 0}
+  upperBodyBone: {fileID: 1137158854}
+  lookTarget: {fileID: 1137158853}
   upperBodyApproachDistance: 0.3
   approachDuration: 0.45
   shakeDuration: 0.75
@@ -19253,7 +19931,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: -0.100000024
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.z
@@ -19296,6 +19974,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+--- !u!82 &1610584914 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+  m_PrefabInstance: {fileID: 1610584913}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1612841893
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19310,7 +19993,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: -0.06099999
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.z
@@ -19353,6 +20036,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+--- !u!82 &1612841894 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+  m_PrefabInstance: {fileID: 1612841893}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1615827373
 GameObject:
   m_ObjectHideFlags: 0
@@ -20074,6 +20762,7 @@ GameObject:
   - component: {fileID: 1672347368}
   - component: {fileID: 1672347367}
   - component: {fileID: 1672347366}
+  - component: {fileID: 1672347369}
   m_Layer: 0
   m_Name: NextButton
   m_TagString: Untagged
@@ -20196,6 +20885,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1672347364}
   m_CullTransparentMesh: 1
+--- !u!114 &1672347369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1672347364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04f3cd402f3cfec4286d17dd42209f1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.AudioSystem.UIButtonHoverSfx
+  selectable: {fileID: 1672347366}
 --- !u!4 &1680444379 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
@@ -20924,6 +21626,7 @@ GameObject:
   - component: {fileID: 1732640857}
   - component: {fileID: 1732640856}
   - component: {fileID: 1732640855}
+  - component: {fileID: 1732640858}
   m_Layer: 0
   m_Name: CloseButton
   m_TagString: Untagged
@@ -21045,6 +21748,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1732640853}
   m_CullTransparentMesh: 1
+--- !u!114 &1732640858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1732640853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04f3cd402f3cfec4286d17dd42209f1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.AudioSystem.UIButtonHoverSfx
+  selectable: {fileID: 1732640855}
 --- !u!1 &1734388542
 GameObject:
   m_ObjectHideFlags: 0
@@ -21299,8 +22015,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Enemy.WatcherCapturePresenter
   animator: {fileID: 1738070044}
-  upperBodyBone: {fileID: 0}
-  lookTarget: {fileID: 0}
+  upperBodyBone: {fileID: 79054935}
+  lookTarget: {fileID: 79054934}
   upperBodyApproachDistance: 0.3
   approachDuration: 0.45
   shakeDuration: 0.75
@@ -21318,6 +22034,7 @@ GameObject:
   - component: {fileID: 1738865118}
   - component: {fileID: 1738865117}
   - component: {fileID: 1738865116}
+  - component: {fileID: 1738865119}
   m_Layer: 0
   m_Name: ResumeButton
   m_TagString: Untagged
@@ -21439,6 +22156,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1738865114}
   m_CullTransparentMesh: 1
+--- !u!114 &1738865119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1738865114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04f3cd402f3cfec4286d17dd42209f1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.AudioSystem.UIButtonHoverSfx
+  selectable: {fileID: 1738865116}
 --- !u!1 &1746850547
 GameObject:
   m_ObjectHideFlags: 0
@@ -21693,6 +22423,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+--- !u!82 &1763881513 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+  m_PrefabInstance: {fileID: 1763881512}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1770253731
 GameObject:
   m_ObjectHideFlags: 0
@@ -22219,7 +22954,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: -0.06099999
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.z
@@ -22262,6 +22997,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+--- !u!82 &1810599388 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+  m_PrefabInstance: {fileID: 1810599387}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1820447902
 GameObject:
   m_ObjectHideFlags: 0
@@ -22540,6 +23280,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7959853341715820491, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
   m_PrefabInstance: {fileID: 1841267543}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &1841267547 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+  m_PrefabInstance: {fileID: 1841267543}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1844186687 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
@@ -22813,7 +23558,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: -0.06099999
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.z
@@ -22856,6 +23601,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+--- !u!82 &1879286533 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+  m_PrefabInstance: {fileID: 1879286532}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1881294009
 GameObject:
   m_ObjectHideFlags: 0
@@ -23105,7 +23855,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: -0.100000024
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.z
@@ -23148,6 +23898,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+--- !u!82 &1920123101 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+  m_PrefabInstance: {fileID: 1920123100}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1927991987
 GameObject:
   m_ObjectHideFlags: 0
@@ -23628,8 +24383,46 @@ MonoBehaviour:
   audioMixer: {fileID: 0}
   bgmVolumeParameter: BGMVolume
   sfxVolumeParameter: SFXVolume
-  bgmSource: {fileID: 0}
-  sfxSources: []
+  bgmSource: {fileID: 1536182064}
+  sfxSources:
+  - {fileID: 2074455799}
+  - {fileID: 2050645372}
+  - {fileID: 514851752}
+  - {fileID: 240443026}
+  - {fileID: 830707738}
+  - {fileID: 1529020880}
+  - {fileID: 782560504}
+  - {fileID: 1841267547}
+  - {fileID: 1763881513}
+  - {fileID: 110958626}
+  - {fileID: 1512876177}
+  - {fileID: 24908454}
+  - {fileID: 773758224}
+  - {fileID: 1155116694}
+  - {fileID: 1257503014}
+  - {fileID: 1344197232}
+  - {fileID: 2014994149}
+  - {fileID: 1612841894}
+  - {fileID: 1610584914}
+  - {fileID: 467149248}
+  - {fileID: 719567171}
+  - {fileID: 1098129711}
+  - {fileID: 768705784}
+  - {fileID: 2080849136}
+  - {fileID: 729490405}
+  - {fileID: 150319239}
+  - {fileID: 1129798365}
+  - {fileID: 1879286533}
+  - {fileID: 1387439356}
+  - {fileID: 1810599388}
+  - {fileID: 1975090279}
+  - {fileID: 2100511569}
+  - {fileID: 832549911}
+  - {fileID: 1920123101}
+  - {fileID: 313817159}
+  - {fileID: 971382742}
+  - {fileID: 1465140441}
+  - {fileID: 1491323809}
   bgmSlider: {fileID: 754945471}
   sfxSlider: {fileID: 277233589}
   bgmValueText: {fileID: 1483610118}
@@ -23721,6 +24514,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+--- !u!82 &1975090279 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+  m_PrefabInstance: {fileID: 1975090278}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1980548948
 GameObject:
   m_ObjectHideFlags: 0
@@ -24089,7 +24887,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: -0.059999943
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.z
@@ -24132,6 +24930,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+--- !u!82 &2014994149 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+  m_PrefabInstance: {fileID: 2014994148}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2017618735
 GameObject:
   m_ObjectHideFlags: 0
@@ -24627,6 +25430,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+--- !u!82 &2050645372 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+  m_PrefabInstance: {fileID: 2050645371}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2074455798
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24641,7 +25449,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: -0.1
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.z
@@ -24684,6 +25492,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+--- !u!82 &2074455799 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+  m_PrefabInstance: {fileID: 2074455798}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2075030521
 GameObject:
   m_ObjectHideFlags: 0
@@ -24870,6 +25683,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+--- !u!82 &2080849136 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+  m_PrefabInstance: {fileID: 2080849135}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2082576233 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
@@ -24888,6 +25706,7 @@ GameObject:
   - component: {fileID: 2094364152}
   - component: {fileID: 2094364151}
   - component: {fileID: 2094364150}
+  - component: {fileID: 2094364154}
   m_Layer: 0
   m_Name: ItemSlotTemplate
   m_TagString: Untagged
@@ -25012,6 +25831,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2094364148}
   m_CullTransparentMesh: 1
+--- !u!114 &2094364154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2094364148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04f3cd402f3cfec4286d17dd42209f1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.AudioSystem.UIButtonHoverSfx
+  selectable: {fileID: 2094364151}
 --- !u!1001 &2100511568
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25069,6 +25901,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+--- !u!82 &2100511569 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+  m_PrefabInstance: {fileID: 2100511568}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2108699808
 GameObject:
   m_ObjectHideFlags: 0
@@ -25131,6 +25968,7 @@ GameObject:
   - component: {fileID: 2118659833}
   - component: {fileID: 2118659832}
   - component: {fileID: 2118659831}
+  - component: {fileID: 2118659834}
   m_Layer: 0
   m_Name: ReadButton
   m_TagString: Untagged
@@ -25253,6 +26091,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2118659829}
   m_CullTransparentMesh: 1
+--- !u!114 &2118659834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2118659829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04f3cd402f3cfec4286d17dd42209f1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.AudioSystem.UIButtonHoverSfx
+  selectable: {fileID: 2118659831}
 --- !u!1 &2118989835
 GameObject:
   m_ObjectHideFlags: 0
@@ -25875,6 +26726,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Game.EnemyCaptureDirector
   playerCamera: {fileID: 1850502267}
   fadeOverlay: {fileID: 1002814051}
+  sfxSource: {fileID: 150319239}
+  screamingSfx: {fileID: 8300000, guid: ca4aea65131c75d4ab7c2c0fd99b4c58, type: 3}
   lookDuration: 0.35
   cameraShakeDuration: 0.8
   cameraShakeStrength: 5
@@ -26002,3 +26855,4 @@ SceneRoots:
   - {fileID: 1784995995}
   - {fileID: 104545660}
   - {fileID: 1952385562}
+  - {fileID: 165947936}

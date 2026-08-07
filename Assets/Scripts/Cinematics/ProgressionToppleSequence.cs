@@ -29,6 +29,10 @@ namespace NHNHackathon.Cinematics
         [SerializeField] private ProgressionCondition condition;
         [SerializeField] private bool oneShot = true;
 
+        [Header("SFX")]
+        [SerializeField] private AudioSource sfxSource;
+        [SerializeField] private AudioClip toppleSfx;
+
         [Header("Topple Targets")]
         [SerializeField] private List<ToppleTarget> targets = new();
 
@@ -69,6 +73,11 @@ namespace NHNHackathon.Cinematics
             hasPlayed = true;
             activeSequence?.Kill();
             activeSequence = DOTween.Sequence().SetLink(gameObject);
+
+            if (sfxSource != null && toppleSfx != null)
+            {
+                sfxSource.PlayOneShot(toppleSfx);
+            }
 
             // TODO(Audio): 쓰러지는 SFX 리소스가 준비되면 연출 시작 시 여기서 재생한다.
             // toppleAudioSource.PlayOneShot(toppleSfx);
