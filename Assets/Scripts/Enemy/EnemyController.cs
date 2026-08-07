@@ -117,6 +117,12 @@ namespace NHNHackathon.Enemy
                 return;
             }
 
+            if (DeveloperModeController.ShouldWatchersIgnorePlayer
+                && CurrentState is EnemyState.Chasing or EnemyState.Suspicious or EnemyState.Attacking)
+            {
+                ChangeState(EnemyState.Roaming);
+            }
+
             if (Time.time >= nextPerceptionTime)
             {
                 nextPerceptionTime = Time.time + perceptionInterval;
@@ -142,7 +148,8 @@ namespace NHNHackathon.Enemy
 
         private void EvaluatePlayer()
         {
-            if (player == null || CurrentState == EnemyState.Attacking)
+            if (DeveloperModeController.ShouldWatchersIgnorePlayer
+                || player == null || CurrentState == EnemyState.Attacking)
             {
                 return;
             }
@@ -227,6 +234,11 @@ namespace NHNHackathon.Enemy
 
         public void TryCapturePlayer(Transform candidate)
         {
+            if (DeveloperModeController.ShouldWatchersIgnorePlayer)
+            {
+                return;
+            }
+
             bool isPlayerTransform = candidate != null && player != null
                 && (candidate == player || candidate.IsChildOf(player) || player.IsChildOf(candidate));
             if (!isPlayerTransform || CurrentState == EnemyState.Attacking)

@@ -17,7 +17,7 @@ namespace NHNHackathon.ExitSystem
 
         private void OnTriggerEnter(Collider other)
         {
-            if (exitDoor == null || !exitDoor.IsOpen)
+            if (exitDoor == null)
             {
                 return;
             }
