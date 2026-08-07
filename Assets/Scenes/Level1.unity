@@ -351,6 +351,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 482831633}
     m_Modifications:
+    - target: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+      propertyPath: danceSequence.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.3000002
@@ -1178,6 +1182,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2140231363}
     m_Modifications:
+    - target: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+      propertyPath: 'danceSequence.Array.data[0]'
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+      propertyPath: 'danceSequence.Array.data[1]'
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.x
       value: 14.2
@@ -1651,7 +1663,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2083856244382292340, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 36.45
+      value: 47.74
       objectReference: {fileID: 0}
     - target: {fileID: 2083856244382292340, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2287,6 +2299,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2140231363}
     m_Modifications:
+    - target: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+      propertyPath: 'danceSequence.Array.data[0]'
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+      propertyPath: 'danceSequence.Array.data[1]'
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.x
       value: 14.6
@@ -4141,6 +4161,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2140231363}
     m_Modifications:
+    - target: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+      propertyPath: 'danceSequence.Array.data[0]'
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+      propertyPath: 'danceSequence.Array.data[1]'
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.x
       value: 22.9
@@ -4380,7 +4408,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8141794772142553693, guid: 652551a41156f7d49bb381e9d9d73b77, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 47.6
+      value: 36.11
       objectReference: {fileID: 0}
     - target: {fileID: 8141794772142553693, guid: 652551a41156f7d49bb381e9d9d73b77, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5674,6 +5702,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1287677130}
     m_Modifications:
+    - target: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+      propertyPath: 'danceSequence.Array.data[0]'
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+      propertyPath: 'danceSequence.Array.data[2]'
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.x
       value: -18.6
@@ -6067,6 +6103,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1023711250}
     m_Modifications:
+    - target: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+      propertyPath: danceSequence.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+      propertyPath: 'danceSequence.Array.data[0]'
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+      propertyPath: 'danceSequence.Array.data[2]'
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+      propertyPath: 'danceSequence.Array.data[3]'
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.x
       value: 69.5
@@ -7777,6 +7829,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2140231363}
     m_Modifications:
+    - target: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+      propertyPath: 'danceSequence.Array.data[0]'
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+      propertyPath: 'danceSequence.Array.data[1]'
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.x
       value: 14.6
@@ -7839,6 +7899,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 482831633}
     m_Modifications:
+    - target: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+      propertyPath: danceSequence.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.8
@@ -8619,6 +8683,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1148982250}
     m_Modifications:
+    - target: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+      propertyPath: danceSequence.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+      propertyPath: 'danceSequence.Array.data[3]'
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.6699982
@@ -8681,6 +8753,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1023711250}
     m_Modifications:
+    - target: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+      propertyPath: danceSequence.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+      propertyPath: 'danceSequence.Array.data[0]'
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+      propertyPath: 'danceSequence.Array.data[2]'
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+      propertyPath: 'danceSequence.Array.data[3]'
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.x
       value: 67.15
@@ -8748,6 +8836,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1810555561}
     m_Modifications:
+    - target: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+      propertyPath: danceSequence.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+      propertyPath: 'danceSequence.Array.data[1]'
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.6567903
@@ -9484,6 +9580,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2140231363}
     m_Modifications:
+    - target: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+      propertyPath: 'danceSequence.Array.data[0]'
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+      propertyPath: 'danceSequence.Array.data[1]'
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.x
       value: 21.5
@@ -9546,6 +9650,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1287677130}
     m_Modifications:
+    - target: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+      propertyPath: 'danceSequence.Array.data[0]'
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+      propertyPath: 'danceSequence.Array.data[2]'
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.x
       value: -14
@@ -10715,7 +10827,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8141794772142553693, guid: 652551a41156f7d49bb381e9d9d73b77, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.8200006
+      value: 11.42
       objectReference: {fileID: 0}
     - target: {fileID: 8141794772142553693, guid: 652551a41156f7d49bb381e9d9d73b77, type: 3}
       propertyPath: m_LocalPosition.y
@@ -11155,6 +11267,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1756428303}
     m_Modifications:
+    - target: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+      propertyPath: danceSequence.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+      propertyPath: 'danceSequence.Array.data[0]'
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+      propertyPath: 'danceSequence.Array.data[1]'
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.9
@@ -12421,6 +12545,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1287677130}
     m_Modifications:
+    - target: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+      propertyPath: 'danceSequence.Array.data[0]'
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+      propertyPath: 'danceSequence.Array.data[2]'
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.x
       value: -15.299999
@@ -12943,6 +13075,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 482831633}
     m_Modifications:
+    - target: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+      propertyPath: danceSequence.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.6000004
@@ -14831,15 +14967,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8141794772142553693, guid: 652551a41156f7d49bb381e9d9d73b77, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -16.1
+      value: -14.67
       objectReference: {fileID: 0}
     - target: {fileID: 8141794772142553693, guid: 652551a41156f7d49bb381e9d9d73b77, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.07499766
+      value: 0.42
       objectReference: {fileID: 0}
     - target: {fileID: 8141794772142553693, guid: 652551a41156f7d49bb381e9d9d73b77, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 48.8
+      value: 36.22
       objectReference: {fileID: 0}
     - target: {fileID: 8141794772142553693, guid: 652551a41156f7d49bb381e9d9d73b77, type: 3}
       propertyPath: m_LocalRotation.w
@@ -15295,6 +15431,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 482831633}
     m_Modifications:
+    - target: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+      propertyPath: danceSequence.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.3
@@ -15635,7 +15775,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 495296073371713988, guid: 26628686116e61a45b72ca5cc4242f8c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.62
+      value: -3.2399988
       objectReference: {fileID: 0}
     - target: {fileID: 495296073371713988, guid: 26628686116e61a45b72ca5cc4242f8c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -16491,6 +16631,10 @@ PrefabInstance:
       propertyPath: danceSequence.Array.size
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+      propertyPath: 'danceSequence.Array.data[1]'
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.05
@@ -16776,6 +16920,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1810555561}
     m_Modifications:
+    - target: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+      propertyPath: danceSequence.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.05
@@ -17522,6 +17670,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1756428303}
     m_Modifications:
+    - target: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+      propertyPath: danceSequence.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+      propertyPath: 'danceSequence.Array.data[0]'
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+      propertyPath: 'danceSequence.Array.data[1]'
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.38
@@ -18084,6 +18244,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1148982250}
     m_Modifications:
+    - target: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+      propertyPath: danceSequence.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+      propertyPath: 'danceSequence.Array.data[3]'
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.7700005
@@ -18146,6 +18314,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2140231363}
     m_Modifications:
+    - target: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+      propertyPath: 'danceSequence.Array.data[0]'
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+      propertyPath: 'danceSequence.Array.data[1]'
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.x
       value: 17.7
@@ -18357,6 +18533,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1810555561}
     m_Modifications:
+    - target: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+      propertyPath: danceSequence.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+      propertyPath: 'danceSequence.Array.data[1]'
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.81
@@ -19680,7 +19864,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 495296073371713988, guid: 26628686116e61a45b72ca5cc4242f8c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -19.13
+      value: -19.8
       objectReference: {fileID: 0}
     - target: {fileID: 495296073371713988, guid: 26628686116e61a45b72ca5cc4242f8c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -19688,7 +19872,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 495296073371713988, guid: 26628686116e61a45b72ca5cc4242f8c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 48.69
+      value: 36.3
       objectReference: {fileID: 0}
     - target: {fileID: 495296073371713988, guid: 26628686116e61a45b72ca5cc4242f8c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -19925,6 +20109,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1148982250}
     m_Modifications:
+    - target: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+      propertyPath: danceSequence.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+      propertyPath: 'danceSequence.Array.data[3]'
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.0699997
@@ -19987,6 +20179,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2140231363}
     m_Modifications:
+    - target: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+      propertyPath: 'danceSequence.Array.data[0]'
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+      propertyPath: 'danceSequence.Array.data[1]'
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.x
       value: 24.3
@@ -22521,7 +22721,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2073428364753430796, guid: 53f6c61704bfd404e9def4418875b9af, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.5
+      value: -4.5
       objectReference: {fileID: 0}
     - target: {fileID: 2794827371710861970, guid: 53f6c61704bfd404e9def4418875b9af, type: 3}
       propertyPath: m_LocalPosition.x
@@ -22533,7 +22733,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2794827371710861970, guid: 53f6c61704bfd404e9def4418875b9af, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 41.76
+      value: 53.05
       objectReference: {fileID: 0}
     - target: {fileID: 2794827371710861970, guid: 53f6c61704bfd404e9def4418875b9af, type: 3}
       propertyPath: m_LocalRotation.w
@@ -22577,7 +22777,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7177854960887355640, guid: 53f6c61704bfd404e9def4418875b9af, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.5
+      value: -4.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -22894,7 +23094,7 @@ Transform:
   m_GameObject: {fileID: 1803342733}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -12.25}
+  m_LocalPosition: {x: -1.02, y: 0, z: -13.72}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -22948,6 +23148,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2140231363}
     m_Modifications:
+    - target: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+      propertyPath: 'danceSequence.Array.data[0]'
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+      propertyPath: 'danceSequence.Array.data[1]'
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.x
       value: 19.1
@@ -23552,6 +23760,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2140231363}
     m_Modifications:
+    - target: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+      propertyPath: 'danceSequence.Array.data[0]'
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+      propertyPath: 'danceSequence.Array.data[1]'
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.x
       value: 25.1
@@ -23849,6 +24065,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1148982250}
     m_Modifications:
+    - target: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+      propertyPath: danceSequence.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+      propertyPath: 'danceSequence.Array.data[3]'
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.9000015
@@ -24881,6 +25105,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1023711250}
     m_Modifications:
+    - target: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+      propertyPath: danceSequence.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+      propertyPath: 'danceSequence.Array.data[0]'
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+      propertyPath: 'danceSequence.Array.data[2]'
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+      propertyPath: 'danceSequence.Array.data[3]'
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.x
       value: 67.15
@@ -25344,11 +25584,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7177854960887355640, guid: 53f6c61704bfd404e9def4418875b9af, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.45
+      value: -9.84
       objectReference: {fileID: 0}
     - target: {fileID: 7177854960887355640, guid: 53f6c61704bfd404e9def4418875b9af, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.04
+      value: -7.41
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -25381,6 +25621,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1756428303}
     m_Modifications:
+    - target: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+      propertyPath: danceSequence.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+      propertyPath: 'danceSequence.Array.data[0]'
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+      propertyPath: 'danceSequence.Array.data[1]'
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.3
@@ -25443,6 +25695,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1148982250}
     m_Modifications:
+    - target: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+      propertyPath: danceSequence.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+      propertyPath: 'danceSequence.Array.data[3]'
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.7999992
@@ -25852,6 +26112,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 482831633}
     m_Modifications:
+    - target: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+      propertyPath: danceSequence.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.1999998

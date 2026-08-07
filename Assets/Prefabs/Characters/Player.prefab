@@ -402,7 +402,7 @@ MonoBehaviour:
   unlockRules:
   - paper: {fileID: 11400000, guid: c7cc742b731e7754db70274d958e3246, type: 2}
     danceId: 1
-  - paper: {fileID: 11400000, guid: a509260ae48244648b23c7422627eae9, type: 2}
+  - paper: {fileID: 11400000, guid: c7cc742b731e7754db70274d958e3246, type: 2}
     danceId: 2
   - paper: {fileID: 11400000, guid: a509260ae48244648b23c7422627eae9, type: 2}
     danceId: 3
