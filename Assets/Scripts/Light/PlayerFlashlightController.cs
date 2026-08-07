@@ -1,3 +1,5 @@
+using System.Collections;
+using NHNHackathon.Characters;
 using NHNHackathon.Interaction;
 using NHNHackathon.Items;
 using UnityEngine;
@@ -11,6 +13,16 @@ namespace NHNHackathon.LightSystem
         [SerializeField] private KeyCode toggleKey = KeyCode.F;
         [SerializeField] private Light flashlight;
         [SerializeField] private bool startEnabled;
+
+        [Header("Perspective Attachment")]
+        [SerializeField] private PlayerCameraController cameraController;
+        [SerializeField] private Transform firstPersonParent;
+        [SerializeField] private Vector3 firstPersonLocalPosition = new(0f, 0f, 0.15f);
+        [SerializeField] private Vector3 firstPersonLocalEulerAngles;
+        [SerializeField] private Transform thirdPersonParent;
+        [SerializeField] private Vector3 thirdPersonLocalPosition;
+        [SerializeField] private Vector3 thirdPersonLocalEulerAngles;
+        [SerializeField, Min(0f)] private float attachmentTransitionDuration = 0.45f;
 
         [Header("Inventory Requirement")]
         [SerializeField] private PlayerItemInventory playerInventory;
@@ -27,6 +39,11 @@ namespace NHNHackathon.LightSystem
         {
             playerInventory ??= GetComponentInParent<PlayerItemInventory>();
             playerInteractor ??= GetComponentInParent<PlayerInteractor>();
+            cameraController ??= GetComponentInParent<PlayerCameraController>();
+            currentPerspective = cameraController != null
+                ? cameraController.Perspective
+                : CameraPerspective.FirstPerson;
+            ApplyAttachment(currentPerspective, true);
         }
 
         private void OnEnable()
@@ -57,8 +74,92 @@ namespace NHNHackathon.LightSystem
             }
         }
 
+        private CameraPerspective currentPerspective;
+        private Coroutine attachmentRoutine;
+
+        private void LateUpdate()
+        {
+            if (cameraController == null || cameraController.Perspective == currentPerspective)
+            {
+                return;
+            }
+
+            currentPerspective = cameraController.Perspective;
+            ApplyAttachment(currentPerspective, false);
+        }
+
+        private void ApplyAttachment(CameraPerspective perspective, bool immediate)
+        {
+            Transform targetParent = perspective == CameraPerspective.FirstPerson
+                ? firstPersonParent
+                : thirdPersonParent;
+            Vector3 targetLocalPosition = perspective == CameraPerspective.FirstPerson
+                ? firstPersonLocalPosition
+                : thirdPersonLocalPosition;
+            Vector3 targetLocalEulerAngles = perspective == CameraPerspective.FirstPerson
+                ? firstPersonLocalEulerAngles
+                : thirdPersonLocalEulerAngles;
+            if (targetParent == null)
+            {
+                return;
+            }
+
+            if (attachmentRoutine != null)
+            {
+                StopCoroutine(attachmentRoutine);
+                attachmentRoutine = null;
+            }
+
+            if (immediate || attachmentTransitionDuration <= 0f)
+            {
+                transform.SetParent(targetParent, false);
+                transform.localPosition = targetLocalPosition;
+                transform.localRotation = Quaternion.Euler(targetLocalEulerAngles);
+                return;
+            }
+
+            attachmentRoutine = StartCoroutine(TransitionAttachment(
+                targetParent, targetLocalPosition,
+                Quaternion.Euler(targetLocalEulerAngles)));
+        }
+
+        private IEnumerator TransitionAttachment(
+            Transform targetParent, Vector3 targetLocalPosition,
+            Quaternion targetLocalRotation)
+        {
+            Vector3 startPosition = transform.position;
+            Quaternion startRotation = transform.rotation;
+            transform.SetParent(null, true);
+            float elapsed = 0f;
+            while (elapsed < attachmentTransitionDuration && targetParent != null)
+            {
+                elapsed += Time.deltaTime;
+                float progress = Mathf.SmoothStep(
+                    0f, 1f, Mathf.Clamp01(elapsed / attachmentTransitionDuration));
+                Vector3 targetPosition = targetParent.TransformPoint(targetLocalPosition);
+                Quaternion targetRotation = targetParent.rotation * targetLocalRotation;
+                transform.SetPositionAndRotation(
+                    Vector3.Lerp(startPosition, targetPosition, progress),
+                    Quaternion.Slerp(startRotation, targetRotation, progress));
+                yield return null;
+            }
+
+            if (targetParent != null)
+            {
+                transform.SetParent(targetParent, false);
+                transform.localPosition = targetLocalPosition;
+                transform.localRotation = targetLocalRotation;
+            }
+            attachmentRoutine = null;
+        }
+
         private void OnDisable()
         {
+            if (attachmentRoutine != null)
+            {
+                StopCoroutine(attachmentRoutine);
+                attachmentRoutine = null;
+            }
             if (playerInventory != null)
             {
                 playerInventory.InventoryChanged -= HandleInventoryChanged;
@@ -89,6 +190,7 @@ namespace NHNHackathon.LightSystem
             }
             playerInventory ??= GetComponentInParent<PlayerItemInventory>();
             playerInteractor ??= GetComponentInParent<PlayerInteractor>();
+            cameraController ??= GetComponentInParent<PlayerCameraController>();
 
             if (requiredFlashlightItem != null
                 && requiredFlashlightItem.Type != ItemType.General)

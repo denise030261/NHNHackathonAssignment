@@ -114,6 +114,14 @@ MonoBehaviour:
   toggleKey: 102
   flashlight: {fileID: 2250803823524509827}
   startEnabled: 0
+  cameraController: {fileID: 5152183085720589010}
+  firstPersonParent: {fileID: 1165462684980383091}
+  firstPersonLocalPosition: {x: 0, y: 0, z: 0.15}
+  firstPersonLocalEulerAngles: {x: 0, y: 0, z: 0}
+  thirdPersonParent: {fileID: 1381640188430020514}
+  thirdPersonLocalPosition: {x: 0, y: 0, z: 0}
+  thirdPersonLocalEulerAngles: {x: 0, y: 0, z: 0}
+  attachmentTransitionDuration: 0.45
   playerInventory: {fileID: 726503695478076827}
   requiredFlashlightItem: {fileID: 11400000, guid: dffd4269b8c599f4d84416c04348f702, type: 2}
   playerInteractor: {fileID: 6159149051192978673}
@@ -469,6 +477,37 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6812565627781854318}
   m_Enabled: 1
+--- !u!1 &7346389643280228482
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1381640188430020514}
+  m_Layer: 0
+  m_Name: ThirdPersonFlashlightSocket
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1381640188430020514
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7346389643280228482}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 4, y: 25, z: 3.5000026}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7320495349940691597}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &7069849601747993958
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -535,7 +574,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 92c302853c39bcf45bc59f25170675f9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1381640188430020514}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 92c302853c39bcf45bc59f25170675f9, type: 3}
       insertIndex: -1
