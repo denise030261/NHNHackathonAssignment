@@ -81,12 +81,19 @@ namespace NHNHackathon.Dance
                 activePlayer.DanceInputPerformed -= HandlePlayerDanceInput;
             }
 
+            // Clear the previous player's disguise before replacing its reference.
+            // Otherwise leaving the zone while synchronized can leave IsDisguised true forever.
+            if (activeDisguiseState != null)
+            {
+                activeDisguiseState.SetDisguised(false);
+            }
+            SetBlendState(false);
+
             activePlayer = player;
             activeDisguiseState = activePlayer != null
                 ? activePlayer.GetComponent<PlayerDisguiseState>()
                 : null;
             hasPendingEarlyInput = false;
-            SetBlendState(false);
 
             if (activePlayer != null)
             {

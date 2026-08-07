@@ -64,6 +64,27 @@ namespace NHNHackathon.Enemy
         public EnemyState CurrentState { get; private set; }
         public EnemyPatrolRoute PatrolRoute => patrolRoute;
 
+        public void ResumeAfterCutscene()
+        {
+            agent ??= GetComponent<NavMeshAgent>();
+            perception ??= GetComponent<EnemyPerception>();
+            investigatedLight = null;
+            hasPatrolDestination = false;
+            hasLostSight = false;
+            hasPendingPatrolRoute = false;
+            waitUntil = Time.time;
+            nextPerceptionTime = 0f;
+
+            if (agent != null && agent.enabled && agent.isOnNavMesh)
+            {
+                agent.isStopped = false;
+                agent.ResetPath();
+            }
+
+            ChangeState(EnemyState.Roaming);
+            EvaluatePlayer();
+        }
+
         public void SetPatrolRoute(
             EnemyPatrolRoute route, PatrolRouteStartMode startMode = PatrolRouteStartMode.NearestPoint)
         {
