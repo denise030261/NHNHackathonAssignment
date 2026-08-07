@@ -40,6 +40,7 @@ namespace NHNHackathon.Inspection
 
         public static ItemInspectionController Instance { get; private set; }
         public InspectionViewState State => state;
+        public event Action<ItemDefinition, int> PaperPageOpened;
 
         private void Awake()
         {
@@ -190,6 +191,7 @@ namespace NHNHackathon.Inspection
             paperImage.gameObject.SetActive(page.Image != null);
             previousButton.interactable = currentPageIndex > 0;
             nextButton.interactable = currentPageIndex < currentItem.Pages.Count - 1;
+            PaperPageOpened?.Invoke(currentItem, currentPageIndex);
         }
 
         private void SetScreenState(bool canvasVisible, bool overviewVisible, bool readerVisible)
