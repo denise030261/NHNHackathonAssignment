@@ -392,7 +392,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3a2a62a8a3ea6c49ad040eb7c5c86f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Dance.PlayerDanceUnlockController
-  inspectionController: {fileID: 0}
   unlockRules:
   - paper: {fileID: 11400000, guid: c7cc742b731e7754db70274d958e3246, type: 2}
     danceId: 1
@@ -403,6 +402,7 @@ MonoBehaviour:
   - paper: {fileID: 11400000, guid: f334aebfe1188c4428e642f9f6782a95, type: 2}
     danceId: 4
   initiallyUnlockedDanceIds: 
+  playerInventory: {fileID: 726503695478076827}
   playerInteractor: {fileID: 6159149051192978673}
   showUnlockMessage: 1
   unlockMessageFormat: "\uCDA4 {0}\uC744(\uB97C) \uD574\uAE08\uD588\uC2B5\uB2C8\uB2E4."

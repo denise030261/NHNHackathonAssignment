@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using NHNHackathon.Inspection;
 using NHNHackathon.Interaction;
 using NHNHackathon.Items;
 using UnityEngine;
@@ -10,7 +9,7 @@ namespace NHNHackathon.Dance
     [Serializable]
     public sealed class PaperDanceUnlockRule
     {
-        [SerializeField, Tooltip("The paper whose second page unlocks this dance.")]
+        [SerializeField, Tooltip("The paper item that unlocks this dance when collected.")]
         private ItemDefinition paper;
 
         [SerializeField, Min(1)] private int danceId = 1;
@@ -22,18 +21,15 @@ namespace NHNHackathon.Dance
     [DisallowMultipleComponent]
     public sealed class PlayerDanceUnlockController : MonoBehaviour
     {
-        private const int SecondPageIndex = 1;
-
-        [Header("Paper Reader")]
-        [SerializeField, Tooltip("Optional. If empty, the scene's ItemInspectionController is found automatically.")]
-        private ItemInspectionController inspectionController;
-
         [Header("Unlock Rules")]
-        [SerializeField, Tooltip("Each rule maps a paper to the dance unlocked when its second page is opened.")]
+        [SerializeField, Tooltip("Each rule maps a collected paper item to the dance it unlocks.")]
         private List<PaperDanceUnlockRule> unlockRules = new List<PaperDanceUnlockRule>();
 
-        [SerializeField, Tooltip("Dances available before any paper is read.")]
+        [SerializeField, Tooltip("Dances available before any paper is collected.")]
         private List<int> initiallyUnlockedDanceIds = new List<int>();
+
+        [Header("Inventory")]
+        [SerializeField] private PlayerItemInventory playerInventory;
 
         [Header("Messages")]
         [SerializeField] private PlayerInteractor playerInteractor;
@@ -49,6 +45,7 @@ namespace NHNHackathon.Dance
 
         private void Awake()
         {
+            playerInventory ??= GetComponent<PlayerItemInventory>();
             foreach (int danceId in initiallyUnlockedDanceIds)
             {
                 if (danceId > 0)
@@ -63,24 +60,25 @@ namespace NHNHackathon.Dance
             }
         }
 
-        private void Start()
+        private void OnEnable()
         {
-            if (inspectionController == null)
+            playerInventory ??= GetComponent<PlayerItemInventory>();
+            if (playerInventory != null)
             {
-                inspectionController = FindObjectOfType<ItemInspectionController>(true);
-            }
-
-            if (inspectionController != null)
-            {
-                inspectionController.PaperPageOpened += HandlePaperPageOpened;
+                playerInventory.InventoryChanged += HandleInventoryChanged;
             }
         }
 
-        private void OnDestroy()
+        private void Start()
         {
-            if (inspectionController != null)
+            UnlockCollectedPapers();
+        }
+
+        private void OnDisable()
+        {
+            if (playerInventory != null)
             {
-                inspectionController.PaperPageOpened -= HandlePaperPageOpened;
+                playerInventory.InventoryChanged -= HandleInventoryChanged;
             }
         }
 
@@ -121,16 +119,22 @@ namespace NHNHackathon.Dance
             }
         }
 
-        private void HandlePaperPageOpened(ItemDefinition paper, int pageIndex)
+        private void HandleInventoryChanged()
         {
-            if (paper == null || pageIndex != SecondPageIndex)
+            UnlockCollectedPapers();
+        }
+
+        private void UnlockCollectedPapers()
+        {
+            if (playerInventory == null)
             {
                 return;
             }
 
             foreach (PaperDanceUnlockRule rule in unlockRules)
             {
-                if (rule == null || rule.Paper != paper || rule.DanceId < 1)
+                if (rule == null || rule.Paper == null || rule.DanceId < 1
+                    || !playerInventory.Contains(rule.Paper))
                 {
                     continue;
                 }
