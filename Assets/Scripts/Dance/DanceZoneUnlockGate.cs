@@ -23,10 +23,11 @@ namespace NHNHackathon.Dance
         [SerializeField, Min(0.1f)] private float messageDuration = 1.8f;
         [SerializeField, Min(0.05f)] private float messageCooldown = 1f;
 
-        [Header("Push Back")]
-        [SerializeField, Min(0.05f), Tooltip("Extra distance placed outside the zone boundary.")]
-        private float boundaryPadding = 0.75f;
-        [SerializeField, Min(0f)] private float turnAroundDuration = 0.55f;
+        [Header("Locked Barrier")]
+        [SerializeField, Tooltip("Non-trigger collider that physically blocks an uncleared zone.")]
+        private BoxCollider lockedBarrier;
+        [SerializeField, Min(0.01f), Tooltip("Keeps the trigger slightly larger than the barrier so feedback fires before collision.")]
+        private float barrierInset = 0.15f;
         [SerializeField, Min(0f)] private float firstPersonTransitionDuration = 0.55f;
 
         private Collider zoneCollider;
@@ -37,17 +38,24 @@ namespace NHNHackathon.Dance
         {
             zoneCollider = GetComponent<Collider>();
             syncJudge = GetComponent<DanceSyncJudge>();
+            ConfigureLockedBarrier();
         }
 
         public bool TryAllowEntry(PlayerDanceInput player)
         {
-            if (player == null || IsEntryAllowed(player))
+            if (player == null)
             {
                 return true;
             }
 
-            MoveOutsideZone(player.transform);
-            TurnPlayerAwayFromZone(player.transform);
+            bool isAllowed = IsEntryAllowed(player);
+            SetBarrierLocked(!isAllowed);
+            if (isAllowed)
+            {
+                return true;
+            }
+
+            SwitchToFirstPerson(player.transform);
             ShowLockedMessage(player);
             return false;
         }
@@ -86,93 +94,56 @@ namespace NHNHackathon.Dance
             return true;
         }
 
-        private void TurnPlayerAwayFromZone(Transform player)
+        private void SwitchToFirstPerson(Transform player)
         {
             if (player == null)
             {
                 return;
             }
 
-            Vector3 awayDirection = player.position - zoneCollider.bounds.center;
-            awayDirection.y = 0f;
-            if (awayDirection.sqrMagnitude <= 0.0001f)
-            {
-                awayDirection = -player.forward;
-            }
-
             PlayerCameraController cameraController =
                 player.GetComponent<PlayerCameraController>();
-            if (cameraController == null)
+            if (cameraController != null)
             {
-                player.rotation = Quaternion.LookRotation(awayDirection.normalized, Vector3.up);
-                return;
+                cameraController.RequestPerspective(
+                    CameraPerspective.FirstPerson, firstPersonTransitionDuration);
             }
-
-            cameraController.RequestPerspective(
-                CameraPerspective.FirstPerson, firstPersonTransitionDuration);
-            cameraController.RequestFacingDirection(awayDirection, turnAroundDuration);
         }
 
-        private void MoveOutsideZone(Transform player)
+        private void ConfigureLockedBarrier()
         {
-            if (player == null || zoneCollider == null)
+            if (zoneCollider is not BoxCollider trigger)
             {
                 return;
             }
 
-            Vector3 destination = zoneCollider is BoxCollider box
-                ? FindNearestBoxExit(box, player.position)
-                : FindBoundsExit(zoneCollider.bounds, player.position);
+            if (lockedBarrier == null)
+            {
+                Transform existing = transform.Find("LockedDanceBarrier");
+                GameObject barrierObject = existing != null
+                    ? existing.gameObject
+                    : new GameObject("LockedDanceBarrier");
+                barrierObject.transform.SetParent(transform, false);
+                barrierObject.layer = gameObject.layer;
+                lockedBarrier = barrierObject.GetComponent<BoxCollider>()
+                    ?? barrierObject.AddComponent<BoxCollider>();
+            }
 
-            CharacterController controller = player.GetComponent<CharacterController>();
-            bool wasEnabled = controller != null && controller.enabled;
-            if (controller != null)
-            {
-                controller.enabled = false;
-            }
-            player.position = destination;
-            if (controller != null)
-            {
-                controller.enabled = wasEnabled;
-            }
+            lockedBarrier.isTrigger = false;
+            lockedBarrier.center = trigger.center;
+            lockedBarrier.size = new Vector3(
+                Mathf.Max(0.05f, trigger.size.x - barrierInset * 2f),
+                trigger.size.y,
+                Mathf.Max(0.05f, trigger.size.z - barrierInset * 2f));
+            lockedBarrier.enabled = true;
         }
 
-        private Vector3 FindNearestBoxExit(BoxCollider box, Vector3 playerPosition)
+        private void SetBarrierLocked(bool isLocked)
         {
-            Vector3 local = box.transform.InverseTransformPoint(playerPosition) - box.center;
-            Vector3 extents = box.size * 0.5f;
-            float distanceToX = extents.x - Mathf.Abs(local.x);
-            float distanceToZ = extents.z - Mathf.Abs(local.z);
-
-            if (distanceToX <= distanceToZ)
+            if (lockedBarrier != null)
             {
-                float sign = Mathf.Approximately(local.x, 0f) ? 1f : Mathf.Sign(local.x);
-                local.x = sign * (extents.x + boundaryPadding);
+                lockedBarrier.enabled = isLocked;
             }
-            else
-            {
-                float sign = Mathf.Approximately(local.z, 0f) ? 1f : Mathf.Sign(local.z);
-                local.z = sign * (extents.z + boundaryPadding);
-            }
-
-            Vector3 destination = box.transform.TransformPoint(box.center + local);
-            destination.y = playerPosition.y;
-            return destination;
-        }
-
-        private Vector3 FindBoundsExit(Bounds bounds, Vector3 playerPosition)
-        {
-            Vector3 direction = playerPosition - bounds.center;
-            direction.y = 0f;
-            if (direction.sqrMagnitude <= 0.0001f)
-            {
-                direction = transform.forward;
-            }
-            direction.Normalize();
-            float distance = Mathf.Max(bounds.extents.x, bounds.extents.z) + boundaryPadding;
-            Vector3 destination = bounds.center + direction * distance;
-            destination.y = playerPosition.y;
-            return destination;
         }
 
         private void ShowLockedMessage(PlayerDanceInput player)
@@ -195,8 +166,7 @@ namespace NHNHackathon.Dance
         {
             messageDuration = Mathf.Max(0.1f, messageDuration);
             messageCooldown = Mathf.Max(0.1f, messageCooldown);
-            boundaryPadding = Mathf.Max(0.05f, boundaryPadding);
-            turnAroundDuration = Mathf.Max(0f, turnAroundDuration);
+            barrierInset = Mathf.Max(0.01f, barrierInset);
             firstPersonTransitionDuration = Mathf.Max(0f, firstPersonTransitionDuration);
         }
     }

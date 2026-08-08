@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using DG.Tweening;
+using NHNHackathon.Characters;
 using NHNHackathon.Enemy;
+using NHNHackathon.LightSystem;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -12,6 +14,7 @@ namespace NHNHackathon.Cinematics
         [Header("Player")]
         [SerializeField] private Camera playerCamera;
         [SerializeField] private Behaviour playerCameraController;
+        [SerializeField] private PlayerFlashlightController playerFlashlight;
         [SerializeField] private Behaviour[] playerControls;
 
         [Header("Actors")]
@@ -54,6 +57,8 @@ namespace NHNHackathon.Cinematics
         private Transform dancerOriginalParent;
         private bool watcherWasEnabled;
         private bool agentWasEnabled;
+        private CameraPerspective savedFlashlightPerspective;
+        private bool flashlightAttachmentOverridden;
         private bool playing;
 
         public bool TryPlay()
@@ -72,8 +77,19 @@ namespace NHNHackathon.Cinematics
         {
             savedCameraPosition = playerCamera.transform.position;
             savedCameraRotation = playerCamera.transform.rotation;
+            playerFlashlight ??= FindAnyObjectByType<PlayerFlashlightController>(
+                FindObjectsInactive.Include);
+            flashlightAttachmentOverridden = playerFlashlight != null
+                && playerFlashlight.IsFlashlightEnabled;
+            if (flashlightAttachmentOverridden)
+            {
+                savedFlashlightPerspective = playerFlashlight.AttachmentPerspective;
+                playerFlashlight.SetAttachmentPerspective(
+                    CameraPerspective.ThirdPerson, true);
+            }
             controlStates.Clear();
             AddAndDisable(playerCameraController);
+            AddAndDisable(playerFlashlight);
             if (playerControls != null)
                 foreach (Behaviour control in playerControls) AddAndDisable(control);
             Cursor.lockState = CursorLockMode.Locked;
@@ -223,6 +239,12 @@ namespace NHNHackathon.Cinematics
             if (watcherAnimator != null) watcherAnimator.speed = 1f;
             foreach ((Behaviour control, bool wasEnabled) in controlStates)
                 if (control != null) control.enabled = wasEnabled;
+            if (flashlightAttachmentOverridden && playerFlashlight != null)
+            {
+                playerFlashlight.SetAttachmentPerspective(
+                    savedFlashlightPerspective, true);
+            }
+            flashlightAttachmentOverridden = false;
             playing = false;
         }
 

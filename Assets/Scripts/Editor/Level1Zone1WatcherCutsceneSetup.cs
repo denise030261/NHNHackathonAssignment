@@ -71,8 +71,8 @@ namespace NHNHackathon.EditorTools
             Behaviour[] controls = player.GetComponents<Behaviour>()
                 .Where(value => value is PlayerMovement
                     || value is PlayerDanceInput
-                    || value is PlayerInteractor
-                    || value.GetType().Name == "PlayerFlashlightController")
+                    || value is PlayerInteractor)
+                .Concat(player.GetComponentsInChildren<PlayerFlashlightController>(true))
                 .ToArray();
             WatcherCapturePresenter presenter = watcher.GetComponentInChildren<WatcherCapturePresenter>(true);
             Animator watcherAnimator = watcher.GetComponentInChildren<Animator>(true);
@@ -80,6 +80,8 @@ namespace NHNHackathon.EditorTools
             SerializedObject values = new SerializedObject(director);
             values.FindProperty("playerCamera").objectReferenceValue = playerCamera;
             values.FindProperty("playerCameraController").objectReferenceValue = player.GetComponent<PlayerCameraController>();
+            values.FindProperty("playerFlashlight").objectReferenceValue =
+                player.GetComponentInChildren<PlayerFlashlightController>(true);
             SetArray(values.FindProperty("playerControls"), controls.Cast<Object>().ToArray());
             values.FindProperty("failedDancer").objectReferenceValue = dancer;
             values.FindProperty("failedDancerAnimator").objectReferenceValue = dancer.GetComponentInChildren<Animator>(true);

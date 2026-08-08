@@ -1,4 +1,5 @@
 using System;
+using NHNHackathon.Characters;
 using NHNHackathon.Enemy;
 using NHNHackathon.SaveSystem;
 using UnityEngine;
@@ -49,6 +50,9 @@ namespace NHNHackathon.Game
             }
 
             IsCapturePlaying = true;
+            PlayerCameraController cameraController =
+                FindAnyObjectByType<PlayerCameraController>(FindObjectsInactive.Include);
+            cameraController?.RequestPerspective(CameraPerspective.FirstPerson, 0f);
             SetPlayerControlsEnabled(false);
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;

@@ -34,6 +34,19 @@ namespace NHNHackathon.LightSystem
 
         public bool CanUseFlashlight => requiredFlashlightItem == null
             || playerInventory != null && playerInventory.Contains(requiredFlashlightItem);
+        public bool IsFlashlightEnabled => flashlight != null && flashlight.enabled;
+        public CameraPerspective AttachmentPerspective => currentPerspective;
+
+        /// <summary>
+        /// Moves the flashlight without changing whether its light is on or off.
+        /// Cutscenes use an immediate move because this behaviour is disabled while
+        /// player input is locked.
+        /// </summary>
+        public void SetAttachmentPerspective(CameraPerspective perspective, bool immediate = true)
+        {
+            currentPerspective = perspective;
+            ApplyAttachment(perspective, immediate);
+        }
 
         private void Awake()
         {
