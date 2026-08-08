@@ -25039,6 +25039,7 @@ RectTransform:
   - {fileID: 1589383582}
   - {fileID: 868368854}
   - {fileID: 1820447903}
+  - {fileID: 2147000001}
   m_Father: {fileID: 89367315}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -27430,6 +27431,72 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 994542da36054fa49a55c606836f20c8, type: 3}
+--- !u!1001 &2147000000
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1987109629}
+    m_Modifications:
+    - target: {fileID: 810010002, guid: 0db68a59886c4b2a8f366acbfe965071, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 810010002, guid: 0db68a59886c4b2a8f366acbfe965071, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 810010002, guid: 0db68a59886c4b2a8f366acbfe965071, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 810010002, guid: 0db68a59886c4b2a8f366acbfe965071, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 810010002, guid: 0db68a59886c4b2a8f366acbfe965071, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 810010002, guid: 0db68a59886c4b2a8f366acbfe965071, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 810010002, guid: 0db68a59886c4b2a8f366acbfe965071, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 810010002, guid: 0db68a59886c4b2a8f366acbfe965071, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 810010002, guid: 0db68a59886c4b2a8f366acbfe965071, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 810010002, guid: 0db68a59886c4b2a8f366acbfe965071, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 810010002, guid: 0db68a59886c4b2a8f366acbfe965071, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 810010001, guid: 0db68a59886c4b2a8f366acbfe965071, type: 3}
+      propertyPath: m_Name
+      value: OpeningWakeUpUI
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0db68a59886c4b2a8f366acbfe965071, type: 3}
+--- !u!224 &2147000001 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 810010002, guid: 0db68a59886c4b2a8f366acbfe965071, type: 3}
+  m_PrefabInstance: {fileID: 2147000000}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -73,6 +73,11 @@ namespace NHNHackathon.Characters
         private float forcedTurnDuration;
         private float forcedTurnStartYaw;
         private float forcedTurnTargetYaw;
+        private bool isForcedPitching;
+        private float forcedPitchElapsed;
+        private float forcedPitchDuration;
+        private float forcedPitchStart;
+        private float forcedPitchTarget;
 
         public CameraPerspective Perspective => targetPerspective;
         public bool IsTransitioning => isTransitioning;
@@ -96,6 +101,10 @@ namespace NHNHackathon.Characters
             {
                 UpdateForcedTurn();
             }
+            if (isForcedPitching)
+            {
+                UpdateForcedPitch();
+            }
 
             if (Cursor.lockState != CursorLockMode.Locked)
             {
@@ -107,7 +116,7 @@ namespace NHNHackathon.Characters
                 RequestPerspective(perspective);
             }
 
-            if (!isForcedTurning)
+            if (!isForcedTurning && !isForcedPitching)
             {
                 yaw += UnityEngine.Input.GetAxis("Mouse X") * mouseSensitivity;
                 pitch = Mathf.Clamp(
@@ -211,6 +220,34 @@ namespace NHNHackathon.Characters
             if (t >= 1f)
             {
                 isForcedTurning = false;
+            }
+        }
+
+        public void RequestPitchAnimation(float startPitch, float targetPitch, float duration)
+        {
+            forcedPitchStart = Mathf.Clamp(startPitch, minimumPitch, maximumPitch);
+            forcedPitchTarget = Mathf.Clamp(targetPitch, minimumPitch, maximumPitch);
+            forcedPitchElapsed = 0f;
+            forcedPitchDuration = Mathf.Max(0f, duration);
+            pitch = forcedPitchStart;
+            isForcedPitching = forcedPitchDuration > 0f;
+            if (!isForcedPitching)
+            {
+                pitch = forcedPitchTarget;
+            }
+        }
+
+        private void UpdateForcedPitch()
+        {
+            forcedPitchElapsed += Time.unscaledDeltaTime;
+            float t = forcedPitchDuration <= 0f
+                ? 1f
+                : Mathf.Clamp01(forcedPitchElapsed / forcedPitchDuration);
+            float smoothT = t * t * (3f - 2f * t);
+            pitch = Mathf.Lerp(forcedPitchStart, forcedPitchTarget, smoothT);
+            if (t >= 1f)
+            {
+                isForcedPitching = false;
             }
         }
 

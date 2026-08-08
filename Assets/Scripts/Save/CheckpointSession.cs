@@ -20,6 +20,7 @@ namespace NHNHackathon.SaveSystem
         private static bool respawnRequested;
 
         public static bool HasCheckpoint => snapshot != null;
+        public static bool LastLoadWasRespawn { get; private set; }
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         private static void ResetStatics()
@@ -31,6 +32,7 @@ namespace NHNHackathon.SaveSystem
         {
             snapshot = null;
             respawnRequested = false;
+            LastLoadWasRespawn = false;
         }
 
         public static void RegisterInitialSpawn(PlayerCheckpointAgent player)
@@ -82,6 +84,7 @@ namespace NHNHackathon.SaveSystem
             }
 
             respawnRequested = false;
+            LastLoadWasRespawn = true;
             return true;
         }
     }
