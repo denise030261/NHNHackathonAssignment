@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05457494f6f49bb468ec7dfb2bfe072d, type: 3}
+  m_Name: GameSfxLibrary
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.AudioSystem.GameSfxLibrary
+  keyPickup: {fileID: 8300000, guid: a67069e90cec4704c8bb1313acd53266, type: 3}
+  paperPickup: {fileID: 8300000, guid: 9cdbed58717b09a4d81b26902fcf1c3f, type: 3}
+  flashlightPickup: {fileID: 8300000, guid: fc2d505f3514d4c4aaa708fa70dcba4b, type: 3}
+  flashlightToggle: {fileID: 8300000, guid: 8aa54cb95e1236545ac8afa81920592f, type: 3}
+  regularDoor: {fileID: 8300000, guid: 95b354529c8cb96498987d1f6b037d18, type: 3}
+  doorSlam: {fileID: 8300000, guid: df8943416d252074eb6d37d377823e82, type: 3}
+  lightFlicker: {fileID: 8300000, guid: c18e9effa3112e74ebf60674510b9782, type: 3}
+  firstExitUnlock: {fileID: 8300000, guid: d0a5a66588d321c42b1b825099b30653, type: 3}
+  dollMovementClips:
+  - {fileID: 8300000, guid: 655a0f191da36dd4cad105c3d31423e2, type: 3}
+  - {fileID: 8300000, guid: dd0e4f4065d606248978527438b1b1bd, type: 3}
+  - {fileID: 8300000, guid: edb501d5eabfab04f8dc34e7e5d6e74d, type: 3}
+  - {fileID: 8300000, guid: 4eab0c9bb33d5784e9fec29dec15905d, type: 3}
+  - {fileID: 8300000, guid: 25ed9be4d0d35b04baa28fd963b660fc, type: 3}
+  - {fileID: 8300000, guid: 7b6d6f29933239d40a5e60264703dc7d, type: 3}
+  - {fileID: 8300000, guid: b11eb70f80cd02c4483c1cd4ecea9eb9, type: 3}
+  - {fileID: 8300000, guid: 692b3c871d3363b4a88658d0df0922e4, type: 3}
+  - {fileID: 8300000, guid: 5faf8ccd0cb2cf043ae8d66c9eb71918, type: 3}
+  uiHovered: {fileID: 8300000, guid: 6e8772b49f34d402a90016ed445d8a2f, type: 3}
+  uiClick: {fileID: 8300000, guid: ad090a3bb00bd6545b22311074c80640, type: 3}

@@ -1,6 +1,7 @@
 using NHNHackathon.Interaction;
 using NHNHackathon.Inspection;
 using NHNHackathon.Progression;
+using NHNHackathon.AudioSystem;
 using UnityEngine;
 
 namespace NHNHackathon.Items
@@ -45,6 +46,7 @@ namespace NHNHackathon.Items
             }
 
             isCollected = true;
+            GameSfxPlayer.PlayKeyPickup(transform.position);
             gameObject.SetActive(false);
             GameProgressionController.Instance?.TryComplete(
                 itemDefinition != null ? itemDefinition.ProgressionCondition : null);

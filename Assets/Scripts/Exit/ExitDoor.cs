@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using NHNHackathon.AudioSystem;
 using NHNHackathon.Interaction;
 using NHNHackathon.Items;
 using NHNHackathon.Progression;
@@ -90,6 +91,7 @@ namespace NHNHackathon.ExitSystem
                 GameProgressionController.Instance?.TryComplete(unlockedCondition);
             }
 
+            GameSfxPlayer.PlayRegularDoor(doorPanel.position);
             StartCoroutine(AnimateDoor(!IsOpen, openDuration));
         }
 

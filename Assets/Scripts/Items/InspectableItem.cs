@@ -1,6 +1,7 @@
 using NHNHackathon.Inspection;
 using NHNHackathon.Interaction;
 using NHNHackathon.Progression;
+using NHNHackathon.AudioSystem;
 using UnityEngine;
 
 namespace NHNHackathon.Items
@@ -40,6 +41,14 @@ namespace NHNHackathon.Items
             }
 
             isCollected = true;
+            if (item.Type == ItemType.Paper)
+            {
+                GameSfxPlayer.PlayPaperPickup(transform.position);
+            }
+            else if (item.ItemId == "Flashlight")
+            {
+                GameSfxPlayer.PlayFlashlightPickup(transform.position);
+            }
             gameObject.SetActive(false);
             GameProgressionController.Instance?.TryComplete(item.ProgressionCondition);
 

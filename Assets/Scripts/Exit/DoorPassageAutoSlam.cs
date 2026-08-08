@@ -1,3 +1,4 @@
+using NHNHackathon.AudioSystem;
 using NHNHackathon.Characters;
 using UnityEngine;
 using UnityEngine.Events;
@@ -73,8 +74,7 @@ namespace NHNHackathon.ExitSystem
             {
                 hasSlammed = true;
                 onSlammed?.Invoke();
-                // TODO(Audio): SFX 소스가 준비되면 문 쾅 닫힘 효과음을 이 시점에 재생한다.
-                // slamAudioSource.PlayOneShot(slamAudioClip);
+                GameSfxPlayer.PlayDoorSlam(door.transform.position);
             }
         }
 

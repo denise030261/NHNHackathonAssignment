@@ -5,7 +5,7 @@ using UnityEngine.UI;
 namespace NHNHackathon.AudioSystem
 {
     [DisallowMultipleComponent]
-    public sealed class UIButtonHoverSfx : MonoBehaviour, IPointerEnterHandler
+    public sealed class UIButtonHoverSfx : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
     {
         [SerializeField] private Selectable selectable;
 
@@ -14,6 +14,13 @@ namespace NHNHackathon.AudioSystem
             selectable ??= GetComponent<Selectable>();
             if (selectable == null || selectable.IsInteractable())
                 UISfxPlayer.Instance?.PlayHover();
+        }
+
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            selectable ??= GetComponent<Selectable>();
+            if (selectable == null || selectable.IsInteractable())
+                UISfxPlayer.Instance?.PlayClick();
         }
 
         private void OnValidate() => selectable ??= GetComponent<Selectable>();

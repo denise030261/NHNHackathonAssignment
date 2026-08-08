@@ -8,6 +8,8 @@ namespace NHNHackathon.AudioSystem
     {
         [SerializeField] private AudioClip hoverClip;
         [SerializeField, Range(0f, 1f)] private float hoverVolumeScale = 1f;
+        [SerializeField] private AudioClip clickClip;
+        [SerializeField, Range(0f, 1f)] private float clickVolumeScale = 1f;
 
         private AudioSource source;
         public static UISfxPlayer Instance { get; private set; }
@@ -23,8 +25,20 @@ namespace NHNHackathon.AudioSystem
 
         public void PlayHover()
         {
-            if (source != null && hoverClip != null)
-                source.PlayOneShot(hoverClip, hoverVolumeScale);
+            AudioClip clip = hoverClip != null
+                ? hoverClip
+                : GameSfxPlayer.Library?.UiHovered;
+            if (source != null && clip != null)
+                source.PlayOneShot(clip, hoverVolumeScale);
+        }
+
+        public void PlayClick()
+        {
+            AudioClip clip = clickClip != null
+                ? clickClip
+                : GameSfxPlayer.Library?.UiClick;
+            if (source != null && clip != null)
+                source.PlayOneShot(clip, clickVolumeScale);
         }
 
         private void OnDestroy()

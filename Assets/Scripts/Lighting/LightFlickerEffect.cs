@@ -1,4 +1,5 @@
 using System.Collections;
+using NHNHackathon.AudioSystem;
 using UnityEngine;
 
 namespace NHNHackathon.Lighting
@@ -27,6 +28,7 @@ namespace NHNHackathon.Lighting
             {
                 StopCoroutine(flickerRoutine);
             }
+            GameSfxPlayer.PlayLightFlicker(transform.position);
             flickerRoutine = StartCoroutine(Flicker());
         }
 

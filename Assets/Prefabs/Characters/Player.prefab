@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2005824328028355622}
   - component: {fileID: 2250803823524509827}
   - component: {fileID: 5604904077887006538}
-  - component: {fileID: 6038504410881541079}
   m_Layer: 0
   m_Name: FlashlightStimulus
   m_TagString: Untagged
@@ -127,24 +126,6 @@ MonoBehaviour:
   playerInteractor: {fileID: 6159149051192978673}
   missingItemMessage: "\uC190\uC804\uB4F1\uC774 \uD544\uC694\uD569\uB2C8\uB2E4."
   missingItemMessageDuration: 1.5
---- !u!114 &6038504410881541079
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2516558031077606080}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a765b01bc1182f43a3a34730b82fa28, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.LightSystem.LightStimulusSource
-  movementThreshold: 0.05
-  linkedLight: {fileID: 2250803823524509827}
-  illuminatedSurfaceMask:
-    serializedVersion: 2
-    m_Bits: 1
-  surfaceOffset: 0.4
 --- !u!1 &5270906866158683349
 GameObject:
   m_ObjectHideFlags: 0
@@ -613,6 +594,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 92c302853c39bcf45bc59f25170675f9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3792846592671996379}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 92c302853c39bcf45bc59f25170675f9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8743012659100246502}
   m_SourcePrefab: {fileID: 100100000, guid: 92c302853c39bcf45bc59f25170675f9, type: 3}
 --- !u!4 &7320495349940691597 stripped
 Transform:
@@ -646,3 +630,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8743012659100246502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7988346772066760759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c4eb260377d43899cc22dbf84a72605, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.AudioSystem.RandomAnimationSfxEmitter
+  volumeScale: 0.75
+  avoidImmediateRepeat: 1
+  requireSharedZone: 0

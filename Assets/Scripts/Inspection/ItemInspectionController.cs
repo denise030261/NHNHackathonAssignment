@@ -41,6 +41,7 @@ namespace NHNHackathon.Inspection
         public static ItemInspectionController Instance { get; private set; }
         public InspectionViewState State => state;
         public event Action<ItemDefinition, int> PaperPageOpened;
+        public event Action<ItemDefinition> InspectionClosed;
 
         private void Awake()
         {
@@ -160,6 +161,7 @@ namespace NHNHackathon.Inspection
                 return;
             }
 
+            ItemDefinition closedItem = currentItem;
             previewRenderer.Clear();
             previewImage.texture = null;
             currentItem = null;
@@ -167,6 +169,7 @@ namespace NHNHackathon.Inspection
             state = InspectionViewState.Closed;
             SetScreenState(false, false, false);
             controlLock.Unlock();
+            InspectionClosed?.Invoke(closedItem);
         }
 
         private void ChangePage(int offset)

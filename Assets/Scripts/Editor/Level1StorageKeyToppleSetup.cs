@@ -14,6 +14,7 @@ namespace NHNHackathon.EditorTools
         private const string ScenePath = "Assets/Scenes/Level1.unity";
         private const string ConditionPath =
             "Assets/Data/Progression/Conditions/StorageKeyCollected.asset";
+        private const string StorageKeyPath = "Assets/Data/Items/Key/Key_Storage.asset";
 
         [MenuItem("Tools/NHN Hackathon/Level1/Connect Storage Key Topple Sequence")]
         public static void Build()
@@ -45,6 +46,9 @@ namespace NHNHackathon.EditorTools
             SerializedObject values = new(sequence);
             values.FindProperty("condition").objectReferenceValue =
                 AssetDatabase.LoadAssetAtPath<ProgressionCondition>(ConditionPath);
+            values.FindProperty("triggerItem").objectReferenceValue =
+                AssetDatabase.LoadAssetAtPath<NHNHackathon.Items.ItemDefinition>(StorageKeyPath);
+            values.FindProperty("waitForInspectionClose").boolValue = true;
             values.FindProperty("oneShot").boolValue = true;
             SerializedProperty targets = values.FindProperty("targets");
             targets.arraySize = models.Length;
@@ -56,7 +60,6 @@ namespace NHNHackathon.EditorTools
                     directions[index % directions.Length];
                 target.FindPropertyRelative("delay").floatValue = index * 0.12f;
                 target.FindPropertyRelative("duration").floatValue = 0.55f + index * 0.04f;
-                target.FindPropertyRelative("dropDistance").floatValue = 0.08f;
             }
             values.ApplyModifiedPropertiesWithoutUndo();
 

@@ -1,4 +1,5 @@
 using System.Collections;
+using NHNHackathon.AudioSystem;
 using NHNHackathon.Characters;
 using NHNHackathon.Interaction;
 using NHNHackathon.Items;
@@ -7,7 +8,6 @@ using UnityEngine;
 namespace NHNHackathon.LightSystem
 {
     [DisallowMultipleComponent]
-    [RequireComponent(typeof(LightStimulusSource))]
     public sealed class PlayerFlashlightController : MonoBehaviour
     {
         [SerializeField] private KeyCode toggleKey = KeyCode.F;
@@ -71,6 +71,7 @@ namespace NHNHackathon.LightSystem
                     return;
                 }
                 SetFlashlight(!flashlight.enabled);
+                GameSfxPlayer.PlayFlashlightToggle(transform.position);
             }
         }
 

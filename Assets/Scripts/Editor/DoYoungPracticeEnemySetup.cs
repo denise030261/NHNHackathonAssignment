@@ -34,8 +34,8 @@ namespace NHNHackathon.EditorTools
             }
 
             PlayerDisguiseState disguise = GetOrAdd<PlayerDisguiseState>(player);
-            LightStimulusSource flashlightStimulus = ConfigureFlashlight(player);
-            GameOverController gameOver = CreateGameOverSystem(player, flashlightStimulus);
+            PlayerFlashlightController flashlightController = ConfigureFlashlight(player);
+            GameOverController gameOver = CreateGameOverSystem(player, flashlightController);
             EnemyPatrolRoute route = CreatePatrolRoute();
             GameObject watcher = CreateWatcher(player.transform, disguise, route, gameOver);
 
@@ -49,12 +49,12 @@ namespace NHNHackathon.EditorTools
             Debug.Log("DoYoungPracticeScene enemy setup completed.");
         }
 
-        private static LightStimulusSource ConfigureFlashlight(GameObject player)
+        private static PlayerFlashlightController ConfigureFlashlight(GameObject player)
         {
             LightStimulusSource existing = player.GetComponentInChildren<LightStimulusSource>(true);
             if (existing != null)
             {
-                Object.DestroyImmediate(existing.gameObject);
+                Object.DestroyImmediate(existing);
             }
 
             Camera playerCamera = player.GetComponentInChildren<Camera>(true);
@@ -71,21 +71,17 @@ namespace NHNHackathon.EditorTools
             flashlight.range = 12f;
             flashlight.spotAngle = 55f;
             flashlight.intensity = 8f;
-            LightStimulusSource stimulus = flashlightObject.AddComponent<LightStimulusSource>();
             PlayerFlashlightController controller = flashlightObject.AddComponent<PlayerFlashlightController>();
 
-            SerializedObject stimulusSettings = new SerializedObject(stimulus);
-            stimulusSettings.FindProperty("linkedLight").objectReferenceValue = flashlight;
-            stimulusSettings.ApplyModifiedPropertiesWithoutUndo();
             SerializedObject controllerSettings = new SerializedObject(controller);
             controllerSettings.FindProperty("flashlight").objectReferenceValue = flashlight;
             controllerSettings.FindProperty("toggleKey").intValue = (int)KeyCode.F;
             controllerSettings.ApplyModifiedPropertiesWithoutUndo();
-            return stimulus;
+            return controller;
         }
 
         private static GameOverController CreateGameOverSystem(
-            GameObject player, LightStimulusSource flashlightStimulus)
+            GameObject player, PlayerFlashlightController flashlightController)
         {
             GameObject root = new GameObject("GameOverSystem");
             GameOverController controller = root.AddComponent<GameOverController>();
@@ -95,7 +91,7 @@ namespace NHNHackathon.EditorTools
                 player.GetComponent<PlayerCameraController>(),
                 player.GetComponent<PlayerDanceInput>(),
                 player.GetComponent<PlayerCursorController>(),
-                flashlightStimulus.GetComponent<PlayerFlashlightController>()
+                flashlightController
             };
             SerializedObject settings = new SerializedObject(controller);
             SerializedProperty controlsProperty = settings.FindProperty("playerControls");

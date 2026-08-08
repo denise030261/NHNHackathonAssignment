@@ -77,12 +77,13 @@ namespace NHNHackathon.EditorTools
             proximityLight.shadows = LightShadows.None;
             proximityLight.bounceIntensity = 0f;
 
-            LightStimulusSource stimulus =
-                player.GetComponentInChildren<LightStimulusSource>(true);
-            if (stimulus == null || !stimulus.TryGetComponent(out Light flashlight))
+            PlayerFlashlightController flashlightController =
+                player.GetComponentInChildren<PlayerFlashlightController>(true);
+            if (flashlightController == null
+                || !flashlightController.TryGetComponent(out Light flashlight))
             {
                 throw new System.InvalidOperationException(
-                    "Player requires a flashlight LightStimulusSource.");
+                    "Player requires a PlayerFlashlightController with a Light component.");
             }
 
             flashlight.type = LightType.Spot;

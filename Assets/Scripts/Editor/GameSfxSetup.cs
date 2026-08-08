@@ -1,6 +1,5 @@
 #if UNITY_EDITOR
 using System.Linq;
-using NHNHackathon.AI;
 using NHNHackathon.AudioSystem;
 using NHNHackathon.Cinematics;
 using NHNHackathon.Game;
@@ -18,46 +17,43 @@ namespace NHNHackathon.EditorTools
         private const string MainMenuScene = "Assets/Scenes/MainMenu.unity";
         private const string Level1Scene = "Assets/Scenes/Level1.unity";
         private const string DancingPrefab = "Assets/Prefabs/Characters/DancingAI.prefab";
+        private const string PlayerPrefab = "Assets/Prefabs/Characters/Player.prefab";
         private const string ScreamPath = "Assets/Audio/SFX/Screaming.wav";
         private const string TopplePath = "Assets/Audio/SFX/물체떨어지는소리.mp3";
-        private const string DancePath = "Assets/Audio/SFX/춤추는.mp3";
-        private const string HoverPath = "Assets/Audio/SFX/UI_Hovered.mp3";
+        private const string HoverPath = "Assets/Audio/SFX/UI_Hovered.wav";
+        private const string ClickPath = "Assets/Audio/SFX/UI_Click.wav";
 
         [MenuItem("NHN Hackathon/Setup/Game SFX")]
         public static void Build()
         {
             ConfigureImporter(ScreamPath, AudioClipLoadType.DecompressOnLoad);
             ConfigureImporter(TopplePath, AudioClipLoadType.CompressedInMemory);
-            ConfigureImporter(DancePath, AudioClipLoadType.CompressedInMemory);
             ConfigureImporter(HoverPath, AudioClipLoadType.DecompressOnLoad);
-            ConfigureDancingPrefab();
+            ConfigureImporter(ClickPath, AudioClipLoadType.DecompressOnLoad);
+            GameSfxLibrarySetup.Build();
+            ConfigureDanceSfxReceiver(DancingPrefab, true);
+            ConfigureDanceSfxReceiver(PlayerPrefab, false);
             ConfigureScene(MainMenuScene, false);
             ConfigureScene(Level1Scene, true);
             AssetDatabase.SaveAssets();
-            Debug.Log("GAME_SFX_SETUP_COMPLETE Capture, Topple, Dance, UI Hover");
+            Debug.Log("GAME_SFX_SETUP_COMPLETE Capture, Topple, Random Dance Animation, UI Hover/Click, World SFX Library");
         }
 
-        private static void ConfigureDancingPrefab()
+        private static void ConfigureDanceSfxReceiver(string prefabPath, bool requireSharedZone)
         {
-            GameObject root = PrefabUtility.LoadPrefabContents(DancingPrefab);
+            GameObject root = PrefabUtility.LoadPrefabContents(prefabPath);
             try
             {
-                AIDanceAnimationPresenter presenter = root.GetComponent<AIDanceAnimationPresenter>();
-                AudioSource source = root.GetComponent<AudioSource>();
-                if (source == null) source = root.AddComponent<AudioSource>();
-                ConfigureSource(source, true);
-                source.minDistance = 1.5f;
-                source.maxDistance = 12f;
-                source.rolloffMode = AudioRolloffMode.Linear;
-                if (root.GetComponent<SfxVolumeInitializer>() == null)
-                    root.AddComponent<SfxVolumeInitializer>();
-                SerializedObject values = new SerializedObject(presenter);
-                values.FindProperty("danceSfxSource").objectReferenceValue = source;
-                values.FindProperty("danceSfx").objectReferenceValue =
-                    AssetDatabase.LoadAssetAtPath<AudioClip>(DancePath);
-                values.FindProperty("danceSfxVolumeScale").floatValue = 0.65f;
+                Animator animator = root.GetComponentInChildren<Animator>(true);
+                if (animator == null)
+                    throw new System.InvalidOperationException($"Animator not found: {prefabPath}");
+                RandomAnimationSfxEmitter receiver =
+                    animator.GetComponent<RandomAnimationSfxEmitter>()
+                    ?? animator.gameObject.AddComponent<RandomAnimationSfxEmitter>();
+                SerializedObject values = new SerializedObject(receiver);
+                values.FindProperty("requireSharedZone").boolValue = requireSharedZone;
                 values.ApplyModifiedPropertiesWithoutUndo();
-                PrefabUtility.SaveAsPrefabAsset(root, DancingPrefab);
+                PrefabUtility.SaveAsPrefabAsset(root, prefabPath);
             }
             finally
             {
@@ -76,6 +72,8 @@ namespace NHNHackathon.EditorTools
             SerializedObject uiValues = new SerializedObject(uiPlayer);
             uiValues.FindProperty("hoverClip").objectReferenceValue =
                 AssetDatabase.LoadAssetAtPath<AudioClip>(HoverPath);
+            uiValues.FindProperty("clickClip").objectReferenceValue =
+                AssetDatabase.LoadAssetAtPath<AudioClip>(ClickPath);
             uiValues.ApplyModifiedPropertiesWithoutUndo();
 
             foreach (Button button in Object.FindObjectsByType<Button>(

@@ -1,3 +1,4 @@
+using NHNHackathon.AudioSystem;
 using NHNHackathon.Enemy;
 using UnityEngine;
 
@@ -20,8 +21,7 @@ namespace NHNHackathon.ExitSystem
 
         public void PlayFirstUnlock()
         {
-            // TODO(Audio): Assign the metal unlock SFX when the audio resource is ready.
-            // metalUnlockAudioSource.PlayOneShot(metalUnlockClip);
+            GameSfxPlayer.PlayFirstExitUnlock(transform.position);
             watcherReaction?.ReactToFirstUnlock();
         }
 

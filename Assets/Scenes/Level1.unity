@@ -404,11 +404,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
---- !u!82 &24908454 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
-  m_PrefabInstance: {fileID: 24908453}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &25564759
 GameObject:
   m_ObjectHideFlags: 0
@@ -725,6 +720,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4602615637239656442, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+      propertyPath: assignedDancers.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4602615637239656442, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+      propertyPath: 'assignedDancers.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1750002063}
     - target: {fileID: 5291112742394437179, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
       propertyPath: danceAI
       value: 
@@ -842,6 +845,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1385313144}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &66437175 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8743012659100246501, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+  m_PrefabInstance: {fileID: 514851751}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c4eb260377d43899cc22dbf84a72605, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.AudioSystem.RandomAnimationSfxEmitter
 --- !u!1 &70100562
 GameObject:
   m_ObjectHideFlags: 0
@@ -1239,11 +1253,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
---- !u!82 &110958626 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
-  m_PrefabInstance: {fileID: 110958625}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &113969299 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
@@ -1431,6 +1440,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.AudioSystem.UISfxPlayer
   hoverClip: {fileID: 8300000, guid: 1d8a7b44e32316c459f3da8bb5e057b5, type: 3}
   hoverVolumeScale: 1
+  clickClip: {fileID: 0}
+  clickVolumeScale: 1
 --- !u!82 &150319239
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2030,6 +2041,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
   m_PrefabInstance: {fileID: 1610584913}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &219631009 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8743012659100246501, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+  m_PrefabInstance: {fileID: 1344197229}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c4eb260377d43899cc22dbf84a72605, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.AudioSystem.RandomAnimationSfxEmitter
 --- !u!1 &220093825
 GameObject:
   m_ObjectHideFlags: 0
@@ -2356,11 +2378,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
---- !u!82 &240443026 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
-  m_PrefabInstance: {fileID: 240443025}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &240729075
 GameObject:
   m_ObjectHideFlags: 0
@@ -2440,6 +2457,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 240729075}
   m_CullTransparentMesh: 1
+--- !u!114 &245498384 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8743012659100246501, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+  m_PrefabInstance: {fileID: 729490404}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c4eb260377d43899cc22dbf84a72605, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.AudioSystem.RandomAnimationSfxEmitter
 --- !u!1001 &246861600
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2963,6 +2991,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4602615637239656442, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+      propertyPath: assignedDancers.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4602615637239656442, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+      propertyPath: 'assignedDancers.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2032606168}
     - target: {fileID: 5291112742394437179, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
       propertyPath: danceAI
       value: 
@@ -2989,9 +3025,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8247642176173935730, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 269042032}
-    - targetCorrespondingSourceObject: {fileID: 8247642176173935730, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 269042035}
   m_SourcePrefab: {fileID: 100100000, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
 --- !u!4 &269042030 stripped
 Transform:
@@ -3018,54 +3051,6 @@ MonoBehaviour:
   enterPerspective: 1
   exitPerspective: 0
   transitionDuration: 0.6
---- !u!114 &269042033 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9176999007620187711, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
-  m_PrefabInstance: {fileID: 269042029}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 269042031}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0bad847c97624ea4fb1def3c2a694d7f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Dance.DanceSyncZone
---- !u!114 &269042034 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5291112742394437179, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
-  m_PrefabInstance: {fileID: 269042029}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 269042031}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de38b74f92ba68342bae49db9a1921ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Dance.DanceSyncJudge
---- !u!114 &269042035
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 269042031}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5a274a7b1203c54b953c99b7a3eb0bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Dance.TutorialDanceReward
-  danceZone: {fileID: 269042033}
-  syncJudge: {fileID: 269042034}
-  rewardPrefab: {fileID: 3985004875164646717, guid: 0f345e677dc4ade43840ef3c819eb903, type: 3}
-  dropPoint: {fileID: 2011475126}
-  requiredSuccessDuration: 3
-  resetOnFailedBeat: 1
-  resetOnZoneExit: 1
-  oneShot: 1
-  dropHeight: 2.5
-  dropDuration: 0.9
-  dropEase: 30
-  rotation: {x: 0, y: 540, z: 0}
-  rotationDuration: 0.9
-  rotationEase: 9
 --- !u!1 &276793738
 GameObject:
   m_ObjectHideFlags: 0
@@ -3092,7 +3077,7 @@ Transform:
   m_GameObject: {fileID: 276793738}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -22.77, y: 9.11, z: 21}
+  m_LocalPosition: {x: -22.77, y: 7.87, z: 21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3376,7 +3361,7 @@ PrefabInstance:
       objectReference: {fileID: 2128450805}
     - target: {fileID: 6675140767211803144, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.5
+      value: 3.6
       objectReference: {fileID: 0}
     - target: {fileID: 6675140767211803144, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3384,7 +3369,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6675140767211803144, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -41
+      value: -41.5
       objectReference: {fileID: 0}
     - target: {fileID: 6675140767211803144, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3831,6 +3816,17 @@ Transform:
   - {fileID: 1344197230}
   m_Father: {fileID: 380131047}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &292772699 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8743012659100246501, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+  m_PrefabInstance: {fileID: 1098129710}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c4eb260377d43899cc22dbf84a72605, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.AudioSystem.RandomAnimationSfxEmitter
 --- !u!1 &297594488
 GameObject:
   m_ObjectHideFlags: 0
@@ -4218,11 +4214,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
---- !u!82 &313817159 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
-  m_PrefabInstance: {fileID: 313817158}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &315183773
 GameObject:
   m_ObjectHideFlags: 0
@@ -5759,11 +5750,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
---- !u!82 &467149248 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
-  m_PrefabInstance: {fileID: 467149247}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &470875331 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
@@ -6168,11 +6154,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
---- !u!82 &514851752 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
-  m_PrefabInstance: {fileID: 514851751}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &526499233 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2870246261858827867, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
@@ -7022,6 +7003,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4602615637239656442, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+      propertyPath: assignedDancers.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4602615637239656442, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+      propertyPath: 'assignedDancers.Array.data[0]'
+      value: 
+      objectReference: {fileID: 859699643}
     - target: {fileID: 5291112742394437179, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
       propertyPath: danceAI
       value: 
@@ -7628,30 +7617,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Cinematics.ProgressionToppleSequence
   condition: {fileID: 11400000, guid: db6c12ce2e504f6a9d22471b40c924eb, type: 2}
+  triggerItem: {fileID: 11400000, guid: 10f2e60bb52c430783c7bb709071d093, type: 2}
+  waitForInspectionClose: 1
   oneShot: 1
   sfxSource: {fileID: 150319239}
   toppleSfx: {fileID: 8300000, guid: 5192554507c67d546a433f20af143aee, type: 3}
   targets:
   - target: {fileID: 1607981244}
-    fallEulerAngles: {x: 88, y: 0, z: 8}
+    fallEulerAngles: {x: 8, y: 0, z: 88}
     delay: 0
     duration: 0.55
-    dropDistance: 0.08
   - target: {fileID: 1702827581}
     fallEulerAngles: {x: -84, y: 0, z: -10}
     delay: 0.12
     duration: 0.59000003
-    dropDistance: 0.08
   - target: {fileID: 881189214}
-    fallEulerAngles: {x: 12, y: 0, z: 86}
+    fallEulerAngles: {x: 88, y: 0, z: -5}
     delay: 0.24
     duration: 0.63
-    dropDistance: 0.08
   - target: {fileID: 1166779581}
     fallEulerAngles: {x: -8, y: 0, z: -88}
     delay: 0.35999998
     duration: 0.67
-    dropDistance: 0.08
+  floorClearance: 0.015
 --- !u!1001 &698786878
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7886,11 +7874,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
---- !u!82 &719567171 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
-  m_PrefabInstance: {fileID: 719567170}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &729490404
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7952,11 +7935,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
---- !u!82 &729490405 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
-  m_PrefabInstance: {fileID: 729490404}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &734628351
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8740,11 +8718,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
---- !u!82 &768705784 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
-  m_PrefabInstance: {fileID: 768705783}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &773758223
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8818,11 +8791,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
---- !u!82 &773758224 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
-  m_PrefabInstance: {fileID: 773758223}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &777593197 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
@@ -8893,11 +8861,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
---- !u!82 &782560504 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
-  m_PrefabInstance: {fileID: 782560503}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &786565000
 GameObject:
   m_ObjectHideFlags: 0
@@ -9058,6 +9021,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4602615637239656442, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+      propertyPath: assignedDancers.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4602615637239656442, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+      propertyPath: 'assignedDancers.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1789851978}
     - target: {fileID: 5291112742394437179, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
       propertyPath: danceAI
       value: 
@@ -9637,11 +9608,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
---- !u!82 &830707738 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
-  m_PrefabInstance: {fileID: 830707737}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &832549910
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9707,11 +9673,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
---- !u!82 &832549911 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
-  m_PrefabInstance: {fileID: 832549910}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &832807445
 GameObject:
   m_ObjectHideFlags: 0
@@ -10191,6 +10152,17 @@ Transform:
   - {fileID: 1927991988}
   m_Father: {fileID: 70100563}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &859699643 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8743012659100246501, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+  m_PrefabInstance: {fileID: 2074455798}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c4eb260377d43899cc22dbf84a72605, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.AudioSystem.RandomAnimationSfxEmitter
 --- !u!1 &868368853
 GameObject:
   m_ObjectHideFlags: 0
@@ -11259,6 +11231,17 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &962178751 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8743012659100246501, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+  m_PrefabInstance: {fileID: 1529020879}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c4eb260377d43899cc22dbf84a72605, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.AudioSystem.RandomAnimationSfxEmitter
 --- !u!1001 &971382741
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11328,11 +11311,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
---- !u!82 &971382742 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
-  m_PrefabInstance: {fileID: 971382741}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &976825052 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
@@ -11483,6 +11461,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4602615637239656442, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+      propertyPath: assignedDancers.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4602615637239656442, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+      propertyPath: 'assignedDancers.Array.data[0]'
+      value: 
+      objectReference: {fileID: 245498384}
     - target: {fileID: 5291112742394437179, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
       propertyPath: danceAI
       value: 
@@ -12602,11 +12588,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
---- !u!82 &1098129711 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
-  m_PrefabInstance: {fileID: 1098129710}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1099028324
 GameObject:
   m_ObjectHideFlags: 0
@@ -13128,11 +13109,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
---- !u!82 &1129798365 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
-  m_PrefabInstance: {fileID: 1129798364}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1135853453
 GameObject:
   m_ObjectHideFlags: 0
@@ -13682,11 +13658,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
---- !u!82 &1155116694 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
-  m_PrefabInstance: {fileID: 1155116693}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1156483141
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14380,6 +14351,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4602615637239656442, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+      propertyPath: assignedDancers.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4602615637239656442, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+      propertyPath: 'assignedDancers.Array.data[0]'
+      value: 
+      objectReference: {fileID: 219631009}
     - target: {fileID: 5291112742394437179, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
       propertyPath: danceAI
       value: 
@@ -15484,11 +15463,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
---- !u!82 &1257503014 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
-  m_PrefabInstance: {fileID: 1257503013}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1268363316
 GameObject:
   m_ObjectHideFlags: 0
@@ -16265,6 +16239,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4602615637239656442, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+      propertyPath: assignedDancers.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4602615637239656442, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+      propertyPath: 'assignedDancers.Array.data[0]'
+      value: 
+      objectReference: {fileID: 66437175}
     - target: {fileID: 5291112742394437179, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
       propertyPath: danceAI
       value: 
@@ -16708,11 +16690,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1df39b6bdf2dd64ca1e05cd35d2bf15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.AI.DanceSequenceController
---- !u!82 &1344197232 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
-  m_PrefabInstance: {fileID: 1344197229}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1348805940
 GameObject:
   m_ObjectHideFlags: 0
@@ -16973,11 +16950,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
---- !u!82 &1387439356 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
-  m_PrefabInstance: {fileID: 1387439355}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1393137345 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
@@ -17731,11 +17703,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
---- !u!82 &1465140441 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
-  m_PrefabInstance: {fileID: 1465140440}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1470918452
 GameObject:
   m_ObjectHideFlags: 0
@@ -18301,11 +18268,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
---- !u!82 &1491323809 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
-  m_PrefabInstance: {fileID: 1491323808}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1512876176
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18371,11 +18333,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
---- !u!82 &1512876177 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
-  m_PrefabInstance: {fileID: 1512876176}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1512917583
 GameObject:
   m_ObjectHideFlags: 0
@@ -18590,11 +18547,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
---- !u!82 &1529020880 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
-  m_PrefabInstance: {fileID: 1529020879}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1533219784 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
@@ -20166,11 +20118,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
---- !u!82 &1610584914 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
-  m_PrefabInstance: {fileID: 1610584913}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1612841893
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20236,11 +20183,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
---- !u!82 &1612841894 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
-  m_PrefabInstance: {fileID: 1612841893}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1615827373
 GameObject:
   m_ObjectHideFlags: 0
@@ -21653,6 +21595,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4602615637239656442, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+      propertyPath: assignedDancers.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4602615637239656442, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+      propertyPath: 'assignedDancers.Array.data[0]'
+      value: 
+      objectReference: {fileID: 962178751}
     - target: {fileID: 5291112742394437179, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
       propertyPath: danceAI
       value: 
@@ -22447,6 +22397,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1746850547}
   m_CullTransparentMesh: 1
+--- !u!114 &1750002063 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8743012659100246501, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+  m_PrefabInstance: {fileID: 1155116693}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c4eb260377d43899cc22dbf84a72605, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.AudioSystem.RandomAnimationSfxEmitter
 --- !u!4 &1752928444 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
@@ -22623,11 +22584,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
---- !u!82 &1763881513 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
-  m_PrefabInstance: {fileID: 1763881512}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1770253731
 GameObject:
   m_ObjectHideFlags: 0
@@ -22984,6 +22940,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1789851978 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8743012659100246501, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+  m_PrefabInstance: {fileID: 2050645371}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c4eb260377d43899cc22dbf84a72605, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.AudioSystem.RandomAnimationSfxEmitter
 --- !u!1 &1791138853
 GameObject:
   m_ObjectHideFlags: 0
@@ -23205,11 +23172,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
---- !u!82 &1810599388 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
-  m_PrefabInstance: {fileID: 1810599387}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1820447902
 GameObject:
   m_ObjectHideFlags: 0
@@ -23488,11 +23450,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7959853341715820491, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
   m_PrefabInstance: {fileID: 1841267543}
   m_PrefabAsset: {fileID: 0}
---- !u!82 &1841267547 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
-  m_PrefabInstance: {fileID: 1841267543}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1844186687 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
@@ -23703,6 +23660,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4602615637239656442, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+      propertyPath: assignedDancers.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4602615637239656442, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+      propertyPath: 'assignedDancers.Array.data[0]'
+      value: 
+      objectReference: {fileID: 292772699}
     - target: {fileID: 5291112742394437179, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
       propertyPath: danceAI
       value: 
@@ -23817,11 +23782,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
---- !u!82 &1879286533 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
-  m_PrefabInstance: {fileID: 1879286532}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1881294009
 GameObject:
   m_ObjectHideFlags: 0
@@ -24122,11 +24082,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
---- !u!82 &1920123101 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
-  m_PrefabInstance: {fileID: 1920123100}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1927991987
 GameObject:
   m_ObjectHideFlags: 0
@@ -24609,44 +24564,44 @@ MonoBehaviour:
   sfxVolumeParameter: SFXVolume
   bgmSource: {fileID: 1536182064}
   sfxSources:
-  - {fileID: 2074455799}
-  - {fileID: 2050645372}
-  - {fileID: 514851752}
-  - {fileID: 240443026}
-  - {fileID: 830707738}
-  - {fileID: 1529020880}
-  - {fileID: 782560504}
-  - {fileID: 1841267547}
-  - {fileID: 1763881513}
-  - {fileID: 110958626}
-  - {fileID: 1512876177}
-  - {fileID: 24908454}
-  - {fileID: 773758224}
-  - {fileID: 1155116694}
-  - {fileID: 1257503014}
-  - {fileID: 1344197232}
-  - {fileID: 2014994149}
-  - {fileID: 1612841894}
-  - {fileID: 1610584914}
-  - {fileID: 467149248}
-  - {fileID: 719567171}
-  - {fileID: 1098129711}
-  - {fileID: 768705784}
-  - {fileID: 2080849136}
-  - {fileID: 729490405}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 150319239}
-  - {fileID: 1129798365}
-  - {fileID: 1879286533}
-  - {fileID: 1387439356}
-  - {fileID: 1810599388}
-  - {fileID: 1975090279}
-  - {fileID: 2100511569}
-  - {fileID: 832549911}
-  - {fileID: 1920123101}
-  - {fileID: 313817159}
-  - {fileID: 971382742}
-  - {fileID: 1465140441}
-  - {fileID: 1491323809}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   bgmSlider: {fileID: 754945471}
   sfxSlider: {fileID: 277233589}
   bgmValueText: {fileID: 1483610118}
@@ -24738,11 +24693,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
---- !u!82 &1975090279 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
-  m_PrefabInstance: {fileID: 1975090278}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1980548948
 GameObject:
   m_ObjectHideFlags: 0
@@ -25170,11 +25120,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
---- !u!82 &2014994149 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
-  m_PrefabInstance: {fileID: 2014994148}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2017618735
 GameObject:
   m_ObjectHideFlags: 0
@@ -25399,6 +25344,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2026750386}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2032606168 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8743012659100246501, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+  m_PrefabInstance: {fileID: 240443025}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c4eb260377d43899cc22dbf84a72605, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.AudioSystem.RandomAnimationSfxEmitter
 --- !u!4 &2036341635 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6675140767211803144, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
@@ -25682,11 +25638,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
---- !u!82 &2050645372 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
-  m_PrefabInstance: {fileID: 2050645371}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2074455798
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25752,11 +25703,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
---- !u!82 &2074455799 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
-  m_PrefabInstance: {fileID: 2074455798}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2075030521
 GameObject:
   m_ObjectHideFlags: 0
@@ -25943,11 +25889,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
---- !u!82 &2080849136 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
-  m_PrefabInstance: {fileID: 2080849135}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2082576233 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
@@ -26165,11 +26106,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
---- !u!82 &2100511569 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 2259945989060640853, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
-  m_PrefabInstance: {fileID: 2100511568}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2108699808
 GameObject:
   m_ObjectHideFlags: 0

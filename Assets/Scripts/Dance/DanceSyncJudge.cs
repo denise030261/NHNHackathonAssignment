@@ -50,6 +50,7 @@ namespace NHNHackathon.Dance
 
         public bool IsBlendingIn => isBlendingIn;
         public float TimingTolerance => timingTolerance;
+        public DanceSequenceController DanceAI => danceAI;
 
         private void OnEnable()
         {

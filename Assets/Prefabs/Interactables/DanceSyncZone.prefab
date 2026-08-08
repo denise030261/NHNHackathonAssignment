@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5291112742394437179}
   - component: {fileID: 9176999007620187711}
   - component: {fileID: 1938320467704258482}
+  - component: {fileID: 4602615637239656442}
   m_Layer: 0
   m_Name: DanceSyncZone
   m_TagString: Untagged
@@ -99,3 +100,20 @@ MonoBehaviour:
   enterPerspective: 1
   exitPerspective: 0
   transitionDuration: 0.6
+--- !u!114 &4602615637239656442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8247642176173935730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fae9ab7cb394479993085ddb18a79f1, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.AudioSystem.DanceZoneSfxEmitter
+  useJudgeDanceAI: 1
+  assignedDancers: []
+  volumeScale: 0.75
+  minimumInterval: 0.05
+  avoidImmediateRepeat: 1
