@@ -17,10 +17,12 @@ namespace NHNHackathon.Dance
             ActiveZones = new();
 
         private readonly Dictionary<PlayerCameraController, int> colliderCounts = new();
+        private DanceZoneUnlockGate unlockGate;
 
         private void Awake()
         {
             GetComponent<Collider>().isTrigger = true;
+            unlockGate = GetComponent<DanceZoneUnlockGate>();
         }
 
         private void OnTriggerEnter(Collider other)
@@ -28,6 +30,11 @@ namespace NHNHackathon.Dance
             PlayerCameraController controller =
                 other.GetComponentInParent<PlayerCameraController>();
             if (controller == null)
+            {
+                return;
+            }
+            PlayerDanceInput player = other.GetComponentInParent<PlayerDanceInput>();
+            if (unlockGate != null && player != null && !unlockGate.IsEntryAllowed(player))
             {
                 return;
             }

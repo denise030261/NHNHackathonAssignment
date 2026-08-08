@@ -99,6 +99,21 @@ namespace NHNHackathon.Enemy
             ApplyPatrolRoute(route, startMode);
         }
 
+        public void AlertToPlayer(Transform alertedPlayer)
+        {
+            if (DeveloperModeController.ShouldWatchersIgnorePlayer
+                || alertedPlayer == null || CurrentState == EnemyState.Attacking)
+            {
+                return;
+            }
+
+            player = alertedPlayer;
+            playerDisguise = player.GetComponent<PlayerDisguiseState>();
+            lastKnownPlayerPosition = player.position;
+            hasLostSight = false;
+            ChangeState(EnemyState.Chasing);
+        }
+
         private void Awake()
         {
             agent = GetComponent<NavMeshAgent>();

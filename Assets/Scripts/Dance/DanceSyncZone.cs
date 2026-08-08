@@ -16,6 +16,7 @@ namespace NHNHackathon.Dance
         private readonly Dictionary<PlayerDanceInput, int> playerColliderCounts =
             new Dictionary<PlayerDanceInput, int>();
         private DanceSyncJudge syncJudge;
+        private DanceZoneUnlockGate unlockGate;
         private Collider zoneCollider;
 
         public event Action<PlayerDanceInput> PlayerEntered;
@@ -24,6 +25,7 @@ namespace NHNHackathon.Dance
         private void Awake()
         {
             syncJudge = GetComponent<DanceSyncJudge>();
+            unlockGate = GetComponent<DanceZoneUnlockGate>();
             zoneCollider = GetComponent<Collider>();
             zoneCollider.isTrigger = true;
         }
@@ -32,6 +34,10 @@ namespace NHNHackathon.Dance
         {
             PlayerDanceInput player = other.GetComponentInParent<PlayerDanceInput>();
             if (player == null)
+            {
+                return;
+            }
+            if (unlockGate != null && !unlockGate.TryAllowEntry(player))
             {
                 return;
             }

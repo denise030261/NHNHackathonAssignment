@@ -68,6 +68,11 @@ namespace NHNHackathon.Characters
         private float activeTransitionDuration;
         private Vector3 transitionStartPosition;
         private Quaternion transitionStartRotation;
+        private bool isForcedTurning;
+        private float forcedTurnElapsed;
+        private float forcedTurnDuration;
+        private float forcedTurnStartYaw;
+        private float forcedTurnTargetYaw;
 
         public CameraPerspective Perspective => targetPerspective;
         public bool IsTransitioning => isTransitioning;
@@ -82,7 +87,17 @@ namespace NHNHackathon.Characters
 
         private void Update()
         {
-            if (playerCamera == null || Cursor.lockState != CursorLockMode.Locked)
+            if (playerCamera == null)
+            {
+                return;
+            }
+
+            if (isForcedTurning)
+            {
+                UpdateForcedTurn();
+            }
+
+            if (Cursor.lockState != CursorLockMode.Locked)
             {
                 return;
             }
@@ -92,11 +107,14 @@ namespace NHNHackathon.Characters
                 RequestPerspective(perspective);
             }
 
-            yaw += UnityEngine.Input.GetAxis("Mouse X") * mouseSensitivity;
-            pitch = Mathf.Clamp(
-                pitch - UnityEngine.Input.GetAxis("Mouse Y") * mouseSensitivity,
-                minimumPitch,
-                maximumPitch);
+            if (!isForcedTurning)
+            {
+                yaw += UnityEngine.Input.GetAxis("Mouse X") * mouseSensitivity;
+                pitch = Mathf.Clamp(
+                    pitch - UnityEngine.Input.GetAxis("Mouse Y") * mouseSensitivity,
+                    minimumPitch,
+                    maximumPitch);
+            }
 
             if (targetPerspective == CameraPerspective.FirstPerson)
             {
@@ -158,6 +176,41 @@ namespace NHNHackathon.Characters
             if (!isTransitioning)
             {
                 ApplyTargetPerspectiveCamera();
+            }
+        }
+
+        public void RequestFacingDirection(Vector3 worldDirection, float turnDuration)
+        {
+            worldDirection.y = 0f;
+            if (worldDirection.sqrMagnitude <= 0.0001f)
+            {
+                return;
+            }
+
+            forcedTurnStartYaw = yaw;
+            forcedTurnTargetYaw = Mathf.Atan2(worldDirection.x, worldDirection.z) * Mathf.Rad2Deg;
+            forcedTurnElapsed = 0f;
+            forcedTurnDuration = Mathf.Max(0f, turnDuration);
+            isForcedTurning = forcedTurnDuration > 0f;
+            if (!isForcedTurning)
+            {
+                yaw = forcedTurnTargetYaw;
+                transform.rotation = Quaternion.Euler(0f, yaw, 0f);
+            }
+        }
+
+        private void UpdateForcedTurn()
+        {
+            forcedTurnElapsed += Time.deltaTime;
+            float t = forcedTurnDuration <= 0f
+                ? 1f
+                : Mathf.Clamp01(forcedTurnElapsed / forcedTurnDuration);
+            float smoothT = t * t * (3f - 2f * t);
+            yaw = Mathf.LerpAngle(forcedTurnStartYaw, forcedTurnTargetYaw, smoothT);
+            transform.rotation = Quaternion.Euler(0f, yaw, 0f);
+            if (t >= 1f)
+            {
+                isForcedTurning = false;
             }
         }
 
