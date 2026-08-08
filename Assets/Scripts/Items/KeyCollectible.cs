@@ -16,6 +16,13 @@ namespace NHNHackathon.Items
         private bool isCollected;
 
         public string InteractionPrompt => "\uC5F4\uC1E0 \uD68D\uB4DD";
+        public ItemDefinition ItemDefinition => itemDefinition;
+
+        public void ApplyCollectedState()
+        {
+            isCollected = true;
+            gameObject.SetActive(false);
+        }
 
         private void Awake()
         {

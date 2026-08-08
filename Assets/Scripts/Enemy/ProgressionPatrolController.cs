@@ -79,6 +79,12 @@ namespace NHNHackathon.Enemy
             enemyController.SetPatrolRoute(resolvedRoute, resolvedStartMode);
         }
 
+        public void ReevaluateAfterRestore()
+        {
+            lastRoute = null;
+            EvaluateRules();
+        }
+
         private void OnValidate()
         {
             enemyController ??= GetComponent<EnemyController>();

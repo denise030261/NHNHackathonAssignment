@@ -145,6 +145,7 @@ GameObject:
   - component: {fileID: 726503695478076827}
   - component: {fileID: 7755686723573544964}
   - component: {fileID: 857403713291783793}
+  - component: {fileID: 6916418027925010214}
   m_Layer: 2
   m_Name: Player
   m_TagString: Untagged
@@ -152,6 +153,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &6916418027925010214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5270906866158683349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c244d83a133b4a2f8560847a464465cf, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.SaveSystem.PlayerCheckpointAgent
 --- !u!4 &6675140767211803144
 Transform:
   m_ObjectHideFlags: 0

@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using NHNHackathon.SaveSystem;
 
 namespace NHNHackathon.MainMenu
 {
@@ -48,6 +49,7 @@ namespace NHNHackathon.MainMenu
             }
 
             isLoading = true;
+            CheckpointSession.ResetForNewGame();
             SetMainButtonsInteractable(false);
             Time.timeScale = 1f;
             SceneManager.LoadSceneAsync(gameplaySceneName);

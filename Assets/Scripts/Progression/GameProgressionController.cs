@@ -15,6 +15,7 @@ namespace NHNHackathon.Progression
 
         public static GameProgressionController Instance { get; private set; }
         public event Action ProgressionChanged;
+        public IReadOnlyCollection<ProgressionCondition> CompletedConditions => completedConditions;
 
         private void Awake()
         {
@@ -53,6 +54,29 @@ namespace NHNHackathon.Progression
 
             ProgressionChanged?.Invoke();
             return true;
+        }
+
+        public void Restore(IEnumerable<ProgressionCondition> conditions)
+        {
+            completedConditions.Clear();
+            foreach (ProgressionCondition condition in initiallyCompletedConditions)
+            {
+                if (condition != null)
+                {
+                    completedConditions.Add(condition);
+                }
+            }
+            if (conditions != null)
+            {
+                foreach (ProgressionCondition condition in conditions)
+                {
+                    if (condition != null)
+                    {
+                        completedConditions.Add(condition);
+                    }
+                }
+            }
+            ProgressionChanged?.Invoke();
         }
 
         [ContextMenu("Clear Runtime Progress")]

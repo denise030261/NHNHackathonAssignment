@@ -1,5 +1,6 @@
 using System;
 using NHNHackathon.Enemy;
+using NHNHackathon.SaveSystem;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -76,6 +77,9 @@ namespace NHNHackathon.Game
             }
 
             isLoading = true;
+            PlayerCheckpointAgent checkpointAgent =
+                FindAnyObjectByType<PlayerCheckpointAgent>(FindObjectsInactive.Include);
+            checkpointAgent?.PrepareRespawn();
             PrepareSceneLoad();
             SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
         }

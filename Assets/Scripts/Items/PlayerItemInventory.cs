@@ -65,5 +65,23 @@ namespace NHNHackathon.Items
             InventoryChanged?.Invoke();
             return true;
         }
+
+        public void Restore(IEnumerable<ItemDefinition> items)
+        {
+            collectedItemIds.Clear();
+            collectedItems.Clear();
+            if (items != null)
+            {
+                foreach (ItemDefinition item in items)
+                {
+                    if (item != null && !string.IsNullOrWhiteSpace(item.ItemId)
+                        && collectedItemIds.Add(item.ItemId))
+                    {
+                        collectedItems.Add(item);
+                    }
+                }
+            }
+            InventoryChanged?.Invoke();
+        }
     }
 }

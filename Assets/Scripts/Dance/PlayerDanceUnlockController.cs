@@ -45,6 +45,7 @@ namespace NHNHackathon.Dance
         private readonly HashSet<int> unlockedDanceIds = new HashSet<int>();
 
         public event Action<int> DanceUnlocked;
+        public IReadOnlyCollection<int> UnlockedDanceIds => unlockedDanceIds;
 
         private void Awake()
         {
@@ -94,6 +95,29 @@ namespace NHNHackathon.Dance
             {
                 playerInteractor.ShowTemporaryMessage(
                     string.Format(lockedMessageFormat, danceId), messageDuration);
+            }
+        }
+
+        public void Restore(IEnumerable<int> danceIds)
+        {
+            unlockedDanceIds.Clear();
+            foreach (int danceId in initiallyUnlockedDanceIds)
+            {
+                if (danceId > 0)
+                {
+                    unlockedDanceIds.Add(danceId);
+                }
+            }
+            if (danceIds == null)
+            {
+                return;
+            }
+            foreach (int danceId in danceIds)
+            {
+                if (danceId > 0)
+                {
+                    unlockedDanceIds.Add(danceId);
+                }
             }
         }
 
