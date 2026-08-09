@@ -15,7 +15,6 @@ namespace NHNHackathon.Dance
         [SerializeField, Min(0f)] private float transitionDuration = 0.2f;
 
         private PlayerDanceInput danceInput;
-        private int currentDanceId = -1;
 
         private void Awake()
         {
@@ -32,7 +31,6 @@ namespace NHNHackathon.Dance
         private void OnDisable()
         {
             if (danceInput != null) danceInput.DanceInputPerformed -= HandleDanceInput;
-            currentDanceId = -1;
         }
 
         private void HandleDanceInput(int danceId, float inputTime)
@@ -43,18 +41,19 @@ namespace NHNHackathon.Dance
                 if (mapping == null || mapping.DanceId != danceId
                     || mapping.AnimationClip == null) continue;
 
+                string stateName = $"Dance{danceId}";
+                int stateHash = Animator.StringToHash(stateName);
+                if (!animator.HasState(0, stateHash))
+                {
+                    Debug.LogWarning(
+                        $"Dance state '{stateName}' does not exist on '{animator.name}'.",
+                        animator);
+                    return;
+                }
+
                 animator.speed = mapping.PlaybackSpeed;
-                if (currentDanceId == danceId)
-                {
-                    animator.Play(mapping.AnimationClip.name, 0, 0f);
-                    animator.Update(0f);
-                }
-                else
-                {
-                    animator.CrossFadeInFixedTime(
-                        mapping.AnimationClip.name, transitionDuration, 0, 0f);
-                }
-                currentDanceId = danceId;
+                animator.CrossFadeInFixedTime(
+                    stateHash, transitionDuration, 0, 0f);
                 return;
             }
         }

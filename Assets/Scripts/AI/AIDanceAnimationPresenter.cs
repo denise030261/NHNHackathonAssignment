@@ -56,10 +56,20 @@ namespace NHNHackathon.AI
                 if (mapping != null && mapping.DanceId == dance.Id
                     && mapping.AnimationClip != null)
                 {
+                    string stateName = $"Dance{dance.Id}";
+                    int stateHash = Animator.StringToHash(stateName);
+                    if (!animator.HasState(0, stateHash))
+                    {
+                        Debug.LogWarning(
+                            $"Dance state '{stateName}' does not exist on '{animator.name}'.",
+                            animator);
+                        return;
+                    }
+
                     currentDanceId = dance.Id;
                     animator.speed = mapping.PlaybackSpeed;
                     animator.CrossFadeInFixedTime(
-                        mapping.AnimationClip.name, transitionDuration, 0, 0f);
+                        stateHash, transitionDuration, 0, 0f);
                     return;
                 }
             }

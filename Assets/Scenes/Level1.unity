@@ -361,7 +361,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.08000004
+      value: 0.019999996
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.z
@@ -680,6 +680,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1803342734}
     m_Modifications:
+    - target: {fileID: 736291840192837466, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+      propertyPath: m_Size.x
+      value: 9.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 736291840192837466, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+      propertyPath: m_Size.z
+      value: 9.5
+      objectReference: {fileID: 0}
     - target: {fileID: 956438839806768873, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.34
@@ -727,7 +735,7 @@ PrefabInstance:
     - target: {fileID: 4602615637239656442, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
       propertyPath: 'assignedDancers.Array.data[0]'
       value: 
-      objectReference: {fileID: 1750002063}
+      objectReference: {fileID: 0}
     - target: {fileID: 5291112742394437179, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
       propertyPath: danceAI
       value: 
@@ -846,17 +854,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1385313144}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &66437175 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8743012659100246501, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
-  m_PrefabInstance: {fileID: 514851751}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c4eb260377d43899cc22dbf84a72605, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.AudioSystem.RandomAnimationSfxEmitter
 --- !u!1 &70100562
 GameObject:
   m_ObjectHideFlags: 0
@@ -916,7 +913,7 @@ MonoBehaviour:
   - {fileID: 282236279}
   - {fileID: 282236277}
   failedDancer: {fileID: 1841267546}
-  failedDancerAnimator: {fileID: 1841267545}
+  failedDancerAnimator: {fileID: 0}
   wrongDanceStateName: Dance4
   watcherController: {fileID: 246861602}
   watcherAgent: {fileID: 246861605}
@@ -1278,7 +1275,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.06099999
+      value: 0.055000007
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2109,17 +2106,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
   m_PrefabInstance: {fileID: 1610584913}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &219631009 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8743012659100246501, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
-  m_PrefabInstance: {fileID: 1344197229}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c4eb260377d43899cc22dbf84a72605, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.AudioSystem.RandomAnimationSfxEmitter
 --- !u!1 &220093825
 GameObject:
   m_ObjectHideFlags: 0
@@ -2403,7 +2389,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.061
+      value: 0.055
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2525,17 +2511,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 240729075}
   m_CullTransparentMesh: 1
---- !u!114 &245498384 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8743012659100246501, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
-  m_PrefabInstance: {fileID: 729490404}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c4eb260377d43899cc22dbf84a72605, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.AudioSystem.RandomAnimationSfxEmitter
 --- !u!1001 &246861600
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3019,6 +2994,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2140231363}
     m_Modifications:
+    - target: {fileID: 736291840192837466, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+      propertyPath: m_Size.x
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 736291840192837466, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+      propertyPath: m_Size.z
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 956438839806768873, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 18.7
@@ -3066,18 +3049,18 @@ PrefabInstance:
     - target: {fileID: 4602615637239656442, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
       propertyPath: 'assignedDancers.Array.data[0]'
       value: 
-      objectReference: {fileID: 2032606168}
+      objectReference: {fileID: 0}
     - target: {fileID: 5291112742394437179, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
       propertyPath: danceAI
       value: 
       objectReference: {fileID: 811101565}
     - target: {fileID: 7974926430556042222, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
       propertyPath: m_Size.x
-      value: 16
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7974926430556042222, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
       propertyPath: m_Size.z
-      value: 16
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 8247642176173935730, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
       propertyPath: m_Name
@@ -3951,17 +3934,6 @@ Transform:
   - {fileID: 1344197230}
   m_Father: {fileID: 380131047}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &292772699 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8743012659100246501, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
-  m_PrefabInstance: {fileID: 1098129710}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c4eb260377d43899cc22dbf84a72605, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.AudioSystem.RandomAnimationSfxEmitter
 --- !u!1 &297594488
 GameObject:
   m_ObjectHideFlags: 0
@@ -4306,7 +4278,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.06099999
+      value: 0.055000007
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5913,7 +5885,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.11500001
+      value: 0.029999986
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6317,7 +6289,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.06
+      value: -0.01
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7169,6 +7141,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1148982250}
     m_Modifications:
+    - target: {fileID: 736291840192837466, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+      propertyPath: m_Size.x
+      value: 10.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 736291840192837466, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+      propertyPath: m_Size.z
+      value: 20.5
+      objectReference: {fileID: 0}
     - target: {fileID: 956438839806768873, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.70000076
@@ -7216,7 +7196,7 @@ PrefabInstance:
     - target: {fileID: 4602615637239656442, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
       propertyPath: 'assignedDancers.Array.data[0]'
       value: 
-      objectReference: {fileID: 859699643}
+      objectReference: {fileID: 0}
     - target: {fileID: 5291112742394437179, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
       propertyPath: danceAI
       value: 
@@ -8038,7 +8018,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.06099999
+      value: 0.055000007
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.z
@@ -8099,7 +8079,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.08000004
+      value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.z
@@ -8882,7 +8862,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.100000024
+      value: -0.000000022351742
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.z
@@ -8955,7 +8935,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.059999943
+      value: -0.009999946
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.z
@@ -9025,7 +9005,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.047
+      value: 0.008
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.z
@@ -9188,6 +9168,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1756428303}
     m_Modifications:
+    - target: {fileID: 736291840192837466, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+      propertyPath: m_Size.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 736291840192837466, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+      propertyPath: m_Size.z
+      value: 8.5
+      objectReference: {fileID: 0}
     - target: {fileID: 956438839806768873, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.4987507
@@ -9235,7 +9223,7 @@ PrefabInstance:
     - target: {fileID: 4602615637239656442, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
       propertyPath: 'assignedDancers.Array.data[0]'
       value: 
-      objectReference: {fileID: 1789851978}
+      objectReference: {fileID: 0}
     - target: {fileID: 5291112742394437179, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
       propertyPath: danceAI
       value: 
@@ -9773,7 +9761,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.06099999
+      value: 0.055000007
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.z
@@ -9838,7 +9826,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.11500001
+      value: 0.029999986
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.z
@@ -10360,17 +10348,6 @@ Transform:
   - {fileID: 1927991988}
   m_Father: {fileID: 70100563}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &859699643 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8743012659100246501, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
-  m_PrefabInstance: {fileID: 2074455798}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c4eb260377d43899cc22dbf84a72605, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.AudioSystem.RandomAnimationSfxEmitter
 --- !u!1 &868368853
 GameObject:
   m_ObjectHideFlags: 0
@@ -11439,17 +11416,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &962178751 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8743012659100246501, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
-  m_PrefabInstance: {fileID: 1529020879}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c4eb260377d43899cc22dbf84a72605, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.AudioSystem.RandomAnimationSfxEmitter
 --- !u!1001 &971382741
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11472,15 +11438,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.9
+      value: -2.95
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.07
+      value: -0.0019999444
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 11.5
+      value: 10.15
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalRotation.w
@@ -11621,6 +11587,86 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
+--- !u!1 &990010001
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 990010002}
+  - component: {fileID: 990010004}
+  - component: {fileID: 990010003}
+  m_Layer: 0
+  m_Name: InventoryHintText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &990010002
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 990010001}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2108699809}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0.205}
+  m_AnchorMax: {x: 1, y: 0.245}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &990010003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 990010001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Text
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.65, g: 0.65, b: 0.65, a: 1}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 18
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 3
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: "I \uBC84\uD2BC\uC744 \uB20C\uB7EC \uC778\uBCA4\uD1A0\uB9AC\uC5D0\uC11C
+    \uD655\uC778\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4."
+--- !u!222 &990010004
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 990010001}
+  m_CullTransparentMesh: 1
 --- !u!1001 &995125015
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11676,7 +11722,7 @@ PrefabInstance:
     - target: {fileID: 4602615637239656442, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
       propertyPath: 'assignedDancers.Array.data[0]'
       value: 
-      objectReference: {fileID: 245498384}
+      objectReference: {fileID: 0}
     - target: {fileID: 5291112742394437179, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
       propertyPath: danceAI
       value: 
@@ -12754,7 +12800,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.115
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.z
@@ -13275,7 +13321,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.08
+      value: 0.02000004
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.z
@@ -13824,7 +13870,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.09000003
+      value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.z
@@ -14575,7 +14621,7 @@ PrefabInstance:
     - target: {fileID: 4602615637239656442, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
       propertyPath: 'assignedDancers.Array.data[0]'
       value: 
-      objectReference: {fileID: 219631009}
+      objectReference: {fileID: 0}
     - target: {fileID: 5291112742394437179, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
       propertyPath: danceAI
       value: 
@@ -15638,7 +15684,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.08000004
+      value: 0.019999996
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.z
@@ -16417,6 +16463,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1023711250}
     m_Modifications:
+    - target: {fileID: 736291840192837466, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+      propertyPath: m_Size.x
+      value: 8.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 736291840192837466, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+      propertyPath: m_Size.z
+      value: 12.5
+      objectReference: {fileID: 0}
     - target: {fileID: 956438839806768873, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 67.6
@@ -16464,7 +16518,7 @@ PrefabInstance:
     - target: {fileID: 4602615637239656442, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
       propertyPath: 'assignedDancers.Array.data[0]'
       value: 
-      objectReference: {fileID: 66437175}
+      objectReference: {fileID: 0}
     - target: {fileID: 5291112742394437179, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
       propertyPath: danceAI
       value: 
@@ -16842,7 +16896,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.1
+      value: 0.011
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.z
@@ -16879,11 +16933,11 @@ PrefabInstance:
     - target: {fileID: 6663020993176286578, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: danceAnimations.Array.data[0].animationClip
       value: 
-      objectReference: {fileID: 7400000, guid: 3f50f1ccfc11a8f45939717c044aee9e, type: 2}
+      objectReference: {fileID: 7400000, guid: c0e16317c62d6994cb53efe8cf842e6f, type: 2}
     - target: {fileID: 6663020993176286578, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: danceAnimations.Array.data[1].animationClip
       value: 
-      objectReference: {fileID: 7400000, guid: 9436760ec3824c84d8f3de4d4bc6341b, type: 2}
+      objectReference: {fileID: 7400000, guid: 3ea496102e9a3694ebaa3f77df969ed3, type: 2}
     - target: {fileID: 7959853341715820491, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_Name
       value: DancingAI (27)
@@ -17127,7 +17181,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.04700005
+      value: 0.007999949
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.z
@@ -17877,15 +17931,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.38
+      value: -1.351
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.07000005
+      value: -0.0019999966
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8.41
+      value: 7.789
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalRotation.w
@@ -18446,7 +18500,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.100000024
+      value: -0.000000022351742
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.z
@@ -18511,7 +18565,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.06099999
+      value: 0.055000007
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.z
@@ -18725,7 +18779,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.04700005
+      value: 0.007999949
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.z
@@ -20296,7 +20350,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.100000024
+      value: -0.000000022351742
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.z
@@ -20361,7 +20415,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.06099999
+      value: 0.055000007
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.z
@@ -21776,6 +21830,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1810555561}
     m_Modifications:
+    - target: {fileID: 736291840192837466, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+      propertyPath: m_Size.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 736291840192837466, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+      propertyPath: m_Size.z
+      value: 8.5
+      objectReference: {fileID: 0}
     - target: {fileID: 956438839806768873, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.4987507
@@ -21823,7 +21885,7 @@ PrefabInstance:
     - target: {fileID: 4602615637239656442, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
       propertyPath: 'assignedDancers.Array.data[0]'
       value: 
-      objectReference: {fileID: 962178751}
+      objectReference: {fileID: 0}
     - target: {fileID: 5291112742394437179, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
       propertyPath: danceAI
       value: 
@@ -22619,17 +22681,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1746850547}
   m_CullTransparentMesh: 1
---- !u!114 &1750002063 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8743012659100246501, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
-  m_PrefabInstance: {fileID: 1155116693}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c4eb260377d43899cc22dbf84a72605, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.AudioSystem.RandomAnimationSfxEmitter
 --- !u!4 &1752928444 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
@@ -22763,7 +22814,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.09
+      value: 0.020000026
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.z
@@ -23162,17 +23213,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1789851978 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8743012659100246501, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
-  m_PrefabInstance: {fileID: 2050645371}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c4eb260377d43899cc22dbf84a72605, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.AudioSystem.RandomAnimationSfxEmitter
 --- !u!1 &1791138853
 GameObject:
   m_ObjectHideFlags: 0
@@ -23351,7 +23391,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.06099999
+      value: 0.055000007
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.z
@@ -23728,11 +23768,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
   m_PrefabInstance: {fileID: 1841267543}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &1841267545 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 7576929181476908231, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
-  m_PrefabInstance: {fileID: 1841267543}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1841267546 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7959853341715820491, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
@@ -23908,6 +23943,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1287677130}
     m_Modifications:
+    - target: {fileID: 736291840192837466, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+      propertyPath: m_Size.x
+      value: 8.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 736291840192837466, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+      propertyPath: m_Size.y
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 736291840192837466, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+      propertyPath: m_Size.z
+      value: 8.5
+      objectReference: {fileID: 0}
     - target: {fileID: 956438839806768873, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -16.02
@@ -23955,7 +24002,7 @@ PrefabInstance:
     - target: {fileID: 4602615637239656442, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
       propertyPath: 'assignedDancers.Array.data[0]'
       value: 
-      objectReference: {fileID: 292772699}
+      objectReference: {fileID: 0}
     - target: {fileID: 5291112742394437179, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
       propertyPath: danceAI
       value: 
@@ -24028,7 +24075,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.06099999
+      value: 0.055000007
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.z
@@ -24328,7 +24375,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.100000024
+      value: -0.000000022351742
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.z
@@ -24939,7 +24986,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.09000003
+      value: 0.019999996
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.z
@@ -25367,7 +25414,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.059999943
+      value: -0.009999946
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.z
@@ -25700,17 +25747,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2026750386}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &2032606168 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8743012659100246501, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
-  m_PrefabInstance: {fileID: 240443025}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c4eb260377d43899cc22dbf84a72605, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.AudioSystem.RandomAnimationSfxEmitter
 --- !u!4 &2036341635 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6675140767211803144, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
@@ -25951,7 +25987,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.07000005
+      value: -0.002
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.z
@@ -26016,7 +26052,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.z
@@ -26202,7 +26238,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.09000003
+      value: 0.019999996
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.z
@@ -26419,7 +26455,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.08000004
+      value: 0.019999996
       objectReference: {fileID: 0}
     - target: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
       propertyPath: m_LocalPosition.z
@@ -26502,85 +26538,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &990010001
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 990010002}
-  - component: {fileID: 990010004}
-  - component: {fileID: 990010003}
-  m_Layer: 0
-  m_Name: InventoryHintText
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &990010002
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 990010001}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2108699809}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.205}
-  m_AnchorMax: {x: 1, y: 0.245}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &990010003
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 990010001}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name:
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Text
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.65, g: 0.65, b: 0.65, a: 1}
-  m_RaycastTarget: 0
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 18
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
-    m_Alignment: 3
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 1
-    m_LineSpacing: 1
-  m_Text: "I \uBC84\uD2BC\uC744 \uB20C\uB7EC \uC778\uBCA4\uD1A0\uB9AC\uC5D0\uC11C \uD655\uC778\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4."
---- !u!222 &990010004
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 990010001}
-  m_CullTransparentMesh: 1
 --- !u!114 &2111265589 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3334593458237057569, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
