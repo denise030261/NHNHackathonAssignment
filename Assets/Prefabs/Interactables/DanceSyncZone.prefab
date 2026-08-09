@@ -187,13 +187,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Dance.DanceZoneDollReactionController
   dancerRoot: {fileID: 0}
   autoFindFaces: 1
-  faceTransformName: face
+  faceTransformPath: CharacterModel/metarig.003/spine/spine.001/spine.002/spine.003/spine.004/face
   additionalFaces: []
-  localFaceForwardAxis: {x: 0, y: 0, z: 1}
+  deriveAimAxisFromFirstChild: 1
+  fallbackLocalAimAxis: {x: 0, y: 1, z: 0}
+  playerLookHeight: 1.35
   faceTurnSpeed: 12
   watcherAlertRadius: 18
-  screamSfx: {fileID: 0}
+  screamSfx: {fileID: 8300000, guid: 2a64897ffdf7bc6479a08c6f58ec6440, type: 3}
   screamVolumeScale: 1
+  screamRepeatCount: 5
+  screamRepeatGap: 0.05
 --- !u!114 &8632297686001902084
 MonoBehaviour:
   m_ObjectHideFlags: 0

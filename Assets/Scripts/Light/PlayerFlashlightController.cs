@@ -24,6 +24,14 @@ namespace NHNHackathon.LightSystem
         [SerializeField] private Vector3 thirdPersonLocalEulerAngles;
         [SerializeField, Min(0f)] private float attachmentTransitionDuration = 0.45f;
 
+        [Header("Flashlight Mesh")]
+        [SerializeField, Tooltip("Physical flashlight model that follows the light transform.")]
+        private GameObject flashlightMeshRoot;
+        [SerializeField, Tooltip("Normally disabled so the model does not obstruct the first-person camera.")]
+        private bool showMeshInFirstPerson;
+        [SerializeField, Min(0.01f), Tooltip("Local scale of the held flashlight model.")]
+        private float flashlightMeshScale = 1.25f;
+
         [Header("Inventory Requirement")]
         [SerializeField] private PlayerItemInventory playerInventory;
         [SerializeField, Tooltip("The flashlight can only be toggled while this item is owned.")]
@@ -56,6 +64,7 @@ namespace NHNHackathon.LightSystem
             currentPerspective = cameraController != null
                 ? cameraController.Perspective
                 : CameraPerspective.FirstPerson;
+            ApplyMeshScale();
             ApplyAttachment(currentPerspective, true);
         }
 
@@ -104,6 +113,7 @@ namespace NHNHackathon.LightSystem
 
         private void ApplyAttachment(CameraPerspective perspective, bool immediate)
         {
+            UpdateMeshVisibility();
             Transform targetParent = perspective == CameraPerspective.FirstPerson
                 ? firstPersonParent
                 : thirdPersonParent;
@@ -182,6 +192,7 @@ namespace NHNHackathon.LightSystem
 
         private void HandleInventoryChanged()
         {
+            UpdateMeshVisibility();
             if (!CanUseFlashlight)
             {
                 SetFlashlight(false);
@@ -194,6 +205,28 @@ namespace NHNHackathon.LightSystem
             {
                 flashlight.enabled = value;
             }
+            UpdateMeshVisibility();
+        }
+
+        private void UpdateMeshVisibility()
+        {
+            if (flashlightMeshRoot == null)
+            {
+                return;
+            }
+
+            bool perspectiveAllowsMesh = currentPerspective == CameraPerspective.ThirdPerson
+                || showMeshInFirstPerson;
+            flashlightMeshRoot.SetActive(IsFlashlightEnabled && perspectiveAllowsMesh);
+        }
+
+        private void ApplyMeshScale()
+        {
+            if (flashlightMeshRoot != null)
+            {
+                flashlightMeshRoot.transform.localScale =
+                    Vector3.one * Mathf.Max(0.01f, flashlightMeshScale);
+            }
         }
 
         private void OnValidate()
@@ -205,6 +238,8 @@ namespace NHNHackathon.LightSystem
             playerInventory ??= GetComponentInParent<PlayerItemInventory>();
             playerInteractor ??= GetComponentInParent<PlayerInteractor>();
             cameraController ??= GetComponentInParent<PlayerCameraController>();
+            flashlightMeshScale = Mathf.Max(0.01f, flashlightMeshScale);
+            ApplyMeshScale();
 
             if (requiredFlashlightItem != null
                 && requiredFlashlightItem.Type != ItemType.General)

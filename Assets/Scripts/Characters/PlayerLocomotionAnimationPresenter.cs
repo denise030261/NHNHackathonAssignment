@@ -17,8 +17,17 @@ namespace NHNHackathon.Characters
         [SerializeField] private string flashlightParameter = "FlashlightOn";
         [SerializeField, Min(0f)] private float speedDampTime = 0.08f;
 
+        [Header("Flashlight State Transition")]
+        [SerializeField] private string locomotionStateName = "Locomotion";
+        [SerializeField] private string flashlightLocomotionStateName = "FlashlightLocomotion";
+        [SerializeField, Min(0f)] private float flashlightTransitionDuration = 0.2f;
+
         private int speedHash;
         private int flashlightHash;
+        private int locomotionStateHash;
+        private int flashlightLocomotionStateHash;
+        private bool previousFlashlightState;
+        private bool flashlightStateInitialized;
 
         private void Awake()
         {
@@ -58,9 +67,32 @@ namespace NHNHackathon.Characters
                     speedHash, horizontalSpeed, speedDampTime, Time.deltaTime);
             }
 
-            animator.SetBool(
-                flashlightHash,
-                flashlightController != null && flashlightController.IsFlashlightEnabled);
+            bool flashlightEnabled = flashlightController != null
+                && flashlightController.IsFlashlightEnabled;
+            animator.SetBool(flashlightHash, flashlightEnabled);
+
+            if (!flashlightStateInitialized || immediate)
+            {
+                previousFlashlightState = flashlightEnabled;
+                flashlightStateInitialized = true;
+                return;
+            }
+
+            if (previousFlashlightState == flashlightEnabled)
+            {
+                return;
+            }
+
+            previousFlashlightState = flashlightEnabled;
+            int destinationHash = flashlightEnabled
+                ? flashlightLocomotionStateHash
+                : locomotionStateHash;
+            if (animator.HasState(0, destinationHash))
+            {
+                animator.speed = 1f;
+                animator.CrossFadeInFixedTime(
+                    destinationHash, flashlightTransitionDuration, 0, 0f);
+            }
         }
 
         private void ResolveReferences()
@@ -75,11 +107,15 @@ namespace NHNHackathon.Characters
         {
             speedHash = Animator.StringToHash(speedParameter);
             flashlightHash = Animator.StringToHash(flashlightParameter);
+            locomotionStateHash = Animator.StringToHash(locomotionStateName);
+            flashlightLocomotionStateHash =
+                Animator.StringToHash(flashlightLocomotionStateName);
         }
 
         private void OnValidate()
         {
             speedDampTime = Mathf.Max(0f, speedDampTime);
+            flashlightTransitionDuration = Mathf.Max(0f, flashlightTransitionDuration);
             ResolveReferences();
         }
     }

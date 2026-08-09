@@ -10,6 +10,8 @@ namespace NHNHackathon.EditorTools
     public static class PlayerFlashlightPerspectiveSetup
     {
         private const string PrefabPath = "Assets/Prefabs/Characters/Player.prefab";
+        private const string FlashlightModelPath =
+            "Assets/Art/Items/flashlight/Flashlight.fbx";
 
         [MenuItem("NHN Hackathon/Setup/Player Flashlight Perspective Attachment")]
         public static void Build()
@@ -25,7 +27,8 @@ namespace NHNHackathon.EditorTools
                     .FirstOrDefault(value => value.name == "CharacterModel")
                     ?? throw new System.InvalidOperationException("CharacterModel was not found.");
 
-                Transform socket = model.Find("ThirdPersonFlashlightSocket");
+                Transform socket = model.GetComponentsInChildren<Transform>(true)
+                    .FirstOrDefault(value => value.name == "ThirdPersonFlashlightSocket");
                 if (socket == null)
                 {
                     socket = new GameObject("ThirdPersonFlashlightSocket").transform;
@@ -37,6 +40,21 @@ namespace NHNHackathon.EditorTools
                 socket.rotation = root.transform.rotation;
                 socket.localScale = Vector3.one;
 
+                Transform flashlightMesh = flashlight.transform.Find("HeldFlashlightMesh");
+                if (flashlightMesh == null)
+                {
+                    GameObject flashlightModel =
+                        AssetDatabase.LoadAssetAtPath<GameObject>(FlashlightModelPath)
+                        ?? throw new System.InvalidOperationException(
+                            "Flashlight model was not found.");
+                    flashlightMesh = ((GameObject)PrefabUtility.InstantiatePrefab(
+                        flashlightModel, flashlight.transform)).transform;
+                    flashlightMesh.name = "HeldFlashlightMesh";
+                }
+                flashlightMesh.SetLocalPositionAndRotation(
+                    Vector3.zero, Quaternion.Euler(-90f, 0f, 0f));
+                flashlightMesh.localScale = Vector3.one * 1.25f;
+
                 SerializedObject values = new SerializedObject(flashlight);
                 values.FindProperty("cameraController").objectReferenceValue = cameraController;
                 values.FindProperty("firstPersonParent").objectReferenceValue = camera.transform;
@@ -46,6 +64,10 @@ namespace NHNHackathon.EditorTools
                 values.FindProperty("thirdPersonLocalPosition").vector3Value = Vector3.zero;
                 values.FindProperty("thirdPersonLocalEulerAngles").vector3Value = Vector3.zero;
                 values.FindProperty("attachmentTransitionDuration").floatValue = 0.45f;
+                values.FindProperty("flashlightMeshRoot").objectReferenceValue =
+                    flashlightMesh.gameObject;
+                values.FindProperty("showMeshInFirstPerson").boolValue = false;
+                values.FindProperty("flashlightMeshScale").floatValue = 1.25f;
                 values.ApplyModifiedPropertiesWithoutUndo();
 
                 PrefabUtility.SaveAsPrefabAsset(root, PrefabPath);

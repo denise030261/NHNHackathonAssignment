@@ -30,7 +30,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0.1500001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 7196048530196274413}
   m_Father: {fileID: 1165462684980383091}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &2250803823524509827
@@ -121,6 +122,9 @@ MonoBehaviour:
   thirdPersonLocalPosition: {x: 0, y: 0, z: 0}
   thirdPersonLocalEulerAngles: {x: 0, y: 0, z: 0}
   attachmentTransitionDuration: 0.45
+  flashlightMeshRoot: {fileID: 8307948831027357211}
+  showMeshInFirstPerson: 0
+  flashlightMeshScale: 1.25
   playerInventory: {fileID: 726503695478076827}
   requiredFlashlightItem: {fileID: 11400000, guid: dffd4269b8c599f4d84416c04348f702, type: 2}
   playerInteractor: {fileID: 6159149051192978673}
@@ -147,6 +151,7 @@ GameObject:
   - component: {fileID: 857403713291783793}
   - component: {fileID: 6916418027925010214}
   - component: {fileID: 1399653577830832423}
+  - component: {fileID: 2877428091336817771}
   m_Layer: 2
   m_Name: Player
   m_TagString: Untagged
@@ -208,7 +213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5966ed6e03a8ab4cb8940d4f7d35f74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Characters.PlayerCameraController
-  perspective: 1
+  perspective: 0
   playerCamera: {fileID: 2266752986517209616}
   mouseSensitivity: 2
   minimumPitch: -70
@@ -429,6 +434,24 @@ MonoBehaviour:
   speedParameter: Speed
   flashlightParameter: FlashlightOn
   speedDampTime: 0.18
+  locomotionStateName: Locomotion
+  flashlightLocomotionStateName: FlashlightLocomotion
+  flashlightTransitionDuration: 0.2
+--- !u!114 &2877428091336817771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5270906866158683349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9abc6b344b314c748ac625488bfe42df, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Characters.PlayerPerspectiveVisualController
+  cameraController: {fileID: 5152183085720589010}
+  characterModelRoot: {fileID: 7658563092195227149}
+  keepShadowsInFirstPerson: 1
 --- !u!1 &5294850355753004290
 GameObject:
   m_ObjectHideFlags: 0
@@ -682,4 +705,71 @@ MonoBehaviour:
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c78a2c210d3646e4abe922f1ecdf4f40, type: 3}
   m_PrefabInstance: {fileID: 7908910229244072422}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7196048530196274412
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2005824328028355622}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 7b1f246394314bd4cb76ae2878ae293c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7b1f246394314bd4cb76ae2878ae293c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7b1f246394314bd4cb76ae2878ae293c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7b1f246394314bd4cb76ae2878ae293c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7b1f246394314bd4cb76ae2878ae293c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7b1f246394314bd4cb76ae2878ae293c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7b1f246394314bd4cb76ae2878ae293c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7b1f246394314bd4cb76ae2878ae293c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7b1f246394314bd4cb76ae2878ae293c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7b1f246394314bd4cb76ae2878ae293c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7b1f246394314bd4cb76ae2878ae293c, type: 3}
+      propertyPath: m_Name
+      value: HeldFlashlightMesh
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7b1f246394314bd4cb76ae2878ae293c, type: 3}
+--- !u!1 &8307948831027357211 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7b1f246394314bd4cb76ae2878ae293c, type: 3}
+  m_PrefabInstance: {fileID: 7196048530196274412}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7196048530196274413 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7b1f246394314bd4cb76ae2878ae293c, type: 3}
+  m_PrefabInstance: {fileID: 7196048530196274412}
   m_PrefabAsset: {fileID: 0}

@@ -429,12 +429,28 @@ namespace NHNHackathon.EditorTools
                     root.GetComponent<CharacterController>();
                 locomotionValues.FindProperty("flashlightController").objectReferenceValue = flashlight;
                 locomotionValues.FindProperty("speedDampTime").floatValue = 0.18f;
+                locomotionValues.FindProperty("locomotionStateName").stringValue =
+                    "Locomotion";
+                locomotionValues.FindProperty("flashlightLocomotionStateName").stringValue =
+                    "FlashlightLocomotion";
+                locomotionValues.FindProperty("flashlightTransitionDuration").floatValue = 0.2f;
                 locomotionValues.ApplyModifiedPropertiesWithoutUndo();
 
                 PlayerDanceAnimationPresenter dancePresenter =
                     root.GetComponent<PlayerDanceAnimationPresenter>()
                     ?? root.AddComponent<PlayerDanceAnimationPresenter>();
                 ConfigurePlayerDancePresenter(dancePresenter, animator, danceClips);
+
+                PlayerPerspectiveVisualController perspectiveVisual =
+                    root.GetComponent<PlayerPerspectiveVisualController>()
+                    ?? root.AddComponent<PlayerPerspectiveVisualController>();
+                SerializedObject perspectiveVisualValues = new(perspectiveVisual);
+                perspectiveVisualValues.FindProperty("cameraController").objectReferenceValue =
+                    root.GetComponent<PlayerCameraController>();
+                perspectiveVisualValues.FindProperty("characterModelRoot").objectReferenceValue =
+                    model.transform;
+                perspectiveVisualValues.FindProperty("keepShadowsInFirstPerson").boolValue = true;
+                perspectiveVisualValues.ApplyModifiedPropertiesWithoutUndo();
                 PrefabUtility.SaveAsPrefabAsset(root, PlayerPrefabPath);
             }
             finally

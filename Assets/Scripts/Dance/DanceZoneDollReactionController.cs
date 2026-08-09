@@ -1,12 +1,15 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using NHNHackathon.AI;
 using NHNHackathon.AudioSystem;
 using NHNHackathon.Enemy;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace NHNHackathon.Dance
 {
+    [DefaultExecutionOrder(10000)]
     [DisallowMultipleComponent]
     [RequireComponent(typeof(DanceSyncZone))]
     [RequireComponent(typeof(DanceSyncJudge))]
@@ -16,28 +19,38 @@ namespace NHNHackathon.Dance
         private sealed class FaceBinding
         {
             public Transform Face;
-            public Quaternion OriginalLocalRotation;
+            public Vector3 LocalAimAxis;
         }
 
         [Header("Dolls")]
         [SerializeField, Tooltip("Root containing this DanceSyncZone and its DancingAI dolls. Defaults to the parent.")]
         private Transform dancerRoot;
         [SerializeField] private bool autoFindFaces = true;
-        [SerializeField, Tooltip("Exact transform name used by the character model.")]
-        private string faceTransformName = "face";
+        [FormerlySerializedAs("faceTransformName")]
+        [SerializeField, Tooltip("Path from each DancingAI root to the face bone that should track the player.")]
+        private string faceTransformPath =
+            "CharacterModel/metarig.003/spine/spine.001/spine.002/spine.003/spine.004/face";
         [SerializeField] private List<Transform> additionalFaces = new();
 
         [Header("Face Tracking")]
-        [SerializeField] private Vector3 localFaceForwardAxis = Vector3.forward;
+        [SerializeField, Tooltip("Uses the direction from face to its first child as the bone's aim axis when possible.")]
+        private bool deriveAimAxisFromFirstChild = true;
+        [SerializeField, Tooltip("Fallback local aim axis. Blender bones normally point along local Y+.")]
+        private Vector3 fallbackLocalAimAxis = Vector3.up;
+        [SerializeField, Min(0f), Tooltip("Height above the player's root that the face bones look toward.")]
+        private float playerLookHeight = 1.35f;
         [SerializeField, Min(0f)] private float faceTurnSpeed = 12f;
 
         [Header("Watcher Alert")]
         [SerializeField, Min(0f)] private float watcherAlertRadius = 18f;
 
-        [Header("Scream SFX (Optional)")]
-        [SerializeField, Tooltip("Assign the doll scream clip here when the resource is ready.")]
+        [Header("Detection SFX")]
+        [SerializeField]
         private AudioClip screamSfx;
         [SerializeField, Range(0f, 1f)] private float screamVolumeScale = 1f;
+        [SerializeField, Min(1)] private int screamRepeatCount = 5;
+        [SerializeField, Min(0f), Tooltip("Silence added after each clip before the next repetition.")]
+        private float screamRepeatGap = 0.05f;
 
         private readonly List<FaceBinding> faces = new();
         private DanceSyncZone danceZone;
@@ -46,9 +59,11 @@ namespace NHNHackathon.Dance
         private Transform lookTarget;
         private bool playerPerformedDance;
         private bool facesAreTracking;
+        private Coroutine screamRoutine;
 
         private void Awake()
         {
+            ResetRuntimeReactionState();
             danceZone = GetComponent<DanceSyncZone>();
             syncJudge = GetComponent<DanceSyncJudge>();
             CacheFaces();
@@ -56,6 +71,7 @@ namespace NHNHackathon.Dance
 
         private void OnEnable()
         {
+            ResetRuntimeReactionState();
             danceZone ??= GetComponent<DanceSyncZone>();
             syncJudge ??= GetComponent<DanceSyncJudge>();
             danceZone.PlayerEntered += HandlePlayerEntered;
@@ -75,6 +91,7 @@ namespace NHNHackathon.Dance
                 syncJudge.DanceStepJudged -= HandleDanceStepJudged;
             }
             UnsubscribeFromPlayer();
+            StopScreamRoutine();
         }
 
         private void LateUpdate()
@@ -84,9 +101,7 @@ namespace NHNHackathon.Dance
                 return;
             }
 
-            Vector3 forwardAxis = localFaceForwardAxis.sqrMagnitude > 0.0001f
-                ? localFaceForwardAxis.normalized
-                : Vector3.forward;
+            Vector3 targetPosition = lookTarget.position + Vector3.up * playerLookHeight;
             foreach (FaceBinding binding in faces)
             {
                 Transform face = binding.Face;
@@ -95,13 +110,14 @@ namespace NHNHackathon.Dance
                     continue;
                 }
 
-                Vector3 direction = lookTarget.position - face.position;
+                Vector3 direction = targetPosition - face.position;
                 if (direction.sqrMagnitude <= 0.0001f)
                 {
                     continue;
                 }
 
-                Vector3 currentFaceForward = face.TransformDirection(forwardAxis);
+                Vector3 currentFaceForward =
+                    face.TransformDirection(binding.LocalAimAxis);
                 Quaternion targetRotation =
                     Quaternion.FromToRotation(currentFaceForward, direction.normalized)
                     * face.rotation;
@@ -162,18 +178,6 @@ namespace NHNHackathon.Dance
         private void SetFaceTracking(bool enabled)
         {
             facesAreTracking = enabled;
-            if (enabled)
-            {
-                return;
-            }
-
-            foreach (FaceBinding binding in faces)
-            {
-                if (binding.Face != null)
-                {
-                    binding.Face.localRotation = binding.OriginalLocalRotation;
-                }
-            }
         }
 
         private void CacheFaces()
@@ -187,13 +191,10 @@ namespace NHNHackathon.Dance
                 foreach (DanceSequenceController dancer in
                          dancerRoot.GetComponentsInChildren<DanceSequenceController>(true))
                 {
-                    foreach (Transform child in dancer.GetComponentsInChildren<Transform>(true))
+                    Transform face = dancer.transform.Find(faceTransformPath);
+                    if (face != null)
                     {
-                        if (string.Equals(child.name, faceTransformName,
-                                StringComparison.OrdinalIgnoreCase))
-                        {
-                            uniqueFaces.Add(child);
-                        }
+                        uniqueFaces.Add(face);
                     }
                 }
             }
@@ -211,9 +212,26 @@ namespace NHNHackathon.Dance
                 faces.Add(new FaceBinding
                 {
                     Face = face,
-                    OriginalLocalRotation = face.localRotation
+                    LocalAimAxis = ResolveLocalAimAxis(face)
                 });
             }
+        }
+
+        private Vector3 ResolveLocalAimAxis(Transform face)
+        {
+            if (deriveAimAxisFromFirstChild && face.childCount > 0)
+            {
+                Vector3 childDirection = face.GetChild(0).position - face.position;
+                if (childDirection.sqrMagnitude > 0.0001f)
+                {
+                    return face.InverseTransformDirection(
+                        childDirection.normalized).normalized;
+                }
+            }
+
+            return fallbackLocalAimAxis.sqrMagnitude > 0.0001f
+                ? fallbackLocalAimAxis.normalized
+                : Vector3.up;
         }
 
         private void AlertNearestWatcher(Transform player)
@@ -225,8 +243,8 @@ namespace NHNHackathon.Dance
 
             EnemyController nearest = null;
             float nearestDistanceSqr = watcherAlertRadius * watcherAlertRadius;
-            foreach (EnemyController watcher in FindObjectsByType<EnemyController>(
-                         FindObjectsInactive.Exclude, FindObjectsSortMode.None))
+            foreach (EnemyController watcher in
+                     FindObjectsByType<EnemyController>(FindObjectsInactive.Exclude))
             {
                 if (!watcher.isActiveAndEnabled)
                 {
@@ -246,11 +264,42 @@ namespace NHNHackathon.Dance
 
         private void PlayScream()
         {
-            // SFX resource is not available yet. Assign Scream Sfx in the Inspector later.
-            if (screamSfx != null)
+            if (screamSfx == null)
             {
-                GameSfxPlayer.PlayAtPoint(screamSfx, transform.position, screamVolumeScale);
+                return;
             }
+
+            StopScreamRoutine();
+            screamRoutine = StartCoroutine(PlayScreamRepeatedly());
+        }
+
+        private IEnumerator PlayScreamRepeatedly()
+        {
+            int repeatCount = Mathf.Max(1, screamRepeatCount);
+            for (int index = 0; index < repeatCount; index++)
+            {
+                GameSfxPlayer.PlayAtPoint(
+                    screamSfx, transform.position, screamVolumeScale);
+
+                if (index < repeatCount - 1)
+                {
+                    yield return new WaitForSeconds(
+                        Mathf.Max(0.01f, screamSfx.length + screamRepeatGap));
+                }
+            }
+
+            screamRoutine = null;
+        }
+
+        private void StopScreamRoutine()
+        {
+            if (screamRoutine == null)
+            {
+                return;
+            }
+
+            StopCoroutine(screamRoutine);
+            screamRoutine = null;
         }
 
         private void UnsubscribeFromPlayer()
@@ -262,13 +311,25 @@ namespace NHNHackathon.Dance
             activePlayer = null;
         }
 
+        private void ResetRuntimeReactionState()
+        {
+            UnsubscribeFromPlayer();
+            facesAreTracking = false;
+            lookTarget = null;
+            playerPerformedDance = false;
+        }
+
         private void OnValidate()
         {
             faceTurnSpeed = Mathf.Max(0f, faceTurnSpeed);
+            playerLookHeight = Mathf.Max(0f, playerLookHeight);
             watcherAlertRadius = Mathf.Max(0f, watcherAlertRadius);
-            if (string.IsNullOrWhiteSpace(faceTransformName))
+            screamRepeatCount = Mathf.Max(1, screamRepeatCount);
+            screamRepeatGap = Mathf.Max(0f, screamRepeatGap);
+            if (string.IsNullOrWhiteSpace(faceTransformPath))
             {
-                faceTransformName = "face";
+                faceTransformPath =
+                    "CharacterModel/metarig.003/spine/spine.001/spine.002/spine.003/spine.004/face";
             }
         }
 
