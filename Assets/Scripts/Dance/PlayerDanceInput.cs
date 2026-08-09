@@ -12,6 +12,8 @@ namespace NHNHackathon.Dance
         private PlayerDanceUnlockController unlockController;
 
         public event Action<int, float> DanceInputPerformed;
+        public bool IsDanceModifierHeld => inputMapping != null
+            && UnityEngine.Input.GetKey(inputMapping.ModifierKey);
 
         private void Update()
         {
@@ -20,9 +22,19 @@ namespace NHNHackathon.Dance
                 return;
             }
 
+            bool modifierHeld = UnityEngine.Input.GetKey(inputMapping.ModifierKey);
+            if (!modifierHeld)
+            {
+                return;
+            }
+
+            bool modifierPressed = UnityEngine.Input.GetKeyDown(inputMapping.ModifierKey);
+
             foreach (DanceInputBinding binding in inputMapping.Bindings)
             {
-                if (binding != null && UnityEngine.Input.GetKeyDown(binding.Key))
+                if (binding != null
+                    && (UnityEngine.Input.GetKeyDown(binding.Key)
+                        || (modifierPressed && UnityEngine.Input.GetKey(binding.Key))))
                 {
                     PerformDance(binding.DanceId);
                     break;

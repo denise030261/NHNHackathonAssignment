@@ -265,6 +265,7 @@ MonoBehaviour:
   gravity: -20
   movementCamera: {fileID: 1165462684980383091}
   cameraController: {fileID: 5152183085720589010}
+  danceInput: {fileID: 1022894658548325590}
 --- !u!114 &8438738964873510995
 MonoBehaviour:
   m_ObjectHideFlags: 0

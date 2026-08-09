@@ -61,7 +61,7 @@ namespace NHNHackathon.AudioSystem
             }
 
             float volume = Mathf.Clamp01(AudioSettingsController.SavedSfxVolume * volumeScale);
-            AudioSource.PlayClipAtPoint(clip, position, volume);
+            GameSfxPool.Instance.Play(clip, position, volume);
         }
 
         public static void PlayKeyPickup(Vector3 position) =>

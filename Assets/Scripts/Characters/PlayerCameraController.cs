@@ -78,7 +78,6 @@ namespace NHNHackathon.Characters
         private float forcedPitchDuration;
         private float forcedPitchStart;
         private float forcedPitchTarget;
-        private Transform fixedThirdPersonCameraPoint;
 
         public CameraPerspective Perspective => targetPerspective;
         public bool IsTransitioning => isTransitioning;
@@ -209,11 +208,6 @@ namespace NHNHackathon.Characters
             }
         }
 
-        public void SetFixedThirdPersonCameraPoint(Transform cameraPoint)
-        {
-            fixedThirdPersonCameraPoint = cameraPoint;
-        }
-
         private void UpdateForcedTurn()
         {
             forcedTurnElapsed += Time.deltaTime;
@@ -308,13 +302,6 @@ namespace NHNHackathon.Characters
 
         private void CalculateThirdPersonPose(out Vector3 position, out Quaternion rotation)
         {
-            if (fixedThirdPersonCameraPoint != null)
-            {
-                position = fixedThirdPersonCameraPoint.position;
-                rotation = fixedThirdPersonCameraPoint.rotation;
-                return;
-            }
-
             Vector3 pivot = transform.position + thirdPersonPivotOffset;
             rotation = Quaternion.Euler(pitch, yaw, 0f);
             Vector3 direction = rotation * Vector3.back;

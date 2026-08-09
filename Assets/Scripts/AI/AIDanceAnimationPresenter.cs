@@ -16,6 +16,8 @@ namespace NHNHackathon.AI
         private List<DanceAnimationMapping> danceAnimations = new();
         [SerializeField, Min(0f), Tooltip("Seconds used to blend from the current dance into the next dance.")]
         private float transitionDuration = 0.2f;
+        [SerializeField, Tooltip("Adjusts each clip speed so its full timeline, including Animation Events, fits inside one beat.")]
+        private bool fitClipDurationToBeat = true;
 
         private DanceSequenceController sequenceController;
         private int currentDanceId = -1;
@@ -67,7 +69,13 @@ namespace NHNHackathon.AI
                     }
 
                     currentDanceId = dance.Id;
-                    animator.speed = mapping.PlaybackSpeed;
+                    float playbackSpeed = mapping.PlaybackSpeed;
+                    if (fitClipDurationToBeat && sequenceController.BeatInterval > 0.01f)
+                    {
+                        playbackSpeed *= mapping.AnimationClip.length
+                            / sequenceController.BeatInterval;
+                    }
+                    animator.speed = playbackSpeed;
                     animator.CrossFadeInFixedTime(
                         stateHash, transitionDuration, 0, 0f);
                     return;

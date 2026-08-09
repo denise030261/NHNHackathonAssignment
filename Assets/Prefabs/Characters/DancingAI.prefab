@@ -76,6 +76,7 @@ MonoBehaviour:
     animationClip: {fileID: 7400000, guid: 0a87596c9befc00449986231e4ff215f, type: 2}
     playbackSpeed: 1
   transitionDuration: 0.2
+  fitClipDurationToBeat: 1
 --- !u!1001 &6749660526239402773
 PrefabInstance:
   m_ObjectHideFlags: 0

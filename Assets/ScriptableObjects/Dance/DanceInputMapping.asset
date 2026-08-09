@@ -12,16 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 797fff26d0e466b41b01863fe6cd95a0, type: 3}
   m_Name: DanceInputMapping
   m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Dance.DanceInputMapping
+  modifierKey: 324
   bindings:
-  - key: 118
+  - key: 119
     danceId: 1
-  - key: 98
+  - key: 97
     danceId: 2
-  - key: 110
+  - key: 115
     danceId: 3
-  - key: 109
+  - key: 100
     danceId: 4
-  - key: 53
-    danceId: 5
-  - key: 54
-    danceId: 6

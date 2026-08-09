@@ -1,3 +1,4 @@
+using NHNHackathon.Dance;
 using UnityEngine;
 
 namespace NHNHackathon.Characters
@@ -23,12 +24,16 @@ namespace NHNHackathon.Characters
         [SerializeField, Tooltip("Camera controller used to determine the active perspective.")]
         private PlayerCameraController cameraController;
 
+        [SerializeField, Tooltip("Suppresses WASD movement while the dance modifier is held.")]
+        private PlayerDanceInput danceInput;
+
         private CharacterController characterController;
         private float verticalVelocity;
 
         private void Awake()
         {
             characterController = GetComponent<CharacterController>();
+            danceInput ??= GetComponent<PlayerDanceInput>();
         }
 
         private void Update()
@@ -41,6 +46,10 @@ namespace NHNHackathon.Characters
             Vector2 input = new Vector2(
                 UnityEngine.Input.GetAxisRaw("Horizontal"),
                 UnityEngine.Input.GetAxisRaw("Vertical"));
+            if (danceInput != null && danceInput.IsDanceModifierHeld)
+            {
+                input = Vector2.zero;
+            }
             input = Vector2.ClampMagnitude(input, 1f);
 
             Vector3 cameraForward = Vector3.ProjectOnPlane(movementCamera.forward, Vector3.up).normalized;
@@ -74,6 +83,11 @@ namespace NHNHackathon.Characters
             if (cameraController == null)
             {
                 cameraController = GetComponent<PlayerCameraController>();
+            }
+
+            if (danceInput == null)
+            {
+                danceInput = GetComponent<PlayerDanceInput>();
             }
         }
     }

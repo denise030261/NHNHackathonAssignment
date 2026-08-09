@@ -71,6 +71,30 @@ namespace NHNHackathon.EditorTools
             Debug.Log("NEW_CHARACTER_ANIMATION_SETUP_COMPLETE: Player model/locomotion/flash/dances and DancingAI model applied.");
         }
 
+        [MenuItem("Tools/NHN Hackathon/Characters/Sync Dance Animation Events")]
+        public static void SyncDanceAnimationEvents()
+        {
+            EnsureGeneratedFolder();
+            for (int index = 0; index < DancePaths.Length; index++)
+            {
+                AnimationClip source =
+                    AssetDatabase.LoadAssetAtPath<AnimationClip>(DancePaths[index]);
+                AnimationClip compatible = AssetDatabase.LoadAssetAtPath<AnimationClip>(
+                    $"{GeneratedClipFolder}/Player_Dance{index + 1}.anim");
+                if (source == null || compatible == null)
+                {
+                    continue;
+                }
+
+                AnimationUtility.SetAnimationEvents(
+                    compatible, AnimationUtility.GetAnimationEvents(source));
+                EditorUtility.SetDirty(compatible);
+            }
+
+            AssetDatabase.SaveAssets();
+            Debug.Log("DANCE_ANIMATION_EVENTS_SYNCED: Source Dance1-4 -> compatible Player/DancingAI clips.");
+        }
+
         public static void ApplyDancingAIModelOnly()
         {
             Avatar avatar = AssetDatabase.LoadAllAssetsAtPath(BaseModelPath)
@@ -167,8 +191,8 @@ namespace NHNHackathon.EditorTools
             {
                 AnimatorState danceState = AddState(
                     machine, $"Dance{index + 1}", dances[index]);
-                AddDanceExit(danceState, locomotionState, false);
-                AddDanceExit(danceState, flashlightState, true);
+                AddDanceMovementExit(danceState, locomotionState, false);
+                AddDanceMovementExit(danceState, flashlightState, true);
             }
 
             EditorUtility.SetDirty(controller);
@@ -356,15 +380,16 @@ namespace NHNHackathon.EditorTools
             }
         }
 
-        private static void AddDanceExit(
+        private static void AddDanceMovementExit(
             AnimatorState dance, AnimatorState destination,
             bool flashlightOn)
         {
             AnimatorStateTransition transition = dance.AddTransition(destination);
-            transition.hasExitTime = true;
-            transition.exitTime = 0.85f;
+            transition.hasExitTime = false;
             transition.hasFixedDuration = true;
             transition.duration = 0.3f;
+            transition.AddCondition(
+                AnimatorConditionMode.Greater, 0.05f, "Speed");
             transition.AddCondition(
                 flashlightOn ? AnimatorConditionMode.If : AnimatorConditionMode.IfNot,
                 0f, "FlashlightOn");
