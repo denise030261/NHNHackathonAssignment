@@ -528,14 +528,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2870246261858827867, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2870246261858827867, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.75
-      objectReference: {fileID: 0}
     - target: {fileID: 6281254265163419076, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
       propertyPath: player
       value: 
@@ -621,11 +613,12 @@ MonoBehaviour:
   animator: {fileID: 31690571}
   upperBodyBone: {fileID: 579895888}
   lookTarget: {fileID: 579895887}
+  playerCapturePoint: {fileID: 846692358}
   upperBodyApproachDistance: 0.3
-  approachDuration: 0.45
-  shakeDuration: 0.75
+  approachDuration: 0.75
+  shakeDuration: 1.5
   shakeStrength: {x: 7, y: 12, z: 5}
-  shakeVibrato: 20
+  shakeVibrato: 30
 --- !u!4 &40691635 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 495296073371713988, guid: 26628686116e61a45b72ca5cc4242f8c, type: 3}
@@ -1328,6 +1321,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
   m_PrefabInstance: {fileID: 2080849135}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &125133240 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5837610384608895875, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
+  m_PrefabInstance: {fileID: 179475243}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &134435796
 GameObject:
   m_ObjectHideFlags: 0
@@ -1440,6 +1438,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 134435796}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &136336925 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5837610384608895875, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
+  m_PrefabInstance: {fileID: 1156483141}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &138812454 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4061616998222955753, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
@@ -1777,14 +1780,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2870246261858827867, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2870246261858827867, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.75
-      objectReference: {fileID: 0}
     - target: {fileID: 6281254265163419076, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
       propertyPath: player
       value: 
@@ -1870,11 +1865,12 @@ MonoBehaviour:
   animator: {fileID: 179475248}
   upperBodyBone: {fileID: 1121567969}
   lookTarget: {fileID: 1121567968}
+  playerCapturePoint: {fileID: 125133240}
   upperBodyApproachDistance: 0.3
-  approachDuration: 0.45
-  shakeDuration: 0.75
+  approachDuration: 0.75
+  shakeDuration: 1.5
   shakeStrength: {x: 7, y: 12, z: 5}
-  shakeVibrato: 20
+  shakeVibrato: 30
 --- !u!1 &179987152
 GameObject:
   m_ObjectHideFlags: 0
@@ -2566,14 +2562,6 @@ PrefabInstance:
     - target: {fileID: 2090663550077517559, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
       propertyPath: m_IsActive
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2870246261858827867, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2870246261858827867, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 6281254265163419076, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
       propertyPath: player
@@ -3479,7 +3467,7 @@ PrefabInstance:
       objectReference: {fileID: 2128450805}
     - target: {fileID: 6675140767211803144, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.6
+      value: -14.3
       objectReference: {fileID: 0}
     - target: {fileID: 6675140767211803144, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3487,7 +3475,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6675140767211803144, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -41.5
+      value: 7.8
       objectReference: {fileID: 0}
     - target: {fileID: 6675140767211803144, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
       propertyPath: m_LocalRotation.w
@@ -9984,6 +9972,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 843090746}
   m_CullTransparentMesh: 1
+--- !u!4 &846692358 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5837610384608895875, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
+  m_PrefabInstance: {fileID: 31690566}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &849393854
 GameObject:
   m_ObjectHideFlags: 0
@@ -11791,7 +11784,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1015089350
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13231,6 +13224,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1127059217}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1128427878 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5837610384608895875, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
+  m_PrefabInstance: {fileID: 1605590880}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1129798364
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13898,14 +13896,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2870246261858827867, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2870246261858827867, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.75
-      objectReference: {fileID: 0}
     - target: {fileID: 6281254265163419076, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
       propertyPath: player
       value: 
@@ -13999,11 +13989,12 @@ MonoBehaviour:
   animator: {fileID: 1156483146}
   upperBodyBone: {fileID: 526499234}
   lookTarget: {fileID: 526499233}
+  playerCapturePoint: {fileID: 136336925}
   upperBodyApproachDistance: 0.3
-  approachDuration: 0.45
-  shakeDuration: 0.75
+  approachDuration: 0.75
+  shakeDuration: 1.5
   shakeStrength: {x: 7, y: 12, z: 5}
-  shakeVibrato: 20
+  shakeVibrato: 30
 --- !u!1 &1166102973
 GameObject:
   m_ObjectHideFlags: 0
@@ -18544,6 +18535,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9b0e790a80abf46bb110f1d5126121, type: 3}
+--- !u!4 &1494557750 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5837610384608895875, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
+  m_PrefabInstance: {fileID: 1738070039}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1512876176
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20020,14 +20016,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2870246261858827867, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2870246261858827867, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.75
-      objectReference: {fileID: 0}
     - target: {fileID: 6281254265163419076, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
       propertyPath: player
       value: 
@@ -20116,11 +20104,12 @@ MonoBehaviour:
   animator: {fileID: 1605590885}
   upperBodyBone: {fileID: 1137158854}
   lookTarget: {fileID: 1137158853}
+  playerCapturePoint: {fileID: 1128427878}
   upperBodyApproachDistance: 0.3
-  approachDuration: 0.45
-  shakeDuration: 0.75
+  approachDuration: 0.75
+  shakeDuration: 1.5
   shakeStrength: {x: 7, y: 12, z: 5}
-  shakeVibrato: 20
+  shakeVibrato: 30
 --- !u!114 &1605590887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22566,11 +22555,12 @@ MonoBehaviour:
   animator: {fileID: 1738070044}
   upperBodyBone: {fileID: 79054935}
   lookTarget: {fileID: 79054934}
+  playerCapturePoint: {fileID: 1494557750}
   upperBodyApproachDistance: 0.3
-  approachDuration: 0.45
-  shakeDuration: 0.75
+  approachDuration: 0.75
+  shakeDuration: 1.5
   shakeStrength: {x: 7, y: 12, z: 5}
-  shakeVibrato: 20
+  shakeVibrato: 30
 --- !u!1 &1738865114
 GameObject:
   m_ObjectHideFlags: 0
@@ -24766,7 +24756,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1948587198
 RectTransform:
   m_ObjectHideFlags: 0
@@ -27360,7 +27350,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 810010001, guid: 0db68a59886c4b2a8f366acbfe965071, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 810010002, guid: 0db68a59886c4b2a8f366acbfe965071, type: 3}
       propertyPath: m_AnchorMax.x
@@ -27582,10 +27572,10 @@ MonoBehaviour:
   screamingSfx: {fileID: 8300000, guid: ca4aea65131c75d4ab7c2c0fd99b4c58, type: 3}
   lookDuration: 0.35
   cameraShakeDuration: 0.8
-  cameraShakeStrength: 5
-  cameraShakeVibrato: 18
+  cameraShakeStrength: 10
+  cameraShakeVibrato: 25
   cameraShakeRandomness: 65
-  fadeDelay: 1.15
+  fadeDelay: 1.25
   fadeDuration: 0.65
 --- !u!1001 &9097693680386468365
 PrefabInstance:

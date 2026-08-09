@@ -59,6 +59,27 @@ namespace NHNHackathon.AudioSystem
             fadeRoutine = null;
         }
 
+        public void StopImmediately()
+        {
+            if (fadeRoutine != null)
+            {
+                StopCoroutine(fadeRoutine);
+                fadeRoutine = null;
+            }
+
+            source ??= GetComponent<AudioSource>();
+            source.Stop();
+        }
+
+        public static void StopAll()
+        {
+            foreach (SceneBgmPlayer player in FindObjectsByType<SceneBgmPlayer>(
+                         FindObjectsInactive.Include, FindObjectsSortMode.None))
+            {
+                player.StopImmediately();
+            }
+        }
+
         private void OnDisable()
         {
             if (fadeRoutine != null)

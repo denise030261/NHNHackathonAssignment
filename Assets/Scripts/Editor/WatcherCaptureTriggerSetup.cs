@@ -56,6 +56,24 @@ namespace NHNHackathon.EditorTools
                     root.GetComponent<EnemyController>();
                 values.ApplyModifiedPropertiesWithoutUndo();
 
+                Transform capturePoint = root.transform.Find("PlayerCapturePoint");
+                if (capturePoint == null)
+                {
+                    capturePoint = new GameObject("PlayerCapturePoint").transform;
+                    capturePoint.SetParent(root.transform, false);
+                    capturePoint.localPosition = new Vector3(0f, 0f, 0.9f);
+                    capturePoint.localRotation = Quaternion.Euler(0f, 180f, 0f);
+                    capturePoint.localScale = Vector3.one;
+                }
+
+                WatcherCapturePresenter presenter =
+                    root.GetComponent<WatcherCapturePresenter>()
+                    ?? root.AddComponent<WatcherCapturePresenter>();
+                SerializedObject presenterValues = new(presenter);
+                presenterValues.FindProperty("playerCapturePoint").objectReferenceValue =
+                    capturePoint;
+                presenterValues.ApplyModifiedPropertiesWithoutUndo();
+
                 PrefabUtility.SaveAsPrefabAsset(root, PrefabPath);
             }
             finally
@@ -64,7 +82,7 @@ namespace NHNHackathon.EditorTools
             }
 
             AssetDatabase.SaveAssets();
-            Debug.Log("WATCHER_CAPTURE_TRIGGER_COMPLETE");
+            Debug.Log("WATCHER_CAPTURE_TRIGGER_COMPLETE PlayerCapturePoint assigned.");
         }
     }
 }

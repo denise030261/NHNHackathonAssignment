@@ -12,6 +12,8 @@ namespace NHNHackathon.Enemy
         [SerializeField] private Animator animator;
         [SerializeField] private Transform upperBodyBone;
         [SerializeField] private Transform lookTarget;
+        [SerializeField, Tooltip("Position and rotation used to stage the captured player in front of this watcher.")]
+        private Transform playerCapturePoint;
 
         [Header("Capture Motion")]
         [SerializeField, Min(0f)] private float upperBodyApproachDistance = 0.3f;
@@ -27,10 +29,30 @@ namespace NHNHackathon.Enemy
         private Tween captureTween;
 
         public Transform LookTarget => lookTarget != null ? lookTarget : upperBodyBone;
+        public Transform PlayerCapturePoint => playerCapturePoint;
 
         private void Awake()
         {
             ResolveReferences();
+        }
+
+        public void FaceTarget(Transform target)
+        {
+            if (target == null)
+            {
+                return;
+            }
+
+            Vector3 direction = target.position - transform.position;
+            direction.y = 0f;
+            if (direction.sqrMagnitude <= 0.0001f)
+            {
+                return;
+            }
+
+            transform.rotation = Quaternion.LookRotation(
+                direction.normalized, Vector3.up);
+            Physics.SyncTransforms();
         }
 
         public Tween CreateCaptureTween(Transform playerCamera)
@@ -73,9 +95,13 @@ namespace NHNHackathon.Enemy
                     ?? animator.GetBoneTransform(HumanBodyBones.Chest)
                     ?? animator.GetBoneTransform(HumanBodyBones.Spine);
             }
-            if (lookTarget == null)
+            //if (lookTarget == null)
+            //{
+            //    lookTarget = animator.GetBoneTransform(HumanBodyBones.Head) ?? upperBodyBone;
+            //}
+            if (playerCapturePoint == null)
             {
-                lookTarget = animator.GetBoneTransform(HumanBodyBones.Head) ?? upperBodyBone;
+                playerCapturePoint = transform.Find("PlayerCapturePoint");
             }
         }
 

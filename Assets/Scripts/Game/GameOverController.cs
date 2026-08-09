@@ -1,4 +1,5 @@
 using System;
+using NHNHackathon.AudioSystem;
 using NHNHackathon.Characters;
 using NHNHackathon.Enemy;
 using NHNHackathon.SaveSystem;
@@ -50,10 +51,12 @@ namespace NHNHackathon.Game
             }
 
             IsCapturePlaying = true;
+            SceneBgmPlayer.StopAll();
             PlayerCameraController cameraController =
                 FindAnyObjectByType<PlayerCameraController>(FindObjectsInactive.Include);
             cameraController?.RequestPerspective(CameraPerspective.FirstPerson, 0f);
             SetPlayerControlsEnabled(false);
+            MovePlayerToCapturePoint(attacker);
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
             Time.timeScale = 1f;
@@ -121,6 +124,53 @@ namespace NHNHackathon.Game
             Cursor.visible = true;
             Time.timeScale = 0f;
             GameOverTriggered?.Invoke();
+        }
+
+        private static void MovePlayerToCapturePoint(EnemyController attacker)
+        {
+            if (attacker == null)
+            {
+                return;
+            }
+
+            WatcherCapturePresenter presenter =
+                attacker.GetComponentInChildren<WatcherCapturePresenter>(true);
+            PlayerMovement movement =
+                FindAnyObjectByType<PlayerMovement>(FindObjectsInactive.Include);
+            if (movement == null)
+            {
+                return;
+            }
+
+            Transform player = movement.transform;
+            presenter?.FaceTarget(player);
+
+            Transform capturePoint = presenter != null
+                ? presenter.PlayerCapturePoint
+                : null;
+            capturePoint ??= attacker.transform.Find("PlayerCapturePoint");
+            if (capturePoint == null)
+            {
+                return;
+            }
+
+            CharacterController characterController =
+                player.GetComponent<CharacterController>();
+            bool controllerWasEnabled =
+                characterController != null && characterController.enabled;
+            if (controllerWasEnabled)
+            {
+                characterController.enabled = false;
+            }
+
+            player.SetPositionAndRotation(
+                capturePoint.position, capturePoint.rotation);
+            Physics.SyncTransforms();
+
+            if (controllerWasEnabled)
+            {
+                characterController.enabled = true;
+            }
         }
 
         private void PrepareSceneLoad()
