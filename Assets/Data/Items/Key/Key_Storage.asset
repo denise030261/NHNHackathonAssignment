@@ -18,9 +18,9 @@ MonoBehaviour:
   progressionCondition: {fileID: 11400000, guid: db6c12ce2e504f6a9d22471b40c924eb, type: 2}
   description: "\uCC3D\uACE0\uC758 \uC7A0\uAE34 \uBB38\uC744 \uC5F4 \uC218 \uC788\uB294
     \uC5F4\uC1E0\uB2E4."
-  inventoryIcon: {fileID: -5001193533137312707, guid: b30658f290732f44f93b0558baadacd4, type: 2}
+  inventoryIcon: {fileID: 21300000, guid: 3166b2793541d6c4dbb3f1c218621b92, type: 3}
   previewPrefab: {fileID: 3985004875164646717, guid: 652551a41156f7d49bb381e9d9d73b77, type: 3}
-  previewEulerAngles: {x: 16.12711, y: 28.10158, z: 340.2375}
-  previewScale: 1.25
+  previewEulerAngles: {x: 10, y: 0, z: 40}
+  previewScale: 1
   inspectOnPickup: 1
   pages: []
