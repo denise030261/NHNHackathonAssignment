@@ -3675,15 +3675,15 @@ PrefabInstance:
       objectReference: {fileID: 2128450805}
     - target: {fileID: 6675140767211803144, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.8
+      value: 6.26
       objectReference: {fileID: 0}
     - target: {fileID: 6675140767211803144, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.21
+      value: 1.19
       objectReference: {fileID: 0}
     - target: {fileID: 6675140767211803144, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -40.3
+      value: -38.2
       objectReference: {fileID: 0}
     - target: {fileID: 6675140767211803144, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
       propertyPath: m_LocalRotation.w
@@ -20559,7 +20559,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2083856244382292340, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 61.56
+      value: 44.16
       objectReference: {fileID: 0}
     - target: {fileID: 2083856244382292340, guid: 92a46c0470864a94f8e279a59ba00154, type: 3}
       propertyPath: m_LocalPosition.y
@@ -24297,6 +24297,7 @@ MonoBehaviour:
   stageText: {fileID: 501529881}
   progressFill: {fileID: 1201172592}
   timeText: {fileID: 1087814461}
+  useRectTransformFill: 1
 --- !u!1 &1827356692
 GameObject:
   m_ObjectHideFlags: 0

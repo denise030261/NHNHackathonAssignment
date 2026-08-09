@@ -65,7 +65,7 @@ namespace NHNHackathon.ExitSystem
             }
 
             ExitUnlockStage stage = stages[currentStageIndex];
-            elapsed += Time.deltaTime;
+            elapsed = Mathf.Min(elapsed + Time.deltaTime, stage.UnlockDuration);
             progressUI?.Show(stage.DisplayName, elapsed, stage.UnlockDuration);
             if (elapsed >= stage.UnlockDuration)
             {
@@ -97,9 +97,8 @@ namespace NHNHackathon.ExitSystem
 
             activeInteractor = interactor;
             startPosition = interactor.transform.position;
-            elapsed = 0f;
             isUnlocking = true;
-            progressUI?.Show(stage.DisplayName, 0f, stage.UnlockDuration);
+            progressUI?.Show(stage.DisplayName, elapsed, stage.UnlockDuration);
         }
 
         private void CompleteCurrentStage(ExitUnlockStage stage)
@@ -110,12 +109,12 @@ namespace NHNHackathon.ExitSystem
             }
             stage.OnCompleted?.Invoke();
             currentStageIndex++;
+            elapsed = 0f;
             FinishAttempt();
         }
 
         private void CancelUnlock()
         {
-            elapsed = 0f;
             FinishAttempt();
         }
 
