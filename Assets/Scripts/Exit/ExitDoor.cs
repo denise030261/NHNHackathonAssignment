@@ -25,6 +25,7 @@ namespace NHNHackathon.ExitSystem
         private bool directInteractionEnabled = true;
         [SerializeField] private Transform doorPanel;
         [SerializeField] private Collider blockingCollider;
+        [SerializeField] private DoorNavigationController navigationController;
         [SerializeField] private float openAngle = 90f;
         [SerializeField, Min(0.01f)] private float openDuration = 1f;
 
@@ -41,6 +42,7 @@ namespace NHNHackathon.ExitSystem
         public bool IsAnimating => isAnimating;
         public bool IsPermanentlySealed => isPermanentlySealed;
         public bool IsUnlocked => hasBeenUnlocked || requiredKeys.Count == 0;
+        public Collider BlockingCollider => blockingCollider;
         public string InteractionPrompt => IsOpen
             ? "\uBB38 \uB2EB\uAE30"
             : "\uBB38 \uC5F4\uAE30";
@@ -53,6 +55,7 @@ namespace NHNHackathon.ExitSystem
             }
             closedRotation = doorPanel.localRotation;
             openRotation = closedRotation * Quaternion.Euler(0f, openAngle, 0f);
+            navigationController ??= GetComponent<DoorNavigationController>();
         }
 
         public bool CanInteract(PlayerInteractor interactor)
@@ -189,6 +192,14 @@ namespace NHNHackathon.ExitSystem
         private IEnumerator AnimateDoor(bool opening, float duration)
         {
             isAnimating = true;
+            if (opening)
+            {
+                navigationController?.HandleDoorOpening();
+            }
+            else
+            {
+                navigationController?.HandleDoorClosing();
+            }
             if (!opening)
             {
                 IsOpen = false;
@@ -209,6 +220,15 @@ namespace NHNHackathon.ExitSystem
             doorPanel.localRotation = targetRotation;
             IsOpen = opening;
             isAnimating = false;
+
+            if (opening)
+            {
+                navigationController?.HandleDoorOpened();
+            }
+            else
+            {
+                navigationController?.HandleDoorClosed();
+            }
 
             if (!opening)
             {

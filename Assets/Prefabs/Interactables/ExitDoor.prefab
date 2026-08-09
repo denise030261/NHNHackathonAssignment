@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 6589506759423499490}
   - component: {fileID: 4846537113127885145}
   - component: {fileID: 4903065617683556956}
+  - component: {fileID: 770000000000000003}
   m_Layer: 0
   m_Name: ExitDoor
   m_TagString: Untagged
@@ -148,6 +149,7 @@ Transform:
   - {fileID: 406556264778922647}
   - {fileID: 3072386550964027317}
   - {fileID: 3822502031094992504}
+  - {fileID: 770000000000000002}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &4846537113127885145
@@ -192,9 +194,82 @@ MonoBehaviour:
   unlockedCondition: {fileID: 0}
   doorPanel: {fileID: 5421877543538459434}
   blockingCollider: {fileID: 2099100325988904061}
+  navigationController: {fileID: 770000000000000003}
   openAngle: 90
   openDuration: 1
   lockedMessageDuration: 1.5
+--- !u!114 &770000000000000003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4919604991559177487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e196a81bab84f7bb764019613f627bd, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.ExitSystem.DoorNavigationController
+  door: {fileID: 4903065617683556956}
+  navigationLink: {fileID: 770000000000000004}
+  logStateChanges: 0
+--- !u!1 &770000000000000001
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 770000000000000002}
+  - component: {fileID: 770000000000000004}
+  m_Layer: 0
+  m_Name: DoorNavMeshLink
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &770000000000000002
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 770000000000000001}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2, y: 0.05, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6589506759423499490}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &770000000000000004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 770000000000000001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6eeb5dc026fdf4b488bc7ae0138ab719, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshLink
+  m_SerializedVersion: 1
+  m_AgentTypeID: 0
+  m_StartPoint: {x: 0, y: 0, z: -1}
+  m_EndPoint: {x: 0, y: 0, z: 1}
+  m_StartTransform: {fileID: 0}
+  m_EndTransform: {fileID: 0}
+  m_Activated: 0
+  m_Width: 3.75
+  m_CostModifier: 1
+  m_IsOverridingCost: 0
+  m_Bidirectional: 1
+  m_AutoUpdatePosition: 0
+  m_Area: 0
 --- !u!1 &6775538317020306721
 GameObject:
   m_ObjectHideFlags: 0

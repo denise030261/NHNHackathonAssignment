@@ -1,6 +1,7 @@
 using NHNHackathon.Dance;
 using NHNHackathon.Game;
 using NHNHackathon.LightSystem;
+using NHNHackathon.ExitSystem;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -118,6 +119,16 @@ namespace NHNHackathon.Enemy
         {
             agent = GetComponent<NavMeshAgent>();
             perception = GetComponent<EnemyPerception>();
+        }
+
+        private void OnEnable()
+        {
+            DoorNavigationController.NavigationChanged += RefreshNavigationPath;
+        }
+
+        private void OnDisable()
+        {
+            DoorNavigationController.NavigationChanged -= RefreshNavigationPath;
         }
 
         private void Start()
@@ -361,6 +372,18 @@ namespace NHNHackathon.Enemy
             if (Time.time >= suspicionEndsAt)
             {
                 ChangeState(EnemyState.Roaming);
+            }
+        }
+
+        private void RefreshNavigationPath()
+        {
+            hasPatrolDestination = false;
+            nextLightDestinationUpdate = 0f;
+            waitUntil = Time.time;
+
+            if (agent != null && agent.enabled && agent.isOnNavMesh)
+            {
+                agent.ResetPath();
             }
         }
 
