@@ -264,6 +264,14 @@ namespace NHNHackathon.EditorTools
                 "아이템 설명", 22, new Color(0.86f, 0.86f, 0.86f), defaultFont);
             description.alignment = TextAnchor.UpperLeft;
 
+            Text inventoryHint = CreateText(
+                "InventoryHintText", information.transform,
+                new Vector2(0f, 0.205f), new Vector2(1f, 0.245f),
+                "I 버튼을 눌러 인벤토리에서 확인할 수 있습니다.", 18,
+                new Color(0.65f, 0.65f, 0.65f), defaultFont);
+            inventoryHint.alignment = TextAnchor.MiddleLeft;
+            inventoryHint.raycastTarget = false;
+
             Button readButton = CreateButton(
                 "ReadButton", information.transform,
                 new Vector2(0f, 0.11f), new Vector2(1f, 0.20f),

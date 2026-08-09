@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: DanceInputMapping
   m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Dance.DanceInputMapping
   bindings:
-  - key: 49
+  - key: 118
     danceId: 1
-  - key: 50
+  - key: 98
     danceId: 2
-  - key: 51
+  - key: 110
     danceId: 3
-  - key: 52
+  - key: 109
     danceId: 4
   - key: 53
     danceId: 5

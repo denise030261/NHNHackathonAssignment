@@ -12,6 +12,8 @@ namespace NHNHackathon.Dance
         [SerializeField] private CameraPerspective enterPerspective = CameraPerspective.ThirdPerson;
         [SerializeField] private CameraPerspective exitPerspective = CameraPerspective.FirstPerson;
         [SerializeField, Min(0f)] private float transitionDuration = 0.6f;
+        [SerializeField, Tooltip("Camera position and rotation used while the player is inside this DanceZone.")]
+        private Transform cameraPoint;
 
         private static readonly Dictionary<PlayerCameraController, HashSet<DanceZoneCameraTrigger>>
             ActiveZones = new();
@@ -53,7 +55,7 @@ namespace NHNHackathon.Dance
             }
 
             zones.Add(this);
-            controller.RequestPerspective(enterPerspective, transitionDuration);
+            ApplyZoneCamera(controller);
         }
 
         private void OnTriggerExit(Collider other)
@@ -95,14 +97,31 @@ namespace NHNHackathon.Dance
             zones.Remove(this);
             if (zones.Count > 0)
             {
+                foreach (DanceZoneCameraTrigger remainingZone in zones)
+                {
+                    remainingZone.ApplyZoneCamera(controller);
+                    break;
+                }
                 return;
             }
 
             ActiveZones.Remove(controller);
             if (controller != null)
             {
+                controller.SetFixedThirdPersonCameraPoint(null);
                 controller.RequestPerspective(exitPerspective, transitionDuration);
             }
+        }
+
+        private void ApplyZoneCamera(PlayerCameraController controller)
+        {
+            if (controller == null)
+            {
+                return;
+            }
+
+            controller.SetFixedThirdPersonCameraPoint(cameraPoint);
+            controller.RequestPerspective(enterPerspective, transitionDuration);
         }
     }
 }

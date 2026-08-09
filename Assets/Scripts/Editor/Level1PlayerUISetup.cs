@@ -131,6 +131,7 @@ namespace NHNHackathon.EditorTools
             Transform info = RequireDescendant(overview.transform, "ItemInfoPanel");
             Text title = RequireDescendant(info, "ItemNameText").GetComponent<Text>();
             Text description = RequireDescendant(info, "DescriptionText").GetComponent<Text>();
+            EnsureInventoryHint(info, description.font);
             Button readButton = RequireDescendant(info, "ReadButton").GetComponent<Button>();
             Button overviewClose = RequireDescendant(info, "CloseButton").GetComponent<Button>();
 
@@ -290,6 +291,30 @@ namespace NHNHackathon.EditorTools
             rect.anchorMax = Vector2.one;
             rect.offsetMin = Vector2.zero;
             rect.offsetMax = Vector2.zero;
+        }
+
+        private static void EnsureInventoryHint(Transform parent, Font font)
+        {
+            Transform existing = parent.Find("InventoryHintText");
+            GameObject hintObject = existing != null
+                ? existing.gameObject
+                : new GameObject("InventoryHintText", typeof(RectTransform),
+                    typeof(CanvasRenderer), typeof(Text));
+            hintObject.transform.SetParent(parent, false);
+
+            RectTransform rect = hintObject.GetComponent<RectTransform>();
+            rect.anchorMin = new Vector2(0f, 0.205f);
+            rect.anchorMax = new Vector2(1f, 0.245f);
+            rect.offsetMin = Vector2.zero;
+            rect.offsetMax = Vector2.zero;
+
+            Text hint = hintObject.GetComponent<Text>();
+            hint.text = "I 버튼을 눌러 인벤토리에서 확인할 수 있습니다.";
+            hint.font = font;
+            hint.fontSize = 18;
+            hint.color = new Color(0.65f, 0.65f, 0.65f);
+            hint.alignment = TextAnchor.MiddleLeft;
+            hint.raycastTarget = false;
         }
 
         private static T GetOrAdd<T>(GameObject target) where T : Component

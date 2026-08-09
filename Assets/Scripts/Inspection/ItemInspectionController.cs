@@ -54,6 +54,10 @@ namespace NHNHackathon.Inspection
             Instance = this;
             previewRenderer = GetComponent<ItemPreviewRenderer>();
             controlLock = GetComponent<InspectionControlLock>();
+            if (paperText != null)
+            {
+                paperText.supportRichText = true;
+            }
             SetScreenState(false, false, false);
         }
 
@@ -189,7 +193,7 @@ namespace NHNHackathon.Inspection
             PaperPageDefinition page = currentItem.Pages[currentPageIndex];
             paperTitle.text = currentItem.DisplayName;
             pageNumber.text = $"{currentPageIndex + 1} / {currentItem.Pages.Count}";
-            paperText.text = page.Text;
+            paperText.text = PaperTextMarkup.FormatForDisplay(page.Text);
             paperImage.sprite = page.Image;
             paperImage.gameObject.SetActive(page.Image != null);
             previousButton.interactable = currentPageIndex > 0;

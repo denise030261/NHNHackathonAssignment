@@ -7,7 +7,7 @@ namespace NHNHackathon.Dance
     [Serializable]
     public sealed class DanceInputBinding
     {
-        [SerializeField] private KeyCode key = KeyCode.Alpha1;
+        [SerializeField] private KeyCode key = KeyCode.V;
         [SerializeField, Min(1)] private int danceId = 1;
 
         public KeyCode Key => key;
