@@ -24,6 +24,11 @@ namespace NHNHackathon.LightSystem
         [SerializeField] private Vector3 thirdPersonLocalEulerAngles;
         [SerializeField, Min(0f)] private float attachmentTransitionDuration = 0.45f;
 
+        [Header("Held Flashlight Mesh")]
+        [SerializeField, Tooltip("Physical model attached to the right-hand socket. It does not control the light direction.")]
+        private GameObject heldFlashlightMesh;
+        [SerializeField, Min(0.01f)] private float heldFlashlightMeshScale = 1.25f;
+
         [Header("Inventory Requirement")]
         [SerializeField] private PlayerItemInventory playerInventory;
         [SerializeField, Tooltip("The flashlight can only be toggled while this item is owned.")]
@@ -56,6 +61,11 @@ namespace NHNHackathon.LightSystem
             currentPerspective = cameraController != null
                 ? cameraController.Perspective
                 : CameraPerspective.FirstPerson;
+            ApplyHeldMeshScale();
+            if (heldFlashlightMesh != null)
+            {
+                heldFlashlightMesh.SetActive(false);
+            }
             ApplyAttachment(currentPerspective, true);
         }
 
@@ -194,6 +204,19 @@ namespace NHNHackathon.LightSystem
             {
                 flashlight.enabled = value;
             }
+            if (heldFlashlightMesh != null)
+            {
+                heldFlashlightMesh.SetActive(value);
+            }
+        }
+
+        private void ApplyHeldMeshScale()
+        {
+            if (heldFlashlightMesh != null)
+            {
+                heldFlashlightMesh.transform.localScale =
+                    Vector3.one * Mathf.Max(0.01f, heldFlashlightMeshScale);
+            }
         }
 
         private void OnValidate()
@@ -205,6 +228,8 @@ namespace NHNHackathon.LightSystem
             playerInventory ??= GetComponentInParent<PlayerItemInventory>();
             playerInteractor ??= GetComponentInParent<PlayerInteractor>();
             cameraController ??= GetComponentInParent<PlayerCameraController>();
+            heldFlashlightMeshScale = Mathf.Max(0.01f, heldFlashlightMeshScale);
+            ApplyHeldMeshScale();
             if (requiredFlashlightItem != null
                 && requiredFlashlightItem.Type != ItemType.General)
             {

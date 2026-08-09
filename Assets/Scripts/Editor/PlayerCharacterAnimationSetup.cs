@@ -17,6 +17,8 @@ namespace NHNHackathon.EditorTools
         private const string PlayerPrefabPath = "Assets/Prefabs/Characters/Player.prefab";
         private const string DancingAIPrefabPath = "Assets/Prefabs/Characters/DancingAI.prefab";
         private const string BaseModelPath = "Assets/Art/Animations/Manny2_Idle.fbx";
+        private const string FlashlightModelPath =
+            "Assets/Art/Items/flashlight/Flashlight.fbx";
         private const string PlayerControllerPath = "Assets/Art/Animations/Player.controller";
         private const string DancingAIControllerPath = "Assets/Art/Character/DancingAI.controller";
         private const string GeneratedClipFolder = "Assets/Art/Animations/Generated";
@@ -409,14 +411,30 @@ namespace NHNHackathon.EditorTools
                 Transform socket = new GameObject("ThirdPersonFlashlightSocket").transform;
                 socket.SetParent(rightHand != null ? rightHand : model.transform, false);
 
+                GameObject flashlightModel =
+                    AssetDatabase.LoadAssetAtPath<GameObject>(FlashlightModelPath)
+                    ?? throw new InvalidOperationException(
+                        $"Model was not found: {FlashlightModelPath}");
+                GameObject heldMesh = (GameObject)PrefabUtility.InstantiatePrefab(
+                    flashlightModel, socket);
+                heldMesh.name = "HeldFlashlightMesh";
+                heldMesh.transform.SetLocalPositionAndRotation(
+                    Vector3.zero, Quaternion.Euler(-90f, 0f, 0f));
+                heldMesh.transform.localScale = Vector3.one * 1.25f;
+
                 PlayerFlashlightController flashlight =
                     root.GetComponentInChildren<PlayerFlashlightController>(true);
                 if (flashlight != null)
                 {
                     SerializedObject flashlightValues = new(flashlight);
-                    flashlightValues.FindProperty("thirdPersonParent").objectReferenceValue = socket;
-                    flashlightValues.FindProperty("thirdPersonLocalPosition").vector3Value = Vector3.zero;
+                    flashlightValues.FindProperty("thirdPersonParent").objectReferenceValue =
+                        root.transform;
+                    flashlightValues.FindProperty("thirdPersonLocalPosition").vector3Value =
+                        new Vector3(0f, 1.35f, 0.4f);
                     flashlightValues.FindProperty("thirdPersonLocalEulerAngles").vector3Value = Vector3.zero;
+                    flashlightValues.FindProperty("heldFlashlightMesh").objectReferenceValue =
+                        heldMesh;
+                    flashlightValues.FindProperty("heldFlashlightMeshScale").floatValue = 1.25f;
                     flashlightValues.ApplyModifiedPropertiesWithoutUndo();
                 }
 
