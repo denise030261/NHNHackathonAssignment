@@ -20,7 +20,7 @@ MonoBehaviour:
     \uC5F4\uC1E0\uB2E4. \uCD9C\uAD6C\uB97C \uC5F4\uB824\uBA74 \uCD1D \uC138 \uAC1C\uAC00
     \uD544\uC694\uD558\uB2E4."
   inventoryIcon: {fileID: -5001193533137312707, guid: b30658f290732f44f93b0558baadacd4, type: 2}
-  previewPrefab: {fileID: 3985004875164646717, guid: 652551a41156f7d49bb381e9d9d73b77, type: 3}
+  previewPrefab: {fileID: 3985004875164646717, guid: 6d8d2a067e9ba4541a8fcf51bbbb3e59, type: 3}
   previewEulerAngles: {x: 16.12711, y: 28.10158, z: 340.2375}
   previewScale: 1.25
   inspectOnPickup: 1
