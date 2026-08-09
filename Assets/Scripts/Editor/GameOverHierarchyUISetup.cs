@@ -68,7 +68,7 @@ namespace NHNHackathon.EditorTools
             label = textObject.GetComponent<Text>();
             label.text = "GAME OVER";
             label.alignment = TextAnchor.MiddleCenter;
-            label.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+            label.font = ProjectFontProvider.LoadRegular();
             label.fontSize = 72;
             label.fontStyle = FontStyle.Bold;
             label.color = Color.red;

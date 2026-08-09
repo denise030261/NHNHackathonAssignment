@@ -201,7 +201,7 @@ namespace NHNHackathon.EditorTools
         private static Text CreateText(string name, Transform parent, int size, TextAnchor alignment)
         {
             Text value = CreateUIObject(name, parent).AddComponent<Text>();
-            value.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+            value.font = ProjectFontProvider.LoadRegular();
             value.fontSize = size;
             value.alignment = alignment;
             value.color = Color.white;

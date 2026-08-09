@@ -41,7 +41,7 @@ namespace NHNHackathon.EditorTools
             Transform old = canvas.transform.Find("GameOverUI");
             if (old != null) Object.DestroyImmediate(old.gameObject);
 
-            Font font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+            Font font = ProjectFontProvider.LoadRegular();
             GameObject root = Image("GameOverUI", canvas.transform, Vector2.zero, Vector2.one, Color.clear);
             GameObject fade = Image("FadeOverlay", root.transform, Vector2.zero, Vector2.one, Color.clear);
             fade.GetComponent<Image>().raycastTarget = false;

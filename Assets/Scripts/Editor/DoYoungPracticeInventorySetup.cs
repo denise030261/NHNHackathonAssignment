@@ -83,7 +83,7 @@ namespace NHNHackathon.EditorTools
             PlayerItemInventory inventory,
             ItemInspectionController inspectionController)
         {
-            Font font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+            Font font = ProjectFontProvider.LoadRegular();
             GameObject canvasObject = new GameObject(
                 "InventoryCanvas",
                 typeof(RectTransform),

@@ -80,7 +80,7 @@ namespace NHNHackathon.EditorTools
 
         private static void ConfigureHud(Transform hud)
         {
-            Font font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+            Font font = ProjectFontProvider.LoadRegular();
             GameObject prompt = GetOrCreateText(
                 "InteractionPrompt", hud, new Vector2(0f, 0.70f),
                 new Vector2(1f, 0.77f), 26, Color.white, TextAnchor.MiddleCenter, font);
@@ -121,7 +121,7 @@ namespace NHNHackathon.EditorTools
             GameObject textObject = GetOrCreateText(
                 "SuccessText", overlay.transform, Vector2.zero, Vector2.one,
                 72, new Color(0.7f, 1f, 0.75f), TextAnchor.MiddleCenter,
-                Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf"));
+                ProjectFontProvider.LoadRegular());
             Text label = textObject.GetComponent<Text>();
             label.text = "ESCAPED";
             label.fontStyle = FontStyle.Bold;

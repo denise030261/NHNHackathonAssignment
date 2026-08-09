@@ -200,7 +200,7 @@ namespace NHNHackathon.EditorTools
             ItemInspectionController controller,
             ItemPreviewRenderer previewRenderer)
         {
-            Font defaultFont = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+            Font defaultFont = ProjectFontProvider.LoadRegular();
 
             GameObject canvasObject = new GameObject(
                 "ItemInspectionCanvas",

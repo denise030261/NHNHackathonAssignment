@@ -30,7 +30,7 @@ namespace NHNHackathon.EditorTools
 
             GameObject uiRoot = new("UI");
             Canvas canvas = CreateCanvas(uiRoot.transform);
-            Font font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+            Font font = ProjectFontProvider.LoadRegular();
 
             GameObject mainPanel = CreatePanel(
                 "MainPanel", canvas.transform, new Color(0.035f, 0.035f, 0.045f, 1f));

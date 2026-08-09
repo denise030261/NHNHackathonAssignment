@@ -41,7 +41,7 @@ namespace NHNHackathon.EditorTools
                 Object.DestroyImmediate(oldUi.gameObject);
             }
 
-            Font font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+            Font font = ProjectFontProvider.LoadRegular();
             GameObject pauseRoot = CreatePanel(
                 "PauseMenuUI", canvas.transform, new Color(0f, 0f, 0f, 0.72f));
             GameObject pausePanel = BuildPausePanel(
