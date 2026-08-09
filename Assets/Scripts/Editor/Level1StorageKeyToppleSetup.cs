@@ -25,7 +25,9 @@ namespace NHNHackathon.EditorTools
             Transform toies = zone4.GetComponentsInChildren<Transform>(true)
                 .FirstOrDefault(value => value.name == "Toies")
                 ?? throw new System.InvalidOperationException("Zone4/Toies was not found.");
-            Transform[] models = toies.Cast<Transform>().ToArray();
+            Transform[] models = toies.Cast<Transform>()
+                .Where(child => child.name != "TopplePoseMarkers")
+                .ToArray();
             if (models.Length == 0)
                 throw new System.InvalidOperationException("Zone4/Toies has no child models.");
 

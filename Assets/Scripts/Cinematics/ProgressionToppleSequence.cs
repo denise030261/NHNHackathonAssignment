@@ -12,12 +12,15 @@ namespace NHNHackathon.Cinematics
     public sealed class ToppleTarget
     {
         [SerializeField] private Transform target;
+        [SerializeField, Tooltip("Optional saved world pose. When assigned, the target moves and rotates exactly to this Transform.")]
+        private Transform fallenPose;
         [SerializeField, Tooltip("X/Z values choose the fall direction and final angle.")]
         private Vector3 fallEulerAngles = new(85f, 0f, 0f);
         [SerializeField, Min(0f)] private float delay;
         [SerializeField, Min(0.01f)] private float duration = 0.55f;
 
         public Transform Target => target;
+        public Transform FallenPose => fallenPose;
         public Vector3 FallEulerAngles => fallEulerAngles;
         public float Delay => delay;
         public float Duration => duration;
@@ -123,7 +126,7 @@ namespace NHNHackathon.Cinematics
         private Tween CreateFloorSafeFallTween(ToppleTarget entry)
         {
             Transform target = entry?.Target;
-            if (target == null || !TryGetWorldBounds(target, out Bounds bounds))
+            if (target == null)
             {
                 return null;
             }
@@ -132,6 +135,23 @@ namespace NHNHackathon.Cinematics
             foreach (Animator animator in target.GetComponentsInChildren<Animator>(true))
             {
                 animator.enabled = false;
+            }
+
+            if (entry.FallenPose != null)
+            {
+                Sequence savedPoseSequence = DOTween.Sequence();
+                savedPoseSequence.Join(target.DOMove(
+                    entry.FallenPose.position, entry.Duration));
+                savedPoseSequence.Join(target.DORotateQuaternion(
+                    entry.FallenPose.rotation, entry.Duration));
+                return savedPoseSequence
+                    .SetEase(Ease.InQuad)
+                    .SetLink(target.gameObject);
+            }
+
+            if (!TryGetWorldBounds(target, out Bounds bounds))
+            {
+                return null;
             }
 
             Vector3 localAxis = new(
