@@ -1,4 +1,5 @@
 using System;
+using NHNHackathon.AudioSystem;
 using NHNHackathon.Enemy;
 using NHNHackathon.Game;
 using NHNHackathon.Interaction;
@@ -17,6 +18,9 @@ namespace NHNHackathon.ExitSystem
         [Header("Success UI")]
         [SerializeField] private GameObject gameSuccessUI;
         [SerializeField] private Text successText;
+
+        [Header("Ending Credits")]
+        [SerializeField] private EndingCreditsController endingCreditsController;
 
         public event Action GameSucceeded;
 
@@ -52,10 +56,19 @@ namespace NHNHackathon.ExitSystem
                 enemy.enabled = false;
             }
 
+            SceneBgmPlayer.StopAll();
             Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
+            Cursor.visible = false;
             Time.timeScale = 0f;
-            SetSuccessUIVisible(true);
+            SetSuccessUIVisible(false);
+            if (endingCreditsController != null)
+            {
+                endingCreditsController.PlayEnding();
+            }
+            else
+            {
+                Debug.LogError("Ending Credits Controller is not assigned.", this);
+            }
             GameSucceeded?.Invoke();
         }
 
