@@ -131,10 +131,10 @@ namespace NHNHackathon.Dance
 
             lockedBarrier.isTrigger = false;
             lockedBarrier.center = trigger.center;
-            lockedBarrier.size = new Vector3(
-                Mathf.Max(0.05f, trigger.size.x - barrierInset * 2f),
-                trigger.size.y,
-                Mathf.Max(0.05f, trigger.size.z - barrierInset * 2f));
+            //lockedBarrier.size = new Vector3(
+            //    Mathf.Max(0.05f, trigger.size.x - barrierInset * 2f),
+            //    trigger.size.y,
+            //    Mathf.Max(0.05f, trigger.size.z - barrierInset * 2f));
             lockedBarrier.enabled = true;
         }
 
