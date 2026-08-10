@@ -24,9 +24,13 @@ namespace NHNHackathon.ExitSystem
         [SerializeField, Tooltip("Disable direct E interaction when another controller manages this door.")]
         private bool directInteractionEnabled = true;
         [SerializeField] private Transform doorPanel;
+        [SerializeField, Tooltip("Optional second panel for double doors. It opens together with Door Panel.")]
+        private Transform secondaryDoorPanel;
         [SerializeField] private Collider blockingCollider;
         [SerializeField] private DoorNavigationController navigationController;
         [SerializeField] private float openAngle = 90f;
+        [SerializeField, Tooltip("Open angle for the optional second panel. Use the opposite sign for double doors.")]
+        private float secondaryOpenAngle = -90f;
         [SerializeField, Min(0.01f)] private float openDuration = 1f;
 
         [Header("Feedback")]
@@ -35,6 +39,8 @@ namespace NHNHackathon.ExitSystem
         private bool isAnimating;
         private Quaternion closedRotation;
         private Quaternion openRotation;
+        private Quaternion secondaryClosedRotation;
+        private Quaternion secondaryOpenRotation;
         private bool hasBeenUnlocked;
         private bool isPermanentlySealed;
 
@@ -55,6 +61,12 @@ namespace NHNHackathon.ExitSystem
             }
             closedRotation = doorPanel.localRotation;
             openRotation = closedRotation * Quaternion.Euler(0f, openAngle, 0f);
+            if (secondaryDoorPanel != null)
+            {
+                secondaryClosedRotation = secondaryDoorPanel.localRotation;
+                secondaryOpenRotation = secondaryClosedRotation
+                    * Quaternion.Euler(0f, secondaryOpenAngle, 0f);
+            }
             navigationController ??= GetComponent<DoorNavigationController>();
         }
 
@@ -199,6 +211,10 @@ namespace NHNHackathon.ExitSystem
             else
             {
                 navigationController?.HandleDoorClosing();
+                if (blockingCollider != null)
+                {
+                    blockingCollider.enabled = true;
+                }
             }
             if (!opening)
             {
@@ -207,6 +223,12 @@ namespace NHNHackathon.ExitSystem
 
             Quaternion startRotation = doorPanel.localRotation;
             Quaternion targetRotation = opening ? openRotation : closedRotation;
+            Quaternion secondaryStartRotation = secondaryDoorPanel != null
+                ? secondaryDoorPanel.localRotation
+                : Quaternion.identity;
+            Quaternion secondaryTargetRotation = opening
+                ? secondaryOpenRotation
+                : secondaryClosedRotation;
             float elapsed = 0f;
 
             while (elapsed < duration)
@@ -214,15 +236,28 @@ namespace NHNHackathon.ExitSystem
                 elapsed += Time.deltaTime;
                 float progress = Mathf.SmoothStep(0f, 1f, elapsed / duration);
                 doorPanel.localRotation = Quaternion.Slerp(startRotation, targetRotation, progress);
+                if (secondaryDoorPanel != null)
+                {
+                    secondaryDoorPanel.localRotation = Quaternion.Slerp(
+                        secondaryStartRotation, secondaryTargetRotation, progress);
+                }
                 yield return null;
             }
 
             doorPanel.localRotation = targetRotation;
+            if (secondaryDoorPanel != null)
+            {
+                secondaryDoorPanel.localRotation = secondaryTargetRotation;
+            }
             IsOpen = opening;
             isAnimating = false;
 
             if (opening)
             {
+                if (blockingCollider != null)
+                {
+                    blockingCollider.enabled = false;
+                }
                 navigationController?.HandleDoorOpened();
             }
             else
