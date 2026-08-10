@@ -910,7 +910,16 @@ MonoBehaviour:
   watcherController: {fileID: 246861602}
   watcherAgent: {fileID: 246861605}
   watcherAnimator: {fileID: 246861604}
-  capturePresenter: {fileID: 246861603}
+  watcherPickupAnimation: {fileID: 7400000, guid: 6fc5568817d215b40b56c1a8baa80882, type: 2}
+  watcherPickupStateName: Pickup
+  pickupBlendDuration: 0.1
+  pickupFallbackDuration: 2.966667
+  watcherReturnStateName: Idle
+  returnBlendDuration: 0.1
+  watcherHand: {fileID: 0}
+  watcherHandPath: Visual/WatcherRig/spine/spine.001/spine.002/spine.003/shoulder.R/upper_arm.R/forearm.R/hand.R
+  dancerHandLocalPosition: {x: 0, y: 0, z: 0}
+  dancerHandLocalEulerAngles: {x: 0, y: 0, z: 0}
   cutsceneCameraPoint: {fileID: 806353664}
   cameraLookTarget: {fileID: 2119744426}
   cameraRoute:

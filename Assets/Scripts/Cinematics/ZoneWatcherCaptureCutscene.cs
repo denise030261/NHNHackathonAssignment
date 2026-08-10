@@ -24,7 +24,21 @@ namespace NHNHackathon.Cinematics
         [SerializeField] private EnemyController watcherController;
         [SerializeField] private NavMeshAgent watcherAgent;
         [SerializeField] private Animator watcherAnimator;
-        [SerializeField] private WatcherCapturePresenter capturePresenter;
+
+        [Header("Watcher Pickup Animation")]
+        [SerializeField] private AnimationClip watcherPickupAnimation;
+        [SerializeField] private string watcherPickupStateName = "Pickup";
+        [SerializeField, Min(0f)] private float pickupBlendDuration = 0.1f;
+        [SerializeField, Min(0f)] private float pickupFallbackDuration = 2.966667f;
+        [SerializeField] private string watcherReturnStateName = "Idle";
+        [SerializeField, Min(0f)] private float returnBlendDuration = 0.1f;
+
+        [Header("Failed Dancer Hand Attachment")]
+        [SerializeField] private Transform watcherHand;
+        [SerializeField] private string watcherHandPath =
+            "Visual/WatcherRig/spine/spine.001/spine.002/spine.003/shoulder.R/upper_arm.R/forearm.R/hand.R";
+        [SerializeField] private Vector3 dancerHandLocalPosition;
+        [SerializeField] private Vector3 dancerHandLocalEulerAngles;
 
         [Header("Scene Points")]
         [SerializeField] private Transform cutsceneCameraPoint;
@@ -45,6 +59,8 @@ namespace NHNHackathon.Cinematics
         [SerializeField, Min(0f)] private float wrongDanceDuration = 1f;
         [SerializeField, Min(0.01f)] private float watcherApproachDuration = 1.2f;
         [SerializeField, Min(0f)] private float captureHoldDuration = 0.5f;
+        [SerializeField, Min(0.01f), Tooltip("Time used for the watcher to face each corridor waypoint.")]
+        private float watcherTurnDuration = 0.45f;
         [SerializeField, Min(0.01f)] private float corridorSegmentDuration = 1f;
         [SerializeField, Min(0.01f)] private float cameraReturnDuration = 0.9f;
 
@@ -55,6 +71,9 @@ namespace NHNHackathon.Cinematics
         private Vector3 watcherStartPosition;
         private Quaternion watcherStartRotation;
         private Transform dancerOriginalParent;
+        private Vector3 dancerOriginalLocalPosition;
+        private Quaternion dancerOriginalLocalRotation;
+        private Vector3 dancerOriginalLocalScale;
         private bool watcherWasEnabled;
         private bool agentWasEnabled;
         private CameraPerspective savedFlashlightPerspective;
@@ -107,6 +126,9 @@ namespace NHNHackathon.Cinematics
         {
             failedDancer.SetActive(true);
             dancerOriginalParent = failedDancer.transform.parent;
+            dancerOriginalLocalPosition = failedDancer.transform.localPosition;
+            dancerOriginalLocalRotation = failedDancer.transform.localRotation;
+            dancerOriginalLocalScale = failedDancer.transform.localScale;
             watcherStartPosition = watcherController.transform.position;
             watcherStartRotation = watcherController.transform.rotation;
             watcherWasEnabled = watcherController.enabled;
@@ -137,9 +159,9 @@ namespace NHNHackathon.Cinematics
                 sequence.Join(watcherController.transform.DORotateQuaternion(
                     LookRotation(watcherController.transform.position, failedDancer.transform), watcherApproachDuration));
             }
-            sequence.AppendCallback(PlayCaptureMotion);
-            sequence.AppendInterval(captureHoldDuration + 1.2f);
-            sequence.AppendCallback(AttachDancerToWatcher);
+            sequence.AppendCallback(BeginPickup);
+            sequence.AppendInterval(GetPickupAnimationDuration());
+            sequence.AppendInterval(captureHoldDuration);
             AppendCorridorMovement(sequence);
             AppendCameraRouteBackward(sequence);
             sequence.Append(playerCamera.transform.DOMove(savedCameraPosition, cameraReturnDuration).SetEase(Ease.InOutSine));
@@ -180,26 +202,95 @@ namespace NHNHackathon.Cinematics
                 failedDancerAnimator.Play(wrongDanceStateName, 0, 0f);
         }
 
-        private void PlayCaptureMotion()
+        private void BeginPickup()
         {
-            if (capturePresenter != null)
-                capturePresenter.CreateCaptureTween(failedDancer.transform);
+            AttachDancerToWatcherHand();
+
+            if (watcherAnimator == null
+                || string.IsNullOrWhiteSpace(watcherPickupStateName))
+            {
+                return;
+            }
+
+            watcherAnimator.speed = 1f;
+            watcherAnimator.CrossFadeInFixedTime(
+                watcherPickupStateName,
+                pickupBlendDuration,
+                0,
+                0f);
         }
 
-        private void AttachDancerToWatcher()
+        private float GetPickupAnimationDuration()
         {
-            failedDancer.transform.SetParent(watcherController.transform, true);
+            return watcherPickupAnimation != null
+                ? watcherPickupAnimation.length
+                : pickupFallbackDuration;
+        }
+
+        private void AttachDancerToWatcherHand()
+        {
+            Transform hand = ResolveWatcherHand();
+            if (hand == null)
+            {
+                Debug.LogWarning(
+                    $"[{nameof(ZoneWatcherCaptureCutscene)}] Watcher hand was not found at '{watcherHandPath}'.",
+                    this);
+                return;
+            }
+
+            failedDancer.transform.SetParent(hand, true);
+            failedDancer.transform.localPosition = dancerHandLocalPosition;
+            failedDancer.transform.localRotation = Quaternion.Euler(
+                dancerHandLocalEulerAngles);
+        }
+
+        private Transform ResolveWatcherHand()
+        {
+            if (watcherHand != null)
+            {
+                return watcherHand;
+            }
+
+            if (watcherController == null || string.IsNullOrWhiteSpace(watcherHandPath))
+            {
+                return null;
+            }
+
+            watcherHand = watcherController.transform.Find(watcherHandPath);
+            return watcherHand;
         }
 
         private void AppendCorridorMovement(Sequence target)
         {
             if (corridorRoute == null) return;
+
+            Vector3 segmentOrigin = watcherCapturePoint != null
+                ? watcherCapturePoint.position
+                : watcherController.transform.position;
+            bool isFirstSegment = true;
+
             foreach (Transform point in corridorRoute)
             {
                 if (point == null) continue;
-                target.Append(watcherController.transform.DOMove(point.position, corridorSegmentDuration).SetEase(Ease.InOutSine));
-                target.Join(watcherController.transform.DORotateQuaternion(
-                    LookRotation(watcherController.transform.position, point), Mathf.Min(0.35f, corridorSegmentDuration)));
+
+                Quaternion targetRotation = LookRotation(segmentOrigin, point);
+                if (isFirstSegment)
+                {
+                    // Finish the initial turn before walking away with the doll.
+                    target.Append(watcherController.transform
+                        .DORotateQuaternion(targetRotation, watcherTurnDuration)
+                        .SetEase(Ease.InOutSine));
+                    isFirstSegment = false;
+                }
+
+                target.Append(watcherController.transform
+                    .DOMove(point.position, corridorSegmentDuration)
+                    .SetEase(Ease.InOutSine));
+                target.Join(watcherController.transform
+                    .DORotateQuaternion(targetRotation, watcherTurnDuration)
+                    .SetEase(Ease.InOutSine));
+
+                segmentOrigin = point.position;
             }
         }
 
@@ -213,13 +304,11 @@ namespace NHNHackathon.Cinematics
         private void FinishCutscene()
         {
             sequence = null;
-            failedDancer.transform.SetParent(dancerOriginalParent, true);
+            failedDancer.transform.SetParent(dancerOriginalParent, false);
+            failedDancer.transform.localPosition = dancerOriginalLocalPosition;
+            failedDancer.transform.localRotation = dancerOriginalLocalRotation;
+            failedDancer.transform.localScale = dancerOriginalLocalScale;
             failedDancer.SetActive(false);
-            if (capturePresenter != null)
-            {
-                capturePresenter.enabled = false;
-                capturePresenter.enabled = true;
-            }
             watcherController.transform.SetPositionAndRotation(watcherStartPosition, watcherStartRotation);
             if (watcherAgent != null)
             {
@@ -236,7 +325,18 @@ namespace NHNHackathon.Cinematics
             {
                 watcherController.ResumeAfterCutscene();
             }
-            if (watcherAnimator != null) watcherAnimator.speed = 1f;
+            if (watcherAnimator != null)
+            {
+                watcherAnimator.speed = 1f;
+                if (!string.IsNullOrWhiteSpace(watcherReturnStateName))
+                {
+                    watcherAnimator.CrossFadeInFixedTime(
+                        watcherReturnStateName,
+                        returnBlendDuration,
+                        0,
+                        0f);
+                }
+            }
             foreach ((Behaviour control, bool wasEnabled) in controlStates)
                 if (control != null) control.enabled = wasEnabled;
             if (flashlightAttachmentOverridden && playerFlashlight != null)
