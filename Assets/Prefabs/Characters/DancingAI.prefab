@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4061616998222955753}
   - component: {fileID: 3334593458237057569}
   - component: {fileID: 6663020993176286578}
+  - component: {fileID: 8083818334093887120}
   m_Layer: 0
   m_Name: DancingAI
   m_TagString: Untagged
@@ -34,6 +35,20 @@ Transform:
   - {fileID: 6494512826995223806}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8083818334093887120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7959853341715820491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 541a0c2fa5364d509d290c43ad19ea9c, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Characters.CharacterMaterialApplicator
+  rendererRoot: {fileID: 6494512826995223806}
+  characterMaterial: {fileID: 2100000, guid: 1e9f02a0b83d4a14a74b79f6a47d186b, type: 2}
 --- !u!114 &3334593458237057569
 MonoBehaviour:
   m_ObjectHideFlags: 0

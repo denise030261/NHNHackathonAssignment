@@ -11585,16 +11585,62 @@ PrefabInstance:
       propertyPath: m_Name
       value: Manny2_Anim (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6761035103385401234, guid: 92c302853c39bcf45bc59f25170675f9, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1e9f02a0b83d4a14a74b79f6a47d186b, type: 2}
+    - target: {fileID: 6761035103385401234, guid: 92c302853c39bcf45bc59f25170675f9, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1e9f02a0b83d4a14a74b79f6a47d186b, type: 2}
+    - target: {fileID: 6761035103385401234, guid: 92c302853c39bcf45bc59f25170675f9, type: 3}
+      propertyPath: 'm_Materials.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1e9f02a0b83d4a14a74b79f6a47d186b, type: 2}
+    - target: {fileID: 6761035103385401234, guid: 92c302853c39bcf45bc59f25170675f9, type: 3}
+      propertyPath: 'm_Materials.Array.data[3]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1e9f02a0b83d4a14a74b79f6a47d186b, type: 2}
+    - target: {fileID: 6761035103385401234, guid: 92c302853c39bcf45bc59f25170675f9, type: 3}
+      propertyPath: 'm_Materials.Array.data[4]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1e9f02a0b83d4a14a74b79f6a47d186b, type: 2}
+    - target: {fileID: 6761035103385401234, guid: 92c302853c39bcf45bc59f25170675f9, type: 3}
+      propertyPath: 'm_Materials.Array.data[5]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1e9f02a0b83d4a14a74b79f6a47d186b, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 92c302853c39bcf45bc59f25170675f9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 881189216}
   m_SourcePrefab: {fileID: 100100000, guid: 92c302853c39bcf45bc59f25170675f9, type: 3}
 --- !u!4 &881189214 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 92c302853c39bcf45bc59f25170675f9, type: 3}
   m_PrefabInstance: {fileID: 881189213}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &881189215 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 92c302853c39bcf45bc59f25170675f9, type: 3}
+  m_PrefabInstance: {fileID: 881189213}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &881189216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 881189215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 541a0c2fa5364d509d290c43ad19ea9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Characters.CharacterMaterialApplicator
+  rendererRoot: {fileID: 881189214}
+  characterMaterial: {fileID: 2100000, guid: 1e9f02a0b83d4a14a74b79f6a47d186b, type: 2}
 --- !u!1 &887280369
 GameObject:
   m_ObjectHideFlags: 0
@@ -15444,16 +15490,62 @@ PrefabInstance:
       propertyPath: m_Name
       value: Manny2_Anim (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 6761035103385401234, guid: 92c302853c39bcf45bc59f25170675f9, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1e9f02a0b83d4a14a74b79f6a47d186b, type: 2}
+    - target: {fileID: 6761035103385401234, guid: 92c302853c39bcf45bc59f25170675f9, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1e9f02a0b83d4a14a74b79f6a47d186b, type: 2}
+    - target: {fileID: 6761035103385401234, guid: 92c302853c39bcf45bc59f25170675f9, type: 3}
+      propertyPath: 'm_Materials.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1e9f02a0b83d4a14a74b79f6a47d186b, type: 2}
+    - target: {fileID: 6761035103385401234, guid: 92c302853c39bcf45bc59f25170675f9, type: 3}
+      propertyPath: 'm_Materials.Array.data[3]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1e9f02a0b83d4a14a74b79f6a47d186b, type: 2}
+    - target: {fileID: 6761035103385401234, guid: 92c302853c39bcf45bc59f25170675f9, type: 3}
+      propertyPath: 'm_Materials.Array.data[4]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1e9f02a0b83d4a14a74b79f6a47d186b, type: 2}
+    - target: {fileID: 6761035103385401234, guid: 92c302853c39bcf45bc59f25170675f9, type: 3}
+      propertyPath: 'm_Materials.Array.data[5]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1e9f02a0b83d4a14a74b79f6a47d186b, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 92c302853c39bcf45bc59f25170675f9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1166779583}
   m_SourcePrefab: {fileID: 100100000, guid: 92c302853c39bcf45bc59f25170675f9, type: 3}
 --- !u!4 &1166779581 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 92c302853c39bcf45bc59f25170675f9, type: 3}
   m_PrefabInstance: {fileID: 1166779580}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1166779582 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 92c302853c39bcf45bc59f25170675f9, type: 3}
+  m_PrefabInstance: {fileID: 1166779580}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1166779583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1166779582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 541a0c2fa5364d509d290c43ad19ea9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Characters.CharacterMaterialApplicator
+  rendererRoot: {fileID: 1166779581}
+  characterMaterial: {fileID: 2100000, guid: 1e9f02a0b83d4a14a74b79f6a47d186b, type: 2}
 --- !u!1 &1171817175
 GameObject:
   m_ObjectHideFlags: 0
@@ -22210,16 +22302,67 @@ PrefabInstance:
       propertyPath: m_Name
       value: Manny2_Anim
       objectReference: {fileID: 0}
+    - target: {fileID: 6761035103385401234, guid: 92c302853c39bcf45bc59f25170675f9, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1e9f02a0b83d4a14a74b79f6a47d186b, type: 2}
+    - target: {fileID: 6761035103385401234, guid: 92c302853c39bcf45bc59f25170675f9, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1e9f02a0b83d4a14a74b79f6a47d186b, type: 2}
+    - target: {fileID: 6761035103385401234, guid: 92c302853c39bcf45bc59f25170675f9, type: 3}
+      propertyPath: 'm_Materials.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1e9f02a0b83d4a14a74b79f6a47d186b, type: 2}
+    - target: {fileID: 6761035103385401234, guid: 92c302853c39bcf45bc59f25170675f9, type: 3}
+      propertyPath: 'm_Materials.Array.data[3]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1e9f02a0b83d4a14a74b79f6a47d186b, type: 2}
+    - target: {fileID: 6761035103385401234, guid: 92c302853c39bcf45bc59f25170675f9, type: 3}
+      propertyPath: 'm_Materials.Array.data[4]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1e9f02a0b83d4a14a74b79f6a47d186b, type: 2}
+    - target: {fileID: 6761035103385401234, guid: 92c302853c39bcf45bc59f25170675f9, type: 3}
+      propertyPath: 'm_Materials.Array.data[5]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1e9f02a0b83d4a14a74b79f6a47d186b, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 92c302853c39bcf45bc59f25170675f9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1607981247}
   m_SourcePrefab: {fileID: 100100000, guid: 92c302853c39bcf45bc59f25170675f9, type: 3}
 --- !u!4 &1607981244 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 92c302853c39bcf45bc59f25170675f9, type: 3}
   m_PrefabInstance: {fileID: 1607981243}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1607981245 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -5626238853179912365, guid: 92c302853c39bcf45bc59f25170675f9, type: 3}
+  m_PrefabInstance: {fileID: 1607981243}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1607981246 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 92c302853c39bcf45bc59f25170675f9, type: 3}
+  m_PrefabInstance: {fileID: 1607981243}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1607981247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1607981246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 541a0c2fa5364d509d290c43ad19ea9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Characters.CharacterMaterialApplicator
+  rendererRoot: {fileID: 1607981245}
+  characterMaterial: {fileID: 2100000, guid: 1e9f02a0b83d4a14a74b79f6a47d186b, type: 2}
 --- !u!1 &1608730127
 GameObject:
   m_ObjectHideFlags: 0
@@ -24058,16 +24201,62 @@ PrefabInstance:
       propertyPath: m_Name
       value: Manny2_Anim (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6761035103385401234, guid: 92c302853c39bcf45bc59f25170675f9, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1e9f02a0b83d4a14a74b79f6a47d186b, type: 2}
+    - target: {fileID: 6761035103385401234, guid: 92c302853c39bcf45bc59f25170675f9, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1e9f02a0b83d4a14a74b79f6a47d186b, type: 2}
+    - target: {fileID: 6761035103385401234, guid: 92c302853c39bcf45bc59f25170675f9, type: 3}
+      propertyPath: 'm_Materials.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1e9f02a0b83d4a14a74b79f6a47d186b, type: 2}
+    - target: {fileID: 6761035103385401234, guid: 92c302853c39bcf45bc59f25170675f9, type: 3}
+      propertyPath: 'm_Materials.Array.data[3]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1e9f02a0b83d4a14a74b79f6a47d186b, type: 2}
+    - target: {fileID: 6761035103385401234, guid: 92c302853c39bcf45bc59f25170675f9, type: 3}
+      propertyPath: 'm_Materials.Array.data[4]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1e9f02a0b83d4a14a74b79f6a47d186b, type: 2}
+    - target: {fileID: 6761035103385401234, guid: 92c302853c39bcf45bc59f25170675f9, type: 3}
+      propertyPath: 'm_Materials.Array.data[5]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1e9f02a0b83d4a14a74b79f6a47d186b, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 92c302853c39bcf45bc59f25170675f9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1702827583}
   m_SourcePrefab: {fileID: 100100000, guid: 92c302853c39bcf45bc59f25170675f9, type: 3}
 --- !u!4 &1702827581 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 92c302853c39bcf45bc59f25170675f9, type: 3}
   m_PrefabInstance: {fileID: 1702827580}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1702827582 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 92c302853c39bcf45bc59f25170675f9, type: 3}
+  m_PrefabInstance: {fileID: 1702827580}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1702827583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1702827582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 541a0c2fa5364d509d290c43ad19ea9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Characters.CharacterMaterialApplicator
+  rendererRoot: {fileID: 1702827581}
+  characterMaterial: {fileID: 2100000, guid: 1e9f02a0b83d4a14a74b79f6a47d186b, type: 2}
 --- !u!1 &1707796276
 GameObject:
   m_ObjectHideFlags: 0
