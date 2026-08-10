@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 6281254265163419076}
   - component: {fileID: 1193617242945035634}
   - component: {fileID: 7156477220624267652}
+  - component: {fileID: 2815690297988968086}
   m_Layer: 2
   m_Name: Watcher
   m_TagString: Untagged
@@ -72,6 +73,23 @@ Transform:
   - {fileID: 5837610384608895875}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2815690297988968086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2090663550077517559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 174d9d8ed686a8540a923550a6c9e380, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Enemy.WatcherAnimationController
+  agent: {fileID: 4047751725195089847}
+  animator: {fileID: 3312594794854437121}
+  speedParameter: Speed
+  movementThreshold: 0.05
+  speedDampTime: 0.1
 --- !u!136 &2943968582649798073
 CapsuleCollider:
   m_ObjectHideFlags: 0
