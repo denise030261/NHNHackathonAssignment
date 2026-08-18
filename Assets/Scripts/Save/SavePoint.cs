@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using NHNHackathon.Interaction;
 using UnityEngine;
 
@@ -8,6 +9,10 @@ namespace NHNHackathon.SaveSystem
     [RequireComponent(typeof(Collider))]
     public sealed class SavePoint : MonoBehaviour
     {
+        [Header("Order")]
+        [SerializeField, Min(-1), Tooltip("Higher indices replace lower ones. -1 derives the index from names such as SavePoint (3).")]
+        private int saveIndex = -1;
+
         [Header("Respawn")]
         [SerializeField, Tooltip("Player position and facing direction after restart. Defaults to this object.")]
         private Transform respawnPoint;
@@ -39,12 +44,31 @@ namespace NHNHackathon.SaveSystem
                 return;
             }
 
-            player.SaveCheckpoint(respawnPoint != null ? respawnPoint : transform);
+            bool wasSaved = player.SaveCheckpoint(
+                ResolveSaveIndex(), respawnPoint != null ? respawnPoint : transform);
+            if (!wasSaved)
+            {
+                return;
+            }
+
             if (showSavedMessage && !string.IsNullOrWhiteSpace(savedMessage)
                 && player.TryGetComponent(out PlayerInteractor interactor))
             {
                 interactor.ShowTemporaryMessage(savedMessage, messageDuration);
             }
+        }
+
+        private int ResolveSaveIndex()
+        {
+            if (saveIndex >= 0)
+            {
+                return saveIndex;
+            }
+
+            Match suffix = Regex.Match(gameObject.name, @"\((\d+)\)\s*$");
+            return suffix.Success && int.TryParse(suffix.Groups[1].Value, out int parsed)
+                ? parsed
+                : 0;
         }
 
         private void OnTriggerExit(Collider other)

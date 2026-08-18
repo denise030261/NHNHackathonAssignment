@@ -32,10 +32,30 @@ namespace NHNHackathon.SaveSystem
             CheckpointSession.RegisterInitialSpawn(this);
         }
 
-        public void SaveCheckpoint(Transform respawnPoint)
+        public bool SaveCheckpoint(int saveIndex, Transform respawnPoint)
         {
             Transform point = respawnPoint != null ? respawnPoint : transform;
-            CheckpointSession.SaveCheckpoint(this, point.position, point.rotation);
+            return CheckpointSession.SaveCheckpoint(
+                this, saveIndex, point.position, point.rotation);
+        }
+
+        public bool HasSameItems(
+            System.Collections.Generic.IReadOnlyList<ItemDefinition> items)
+        {
+            if (items == null || inventory.Items.Count != items.Count)
+            {
+                return false;
+            }
+
+            foreach (ItemDefinition item in items)
+            {
+                if (!inventory.Contains(item))
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
 
         public void PrepareRespawn()

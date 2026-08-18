@@ -38,6 +38,7 @@ namespace NHNHackathon.Cinematics
         private PlayerCameraController cameraController;
         private Sequence sequence;
         private bool controlsAreLocked;
+        private bool previousLookInputState;
 
         private void Start()
         {
@@ -48,6 +49,11 @@ namespace NHNHackathon.Cinematics
             }
 
             cameraController = FindAnyObjectByType<PlayerCameraController>();
+            if (cameraController != null)
+            {
+                previousLookInputState = cameraController.LookInputEnabled;
+                cameraController.SetLookInputEnabled(false);
+            }
             LockPlayerControls();
             PrepareVisuals();
             PlaySequence();
@@ -165,6 +171,10 @@ namespace NHNHackathon.Cinematics
                 }
             }
             controlsAreLocked = false;
+            if (cameraController != null)
+            {
+                cameraController.SetLookInputEnabled(previousLookInputState);
+            }
         }
 
         private void OnDisable()

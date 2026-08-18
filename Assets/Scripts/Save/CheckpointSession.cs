@@ -7,6 +7,7 @@ namespace NHNHackathon.SaveSystem
 {
     public sealed class CheckpointSnapshot
     {
+        public int SaveIndex = int.MinValue;
         public Vector3 Position;
         public Quaternion Rotation;
         public readonly List<ItemDefinition> Items = new();
@@ -44,24 +45,39 @@ namespace NHNHackathon.SaveSystem
 
             snapshot = new CheckpointSnapshot
             {
+                SaveIndex = int.MinValue,
                 Position = player.transform.position,
                 Rotation = player.transform.rotation
             };
             player.WriteProgressTo(snapshot);
         }
 
-        public static void SaveCheckpoint(
-            PlayerCheckpointAgent player, Vector3 position, Quaternion rotation)
+        public static bool SaveCheckpoint(
+            PlayerCheckpointAgent player, int saveIndex,
+            Vector3 position, Quaternion rotation)
         {
             if (player == null)
             {
-                return;
+                return false;
             }
 
             snapshot ??= new CheckpointSnapshot();
+            if (saveIndex < snapshot.SaveIndex)
+            {
+                return false;
+            }
+
+            if (saveIndex == snapshot.SaveIndex
+                && player.HasSameItems(snapshot.Items))
+            {
+                return false;
+            }
+
+            snapshot.SaveIndex = saveIndex;
             snapshot.Position = position;
             snapshot.Rotation = rotation;
             player.WriteProgressTo(snapshot);
+            return true;
         }
 
         public static void PrepareRespawn(PlayerCheckpointAgent player)

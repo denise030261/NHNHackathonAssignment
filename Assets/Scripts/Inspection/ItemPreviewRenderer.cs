@@ -32,6 +32,8 @@ namespace NHNHackathon.Inspection
         {
             Clear();
             EnsureResources();
+            previewPivot.localRotation = Quaternion.identity;
+            initialEulerAngles = Vector3.zero;
             if (item == null || item.PreviewPrefab == null)
             {
                 return;
@@ -44,7 +46,6 @@ namespace NHNHackathon.Inspection
             previewInstance.transform.localScale *= item.PreviewScale;
             SetLayerRecursively(previewInstance.transform, PreviewLayer);
             DisablePreviewBehaviours(previewInstance);
-            initialEulerAngles = previewPivot.localEulerAngles;
         }
 
         public void Rotate(Vector2 mouseDelta)
@@ -70,6 +71,7 @@ namespace NHNHackathon.Inspection
         {
             if (previewInstance != null)
             {
+                previewInstance.SetActive(false);
                 Destroy(previewInstance);
                 previewInstance = null;
             }

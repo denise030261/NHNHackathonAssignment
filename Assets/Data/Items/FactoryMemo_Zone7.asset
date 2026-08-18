@@ -21,7 +21,7 @@ MonoBehaviour:
     \uC2EC\uD558\uAC8C \uD750\uD2B8\uB7EC\uC838 \uC788\uB2E4."
   inventoryIcon: {fileID: 21300000, guid: 41f15ba1c8e34fd42af808e51acce58d, type: 3}
   previewPrefab: {fileID: 6274370231951324203, guid: 26628686116e61a45b72ca5cc4242f8c, type: 3}
-  previewEulerAngles: {x: 0, y: 0, z: 90}
+  previewEulerAngles: {x: 135, y: -30, z: 180}
   previewScale: 1.1
   inspectOnPickup: 1
   pages:

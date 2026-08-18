@@ -27,6 +27,14 @@ namespace NHNHackathon.Characters
         [SerializeField, Tooltip("Camera position relative to the player origin.")]
         private Vector3 firstPersonOffset = new Vector3(0f, 1.65f, 0.08f);
 
+        [Header("First Person Collision")]
+        [SerializeField, Tooltip("Prevents the first-person camera position from entering walls.")]
+        private bool enableFirstPersonCollision = true;
+        [SerializeField, Min(0.01f), Tooltip("Radius reserved around the first-person camera.")]
+        private float firstPersonCollisionRadius = 0.08f;
+        [SerializeField, Min(0f), Tooltip("Extra distance retained from a detected wall.")]
+        private float firstPersonCollisionPadding = 0.02f;
+
         [Header("Third Person")]
         [SerializeField, Tooltip("Point around which the third-person camera orbits.")]
         private Vector3 thirdPersonPivotOffset = new Vector3(0f, 1.4f, 0f);
@@ -46,7 +54,8 @@ namespace NHNHackathon.Characters
         [SerializeField, Min(0f), Tooltip("How quickly the camera returns after an obstruction disappears.")]
         private float distanceSmoothTime = 0.08f;
 
-        [SerializeField, Tooltip("Layers considered solid by the third-person camera.")]
+        [Header("Shared Collision")]
+        [SerializeField, Tooltip("Layers considered solid by both first- and third-person cameras.")]
         private LayerMask collisionMask = ~(1 << 2);
 
         [Header("Perspective Transition")]
@@ -78,9 +87,11 @@ namespace NHNHackathon.Characters
         private float forcedPitchDuration;
         private float forcedPitchStart;
         private float forcedPitchTarget;
+        private bool lookInputEnabled = true;
 
         public CameraPerspective Perspective => targetPerspective;
         public bool IsTransitioning => isTransitioning;
+        public bool LookInputEnabled => lookInputEnabled;
 
         private void Awake()
         {
@@ -116,7 +127,7 @@ namespace NHNHackathon.Characters
                 RequestPerspective(perspective);
             }
 
-            if (!isForcedTurning && !isForcedPitching)
+            if (lookInputEnabled && !isForcedTurning && !isForcedPitching)
             {
                 yaw += UnityEngine.Input.GetAxis("Mouse X") * mouseSensitivity;
                 pitch = Mathf.Clamp(
@@ -129,6 +140,11 @@ namespace NHNHackathon.Characters
             {
                 transform.rotation = Quaternion.Euler(0f, yaw, 0f);
             }
+        }
+
+        public void SetLookInputEnabled(bool isEnabled)
+        {
+            lookInputEnabled = isEnabled;
         }
 
         private void LateUpdate()
@@ -253,9 +269,9 @@ namespace NHNHackathon.Characters
 
         private void ApplyFirstPersonCamera()
         {
+            CalculateFirstPersonPose(out Vector3 position, out Quaternion rotation);
             playerCamera.transform.SetPositionAndRotation(
-                transform.TransformPoint(firstPersonOffset),
-                Quaternion.Euler(pitch, yaw, 0f));
+                position, rotation);
         }
 
         private void ApplyThirdPersonCamera()
@@ -292,12 +308,49 @@ namespace NHNHackathon.Characters
         {
             if (targetPerspective == CameraPerspective.FirstPerson)
             {
-                position = transform.TransformPoint(firstPersonOffset);
-                rotation = Quaternion.Euler(pitch, yaw, 0f);
+                CalculateFirstPersonPose(out position, out rotation);
                 return;
             }
 
             CalculateThirdPersonPose(out position, out rotation);
+        }
+
+        private void CalculateFirstPersonPose(
+            out Vector3 position, out Quaternion rotation)
+        {
+            rotation = Quaternion.Euler(pitch, yaw, 0f);
+            Vector3 desiredPosition = transform.TransformPoint(firstPersonOffset);
+            if (!enableFirstPersonCollision)
+            {
+                position = desiredPosition;
+                return;
+            }
+
+            Vector3 eyeAnchorOffset = firstPersonOffset;
+            eyeAnchorOffset.x = 0f;
+            eyeAnchorOffset.z = 0f;
+            Vector3 eyeAnchor = transform.TransformPoint(eyeAnchorOffset);
+            Vector3 offset = desiredPosition - eyeAnchor;
+            float distance = offset.magnitude;
+            if (distance <= 0.0001f)
+            {
+                position = eyeAnchor;
+                return;
+            }
+
+            Vector3 direction = offset / distance;
+            if (Physics.SphereCast(
+                    eyeAnchor, firstPersonCollisionRadius, direction,
+                    out RaycastHit hit, distance, collisionMask,
+                    QueryTriggerInteraction.Ignore))
+            {
+                float safeDistance = Mathf.Max(
+                    0f, hit.distance - firstPersonCollisionPadding);
+                position = eyeAnchor + direction * safeDistance;
+                return;
+            }
+
+            position = desiredPosition;
         }
 
         private void CalculateThirdPersonPose(out Vector3 position, out Quaternion rotation)
@@ -313,8 +366,19 @@ namespace NHNHackathon.Characters
                 targetDistance = Mathf.Max(minimumCameraDistance, hit.distance - collisionPadding);
             }
 
-            currentDistance = Mathf.SmoothDamp(
-                currentDistance, targetDistance, ref distanceVelocity, distanceSmoothTime);
+            if (targetDistance < currentDistance)
+            {
+                // Pull in immediately so the camera never spends frames behind a wall.
+                currentDistance = targetDistance;
+                distanceVelocity = 0f;
+            }
+            else
+            {
+                // Only the return to the preferred distance is smoothed.
+                currentDistance = Mathf.SmoothDamp(
+                    currentDistance, targetDistance,
+                    ref distanceVelocity, distanceSmoothTime);
+            }
             position = pivot + direction * currentDistance;
         }
 
@@ -346,6 +410,10 @@ namespace NHNHackathon.Characters
         private void OnValidate()
         {
             minimumPitch = Mathf.Min(minimumPitch, maximumPitch);
+            firstPersonCollisionRadius = Mathf.Max(
+                0.01f, firstPersonCollisionRadius);
+            firstPersonCollisionPadding = Mathf.Max(
+                0f, firstPersonCollisionPadding);
             if (playerCamera == null)
             {
                 playerCamera = Camera.main;

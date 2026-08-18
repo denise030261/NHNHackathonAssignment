@@ -1,6 +1,8 @@
 using System;
 using DG.Tweening;
+using NHNHackathon.AudioSystem;
 using NHNHackathon.Items;
+using NHNHackathon.Progression;
 using UnityEngine;
 
 namespace NHNHackathon.Dance
@@ -15,6 +17,13 @@ namespace NHNHackathon.Dance
         [SerializeField] private DanceSyncJudge syncJudge;
         [SerializeField] private GameObject rewardPrefab;
         [SerializeField] private Transform dropPoint;
+        [SerializeField, Tooltip("Optional. The player inventory is found automatically when empty.")]
+        private PlayerItemInventory playerInventory;
+
+        [Header("Reward Drop SFX")]
+        [SerializeField, Tooltip("Played when the tutorial key starts falling.")]
+        private AudioClip rewardDropSfx;
+        [SerializeField, Range(0f, 1f)] private float rewardDropSfxVolume = 1f;
 
         [Header("Challenge")]
         [SerializeField, Min(0.01f)] private float requiredSuccessDuration = 3f;
@@ -51,6 +60,11 @@ namespace NHNHackathon.Dance
             danceZone.PlayerExited += HandlePlayerExited;
         }
 
+        private void Start()
+        {
+            SuppressRewardWhenAlreadyCollected();
+        }
+
         private void OnDisable()
         {
             if (syncJudge != null)
@@ -65,6 +79,7 @@ namespace NHNHackathon.Dance
 
         private void HandleDanceStepJudged(DanceStepJudgement judgement)
         {
+            SuppressRewardWhenAlreadyCollected();
             if (rewardSpawned && oneShot)
             {
                 return;
@@ -107,6 +122,7 @@ namespace NHNHackathon.Dance
 
         private void DropReward()
         {
+            SuppressRewardWhenAlreadyCollected();
             if (rewardPrefab == null || dropPoint == null || (rewardSpawned && oneShot))
             {
                 return;
@@ -118,6 +134,8 @@ namespace NHNHackathon.Dance
                 rewardPrefab, landingPosition + Vector3.up * dropHeight,
                 dropPoint.rotation);
             reward.name = rewardPrefab.name;
+            GameSfxPlayer.PlayAtPoint(
+                rewardDropSfx, reward.transform.position, rewardDropSfxVolume);
 
             Collider[] colliders = reward.GetComponentsInChildren<Collider>(true);
             KeyCollectible collectible = reward.GetComponentInChildren<KeyCollectible>(true);
@@ -152,11 +170,38 @@ namespace NHNHackathon.Dance
             });
         }
 
+        private void SuppressRewardWhenAlreadyCollected()
+        {
+            if (rewardSpawned || rewardPrefab == null)
+            {
+                return;
+            }
+
+            playerInventory ??= FindAnyObjectByType<PlayerItemInventory>();
+            KeyCollectible rewardKey =
+                rewardPrefab.GetComponentInChildren<KeyCollectible>(true);
+            ItemDefinition rewardItem = rewardKey != null
+                ? rewardKey.ItemDefinition
+                : null;
+            bool alreadyOwned = playerInventory != null
+                && playerInventory.Contains(rewardItem);
+            bool alreadyRecorded = rewardItem != null
+                && GameProgressionController.Instance != null
+                && GameProgressionController.Instance.IsCompleted(
+                    rewardItem.ProgressionCondition);
+            if (alreadyOwned || alreadyRecorded)
+            {
+                rewardSpawned = true;
+                successfulDuration = 0f;
+            }
+        }
+
         private void OnValidate()
         {
             requiredSuccessDuration = Mathf.Max(0.01f, requiredSuccessDuration);
             dropDuration = Mathf.Max(0.01f, dropDuration);
             rotationDuration = Mathf.Max(0.01f, rotationDuration);
+            rewardDropSfxVolume = Mathf.Clamp01(rewardDropSfxVolume);
             danceZone ??= GetComponent<DanceSyncZone>();
             syncJudge ??= GetComponent<DanceSyncJudge>();
         }
