@@ -166,6 +166,9 @@ namespace NHNHackathon.Dance
                 {
                     collectible.enabled = true;
                 }
+                // The reward was moved while its colliders were disabled.
+                // Synchronize once so proximity queries see the landing position immediately.
+                Physics.SyncTransforms();
                 RewardDropped?.Invoke(reward);
             });
         }

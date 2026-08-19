@@ -3793,13 +3793,65 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6159149051192978673, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
+      propertyPath: outlineWidth
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 6159149051192978673, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
       propertyPath: playerCamera
       value: 
       objectReference: {fileID: 1850502267}
     - target: {fileID: 6159149051192978673, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
+      propertyPath: messageColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6159149051192978673, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
+      propertyPath: messageColor.g
+      value: 0.52179044
+      objectReference: {fileID: 0}
+    - target: {fileID: 6159149051192978673, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
+      propertyPath: messageColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6159149051192978673, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
+      propertyPath: outlineColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6159149051192978673, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
+      propertyPath: outlineColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6159149051192978673, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
+      propertyPath: outlineColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6159149051192978673, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
       propertyPath: cameraController
       value: 
       objectReference: {fileID: 2128450805}
+    - target: {fileID: 6159149051192978673, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
+      propertyPath: nearbyOutlineWidth
+      value: 0.0032
+      objectReference: {fileID: 0}
+    - target: {fileID: 6159149051192978673, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
+      propertyPath: focusedOutlineWidth
+      value: 0.0069
+      objectReference: {fileID: 0}
+    - target: {fileID: 6159149051192978673, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
+      propertyPath: nearbyOutlinePixels
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6159149051192978673, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
+      propertyPath: nearbyOutlineRadius
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6159149051192978673, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
+      propertyPath: focusedOutlinePixels
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6159149051192978673, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
+      propertyPath: nearbyOutlineOriginHeight
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6675140767211803144, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
       propertyPath: m_LocalPosition.x
       value: -118.6
@@ -23106,6 +23158,64 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.AudioSystem.UIButtonHoverSfx
   selectable: {fileID: 1732640855}
+--- !u!1001 &1733035036
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3985004875164646717, guid: 124f819fab9eb484fa968e5040a48856, type: 3}
+      propertyPath: m_Name
+      value: DisplayKey
+      objectReference: {fileID: 0}
+    - target: {fileID: 8141794772142553693, guid: 124f819fab9eb484fa968e5040a48856, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -127.527565
+      objectReference: {fileID: 0}
+    - target: {fileID: 8141794772142553693, guid: 124f819fab9eb484fa968e5040a48856, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.57441306
+      objectReference: {fileID: 0}
+    - target: {fileID: 8141794772142553693, guid: 124f819fab9eb484fa968e5040a48856, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -32.453125
+      objectReference: {fileID: 0}
+    - target: {fileID: 8141794772142553693, guid: 124f819fab9eb484fa968e5040a48856, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8141794772142553693, guid: 124f819fab9eb484fa968e5040a48856, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8141794772142553693, guid: 124f819fab9eb484fa968e5040a48856, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8141794772142553693, guid: 124f819fab9eb484fa968e5040a48856, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8141794772142553693, guid: 124f819fab9eb484fa968e5040a48856, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8141794772142553693, guid: 124f819fab9eb484fa968e5040a48856, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8141794772142553693, guid: 124f819fab9eb484fa968e5040a48856, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects:
+    - {fileID: 798165082447704037, guid: 124f819fab9eb484fa968e5040a48856, type: 3}
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 124f819fab9eb484fa968e5040a48856, type: 3}
 --- !u!1 &1734388542
 GameObject:
   m_ObjectHideFlags: 0
@@ -39862,3 +39972,4 @@ SceneRoots:
   - {fileID: 543450653577023069}
   - {fileID: 1607841722}
   - {fileID: 1490566199}
+  - {fileID: 1733035036}

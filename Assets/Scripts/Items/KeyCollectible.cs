@@ -29,6 +29,16 @@ namespace NHNHackathon.Items
             GetComponent<Collider>().isTrigger = true;
         }
 
+        private void OnEnable()
+        {
+            InteractableRegistry.Register(this);
+        }
+
+        private void OnDisable()
+        {
+            InteractableRegistry.Unregister(this);
+        }
+
         public bool CanInteract(PlayerInteractor interactor)
         {
             return !isCollected
