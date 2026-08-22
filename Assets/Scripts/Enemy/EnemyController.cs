@@ -42,12 +42,18 @@ namespace NHNHackathon.Enemy
 
         [Header("Performance")]
         [SerializeField, Min(0.02f)] private float perceptionInterval = 0.1f;
+        [SerializeField, Min(0.02f)] private float lightSearchInterval = 0.1f;
+        [SerializeField, Min(0.02f)] private float chaseDestinationUpdateInterval = 0.1f;
+        [SerializeField, Min(0f)] private float chaseDestinationChangeThreshold = 0.15f;
 
         private NavMeshAgent agent;
         private EnemyPerception perception;
         private int patrolIndex;
         private float waitUntil;
         private float nextPerceptionTime;
+        private float nextLightSearchTime;
+        private float nextChaseDestinationUpdate;
+        private Vector3 lastChaseDestination;
         private float suspicionEndsAt;
         private float investigationStartedAt;
         private float nextLightDestinationUpdate;
@@ -283,12 +289,16 @@ namespace NHNHackathon.Enemy
 
         private void UpdateRoaming()
         {
-            if (TryFindVisibleLight(out LightStimulusSource light))
+            if (Time.time >= nextLightSearchTime)
             {
-                investigatedLight = light;
-                TryResolveLightDestination(light, out lastKnownLightPosition);
-                ChangeState(EnemyState.InvestigatingLight);
-                return;
+                nextLightSearchTime = Time.time + lightSearchInterval;
+                if (TryFindVisibleLight(out LightStimulusSource light))
+                {
+                    investigatedLight = light;
+                    TryResolveLightDestination(light, out lastKnownLightPosition);
+                    ChangeState(EnemyState.InvestigatingLight);
+                    return;
+                }
             }
 
             Transform point = patrolRoute != null ? patrolRoute.GetPoint(patrolIndex) : null;
@@ -361,9 +371,25 @@ namespace NHNHackathon.Enemy
 
         private void UpdateChasing()
         {
-            if (player != null && agent.isOnNavMesh)
+            if (player == null || !agent.isOnNavMesh
+                || Time.time < nextChaseDestinationUpdate)
             {
-                agent.SetDestination(hasLostSight ? lastKnownPlayerPosition : player.position);
+                return;
+            }
+
+            nextChaseDestinationUpdate = Time.time
+                + chaseDestinationUpdateInterval;
+            Vector3 destination = hasLostSight
+                ? lastKnownPlayerPosition
+                : player.position;
+            float thresholdSquared = chaseDestinationChangeThreshold
+                * chaseDestinationChangeThreshold;
+            if (!agent.hasPath
+                || (destination - lastChaseDestination).sqrMagnitude
+                >= thresholdSquared)
+            {
+                agent.SetDestination(destination);
+                lastChaseDestination = destination;
             }
         }
 
@@ -425,6 +451,9 @@ namespace NHNHackathon.Enemy
                     hasPatrolDestination = false;
                     lastKnownPlayerPosition = player != null ? player.position : transform.position;
                     hasLostSight = false;
+                    nextChaseDestinationUpdate = 0f;
+                    lastChaseDestination = new Vector3(
+                        float.PositiveInfinity, 0f, 0f);
                     break;
                 case EnemyState.Suspicious:
                     suspicionEndsAt = Time.time + suspicionDuration;
@@ -462,7 +491,7 @@ namespace NHNHackathon.Enemy
         {
             bestLight = null;
             float bestDistanceSqr = float.PositiveInfinity;
-            foreach (LightStimulusSource light in FindObjectsByType<LightStimulusSource>(FindObjectsSortMode.None))
+            foreach (LightStimulusSource light in LightStimulusSource.ActiveSources)
             {
                 if (!light.IsActive || !perception.CanSeePoint(light.Position, true))
                 {

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace NHNHackathon.LightSystem
@@ -5,6 +6,8 @@ namespace NHNHackathon.LightSystem
     [DisallowMultipleComponent]
     public sealed class LightStimulusSource : MonoBehaviour
     {
+        private static readonly HashSet<LightStimulusSource> activeSources = new();
+
         [SerializeField, Min(0f)] private float movementThreshold = 0.05f;
         [SerializeField] private Light linkedLight;
         [SerializeField, Tooltip("Surfaces on which the flashlight can create an investigation point.")]
@@ -20,11 +23,25 @@ namespace NHNHackathon.LightSystem
         public bool IsMoving { get; private set; }
         public Vector3 Position => illuminatedPoint;
         public Vector3 NavigationHint => navigationHint;
+        public static IReadOnlyCollection<LightStimulusSource> ActiveSources =>
+            activeSources;
 
         private void OnEnable()
         {
+            activeSources.Add(this);
             RefreshIlluminatedPoint();
             previousIlluminatedPoint = illuminatedPoint;
+        }
+
+        private void OnDisable()
+        {
+            activeSources.Remove(this);
+        }
+
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+        private static void ResetRegistry()
+        {
+            activeSources.Clear();
         }
 
         private void Update()

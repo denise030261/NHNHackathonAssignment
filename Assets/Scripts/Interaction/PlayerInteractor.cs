@@ -41,6 +41,8 @@ namespace NHNHackathon.Interaction
             new Color(1f, 0.78f, 0.2f, 1f);
         [SerializeField, Min(0.1f)] private float nearbyOutlineRadius = 3f;
         [SerializeField, Min(0f)] private float nearbyOutlineOriginHeight = 0.75f;
+        [SerializeField, Range(0.02f, 0.5f), Tooltip("Nearby outline scan interval. A tenth of a second avoids doing a physics scan every frame.")]
+        private float nearbyOutlineRefreshInterval = 0.1f;
         [FormerlySerializedAs("nearbyOutlineWidth")]
         [SerializeField, Range(0.5f, 12f)]
         private float nearbyOutlinePixels = 1.5f;
@@ -54,8 +56,12 @@ namespace NHNHackathon.Interaction
             new Collider[NearbyColliderCapacity];
         private readonly HashSet<InteractionOutline> frameOutlines = new();
         private readonly List<InteractionOutline> visibleOutlines = new();
+        private readonly List<MonoBehaviour> componentBuffer = new(8);
         private string temporaryMessage;
         private float messageExpiresAt;
+        private float nextOutlineRefreshAt;
+        private string displayedPrompt = string.Empty;
+        private Color displayedPromptColor;
 
         //public PlayerKeyInventory KeyInventory => keyInventory;
 
@@ -67,7 +73,12 @@ namespace NHNHackathon.Interaction
         private void Update()
         {
             SetCurrentInteractable(FindInteractable());
-            RefreshInteractionOutlines();
+            if (Time.unscaledTime >= nextOutlineRefreshAt)
+            {
+                nextOutlineRefreshAt = Time.unscaledTime
+                    + nearbyOutlineRefreshInterval;
+                RefreshInteractionOutlines();
+            }
             RefreshPrompt();
             if (currentInteractable != null
                 && currentInteractable.CanInteract(this)
@@ -91,16 +102,20 @@ namespace NHNHackathon.Interaction
                 return;
             }
 
-            Vector3 origin = transform.position
-                + Vector3.up * nearbyOutlineOriginHeight;
-            int count = Physics.OverlapSphereNonAlloc(
-                origin, nearbyOutlineRadius, nearbyColliders,
-                interactionMask, QueryTriggerInteraction.Collide);
-            for (int index = 0; index < count; index++)
+            Vector3 origin = transform.position +
+                Vector3.up * nearbyOutlineOriginHeight;
+            if (!outlineOnlyCollectibleItems)
             {
-                IInteractable nearby = FindOutlineTarget(nearbyColliders[index]);
-                ApplyOutline(nearby, nearbyOutlinePixels);
-                nearbyColliders[index] = null;
+                int count = Physics.OverlapSphereNonAlloc(
+                    origin, nearbyOutlineRadius, nearbyColliders,
+                    interactionMask, QueryTriggerInteraction.Collide);
+                for (int index = 0; index < count; index++)
+                {
+                    IInteractable nearby = FindOutlineTarget(
+                        nearbyColliders[index]);
+                    ApplyOutline(nearby, nearbyOutlinePixels);
+                    nearbyColliders[index] = null;
+                }
             }
 
             ApplyRegisteredItemOutlines(origin);
@@ -164,8 +179,9 @@ namespace NHNHackathon.Interaction
                 return null;
             }
 
-            foreach (MonoBehaviour behaviour in
-                     candidate.GetComponentsInParent<MonoBehaviour>())
+            componentBuffer.Clear();
+            candidate.GetComponentsInParent(false, componentBuffer);
+            foreach (MonoBehaviour behaviour in componentBuffer)
             {
                 if (behaviour is IInteractable interactable
                     && interactable.CanInteract(this)
@@ -254,7 +270,9 @@ namespace NHNHackathon.Interaction
                 return null;
             }
 
-            foreach (MonoBehaviour behaviour in hit.collider.GetComponentsInParent<MonoBehaviour>())
+            componentBuffer.Clear();
+            hit.collider.GetComponentsInParent(false, componentBuffer);
+            foreach (MonoBehaviour behaviour in componentBuffer)
             {
                 if (behaviour is IInteractable interactable && interactable.CanInteract(this))
                 {
@@ -274,14 +292,24 @@ namespace NHNHackathon.Interaction
                     ? $"[{interactionKey}] {currentInteractable.InteractionPrompt}"
                     : string.Empty;
 
-            if (promptRoot != null)
+            bool shouldShow = !string.IsNullOrEmpty(text);
+            if (promptRoot != null && promptRoot.activeSelf != shouldShow)
             {
-                promptRoot.SetActive(!string.IsNullOrEmpty(text));
+                promptRoot.SetActive(shouldShow);
             }
             if (promptText != null)
             {
-                promptText.text = text;
-                promptText.color = hasTemporaryMessage ? messageColor : promptColor;
+                Color color = hasTemporaryMessage ? messageColor : promptColor;
+                if (displayedPrompt != text)
+                {
+                    promptText.text = text;
+                    displayedPrompt = text;
+                }
+                if (displayedPromptColor != color)
+                {
+                    promptText.color = color;
+                    displayedPromptColor = color;
+                }
             }
         }
 
@@ -300,6 +328,8 @@ namespace NHNHackathon.Interaction
             MigrateLegacyOutlineWidths();
             nearbyOutlineRadius = Mathf.Max(0.1f, nearbyOutlineRadius);
             nearbyOutlineOriginHeight = Mathf.Max(0f, nearbyOutlineOriginHeight);
+            nearbyOutlineRefreshInterval = Mathf.Clamp(
+                nearbyOutlineRefreshInterval, 0.02f, 0.5f);
             nearbyOutlinePixels = Mathf.Clamp(
                 nearbyOutlinePixels, 0.5f, 12f);
             focusedOutlinePixels = Mathf.Clamp(
