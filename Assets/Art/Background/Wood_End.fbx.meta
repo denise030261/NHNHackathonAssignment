@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: cb954d031150a484da79180de9b2627b
+guid: 53c346853ea78044e9e3454d60fec94a
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
@@ -7,12 +7,7 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Gold
-    second: {fileID: 2100000, guid: f7b29b1949a6fea4783fcd42fde907b7, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Plank
+      name: Material.005
     second: {fileID: 2100000, guid: 35d81e4119ae0fd4983fa3448f497efe, type: 2}
   materials:
     materialImportMode: 2
