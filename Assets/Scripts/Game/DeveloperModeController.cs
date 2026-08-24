@@ -1,3 +1,6 @@
+using NHNHackathon.Dance;
+using NHNHackathon.Items;
+using NHNHackathon.Progression;
 using UnityEngine;
 
 namespace NHNHackathon.Game
@@ -33,12 +36,25 @@ namespace NHNHackathon.Game
 
         private void Update()
         {
-            if (!allowRuntimeToggle || !UnityEngine.Input.GetKeyDown(toggleKey))
+            bool controlHeld = UnityEngine.Input.GetKey(KeyCode.LeftControl)
+                || UnityEngine.Input.GetKey(KeyCode.RightControl);
+            bool shiftHeld = UnityEngine.Input.GetKey(KeyCode.LeftShift)
+                || UnityEngine.Input.GetKey(KeyCode.RightShift);
+            if (!allowRuntimeToggle || !controlHeld || !shiftHeld
+                || !UnityEngine.Input.GetKeyDown(toggleKey))
             {
                 return;
             }
 
             SetDeveloperMode(!developerModeEnabled);
+        }
+
+        private void Start()
+        {
+            if (developerModeEnabled)
+            {
+                GrantDeveloperProgress();
+            }
         }
 
         public void SetDeveloperMode(bool enabled)
@@ -49,7 +65,50 @@ namespace NHNHackathon.Game
             }
 
             developerModeEnabled = enabled;
+            if (developerModeEnabled)
+            {
+                GrantDeveloperProgress();
+            }
             LogCurrentState();
+        }
+
+        private static void GrantDeveloperProgress()
+        {
+            PlayerItemInventory inventory = FindFirstObjectByType<PlayerItemInventory>(
+                FindObjectsInactive.Include);
+            if (inventory != null)
+            {
+                DeveloperModeKeyCatalog keyCatalog =
+                    Resources.Load<DeveloperModeKeyCatalog>("Data/DeveloperModeKeyCatalog");
+                if (keyCatalog != null)
+                {
+                    foreach (ItemDefinition item in keyCatalog.Keys)
+                    {
+                        if (item != null && item.Type == ItemType.Key)
+                        {
+                            inventory.TryCollect(item);
+                            GameProgressionController.Instance?.TryComplete(
+                                item.ProgressionCondition);
+                        }
+                    }
+
+                    inventory.TryCollect(keyCatalog.Flashlight);
+                }
+
+                foreach (KeyCollectible collectible in FindObjectsByType<KeyCollectible>(
+                    FindObjectsInactive.Include, FindObjectsSortMode.None))
+                {
+                    if (collectible.ItemDefinition != null
+                        && inventory.Contains(collectible.ItemDefinition))
+                    {
+                        collectible.ApplyCollectedState();
+                    }
+                }
+            }
+
+            PlayerDanceUnlockController danceUnlockController =
+                FindFirstObjectByType<PlayerDanceUnlockController>(FindObjectsInactive.Include);
+            danceUnlockController?.UnlockAll();
         }
 
         private void LogCurrentState()

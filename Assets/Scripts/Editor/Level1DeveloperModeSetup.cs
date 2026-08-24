@@ -36,7 +36,8 @@ namespace NHNHackathon.EditorTools
             EditorSceneManager.MarkSceneDirty(scene);
             EditorSceneManager.SaveScene(scene);
             AssetDatabase.SaveAssets();
-            Debug.Log("LEVEL1_DEVELOPER_MODE_COMPLETE Toggle=F1, IgnoreWatchers=true");
+            Debug.Log(
+                "LEVEL1_DEVELOPER_MODE_COMPLETE Toggle=Ctrl+Shift+F1, IgnoreWatchers=true");
         }
     }
 }

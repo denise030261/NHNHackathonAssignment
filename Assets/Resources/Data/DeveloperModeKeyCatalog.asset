@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 932efb5f8fa34d9abf165673993da855, type: 3}
+  m_Name: DeveloperModeKeyCatalog
+  m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Game.DeveloperModeKeyCatalog
+  keys:
+  - {fileID: 11400000, guid: 13814cff13a52e442a93488730d18962, type: 2}
+  - {fileID: 11400000, guid: e0f9942230df0c14ab9591c40f4a2336, type: 2}
+  - {fileID: 11400000, guid: bdf864cc759a81145b92a50c43c90f5f, type: 2}
+  - {fileID: 11400000, guid: 2a9b84e11f4c4681a379890322d7c051, type: 2}
+  - {fileID: 11400000, guid: 4afe2458da634b8fa0c0fc8f298e692e, type: 2}
+  - {fileID: 11400000, guid: 10f2e60bb52c430783c7bb709071d093, type: 2}
+  - {fileID: 11400000, guid: 2596fc204db891d4c9bf370624e0f42e, type: 2}
+  - {fileID: 11400000, guid: 8c2d3ea017be4e7e94d2ec66a6978421, type: 2}
+  flashlight: {fileID: 11400000, guid: dffd4269b8c599f4d84416c04348f702, type: 2}

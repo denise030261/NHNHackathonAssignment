@@ -74,7 +74,8 @@ namespace NHNHackathon.EditorTools
         private static void ConfigureLinkTransform(
             ExitDoor door, Transform linkRoot, NavMeshLink link)
         {
-            Collider blocker = door.BlockingCollider;
+            Collider blocker = door.GetComponentsInChildren<Collider>(true)
+                .FirstOrDefault(value => !value.isTrigger);
             Vector3 center = door.transform.position;
             float width = 1.2f;
             float depth = 0.5f;

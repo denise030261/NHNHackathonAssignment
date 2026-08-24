@@ -35,12 +35,17 @@ namespace NHNHackathon.Enemy
 
         public void FocusOnCrowd()
         {
-            if (crowdTarget == null) return;
             StopReaction();
-            if (enemyController != null) enemyController.enabled = false;
-            StopAgent();
-            reactionSequence = DOTween.Sequence().SetLink(gameObject);
-            reactionSequence.Append(transform.DORotateQuaternion(GetFlatLookRotation(crowdTarget.position), turnDuration));
+            Transform destination = unlockReactionTarget != null
+                ? unlockReactionTarget
+                : crowdTarget;
+            if (enemyController == null || destination == null)
+            {
+                return;
+            }
+
+            enemyController.enabled = true;
+            enemyController.MoveSuspiciouslyTo(destination);
         }
 
         private Quaternion GetFlatLookRotation(Vector3 targetPosition)

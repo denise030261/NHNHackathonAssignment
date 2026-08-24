@@ -87,6 +87,17 @@ namespace NHNHackathon.Dance
             return unlockedDanceIds.Contains(danceId);
         }
 
+        public void UnlockAll()
+        {
+            foreach (PaperDanceUnlockRule rule in unlockRules)
+            {
+                if (rule != null && rule.DanceId > 0 && unlockedDanceIds.Add(rule.DanceId))
+                {
+                    DanceUnlocked?.Invoke(rule.DanceId);
+                }
+            }
+        }
+
         public void NotifyLockedDance(int danceId)
         {
             if (playerInteractor != null && !string.IsNullOrWhiteSpace(lockedMessageFormat))

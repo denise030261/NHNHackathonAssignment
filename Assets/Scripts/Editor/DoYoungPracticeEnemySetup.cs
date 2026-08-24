@@ -51,12 +51,6 @@ namespace NHNHackathon.EditorTools
 
         private static PlayerFlashlightController ConfigureFlashlight(GameObject player)
         {
-            LightStimulusSource existing = player.GetComponentInChildren<LightStimulusSource>(true);
-            if (existing != null)
-            {
-                Object.DestroyImmediate(existing);
-            }
-
             Camera playerCamera = player.GetComponentInChildren<Camera>(true);
             if (playerCamera == null)
             {

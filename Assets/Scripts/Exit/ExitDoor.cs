@@ -26,7 +26,6 @@ namespace NHNHackathon.ExitSystem
         [SerializeField] private Transform doorPanel;
         [SerializeField, Tooltip("Optional second panel for double doors. It opens together with Door Panel.")]
         private Transform secondaryDoorPanel;
-        [SerializeField] private Collider blockingCollider;
         [SerializeField] private DoorNavigationController navigationController;
         [SerializeField] private float openAngle = 90f;
         [SerializeField, Tooltip("Open angle for the optional second panel. Use the opposite sign for double doors.")]
@@ -48,7 +47,6 @@ namespace NHNHackathon.ExitSystem
         public bool IsAnimating => isAnimating;
         public bool IsPermanentlySealed => isPermanentlySealed;
         public bool IsUnlocked => hasBeenUnlocked || requiredKeys.Count == 0;
-        public Collider BlockingCollider => blockingCollider;
         public string InteractionPrompt => IsOpen
             ? "\uBB38 \uB2EB\uAE30"
             : "\uBB38 \uC5F4\uAE30";
@@ -211,10 +209,6 @@ namespace NHNHackathon.ExitSystem
             else
             {
                 navigationController?.HandleDoorClosing();
-                if (blockingCollider != null)
-                {
-                    blockingCollider.enabled = true;
-                }
             }
             if (!opening)
             {
@@ -254,10 +248,6 @@ namespace NHNHackathon.ExitSystem
 
             if (opening)
             {
-                if (blockingCollider != null)
-                {
-                    blockingCollider.enabled = false;
-                }
                 navigationController?.HandleDoorOpened();
             }
             else

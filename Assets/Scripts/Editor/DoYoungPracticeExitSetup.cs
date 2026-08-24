@@ -183,8 +183,6 @@ namespace NHNHackathon.EditorTools
             panel.transform.localPosition = new Vector3(2f, 1.5f, 0f);
             panel.transform.localScale = new Vector3(4f, 3f, 0.25f);
             panel.GetComponent<Renderer>().sharedMaterial = doorMaterial;
-            BoxCollider blockingCollider = panel.GetComponent<BoxCollider>();
-
             CreateFramePart(
                 "LeftFrame", new Vector3(-0.2f, 1.65f, 0f),
                 new Vector3(0.4f, 3.3f, 0.5f), doorMaterial, root.transform);
@@ -205,7 +203,6 @@ namespace NHNHackathon.EditorTools
             settings.FindProperty("consumeKeysOnUnlock").boolValue = false;
             settings.FindProperty("playerInventory").objectReferenceValue = inventory;
             settings.FindProperty("doorPanel").objectReferenceValue = pivot.transform;
-            settings.FindProperty("blockingCollider").objectReferenceValue = blockingCollider;
             settings.ApplyModifiedPropertiesWithoutUndo();
             return door;
         }

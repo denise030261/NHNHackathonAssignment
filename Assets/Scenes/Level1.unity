@@ -663,7 +663,7 @@ Light:
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -1287,7 +1287,6 @@ GameObject:
   - component: {fileID: 103303731}
   - component: {fileID: 103303734}
   - component: {fileID: 103303733}
-  - component: {fileID: 103303732}
   m_Layer: 0
   m_Name: tripo_part_3.003
   m_TagString: Untagged
@@ -1310,28 +1309,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1961849838}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &103303732
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 103303730}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 2380941007432186063, guid: cb954d031150a484da79180de9b2627b, type: 3}
 --- !u!23 &103303733
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1531,7 +1508,7 @@ Light:
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -2927,7 +2904,7 @@ Light:
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -3943,7 +3920,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6159149051192978673, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
       propertyPath: focusedOutlinePixels
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6159149051192978673, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
       propertyPath: nearbyOutlineOriginHeight
@@ -3951,7 +3928,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6675140767211803144, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -118.6
+      value: -97.28
       objectReference: {fileID: 0}
     - target: {fileID: 6675140767211803144, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3959,7 +3936,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6675140767211803144, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -38.8
+      value: 46.57
       objectReference: {fileID: 0}
     - target: {fileID: 6675140767211803144, guid: 5c99f914f06aea743a80cfce584465d5, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4342,7 +4319,7 @@ PrefabInstance:
     - target: {fileID: 4903065617683556956, guid: 58909018d2fe550409805880f0e58e4a, type: 3}
       propertyPath: blockingCollider
       value: 
-      objectReference: {fileID: 1565401817}
+      objectReference: {fileID: 0}
     - target: {fileID: 4903065617683556956, guid: 58909018d2fe550409805880f0e58e4a, type: 3}
       propertyPath: unlockedCondition
       value: 
@@ -4510,7 +4487,7 @@ Light:
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -4870,6 +4847,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.x
       value: -23.159
       objectReference: {fileID: 0}
+    - target: {fileID: 2036218896669276427, guid: 652551a41156f7d49bb381e9d9d73b77, type: 3}
+      propertyPath: m_Size.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2036218896669276427, guid: 652551a41156f7d49bb381e9d9d73b77, type: 3}
+      propertyPath: m_Size.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2036218896669276427, guid: 652551a41156f7d49bb381e9d9d73b77, type: 3}
+      propertyPath: m_Size.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2844912919576620159, guid: 652551a41156f7d49bb381e9d9d73b77, type: 3}
       propertyPath: itemDefinition
       value: 
@@ -4972,7 +4961,6 @@ GameObject:
   - component: {fileID: 336588390}
   - component: {fileID: 336588393}
   - component: {fileID: 336588392}
-  - component: {fileID: 336588391}
   m_Layer: 0
   m_Name: tripo_part_3.003
   m_TagString: Untagged
@@ -4995,28 +4983,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1616247725}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &336588391
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 336588389}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 2380941007432186063, guid: cb954d031150a484da79180de9b2627b, type: 3}
 --- !u!23 &336588392
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6484,7 +6450,7 @@ Light:
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -11495,7 +11461,7 @@ Light:
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -11928,7 +11894,7 @@ Light:
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -12597,7 +12563,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8659804840835072518, guid: 58909018d2fe550409805880f0e58e4a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.88
+      value: 0.83
       objectReference: {fileID: 0}
     - target: {fileID: 8960931904363783016, guid: 58909018d2fe550409805880f0e58e4a, type: 3}
       propertyPath: successController
@@ -12828,7 +12794,7 @@ Light:
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -13118,7 +13084,7 @@ Light:
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -13904,7 +13870,7 @@ Light:
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -14593,7 +14559,7 @@ Light:
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -16153,7 +16119,7 @@ Light:
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -17384,7 +17350,7 @@ Light:
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -17971,6 +17937,7 @@ Transform:
   - {fileID: 2018509819}
   - {fileID: 60825558}
   - {fileID: 2144173095}
+  - {fileID: 2071053876}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1385566216
@@ -18838,28 +18805,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1429215396}
   m_CullTransparentMesh: 1
---- !u!64 &1430618457
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 351377986001333215}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 2380941007432186063, guid: cb954d031150a484da79180de9b2627b, type: 3}
 --- !u!65 &1449757723
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19902,7 +19847,7 @@ Light:
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -20197,7 +20142,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1565401815}
   - component: {fileID: 1565401818}
-  - component: {fileID: 1565401817}
   - component: {fileID: 1565401816}
   m_Layer: 0
   m_Name: DoorPanel
@@ -20270,27 +20214,6 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1565401817
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1565401814}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &1565401818
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -20743,7 +20666,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Enemy.WatcherEventReactionController
   enemyController: {fileID: 1605590883}
   agent: {fileID: 1280036395}
-  unlockReactionTarget: {fileID: 0}
+  unlockReactionTarget: {fileID: 2071053876}
   crowdTarget: {fileID: 60825558}
   turnDuration: 0.35
   reactionDuration: 2
@@ -21350,7 +21273,7 @@ Light:
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -21585,7 +21508,7 @@ Light:
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -22143,6 +22066,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1980548949}
     m_Modifications:
+    - target: {fileID: 2036218896669276427, guid: 6d8d2a067e9ba4541a8fcf51bbbb3e59, type: 3}
+      propertyPath: m_Size.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2036218896669276427, guid: 6d8d2a067e9ba4541a8fcf51bbbb3e59, type: 3}
+      propertyPath: m_Size.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2036218896669276427, guid: 6d8d2a067e9ba4541a8fcf51bbbb3e59, type: 3}
+      propertyPath: m_Size.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3985004875164646717, guid: 6d8d2a067e9ba4541a8fcf51bbbb3e59, type: 3}
       propertyPath: m_Name
       value: ExitKey2
@@ -22270,7 +22205,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8734790776076033562, guid: 22e2cedf05bb1644f8b6b4e30bb6d7bd, type: 3}
       propertyPath: m_Size.x
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8734790776076033562, guid: 22e2cedf05bb1644f8b6b4e30bb6d7bd, type: 3}
       propertyPath: m_Size.y
@@ -22278,7 +22213,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8734790776076033562, guid: 22e2cedf05bb1644f8b6b4e30bb6d7bd, type: 3}
       propertyPath: m_Size.z
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -25565,7 +25500,7 @@ Light:
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -26995,7 +26930,7 @@ Light:
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -27215,7 +27150,7 @@ Light:
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -27437,6 +27372,37 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 25.743725, y: 0.049999997, z: 10.457464}
   m_Center: {x: -11.871862, y: -0.024999999, z: -0.00000023841858}
+--- !u!1 &2071053875
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2071053876}
+  m_Layer: 0
+  m_Name: UnlockReactionLoc
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2071053876
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2071053875}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 63.39, y: 0, z: 35.16}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1385313144}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2071144873
 GameObject:
   m_ObjectHideFlags: 0
@@ -29018,6 +28984,7 @@ GameObject:
   - component: {fileID: 6445119952404981910}
   - component: {fileID: 546198955904916871}
   - component: {fileID: 8617668903771636534}
+  - component: {fileID: 8617668903771636535}
   m_Layer: 0
   m_Name: tripo_node_c5c6a01b.001
   m_TagString: Untagged
@@ -29088,7 +29055,6 @@ GameObject:
   - component: {fileID: 6862285411346012987}
   - component: {fileID: 1215765527002631583}
   - component: {fileID: 6532904749772997446}
-  - component: {fileID: 1430618457}
   m_Layer: 0
   m_Name: tripo_part_3.003
   m_TagString: Untagged
@@ -30529,6 +30495,7 @@ GameObject:
   - component: {fileID: 2455507684452581891}
   - component: {fileID: 8408222988970260227}
   - component: {fileID: 7770628863811305020}
+  - component: {fileID: 8408222988970260228}
   m_Layer: 0
   m_Name: tripo_node_c5c6a01b.004
   m_TagString: Untagged
@@ -33137,6 +33104,7 @@ GameObject:
   - component: {fileID: 2249258063259828105}
   - component: {fileID: 1801138039500141442}
   - component: {fileID: 1392097690009308791}
+  - component: {fileID: 3620655544251527921}
   m_Layer: 0
   m_Name: tripo_node_c5c6a01b
   m_TagString: Untagged
@@ -33144,6 +33112,29 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!136 &3620655544251527921
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3620655544251527920}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.26494414
+  m_Height: 2.28617
+  m_Direction: 1
+  m_Center: {x: 0.00028876055, y: 1.1444893, z: 0.00065890694}
 --- !u!33 &3649056237371985678
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -38611,6 +38602,7 @@ GameObject:
   - component: {fileID: 9087402775580650480}
   - component: {fileID: 7593873646466065652}
   - component: {fileID: 7897723941762710619}
+  - component: {fileID: 9087402775580650481}
   m_Layer: 0
   m_Name: tripo_node_c5c6a01b.002
   m_TagString: Untagged
@@ -38843,6 +38835,29 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1474993455566700331}
   m_Mesh: {fileID: -5502568133803215545, guid: cb954d031150a484da79180de9b2627b, type: 3}
+--- !u!136 &8408222988970260228
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1474993455566700331}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.26494417
+  m_Height: 2.28617
+  m_Direction: 1
+  m_Center: {x: 0.00030212104, y: 1.144495, z: 0.0006588559}
 --- !u!1 &8416272008048158803
 GameObject:
   m_ObjectHideFlags: 0
@@ -39230,6 +39245,29 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!136 &8617668903771636535
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 239400542502382701}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.26494414
+  m_Height: 2.28617
+  m_Direction: 1
+  m_Center: {x: 0.00028876055, y: 1.1444893, z: -0.2}
 --- !u!4 &8622353167971128970
 Transform:
   m_ObjectHideFlags: 0
@@ -39274,6 +39312,7 @@ GameObject:
   - component: {fileID: 4860122432881745773}
   - component: {fileID: 824844928950056628}
   - component: {fileID: 4178014690623010688}
+  - component: {fileID: 8701881010745154220}
   m_Layer: 0
   m_Name: tripo_node_c5c6a01b.003
   m_TagString: Untagged
@@ -39281,6 +39320,29 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!136 &8701881010745154220
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8701881010745154219}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.26494414
+  m_Height: 2.28617
+  m_Direction: 1
+  m_Center: {x: 0.00028876055, y: 1.1444893, z: 0.00065890694}
 --- !u!1 &8707273953196091814
 GameObject:
   m_ObjectHideFlags: 0
@@ -40001,6 +40063,29 @@ Transform:
   m_Children: []
   m_Father: {fileID: 543450653577023069}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &9087402775580650481
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7933211655049418389}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.26494414
+  m_Height: 2.28617
+  m_Direction: 1
+  m_Center: {x: 0.00028876055, y: 1.1444893, z: 0.00065890694}
 --- !u!23 &9088646232224178482
 MeshRenderer:
   m_ObjectHideFlags: 0

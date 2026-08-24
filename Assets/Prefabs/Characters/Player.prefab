@@ -348,6 +348,7 @@ MonoBehaviour:
   promptRoot: {fileID: 0}
   promptText: {fileID: 0}
   promptColor: {r: 1, g: 1, b: 1, a: 1}
+  promptOutlineColor: {r: 0, g: 0, b: 0, a: 0.95}
   messageColor: {r: 1, g: 0.72, b: 0.2, a: 1}
 --- !u!114 &726503695478076827
 MonoBehaviour:

@@ -31,6 +31,8 @@ namespace NHNHackathon.Interaction
         [SerializeField] private GameObject promptRoot;
         [SerializeField] private Text promptText;
         [SerializeField] private Color promptColor = Color.white;
+        [SerializeField] private Color promptOutlineColor =
+            new Color(0f, 0f, 0f, 0.95f);
         [SerializeField] private Color messageColor = new Color(1f, 0.72f, 0.2f);
 
         [Header("Interaction Outline")]
@@ -62,12 +64,14 @@ namespace NHNHackathon.Interaction
         private float nextOutlineRefreshAt;
         private string displayedPrompt = string.Empty;
         private Color displayedPromptColor;
+        private Outline promptOutline;
 
         //public PlayerKeyInventory KeyInventory => keyInventory;
 
         private void Awake()
         {
             MigrateLegacyOutlineWidths();
+            ConfigurePromptOutline();
         }
 
         private void Update()
@@ -300,6 +304,12 @@ namespace NHNHackathon.Interaction
             if (promptText != null)
             {
                 Color color = hasTemporaryMessage ? messageColor : promptColor;
+                if (promptOutline != null)
+                {
+                    // Temporary messages include the locked-dance notice and keep
+                    // their existing visual treatment.
+                    promptOutline.enabled = shouldShow && !hasTemporaryMessage;
+                }
                 if (displayedPrompt != text)
                 {
                     promptText.text = text;
@@ -336,6 +346,20 @@ namespace NHNHackathon.Interaction
                 focusedOutlinePixels, nearbyOutlinePixels, 12f);
             cameraController ??= GetComponent<PlayerCameraController>();
             playerCamera ??= GetComponentInChildren<Camera>(true);
+        }
+
+        private void ConfigurePromptOutline()
+        {
+            if (promptText == null)
+            {
+                return;
+            }
+
+            promptOutline = promptText.GetComponent<Outline>()
+                ?? promptText.gameObject.AddComponent<Outline>();
+            promptOutline.effectColor = promptOutlineColor;
+            promptOutline.effectDistance = new Vector2(2f, -2f);
+            promptOutline.useGraphicAlpha = true;
         }
 
         private void MigrateLegacyOutlineWidths()

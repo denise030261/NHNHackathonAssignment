@@ -39,6 +39,8 @@ namespace NHNHackathon.Enemy
 
         [Header("Suspicion")]
         [SerializeField, Min(0f)] private float suspicionDuration = 3f;
+        [SerializeField, Min(0.1f), Tooltip("Radius used to place a scripted suspicion target on the NavMesh.")]
+        private float scriptedSuspicionNavMeshSampleRadius = 2f;
 
         [Header("Performance")]
         [SerializeField, Min(0.02f)] private float perceptionInterval = 0.1f;
@@ -59,7 +61,6 @@ namespace NHNHackathon.Enemy
         private float nextLightDestinationUpdate;
         private float lightLostAt;
         private bool hasPatrolDestination;
-        private LightStimulusSource investigatedLight;
         private Vector3 lastKnownLightPosition;
         private Vector3 lastKnownPlayerPosition;
         private bool hasLostSight;
@@ -67,6 +68,8 @@ namespace NHNHackathon.Enemy
         private EnemyPatrolRoute pendingPatrolRoute;
         private PatrolRouteStartMode pendingPatrolStartMode;
         private bool hasPendingPatrolRoute;
+        private bool hasScriptedSuspicionDestination;
+        private Vector3 scriptedSuspicionDestination;
 
         public EnemyState CurrentState { get; private set; }
         public EnemyPatrolRoute PatrolRoute => patrolRoute;
@@ -75,7 +78,6 @@ namespace NHNHackathon.Enemy
         {
             agent ??= GetComponent<NavMeshAgent>();
             perception ??= GetComponent<EnemyPerception>();
-            investigatedLight = null;
             hasPatrolDestination = false;
             hasLostSight = false;
             hasPendingPatrolRoute = false;
@@ -119,6 +121,28 @@ namespace NHNHackathon.Enemy
             lastKnownPlayerPosition = player.position;
             hasLostSight = false;
             ChangeState(EnemyState.Chasing);
+        }
+
+        public bool MoveSuspiciouslyTo(Transform target)
+        {
+            if (target == null)
+            {
+                return false;
+            }
+
+            agent ??= GetComponent<NavMeshAgent>();
+            if (agent == null || !agent.enabled || !agent.isOnNavMesh
+                || !NavMesh.SamplePosition(
+                    target.position, out NavMeshHit hit,
+                    Mathf.Max(0.1f, scriptedSuspicionNavMeshSampleRadius), agent.areaMask))
+            {
+                return false;
+            }
+
+            scriptedSuspicionDestination = hit.position;
+            hasScriptedSuspicionDestination = true;
+            ChangeState(EnemyState.Suspicious);
+            return hasScriptedSuspicionDestination;
         }
 
         private void Awake()
@@ -165,9 +189,6 @@ namespace NHNHackathon.Enemy
             {
                 case EnemyState.Roaming:
                     UpdateRoaming();
-                    break;
-                case EnemyState.InvestigatingLight:
-                    UpdateLightInvestigation();
                     break;
                 case EnemyState.Chasing:
                     UpdateChasing();
@@ -289,17 +310,6 @@ namespace NHNHackathon.Enemy
 
         private void UpdateRoaming()
         {
-            if (Time.time >= nextLightSearchTime)
-            {
-                nextLightSearchTime = Time.time + lightSearchInterval;
-                if (TryFindVisibleLight(out LightStimulusSource light))
-                {
-                    investigatedLight = light;
-                    TryResolveLightDestination(light, out lastKnownLightPosition);
-                    ChangeState(EnemyState.InvestigatingLight);
-                    return;
-                }
-            }
 
             Transform point = patrolRoute != null ? patrolRoute.GetPoint(patrolIndex) : null;
             if (point == null || !agent.isOnNavMesh)
@@ -322,50 +332,6 @@ namespace NHNHackathon.Enemy
                 waitUntil = Time.time + pointWaitTime;
                 hasPatrolDestination = false;
                 agent.ResetPath();
-            }
-        }
-
-        private void UpdateLightInvestigation()
-        {
-            bool canSeeLight = investigatedLight != null && investigatedLight.IsActive
-                && perception.CanSeePoint(investigatedLight.Position, true);
-            if (canSeeLight)
-            {
-                TryResolveLightDestination(investigatedLight, out lastKnownLightPosition);
-                lightLostAt = float.PositiveInfinity;
-                if (Time.time >= nextLightDestinationUpdate && agent.isOnNavMesh)
-                {
-                    nextLightDestinationUpdate = Time.time + lightDestinationUpdateInterval;
-                    agent.SetDestination(lastKnownLightPosition);
-                }
-
-                if (HasReachedPosition(lastKnownLightPosition) && !investigatedLight.IsMoving)
-                {
-                    ChangeState(EnemyState.Roaming);
-                }
-            }
-            else
-            {
-                if (float.IsPositiveInfinity(lightLostAt))
-                {
-                    lightLostAt = Time.time;
-                }
-
-                if (Time.time - lightLostAt >= lightLostGraceTime && agent.isOnNavMesh)
-                {
-                    agent.SetDestination(lastKnownLightPosition);
-                }
-
-                if (HasReachedPosition(lastKnownLightPosition))
-                {
-                    ChangeState(EnemyState.Roaming);
-                }
-            }
-
-            if (maximumInvestigationTime > 0f
-                && Time.time - investigationStartedAt >= maximumInvestigationTime)
-            {
-                ChangeState(EnemyState.Roaming);
             }
         }
 
@@ -395,9 +361,47 @@ namespace NHNHackathon.Enemy
 
         private void UpdateSuspicious()
         {
+            if (hasScriptedSuspicionDestination)
+            {
+                UpdateScriptedSuspicionMovement();
+                return;
+            }
+
             if (Time.time >= suspicionEndsAt)
             {
                 ChangeState(EnemyState.Roaming);
+            }
+        }
+
+        private void UpdateScriptedSuspicionMovement()
+        {
+            if (agent == null || !agent.enabled || !agent.isOnNavMesh)
+            {
+                FinishScriptedSuspicionMovement();
+                return;
+            }
+
+            if (HasReachedPosition(scriptedSuspicionDestination))
+            {
+                FinishScriptedSuspicionMovement();
+                return;
+            }
+
+            if (!agent.pathPending && !agent.hasPath
+                && !agent.SetDestination(scriptedSuspicionDestination))
+            {
+                FinishScriptedSuspicionMovement();
+            }
+        }
+
+        private void FinishScriptedSuspicionMovement()
+        {
+            hasScriptedSuspicionDestination = false;
+            suspicionEndsAt = Time.time + suspicionDuration;
+            if (agent != null && agent.enabled && agent.isOnNavMesh)
+            {
+                agent.isStopped = true;
+                agent.ResetPath();
             }
         }
 
@@ -415,10 +419,17 @@ namespace NHNHackathon.Enemy
 
         private void ChangeState(EnemyState newState)
         {
+            if (newState != EnemyState.Suspicious)
+            {
+                hasScriptedSuspicionDestination = false;
+            }
+
             CurrentState = newState;
             if (agent != null && agent.isOnNavMesh)
             {
-                agent.isStopped = newState is EnemyState.Suspicious or EnemyState.Attacking;
+                agent.isStopped = newState == EnemyState.Attacking
+                    || (newState == EnemyState.Suspicious
+                        && !hasScriptedSuspicionDestination);
                 if (agent.isStopped)
                 {
                     agent.ResetPath();
@@ -434,7 +445,6 @@ namespace NHNHackathon.Enemy
                         hasPendingPatrolRoute = false;
                     }
                     agent.speed = patrolSpeed;
-                    investigatedLight = null;
                     hasPatrolDestination = false;
                     waitUntil = Time.time;
                     break;
@@ -447,7 +457,6 @@ namespace NHNHackathon.Enemy
                     break;
                 case EnemyState.Chasing:
                     agent.speed = chaseSpeed;
-                    investigatedLight = null;
                     hasPatrolDestination = false;
                     lastKnownPlayerPosition = player != null ? player.position : transform.position;
                     hasLostSight = false;
@@ -456,8 +465,16 @@ namespace NHNHackathon.Enemy
                         float.PositiveInfinity, 0f, 0f);
                     break;
                 case EnemyState.Suspicious:
-                    suspicionEndsAt = Time.time + suspicionDuration;
+                    agent.speed = patrolSpeed;
+                    suspicionEndsAt = hasScriptedSuspicionDestination
+                        ? float.PositiveInfinity
+                        : Time.time + suspicionDuration;
                     hasLostSight = false;
+                    if (hasScriptedSuspicionDestination
+                        && !agent.SetDestination(scriptedSuspicionDestination))
+                    {
+                        FinishScriptedSuspicionMovement();
+                    }
                     break;
             }
         }
@@ -485,48 +502,6 @@ namespace NHNHackathon.Enemy
             {
                 agent.ResetPath();
             }
-        }
-
-        private bool TryFindVisibleLight(out LightStimulusSource bestLight)
-        {
-            bestLight = null;
-            float bestDistanceSqr = float.PositiveInfinity;
-            foreach (LightStimulusSource light in LightStimulusSource.ActiveSources)
-            {
-                if (!light.IsActive || !perception.CanSeePoint(light.Position, true))
-                {
-                    continue;
-                }
-
-                float distanceSqr = (light.Position - transform.position).sqrMagnitude;
-                if (distanceSqr < bestDistanceSqr)
-                {
-                    bestDistanceSqr = distanceSqr;
-                    bestLight = light;
-                }
-            }
-
-            return bestLight != null;
-        }
-
-        private bool TryResolveLightDestination(
-            LightStimulusSource light, out Vector3 destination)
-        {
-            destination = light.NavigationHint;
-            if (!agent.isOnNavMesh)
-            {
-                return false;
-            }
-
-            if (NavMesh.SamplePosition(
-                    light.NavigationHint, out NavMeshHit hit,
-                    lightNavMeshSampleRadius, agent.areaMask))
-            {
-                destination = hit.position;
-                return true;
-            }
-
-            return false;
         }
 
         private bool HasReachedDestination()
