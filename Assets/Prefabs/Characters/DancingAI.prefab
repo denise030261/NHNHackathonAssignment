@@ -67,6 +67,7 @@ GameObject:
   - component: {fileID: 3334593458237057569}
   - component: {fileID: 6663020993176286578}
   - component: {fileID: 8083818334093887120}
+  - component: {fileID: 3958883757371079993}
   m_Layer: 0
   m_Name: DancingAI
   m_TagString: Untagged
@@ -148,6 +149,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NHNHackathon.Characters.CharacterMaterialApplicator
   rendererRoot: {fileID: 6494512826995223806}
   characterMaterial: {fileID: 2100000, guid: 1e9f02a0b83d4a14a74b79f6a47d186b, type: 2}
+--- !u!205 &3958883757371079993
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7959853341715820491}
+  serializedVersion: 3
+  m_LocalReferencePoint: {x: -0.0037242174, y: 0.77549124, z: 0.17894423}
+  m_Size: 2.0000005
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.035
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 6138053977462326528}
+  m_Enabled: 1
+  m_GlobalIlluminationLOD: 0
 --- !u!1001 &6749660526239402773
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -208,13 +229,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8609435604886155755, guid: c78a2c210d3646e4abe922f1ecdf4f40, type: 3}
+      propertyPath: m_Quality
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8609435604886155755, guid: c78a2c210d3646e4abe922f1ecdf4f40, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value:
+      objectReference: {fileID: 2100000, guid: 1e9f02a0b83d4a14a74b79f6a47d186b, type: 2}
     - target: {fileID: 919132149155446097, guid: c78a2c210d3646e4abe922f1ecdf4f40, type: 3}
       propertyPath: m_Name
       value: CharacterModel
       objectReference: {fileID: 0}
     - target: {fileID: 3369936756611403861, guid: c78a2c210d3646e4abe922f1ecdf4f40, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
-      value: 
+      value:
       objectReference: {fileID: 2100000, guid: 1e9f02a0b83d4a14a74b79f6a47d186b, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -243,7 +272,7 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 53d5f06fe8c35a84a85f98fd82bf6e7d, type: 2}
-  m_CullingMode: 0
+  m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
@@ -269,6 +298,11 @@ MonoBehaviour:
   volumeScale: 0.75
   avoidImmediateRepeat: 1
   requireSharedZone: 1
+--- !u!137 &6138053977462326528 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -8609435604886155755, guid: c78a2c210d3646e4abe922f1ecdf4f40, type: 3}
+  m_PrefabInstance: {fileID: 6749660526239402773}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6494512826995223806 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c78a2c210d3646e4abe922f1ecdf4f40, type: 3}
