@@ -12,6 +12,13 @@ namespace NHNHackathon.Enemy
     [RequireComponent(typeof(EnemyPerception))]
     public sealed class EnemyController : MonoBehaviour
     {
+        private enum ScriptedSuspicionArrivalMode
+        {
+            TimedSuspicion,
+            ResumeRoaming,
+            HoldSuspicion
+        }
+
         [Header("References")]
         [SerializeField] private Transform player;
         [SerializeField] private PlayerDisguiseState playerDisguise;
@@ -42,6 +49,12 @@ namespace NHNHackathon.Enemy
         [SerializeField, Min(0.1f), Tooltip("Radius used to place a scripted suspicion target on the NavMesh.")]
         private float scriptedSuspicionNavMeshSampleRadius = 2f;
 
+        [Header("Final Dance Watch")]
+        [SerializeField, Min(0f), Tooltip("How long a visible player may remain out of sync before the watcher starts chasing.")]
+        private float danceWatchFailureGraceDuration = 0.75f;
+        [SerializeField, Min(0f), Tooltip("Horizontal movement detected per perception check that immediately breaks the dance disguise.")]
+        private float danceWatchMovementThreshold = 0.05f;
+
         [Header("Performance")]
         [SerializeField, Min(0.02f)] private float perceptionInterval = 0.1f;
         [SerializeField, Min(0.02f)] private float lightSearchInterval = 0.1f;
@@ -70,9 +83,16 @@ namespace NHNHackathon.Enemy
         private bool hasPendingPatrolRoute;
         private bool hasScriptedSuspicionDestination;
         private Vector3 scriptedSuspicionDestination;
+        private ScriptedSuspicionArrivalMode scriptedSuspicionArrivalMode;
+        private bool hasPersistentSuspicion;
+        private Vector3 persistentSuspicionDestination;
+        private float danceWatchFailureStartedAt = -1f;
+        private bool hasDanceWatchPlayerPosition;
+        private Vector3 lastDanceWatchPlayerPosition;
 
         public EnemyState CurrentState { get; private set; }
         public EnemyPatrolRoute PatrolRoute => patrolRoute;
+        public event System.Action ScriptedSuspicionDestinationReached;
 
         public void ResumeAfterCutscene()
         {
@@ -116,14 +136,57 @@ namespace NHNHackathon.Enemy
                 return;
             }
 
+            perception ??= GetComponent<EnemyPerception>();
+            if ((hasPersistentSuspicion || CurrentState == EnemyState.WatchingDance)
+                && (perception == null || !perception.CanSeeTarget(alertedPlayer)))
+            {
+                return;
+            }
+
             player = alertedPlayer;
             playerDisguise = player.GetComponent<PlayerDisguiseState>();
             lastKnownPlayerPosition = player.position;
             hasLostSight = false;
+            hasScriptedSuspicionDestination = false;
+            hasPersistentSuspicion = false;
             ChangeState(EnemyState.Chasing);
         }
 
+        public void BeginDanceWatch()
+        {
+            hasScriptedSuspicionDestination = false;
+            hasPersistentSuspicion = false;
+            ChangeState(EnemyState.WatchingDance);
+        }
+
         public bool MoveSuspiciouslyTo(Transform target)
+        {
+            return BeginScriptedSuspicionMovement(
+                target, ScriptedSuspicionArrivalMode.TimedSuspicion);
+        }
+
+        public bool MoveSuspiciouslyToAndResumePatrol(
+            Transform target, EnemyPatrolRoute route,
+            PatrolRouteStartMode startMode = PatrolRouteStartMode.NearestPoint)
+        {
+            if (!BeginScriptedSuspicionMovement(
+                    target, ScriptedSuspicionArrivalMode.ResumeRoaming))
+            {
+                return false;
+            }
+
+            SetPatrolRoute(route, startMode);
+            return true;
+        }
+
+        public bool MoveSuspiciouslyToAndHold(Transform target)
+        {
+            return BeginScriptedSuspicionMovement(
+                target, ScriptedSuspicionArrivalMode.HoldSuspicion);
+        }
+
+        private bool BeginScriptedSuspicionMovement(
+            Transform target, ScriptedSuspicionArrivalMode arrivalMode)
         {
             if (target == null)
             {
@@ -140,6 +203,13 @@ namespace NHNHackathon.Enemy
             }
 
             scriptedSuspicionDestination = hit.position;
+            scriptedSuspicionArrivalMode = arrivalMode;
+            hasPersistentSuspicion = arrivalMode
+                == ScriptedSuspicionArrivalMode.HoldSuspicion;
+            if (hasPersistentSuspicion)
+            {
+                persistentSuspicionDestination = hit.position;
+            }
             hasScriptedSuspicionDestination = true;
             ChangeState(EnemyState.Suspicious);
             return hasScriptedSuspicionDestination;
@@ -174,7 +244,11 @@ namespace NHNHackathon.Enemy
             }
 
             if (DeveloperModeController.ShouldWatchersIgnorePlayer
-                && CurrentState is EnemyState.Chasing or EnemyState.Suspicious or EnemyState.Attacking)
+                && !hasScriptedSuspicionDestination
+                && !hasPersistentSuspicion
+                && CurrentState is EnemyState.Chasing
+                    or EnemyState.Suspicious
+                    or EnemyState.Attacking)
             {
                 ChangeState(EnemyState.Roaming);
             }
@@ -201,7 +275,9 @@ namespace NHNHackathon.Enemy
 
         private void EvaluatePlayer()
         {
-            if (DeveloperModeController.ShouldWatchersIgnorePlayer
+            if (hasScriptedSuspicionDestination
+                || hasPersistentSuspicion
+                || DeveloperModeController.ShouldWatchersIgnorePlayer
                 || player == null || CurrentState == EnemyState.Attacking)
             {
                 return;
@@ -213,7 +289,6 @@ namespace NHNHackathon.Enemy
             switch (CurrentState)
             {
                 case EnemyState.Roaming:
-                case EnemyState.InvestigatingLight:
                     EvaluatePlayerWhileRoaming(isDisguised);
                     break;
                 case EnemyState.Chasing:
@@ -222,6 +297,52 @@ namespace NHNHackathon.Enemy
                 case EnemyState.Suspicious:
                     EvaluatePlayerWhileSuspicious(isDisguised, distance);
                     break;
+                case EnemyState.WatchingDance:
+                    EvaluatePlayerWhileWatchingDance(isDisguised);
+                    break;
+            }
+        }
+
+        private void EvaluatePlayerWhileWatchingDance(bool isDisguised)
+        {
+            Vector3 currentPosition = player.position;
+            Vector3 movement = hasDanceWatchPlayerPosition
+                ? currentPosition - lastDanceWatchPlayerPosition
+                : Vector3.zero;
+            movement.y = 0f;
+            lastDanceWatchPlayerPosition = currentPosition;
+            hasDanceWatchPlayerPosition = true;
+
+            if (!perception.CanSeeTarget(player))
+            {
+                danceWatchFailureStartedAt = -1f;
+                return;
+            }
+
+            float movementThresholdSquared = danceWatchMovementThreshold
+                * danceWatchMovementThreshold;
+            if (movement.sqrMagnitude > movementThresholdSquared)
+            {
+                ChangeState(EnemyState.Chasing);
+                return;
+            }
+
+            if (isDisguised)
+            {
+                danceWatchFailureStartedAt = -1f;
+                return;
+            }
+
+            if (danceWatchFailureStartedAt < 0f)
+            {
+                danceWatchFailureStartedAt = Time.time;
+                return;
+            }
+
+            if (Time.time - danceWatchFailureStartedAt
+                >= danceWatchFailureGraceDuration)
+            {
+                ChangeState(EnemyState.Chasing);
             }
         }
 
@@ -287,7 +408,9 @@ namespace NHNHackathon.Enemy
 
         public void TryCapturePlayer(Transform candidate)
         {
-            if (DeveloperModeController.ShouldWatchersIgnorePlayer)
+            if (hasScriptedSuspicionDestination
+                || hasPersistentSuspicion
+                || DeveloperModeController.ShouldWatchersIgnorePlayer)
             {
                 return;
             }
@@ -301,7 +424,7 @@ namespace NHNHackathon.Enemy
 
             bool isDisguised = playerDisguise != null && playerDisguise.IsDisguised;
             bool disguiseIsTrusted = isDisguised
-                && CurrentState is EnemyState.Roaming or EnemyState.InvestigatingLight;
+                && CurrentState is EnemyState.Roaming or EnemyState.WatchingDance;
             if (!disguiseIsTrusted)
             {
                 Attack();
@@ -367,6 +490,11 @@ namespace NHNHackathon.Enemy
                 return;
             }
 
+            if (hasPersistentSuspicion)
+            {
+                return;
+            }
+
             if (Time.time >= suspicionEndsAt)
             {
                 ChangeState(EnemyState.Roaming);
@@ -377,27 +505,56 @@ namespace NHNHackathon.Enemy
         {
             if (agent == null || !agent.enabled || !agent.isOnNavMesh)
             {
-                FinishScriptedSuspicionMovement();
+                CancelScriptedSuspicionMovement();
                 return;
             }
 
             if (HasReachedPosition(scriptedSuspicionDestination))
             {
-                FinishScriptedSuspicionMovement();
+                CompleteScriptedSuspicionMovement();
                 return;
             }
 
             if (!agent.pathPending && !agent.hasPath
                 && !agent.SetDestination(scriptedSuspicionDestination))
             {
-                FinishScriptedSuspicionMovement();
+                CancelScriptedSuspicionMovement();
             }
         }
 
-        private void FinishScriptedSuspicionMovement()
+        private void CompleteScriptedSuspicionMovement()
+        {
+            ScriptedSuspicionArrivalMode arrivalMode = scriptedSuspicionArrivalMode;
+            hasScriptedSuspicionDestination = false;
+            StopAgentAtCurrentPosition();
+
+            switch (arrivalMode)
+            {
+                case ScriptedSuspicionArrivalMode.ResumeRoaming:
+                    ChangeState(EnemyState.Roaming);
+                    break;
+                case ScriptedSuspicionArrivalMode.HoldSuspicion:
+                    hasPersistentSuspicion = true;
+                    suspicionEndsAt = float.PositiveInfinity;
+                    break;
+                default:
+                    suspicionEndsAt = Time.time + suspicionDuration;
+                    break;
+            }
+
+            ScriptedSuspicionDestinationReached?.Invoke();
+        }
+
+        private void CancelScriptedSuspicionMovement()
         {
             hasScriptedSuspicionDestination = false;
+            hasPersistentSuspicion = false;
             suspicionEndsAt = Time.time + suspicionDuration;
+            StopAgentAtCurrentPosition();
+        }
+
+        private void StopAgentAtCurrentPosition()
+        {
             if (agent != null && agent.enabled && agent.isOnNavMesh)
             {
                 agent.isStopped = true;
@@ -424,10 +581,25 @@ namespace NHNHackathon.Enemy
                 hasScriptedSuspicionDestination = false;
             }
 
+            if (newState == EnemyState.Roaming)
+            {
+                hasPersistentSuspicion = false;
+            }
+            else if (newState == EnemyState.Suspicious
+                && hasPersistentSuspicion
+                && !HasReachedPosition(persistentSuspicionDestination))
+            {
+                scriptedSuspicionDestination = persistentSuspicionDestination;
+                scriptedSuspicionArrivalMode =
+                    ScriptedSuspicionArrivalMode.HoldSuspicion;
+                hasScriptedSuspicionDestination = true;
+            }
+
             CurrentState = newState;
             if (agent != null && agent.isOnNavMesh)
             {
                 agent.isStopped = newState == EnemyState.Attacking
+                    || newState == EnemyState.WatchingDance
                     || (newState == EnemyState.Suspicious
                         && !hasScriptedSuspicionDestination);
                 if (agent.isStopped)
@@ -448,13 +620,6 @@ namespace NHNHackathon.Enemy
                     hasPatrolDestination = false;
                     waitUntil = Time.time;
                     break;
-                case EnemyState.InvestigatingLight:
-                    agent.speed = patrolSpeed;
-                    hasPatrolDestination = false;
-                    investigationStartedAt = Time.time;
-                    nextLightDestinationUpdate = 0f;
-                    lightLostAt = float.PositiveInfinity;
-                    break;
                 case EnemyState.Chasing:
                     agent.speed = chaseSpeed;
                     hasPatrolDestination = false;
@@ -473,7 +638,16 @@ namespace NHNHackathon.Enemy
                     if (hasScriptedSuspicionDestination
                         && !agent.SetDestination(scriptedSuspicionDestination))
                     {
-                        FinishScriptedSuspicionMovement();
+                        CancelScriptedSuspicionMovement();
+                    }
+                    break;
+                case EnemyState.WatchingDance:
+                    agent.speed = patrolSpeed;
+                    danceWatchFailureStartedAt = -1f;
+                    hasDanceWatchPlayerPosition = player != null;
+                    if (hasDanceWatchPlayerPosition)
+                    {
+                        lastDanceWatchPlayerPosition = player.position;
                     }
                     break;
             }

@@ -81,11 +81,6 @@ namespace NHNHackathon.Settings
             }
 
             image.texture = texture;
-            AspectRatioFitter fitter = image.GetComponent<AspectRatioFitter>();
-            if (fitter != null && texture != null && texture.height > 0)
-            {
-                fitter.aspectRatio = (float)texture.width / texture.height;
-            }
         }
 
 #if UNITY_EDITOR

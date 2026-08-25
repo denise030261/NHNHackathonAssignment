@@ -113,7 +113,7 @@ namespace NHNHackathon.EditorTools
             out Text bgmValue, out Text sfxValue, out Button close)
         {
             GameObject panel = CreateImage(
-                "PauseSettingsPanel", parent,
+                "SettingsPanel", parent,
                 new Vector2(0.25f, 0.20f), new Vector2(0.75f, 0.80f),
                 new Color(0.08f, 0.08f, 0.1f, 0.99f));
             CreateText(

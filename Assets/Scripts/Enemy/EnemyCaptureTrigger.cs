@@ -16,6 +16,16 @@ namespace NHNHackathon.Enemy
 
         private void OnTriggerEnter(Collider other)
         {
+            TryCapture(other);
+        }
+
+        private void OnTriggerStay(Collider other)
+        {
+            TryCapture(other);
+        }
+
+        private void TryCapture(Collider other)
+        {
             PlayerMovement player = other.GetComponentInParent<PlayerMovement>();
             if (player != null)
             {

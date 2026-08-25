@@ -50,7 +50,7 @@ namespace NHNHackathon.EditorTools
             try
             {
                 BuildScene(MainMenuPath, "SettingsPanel");
-                BuildScene(Level1Path, "PauseSettingsPanel");
+                BuildScene(Level1Path, "SettingsPanel");
                 AssetDatabase.SaveAssets();
                 Debug.Log("BRIGHTNESS_SETTINGS_UI_SETUP_COMPLETE");
             }
@@ -374,10 +374,11 @@ namespace NHNHackathon.EditorTools
             recommendedPreview = CreatePreviewImage(
                 root, "RecommendedBrightnessFrame",
                 "RecommendedBrightnessPreview", new Vector2(0f, 0f),
-                new Vector2(0.47f, 0.82f));
+                new Vector2(0.47f, 0.82f), preserveRectTransformSize: true);
             currentPreview = CreatePreviewImage(
                 root, "CurrentBrightnessFrame", "CurrentBrightnessPreview",
-                new Vector2(0.53f, 0f), new Vector2(1f, 0.82f));
+                new Vector2(0.53f, 0f), new Vector2(1f, 0.82f),
+                preserveRectTransformSize: false);
         }
 
         private static void CreatePreviewLabel(
@@ -393,7 +394,7 @@ namespace NHNHackathon.EditorTools
 
         private static RawImage CreatePreviewImage(
             RectTransform parent, string frameName, string imageName,
-            Vector2 anchorMin, Vector2 anchorMax)
+            Vector2 anchorMin, Vector2 anchorMax, bool preserveRectTransformSize)
         {
             GameObject frameObject = new(
                 frameName, typeof(RectTransform), typeof(CanvasRenderer),
@@ -417,6 +418,7 @@ namespace NHNHackathon.EditorTools
             AspectRatioFitter fitter = imageObject.GetComponent<AspectRatioFitter>();
             fitter.aspectMode = AspectRatioFitter.AspectMode.FitInParent;
             fitter.aspectRatio = 1210f / 1060f;
+            fitter.enabled = !preserveRectTransformSize;
             return imageObject.GetComponent<RawImage>();
         }
 

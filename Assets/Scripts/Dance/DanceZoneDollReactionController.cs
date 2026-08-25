@@ -172,6 +172,7 @@ namespace NHNHackathon.Dance
             {
                 lookTarget = activePlayer.transform;
                 SetFaceTracking(true);
+                AlertNearestWatcher(activePlayer.transform);
             }
         }
 

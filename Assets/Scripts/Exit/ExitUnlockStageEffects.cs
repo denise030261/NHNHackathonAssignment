@@ -37,14 +37,21 @@ namespace NHNHackathon.ExitSystem
                 foreach (GameObject lightObject in corridorLightObjects)
                     if (lightObject != null) lightObject.SetActive(false);
             }
-            if (watcher != null && secondStagePatrolRoute != null)
-                watcher.SetPatrolRoute(secondStagePatrolRoute, PatrolRouteStartMode.NearestPoint);
+            if (watcherReaction != null)
+            {
+                watcherReaction.ReactToSecondUnlock(secondStagePatrolRoute);
+            }
+            else if (watcher != null && secondStagePatrolRoute != null)
+            {
+                watcher.SetPatrolRoute(
+                    secondStagePatrolRoute, PatrolRouteStartMode.NearestPoint);
+            }
         }
 
         public void PlayFinalUnlock()
         {
             exitDoor?.TryOpen(finalDoorOpenDuration);
-            watcherReaction?.FocusOnCrowd();
+            watcherReaction?.ReactToFinalUnlock();
         }
     }
 }
