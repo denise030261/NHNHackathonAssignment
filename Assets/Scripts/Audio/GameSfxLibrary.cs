@@ -18,6 +18,7 @@ namespace NHNHackathon.AudioSystem
         [SerializeField] private AudioClip doorSlam;
         [SerializeField] private AudioClip lightFlicker;
         [SerializeField] private AudioClip firstExitUnlock;
+        [SerializeField] private AudioClip exitUnlockLoop;
 
         [Header("Doll Animation")]
         [SerializeField] private List<AudioClip> dollMovementClips = new();
@@ -34,6 +35,7 @@ namespace NHNHackathon.AudioSystem
         public AudioClip DoorSlam => doorSlam;
         public AudioClip LightFlicker => lightFlicker;
         public AudioClip FirstExitUnlock => firstExitUnlock;
+        public AudioClip ExitUnlockLoop => exitUnlockLoop;
         public IReadOnlyList<AudioClip> DollMovementClips => dollMovementClips;
         public AudioClip UiHovered => uiHovered;
         public AudioClip UiClick => uiClick;

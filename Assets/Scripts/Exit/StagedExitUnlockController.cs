@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using NHNHackathon.AudioSystem;
 using NHNHackathon.Interaction;
 using NHNHackathon.Items;
+using NHNHackathon.MainMenu;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -35,6 +37,14 @@ namespace NHNHackathon.ExitSystem
 
         [Header("References")]
         [SerializeField] private ExitUnlockProgressUI progressUI;
+
+        [Header("Unlock Loop SFX")]
+        [SerializeField] private AudioClip unlockLoopClip;
+        [SerializeField] private AudioSource unlockLoopAudioSource;
+        [SerializeField, Range(0f, 1f)] private float unlockLoopVolumeScale = 1f;
+        [SerializeField, Range(0f, 1f)] private float unlockLoopSpatialBlend;
+        [SerializeField, Min(0f)] private float unlockLoopMinDistance = 1f;
+        [SerializeField, Min(0.1f)] private float unlockLoopMaxDistance = 18f;
 
         private PlayerInteractor activeInteractor;
         private PlayerItemInventory inventory;
@@ -99,6 +109,7 @@ namespace NHNHackathon.ExitSystem
             startPosition = interactor.transform.position;
             isUnlocking = true;
             progressUI?.Show(stage.DisplayName, elapsed, stage.UnlockDuration);
+            PlayUnlockLoopSfx();
         }
 
         private void CompleteCurrentStage(ExitUnlockStage stage)
@@ -120,10 +131,60 @@ namespace NHNHackathon.ExitSystem
 
         private void FinishAttempt()
         {
+            StopUnlockLoopSfx();
             isUnlocking = false;
             activeInteractor = null;
             inventory = null;
             progressUI?.Hide();
+        }
+
+        private void PlayUnlockLoopSfx()
+        {
+            AudioClip clip = unlockLoopClip != null
+                ? unlockLoopClip
+                : GameSfxPlayer.Library != null
+                    ? GameSfxPlayer.Library.ExitUnlockLoop
+                    : null;
+            if (clip == null)
+            {
+                Debug.LogWarning(
+                    "Unlock loop SFX is not assigned.", this);
+                return;
+            }
+
+            EnsureUnlockLoopAudioSource();
+            unlockLoopAudioSource.Stop();
+            unlockLoopAudioSource.clip = clip;
+            unlockLoopAudioSource.loop = true;
+            unlockLoopAudioSource.playOnAwake = false;
+            unlockLoopAudioSource.spatialBlend = unlockLoopSpatialBlend;
+            unlockLoopAudioSource.minDistance = unlockLoopMinDistance;
+            unlockLoopAudioSource.maxDistance = Mathf.Max(
+                unlockLoopMinDistance + 0.1f, unlockLoopMaxDistance);
+            unlockLoopAudioSource.volume = Mathf.Clamp01(
+                AudioSettingsController.SavedSfxVolume * unlockLoopVolumeScale);
+            unlockLoopAudioSource.Play();
+        }
+
+        private void EnsureUnlockLoopAudioSource()
+        {
+            if (unlockLoopAudioSource != null)
+            {
+                return;
+            }
+
+            unlockLoopAudioSource = gameObject.AddComponent<AudioSource>();
+            unlockLoopAudioSource.playOnAwake = false;
+            unlockLoopAudioSource.loop = true;
+            unlockLoopAudioSource.dopplerLevel = 0f;
+        }
+
+        private void StopUnlockLoopSfx()
+        {
+            if (unlockLoopAudioSource != null && unlockLoopAudioSource.isPlaying)
+            {
+                unlockLoopAudioSource.Stop();
+            }
         }
 
         private void OnDisable()

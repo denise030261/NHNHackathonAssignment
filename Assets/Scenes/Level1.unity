@@ -987,6 +987,10 @@ PrefabInstance:
       propertyPath: danceAI
       value: 
       objectReference: {fileID: 1380823389}
+    - target: {fileID: 5523044376048193517, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+      propertyPath: screamSfx
+      value: 
+      objectReference: {fileID: 8300000, guid: 0f9d189e528f6e147be786f253b88a97, type: 3}
     - target: {fileID: 7974926430556042222, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
       propertyPath: m_Size.x
       value: 8
@@ -4094,6 +4098,10 @@ PrefabInstance:
       propertyPath: danceAI
       value: 
       objectReference: {fileID: 811101565}
+    - target: {fileID: 5523044376048193517, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+      propertyPath: screamSfx
+      value: 
+      objectReference: {fileID: 8300000, guid: 0f9d189e528f6e147be786f253b88a97, type: 3}
     - target: {fileID: 7974926430556042222, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
       propertyPath: m_Size.x
       value: 15
@@ -8145,6 +8153,10 @@ PrefabInstance:
       propertyPath: danceAI
       value: 
       objectReference: {fileID: 1899614811}
+    - target: {fileID: 5523044376048193517, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+      propertyPath: screamSfx
+      value: 
+      objectReference: {fileID: 8300000, guid: 0f9d189e528f6e147be786f253b88a97, type: 3}
     - target: {fileID: 7974926430556042222, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
       propertyPath: m_Size.x
       value: 10
@@ -10054,6 +10066,10 @@ PrefabInstance:
       propertyPath: danceAI
       value: 
       objectReference: {fileID: 765476923}
+    - target: {fileID: 5523044376048193517, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+      propertyPath: screamSfx
+      value: 
+      objectReference: {fileID: 8300000, guid: 0f9d189e528f6e147be786f253b88a97, type: 3}
     - target: {fileID: 7974926430556042222, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
       propertyPath: m_Size.x
       value: 5
@@ -12927,6 +12943,10 @@ PrefabInstance:
       propertyPath: danceAI
       value: 
       objectReference: {fileID: 2111265589}
+    - target: {fileID: 5523044376048193517, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+      propertyPath: screamSfx
+      value: 
+      objectReference: {fileID: 8300000, guid: 0f9d189e528f6e147be786f253b88a97, type: 3}
     - target: {fileID: 7974926430556042222, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
       propertyPath: m_Size.x
       value: 8
@@ -13525,6 +13545,12 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   progressUI: {fileID: 1820447904}
+  unlockLoopClip: {fileID: 8300000, guid: b7afeb9c0fee8fb4baa2191a8fc8c7d7, type: 3}
+  unlockLoopAudioSource: {fileID: 0}
+  unlockLoopVolumeScale: 1
+  unlockLoopSpatialBlend: 0
+  unlockLoopMinDistance: 1
+  unlockLoopMaxDistance: 18
 --- !u!1 &1028273602
 GameObject:
   m_ObjectHideFlags: 0
@@ -16112,6 +16138,10 @@ PrefabInstance:
       propertyPath: danceAI
       value: 
       objectReference: {fileID: 1344197231}
+    - target: {fileID: 5523044376048193517, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+      propertyPath: screamSfx
+      value: 
+      objectReference: {fileID: 8300000, guid: 0f9d189e528f6e147be786f253b88a97, type: 3}
     - target: {fileID: 7974926430556042222, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
       propertyPath: m_Size.x
       value: 4
@@ -18235,6 +18265,10 @@ PrefabInstance:
       propertyPath: danceAI
       value: 
       objectReference: {fileID: 539792275}
+    - target: {fileID: 5523044376048193517, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+      propertyPath: screamSfx
+      value: 
+      objectReference: {fileID: 8300000, guid: 0f9d189e528f6e147be786f253b88a97, type: 3}
     - target: {fileID: 7974926430556042222, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
       propertyPath: m_Size.x
       value: 8
@@ -24477,6 +24511,10 @@ PrefabInstance:
       propertyPath: danceAI
       value: 
       objectReference: {fileID: 2076480334}
+    - target: {fileID: 5523044376048193517, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+      propertyPath: screamSfx
+      value: 
+      objectReference: {fileID: 8300000, guid: 0f9d189e528f6e147be786f253b88a97, type: 3}
     - target: {fileID: 7974926430556042222, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
       propertyPath: m_Size.x
       value: 5
@@ -26626,6 +26664,10 @@ PrefabInstance:
       propertyPath: danceAI
       value: 
       objectReference: {fileID: 1018548376}
+    - target: {fileID: 5523044376048193517, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
+      propertyPath: screamSfx
+      value: 
+      objectReference: {fileID: 8300000, guid: 0f9d189e528f6e147be786f253b88a97, type: 3}
     - target: {fileID: 7974926430556042222, guid: 06148b61110e52a4ca191e260d5ab23e, type: 3}
       propertyPath: m_Size.x
       value: 8

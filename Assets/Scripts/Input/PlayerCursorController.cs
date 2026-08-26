@@ -11,7 +11,7 @@ namespace NHNHackathon.Input
         [SerializeField, Tooltip("Disable when another system, such as Pause Menu, owns Escape input.")]
         private bool handleEscapeInput = true;
 
-        private void Start()
+        private void Awake()
         {
             if (lockCursorOnStart)
             {

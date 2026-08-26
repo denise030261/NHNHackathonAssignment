@@ -31,6 +31,7 @@ namespace NHNHackathon.MainMenu
         private void Awake()
         {
             Time.timeScale = 1f;
+            ShowCursor();
             if (settingsPanel != null)
             {
                 settingsPanel.SetActive(false);
@@ -38,6 +39,27 @@ namespace NHNHackathon.MainMenu
             if (webQuitMessage != null)
             {
                 webQuitMessage.SetActive(false);
+            }
+        }
+
+        private void OnEnable()
+        {
+            ShowCursor();
+        }
+
+        private void LateUpdate()
+        {
+            if (Cursor.lockState != CursorLockMode.None || !Cursor.visible)
+            {
+                ShowCursor();
+            }
+        }
+
+        private void OnApplicationFocus(bool hasFocus)
+        {
+            if (hasFocus)
+            {
+                ShowCursor();
             }
         }
 
@@ -114,6 +136,12 @@ namespace NHNHackathon.MainMenu
             {
                 quitButton.interactable = value;
             }
+        }
+
+        private static void ShowCursor()
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
     }
 }
